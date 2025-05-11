@@ -9,6 +9,8 @@ using System.Collections.Generic;
 
 public class Visualizer : MonoBehaviour
 {
+	public Parameter parameter;
+
 	public Rect area = new Rect(-2, 5, 4, 10);
 	public SMFPlayer smfPlayer;
 	public SMFPlayer kanjiPlayer;
@@ -37,6 +39,12 @@ public class Visualizer : MonoBehaviour
 	}
 	void Start()
 	{
+		MidiWatcher midiWatcher = LyricPlayer.midiWatcher;
+		midiWatcher.onMidiIn += MIDIIn;
+		midiWatcher.onLyricIn += LyricIn;
+		midiWatcher.onTempoIn += TempoIn;
+		midiWatcher.onBeatIn += BeatIn;
+		midiWatcher.onMeasureIn += MeasureIn;
 	}
 	// Update is called once per frame
 	void Update()
@@ -59,10 +67,12 @@ public class Visualizer : MonoBehaviour
 			smfPlayer.mute = true;
 			kanjiPlayer.mute = false;
 			MidiEventMapAccessor.Instance.SetCurrentMap(1);
+			// Debug.Log($"LyricMode: kanji");
 		} else {
 			smfPlayer.mute = false;
 			kanjiPlayer.mute = true;
 			MidiEventMapAccessor.Instance.SetCurrentMap(0);
+			// Debug.Log($"LyricMode: original");
 		}
 	}
 
@@ -73,13 +83,13 @@ public class Visualizer : MonoBehaviour
 		switch (status) {
 			case 0x90:
 				if (midiEvent[2] == 0) {
-					Debug.Log($"NoteOff, position: {position}");
+					// Debug.Log($"NoteOff, position: {position}");
 				} else {
-					Debug.Log($"NoteOn, position: {position}");
+					// Debug.Log($"NoteOn, position: {position}");
 				}
 				break;
 			case 0x80:
-				Debug.Log($"NoteOff, position: {position}");
+				// Debug.Log($"NoteOff, position: {position}");
 				break;
 			default:
 				// Debug.Log($"MIDIData Status = {status}");
@@ -89,7 +99,7 @@ public class Visualizer : MonoBehaviour
 
 	public void LyricIn(int track, string lyric, float position, UInt32 currentMsec)
 	{
-		Debug.Log($"lyric: {lyric}, position: {position}");
+		// Debug.Log($"lyric: {lyric}, position: {position}");
 	}
 	public void TempoIn(float msecPerQuaterNote, uint tempo, UInt32 currentMsec)
 	{
@@ -106,7 +116,11 @@ public class Visualizer : MonoBehaviour
 
 	private void NoteOn(MidiChannel channel, int note, float velocity)
 	{
-		// Debug.Log("NoteOn: " + channel + ", " + note + ", " + velocity);
+		if (note == parameter.NoteLyricModeOriginal) {
+			SetLyricMode(LyricMode.Original);
+		} else if (note == parameter.NoteLyricModeKanji) {
+			SetLyricMode(LyricMode.Kanji);
+		}
 	}
 
 	private void NoteOff(MidiChannel channel, int note)
