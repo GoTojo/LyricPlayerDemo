@@ -2,26 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 using MidiJack;
 
 public class StartSceneController : MonoBehaviour
 {
-	private int songnum = 0;
 	private const int numOfSong = 5;
-    private static GameObject loadingPanel;
-
-	[SerializeField] public static int NoteSongTabeyo = 0x3D;
-	[SerializeField] public static int NoteSongMadakana = 0x3F;
-	[SerializeField] public static int NoteSongHaruka = 0x42;
-	[SerializeField] public static int NoteSongSanpun = 0x44;
-	[SerializeField] public static int NoteSongYakusoku = 0x46;
-	[SerializeField] public static int NoteStartVideo = 0x48;
+    private GameObject loadingPanel;
+	private TMP_Text songtitle;
+	public GameObject titlePanel;
+	private int currentSong = 0;
+	public Parameter parameter;
 
 	// Start is called before the first frame update
 	void Awake()
 	{
 		loadingPanel = GameObject.Find("LoadingPanel");
-		loadingPanel.SetActive(true);
+		loadingPanel.SetActive(false);
+		titlePanel.SetActive(true);
+		songtitle = GameObject.Find("SongTitle").GetComponent<TMP_Text>();;
+		SelectSong(PlayerPrefs.GetInt("Song"));
 		MidiMaster.noteOnDelegate += NoteOn;
 	}
 	void OnDestroy()
@@ -31,12 +31,21 @@ public class StartSceneController : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		
+		if (Input.GetKeyDown(KeyCode.Space)) {
+            LoadMainScene();
+        }
+		if (Input.GetKeyDown(KeyCode.LeftArrow)) {
+			SelectSong(currentSong - 1);
+		}
+		if (Input.GetKeyDown(KeyCode.RightArrow)) {
+			SelectSong(currentSong + 1);
+		}
 	}
 
     private void LoadMainScene()
     {
         SceneManager.LoadScene("PlayerScene");
+		titlePanel.SetActive(false);
         loadingPanel.SetActive(true);
     }
 
@@ -44,22 +53,24 @@ public class StartSceneController : MonoBehaviour
 	{
 		if (num < 0) return;
 		if (num >= numOfSong) return;
-		PlayerPrefs.SetInt("Song", songnum);
+		songtitle.SetText(SongInfo.GetTitle(num));
+		PlayerPrefs.SetInt("Song", num);
+		currentSong = num;
 	}
 
 	private void NoteOn(MidiChannel channel, int note, float velocity)
 	{
-		if (note == NoteStartVideo) {
+		if (note == parameter.NoteStartVideo) {
 			LoadMainScene();
-		} else if (note == NoteSongTabeyo) {
+		} else if (note == parameter.NoteSongTabeyo) {
 			SelectSong(0);
-		} else if (note == NoteSongMadakana) {
+		} else if (note == parameter.NoteSongMadakana) {
 			SelectSong(1);
-		} else if (note == NoteSongHaruka) {
+		} else if (note == parameter.NoteSongHaruka) {
 			SelectSong(2);
-		} else if (note == NoteSongSanpun) {
+		} else if (note == parameter.NoteSongSanpun) {
 			SelectSong(3);
-		} else if (note == NoteSongYakusoku) {
+		} else if (note == parameter.NoteSongYakusoku) {
 			SelectSong(4);
 		}
 	}

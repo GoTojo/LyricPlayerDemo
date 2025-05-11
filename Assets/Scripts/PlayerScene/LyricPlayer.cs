@@ -1,17 +1,36 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.Text;
+using MidiJack;
 
 public class LyricPlayer : MonoBehaviour
 {
+	public Parameter parameter;
 	private AudioSource audioSource;
 	private static SMFPlayer smfPlayer;
 	private static SMFPlayer kanjiPlayer;
 	private bool fIsPlaying = false;
+	void Awake()
+	{
+		MidiMaster.noteOnDelegate += NoteOn;
+	}
+	void OnDestroy()
+	{
+		MidiMaster.noteOnDelegate -= NoteOn;
+	}
+	private void NoteOn(MidiChannel channel, int note, float velocity)
+	{
+		if (note == parameter.NoteStopVideo) {
+			End();
+		}
+	}
 	void Start()
 	{
 		int songnum = PlayerPrefs.GetInt("Song");
 		audioSource = GetComponent<AudioSource>();
-		AudioClip clip = Resources.Load<AudioClip>(SongInfo.GetAudioClipName(songnum));
+		string clipname = SongInfo.GetAudioClipName(songnum);
+		Debug.Log($"clipname = {clipname}");
+		AudioClip clip = Resources.Load<AudioClip>(clipname);
 		if (clip != null && audioSource != null) {
 			audioSource.clip = clip;
 		} else {
@@ -52,7 +71,7 @@ public class LyricPlayer : MonoBehaviour
 	{
 		smfPlayer?.Stop();
 		kanjiPlayer?.Stop();
-		SceneManager.LoadScene("StartScene");
+		SceneManager.LoadScene("TitleScene");
 	}
 
 	public void Stop()

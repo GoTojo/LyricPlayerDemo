@@ -45,7 +45,7 @@ public class SMFPlayer
 	}
 	public SMFPlayer(string filepath)
 	{
-		if (string.IsNullOrEmpty(filepath))　{
+		if (string.IsNullOrEmpty(filepath)) {
 			UnityEngine.Debug.Log("File path is null or empty.");
 			return;
 		}
