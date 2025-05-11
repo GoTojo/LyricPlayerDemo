@@ -140,7 +140,7 @@ public class MidiEventMapAccessor
 	}
 	public void SetCurrentMap(int num)
 	{
-		currentMap = 0;
+		currentMap = num;
 	}
 	public int GetNumOfLyrics(int measure, int map = -1)
 	{
