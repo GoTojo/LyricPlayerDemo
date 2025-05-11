@@ -42,15 +42,26 @@ public class SimpleLyricBehaviour : MonoBehaviour
 	}
 }
 
-public class SimpleLyricGen
+public class SimpleLyricGen : MonoBehaviour
 {
-	private Rect area = new Rect(-10, 5, 20, 10);
+	public Rect area = new Rect(-10, 5, 20, 10);
+	public float sizeMin = 0.8f;
+	public float sizeMax = 0.8f; 
+	public float yMin = 1.0f;
+	public float yMax = 1.0f;
+	public float rotateAngle = 0.0f;
+	// public Rect area = new Rect(-10, 5, 20, 10);
+	// public float sizeMin = 0.5f;
+	// public float sizeMax = 1.2f; 
+	// public float yMin = 0.1f;
+	// public float yMax = 0.8f;
+	// public float rotateAngle = 70.0f;
 	private string curWord = "";
 	private int lyricNum = 0;
 	private int curmeas = 0;
 	private int measInterval = 4000;
 
-	public SimpleLyricGen()
+	void Start()
 	{
  		MidiWatcher midiWatcher = LyricPlayer.midiWatcher;
 		midiWatcher.onMidiIn += MIDIIn;
@@ -61,6 +72,7 @@ public class SimpleLyricGen
 
 	private void LyricObjectText(int ch, int num, int numOfData, float position)
 	{
+		// Debug.Log($"{curWord}, {num}/{numOfData}");
 		GameObject newObject = new GameObject("SimpleLyric");
 		newObject.AddComponent<TextMeshPro>();
 		SimpleLyricBehaviour behaviour = newObject.AddComponent<SimpleLyricBehaviour>();
@@ -87,15 +99,16 @@ public class SimpleLyricGen
 		text.fontSizeMax = 20;
 		text.fontSizeMin = 12;
 		text.autoSizeTextContainer = true;
-		float x = (numOfData != 0) ? (area.width / numOfData) * num + area.x + 1 : area.width * position;
-		float areaY = area.height * UnityEngine.Random.Range(0.1f, 0.8f) / 2;
+		float width = (numOfData != 0) ? area.width / numOfData : area.width;
+		float x = width * num + area.x + width / 2;
+		float areaY = area.height * UnityEngine.Random.Range(yMin, yMax) / 2;
 		float y = (curmeas % 2 != 0) ? areaY + 1.0f : areaY - area.y / 2 - 1.0f; 
-		float size = UnityEngine.Random.Range(0.5f, 1.2f);
+		float size = UnityEngine.Random.Range(sizeMin, sizeMax);
 		Transform transform = text.GetComponent<Transform>();
 		RectTransform rectTransform = newObject.GetComponent<RectTransform>();
 		rectTransform.sizeDelta = new Vector2(5.0f, 5.0f);
 		transform.position = new Vector3(x, y, 0.0f);
-		transform.Rotate(0.0f, 0.0f, UnityEngine.Random.Range(-70.0f, 70.0f));
+		transform.Rotate(0.0f, 0.0f, UnityEngine.Random.Range(-rotateAngle, rotateAngle));
 		transform.localScale = new Vector3(size, size, size);
 	}
 
@@ -135,6 +148,11 @@ public class SimpleLyricGen
 
 	public void MeasureIn(int measure, int measureInterval, UInt32 currentMsec)
 	{
+		string lyric = "";
+		for (var i = 0; i < MidiEventMapAccessor.Instance.GetNumOfLyrics(curmeas); i++) {
+			lyric += MidiEventMapAccessor.Instance.GetLyric(measure, i);
+		}
+		Debug.Log(lyric);
 		curmeas = measure;
 		measInterval = measureInterval;
 		lyricNum = 0;

@@ -57,7 +57,6 @@ public class Visualizer : MonoBehaviour
 		kanjiPlayer = _kanjiPlayer;
 		MidiEventMapAccessor.Instance.Init(smfPlayer, kanjiPlayer);
 		SetLyricMode(lyricMode);
-		SimpleLyricGen simpleLyricGen = new SimpleLyricGen();
 	}
 
 	public void SetLyricMode(LyricMode mode)
