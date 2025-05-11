@@ -111,3 +111,55 @@ public class MIDIEventMap : MIDIHandler
 		return lyricData.msec;
 	}
 }
+
+public class MidiEventMapAccessor
+{
+	private static MidiEventMapAccessor _instance;	// singleton
+	public static MidiEventMapAccessor Instance
+	{
+		get {
+			if (_instance == null) {
+				_instance = new MidiEventMapAccessor();
+			}
+			return _instance;
+		}
+	}
+	private const int numOfEventMap = 2;
+	private MIDIEventMap [] eventMap = new MIDIEventMap[numOfEventMap];
+	private int currentMap = 0;
+	private MidiEventMapAccessor()
+	{
+		for (var i = 0; i < numOfEventMap; i++) {
+			eventMap[i] = new MIDIEventMap();
+		}
+	}
+	public void Init(SMFPlayer player, SMFPlayer subplayer)
+	{
+		eventMap[0].Init(player);
+		eventMap[1].Init(subplayer);
+	}
+	public void SetCurrentMap(int num)
+	{
+		currentMap = 0;
+	}
+	public int GetNumOfLyrics(int measure, int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].GetNumOfLyrics(measure);
+	}
+	public string GetLyric(int measure, int num, int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].GetLyric(measure, num);
+	}
+	public float GetPosition(int measure, int num, int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].GetPosition(measure, num);
+	}
+	public UInt32 GetMsec(int measure, int num, int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].GetMsec(measure, num);
+	}
+}

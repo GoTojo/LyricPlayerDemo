@@ -19,14 +19,9 @@ public class Visualizer : MonoBehaviour
 		Original,
 		Kanji
 	}
-	private const int numOfEventMap = 2;
-	private MIDIEventMap [] eventMap = new MIDIEventMap[numOfEventMap];
 
 	void Awake()
 	{
-		for (var i = 0; i < numOfEventMap; i++) {
-			eventMap[i] = new MIDIEventMap();
-		}
 		lyricMode = (LyricMode)PlayerPrefs.GetInt("LyricMode");
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onMidiIn += MIDIIn;
@@ -55,8 +50,7 @@ public class Visualizer : MonoBehaviour
 	{
 		smfPlayer = player;
 		kanjiPlayer = _kanjiPlayer;
-		eventMap[0].Init(smfPlayer);
-		eventMap[1].Init(kanjiPlayer);
+		MidiEventMapAccessor.Instance.Init(smfPlayer, kanjiPlayer);
 		smfPlayer.midiHandler = MidiWatcher.Instance;
 		kanjiPlayer.midiHandler = MidiWatcher.Instance;
 		SetLyricMode(lyricMode);
@@ -68,9 +62,11 @@ public class Visualizer : MonoBehaviour
 		if (lyricMode == LyricMode.Kanji) {
 			smfPlayer.mute = true;
 			kanjiPlayer.mute = false;
+			MidiEventMapAccessor.Instance.SetCurrentMap(1);
 		} else {
 			smfPlayer.mute = false;
 			kanjiPlayer.mute = true;
+			MidiEventMapAccessor.Instance.SetCurrentMap(0);
 		}
 	}
 
