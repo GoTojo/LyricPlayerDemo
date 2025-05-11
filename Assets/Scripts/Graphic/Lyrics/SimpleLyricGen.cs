@@ -13,7 +13,7 @@ public class SimpleLyricBehaviour : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-		MidiWatcher.Instance.onMeasureIn += MeasureIn;
+		LyricPlayer.midiWatcher.onMeasureIn += MeasureIn;
 	}
 
 	// Update is called once per frame
@@ -42,7 +42,7 @@ public class SimpleLyricBehaviour : MonoBehaviour
 	}
 }
 
-public class SimpleLyricGen : MonoBehaviour
+public class SimpleLyricGen
 {
 	private Rect area = new Rect(-10, 5, 20, 10);
 	private string curWord = "";
@@ -52,7 +52,7 @@ public class SimpleLyricGen : MonoBehaviour
 
 	public SimpleLyricGen()
 	{
- 		MidiWatcher midiWatcher = MidiWatcher.Instance;
+ 		MidiWatcher midiWatcher = LyricPlayer.midiWatcher;
 		midiWatcher.onMidiIn += MIDIIn;
 		midiWatcher.onLyricIn += LyricIn;
 		midiWatcher.onBeatIn += BeatIn;

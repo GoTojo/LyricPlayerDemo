@@ -10,11 +10,12 @@ public class LyricPlayer : MonoBehaviour
 	private static SMFPlayer smfPlayer;
 	private static SMFPlayer kanjiPlayer;
 	private bool fIsPlaying = false;
-	private MidiWatcher midiWatcher;
+	public static MidiWatcher midiWatcher;
 
 	void Awake()
 	{
 		MidiMaster.noteOnDelegate += NoteOn;
+		midiWatcher = new MidiWatcher();
 	}
 	void OnDestroy()
 	{
@@ -31,7 +32,7 @@ public class LyricPlayer : MonoBehaviour
 		int songnum = PlayerPrefs.GetInt("Song");
 		audioSource = GetComponent<AudioSource>();
 		string clipname = SongInfo.GetAudioClipName(songnum);
-		Debug.Log($"clipname = {clipname}");
+		// Debug.Log($"clipname = {clipname}");
 		AudioClip clip = Resources.Load<AudioClip>(clipname);
 		if (clip != null && audioSource != null) {
 			audioSource.clip = clip;
@@ -42,6 +43,8 @@ public class LyricPlayer : MonoBehaviour
 		}
 		smfPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, false));
 		kanjiPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, true));
+		smfPlayer.midiHandler = midiWatcher;
+		kanjiPlayer.midiHandler = midiWatcher;
 		Visualizer visualizer = GetComponent<Visualizer>();
 		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer);
 		audioSource.Play();

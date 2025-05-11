@@ -9,17 +9,6 @@ using UnityEngine;
 
 public class MidiWatcher : MIDIHandler
 {
-	private static MidiWatcher _instance;	// singleton
-    public static MidiWatcher Instance
-    {
-        get {
-            if (_instance == null) {
-                _instance = new MidiWatcher();
-            }
-            return _instance;
-        }
-    }
-
 	public delegate void midiInHandler(int track, byte[] midiEvent, float position, UInt32 currentMsec);
 	public delegate void lyricInHandler(int track, string lyric, float position, UInt32 currentMsec);
 	public delegate void tempoInHandler(float msecPerQuaterNote, uint tempo, UInt32 currentMsec);
@@ -31,7 +20,7 @@ public class MidiWatcher : MIDIHandler
 	public event beatInHandler 		onBeatIn;
 	public event measureInHandler 	onMeasureIn;
 
-	private MidiWatcher()
+	public MidiWatcher()
 	{
 	}
 

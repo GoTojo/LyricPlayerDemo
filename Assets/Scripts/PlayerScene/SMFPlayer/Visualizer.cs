@@ -23,12 +23,9 @@ public class Visualizer : MonoBehaviour
 	void Awake()
 	{
 		lyricMode = (LyricMode)PlayerPrefs.GetInt("LyricMode");
-		MidiWatcher midiWatcher = MidiWatcher.Instance;
-		midiWatcher.onMidiIn += MIDIIn;
-		midiWatcher.onLyricIn += LyricIn;
-		midiWatcher.onTempoIn += TempoIn;
-		midiWatcher.onBeatIn += BeatIn;
-		midiWatcher.onMeasureIn += MeasureIn;
+		MidiMaster.noteOnDelegate += NoteOn;
+		MidiMaster.noteOffDelegate += NoteOff;
+		MidiMaster.knobDelegate += knobChanged;
 	}
 	void OnDestroy()
 	{
@@ -51,8 +48,6 @@ public class Visualizer : MonoBehaviour
 		smfPlayer = player;
 		kanjiPlayer = _kanjiPlayer;
 		MidiEventMapAccessor.Instance.Init(smfPlayer, kanjiPlayer);
-		smfPlayer.midiHandler = MidiWatcher.Instance;
-		kanjiPlayer.midiHandler = MidiWatcher.Instance;
 		SetLyricMode(lyricMode);
 		SimpleLyricGen simpleLyricGen = new SimpleLyricGen();
 	}
