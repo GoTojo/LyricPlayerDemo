@@ -7,44 +7,13 @@ using MidiJack;
 using System;
 using System.Collections.Generic;
 
-public class MidiWatcher : MIDIHandler
-{
-	Visualizer visualizer;
-	public MidiWatcher(Visualizer visualizer)
-	{
-		this.visualizer = visualizer;
-	}
-
-	public override void MIDIIn(int track, byte[] midiEvent, float position, UInt32 currentMsec)
-	{
-		visualizer.MIDIIn(track, midiEvent, position, currentMsec);
-	}
-	public override void LyricIn(int track, string lyric, float position, UInt32 currentMsec)
-	{
-		// Debug.Log(lyric);
-		visualizer.LyricIn(track, lyric, position, currentMsec);
-	}
-	public override void TempoIn(float msecPerQuaterNote, uint tempo, UInt32 currentMsec)
-	{
-		visualizer.TempoIn(msecPerQuaterNote, tempo, currentMsec);
-	}
-	public override void BeatIn(int numerator, int denominator, UInt32 currentMsec)
-	{
-		// Debug.Log($"BeatIn: {numerator}/{denominator}");
-		visualizer.BeatIn(numerator, denominator, currentMsec);
-	}
-	public override void MeasureIn(int measure, int measureInterval, UInt32 currentMsec)
-	{
-		// Debug.Log($"MeasureIn: Measure: {measure}, Interval: {measureInterval}");
-		visualizer.MeasureIn(measure, measureInterval, currentMsec);
-	}
-}
 public class Visualizer : MonoBehaviour
 {
 	public Rect area = new Rect(-2, 5, 4, 10);
 	public SMFPlayer smfPlayer;
 	public SMFPlayer kanjiPlayer;
 	private LyricMode lyricMode = LyricMode.Original;
+	private MidiWatcher midiWatcher;
 
 	public enum LyricMode
 	{
@@ -77,15 +46,20 @@ public class Visualizer : MonoBehaviour
 	{
 	}
 
-	public void SetSMFPlayer(SMFPlayer player, SMFPlayer _kanjiPlayer)
+	public void SetSMFPlayer(SMFPlayer player, SMFPlayer _kanjiPlayer, MidiWatcher midiWatcher)
 	{
 		smfPlayer = player;
 		kanjiPlayer = _kanjiPlayer;
 		eventMap[0].Init(smfPlayer);
 		eventMap[1].Init(kanjiPlayer);
-		MidiWatcher midiWatcher = new MidiWatcher(this);
+		this.midiWatcher = midiWatcher;
 		smfPlayer.midiHandler = midiWatcher;
 		kanjiPlayer.midiHandler = midiWatcher;
+		midiWatcher.onMidiIn += MIDIIn;
+		midiWatcher.onLyricIn += LyricIn;
+		midiWatcher.onTempoIn += TempoIn;
+		midiWatcher.onBeatIn += BeatIn;
+		midiWatcher.onMeasureIn += MeasureIn;
 		SetLyricMode(lyricMode);
 	}
 

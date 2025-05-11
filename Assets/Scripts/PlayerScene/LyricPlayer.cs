@@ -10,6 +10,8 @@ public class LyricPlayer : MonoBehaviour
 	private static SMFPlayer smfPlayer;
 	private static SMFPlayer kanjiPlayer;
 	private bool fIsPlaying = false;
+	private MidiWatcher midiWatcher;
+
 	void Awake()
 	{
 		MidiMaster.noteOnDelegate += NoteOn;
@@ -38,10 +40,11 @@ public class LyricPlayer : MonoBehaviour
 			End();
 			return;
 		}
+		MidiWatcher midiWatcher = new MidiWatcher();
 		smfPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, false));
 		kanjiPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, true));
 		Visualizer visualizer = GetComponent<Visualizer>();
-		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer);
+		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer, midiWatcher);
 		audioSource.Play();
 		fIsPlaying = true;
 		smfPlayer.Start();
