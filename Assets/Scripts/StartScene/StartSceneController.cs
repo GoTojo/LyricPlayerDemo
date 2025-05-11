@@ -62,16 +62,10 @@ public class StartSceneController : MonoBehaviour
 	{
 		if (note == parameter.NoteStartVideo) {
 			LoadMainScene();
-		} else if (note == parameter.NoteSongTabeyo) {
-			SelectSong(0);
-		} else if (note == parameter.NoteSongMadakana) {
-			SelectSong(1);
-		} else if (note == parameter.NoteSongHaruka) {
-			SelectSong(2);
-		} else if (note == parameter.NoteSongSanpun) {
-			SelectSong(3);
-		} else if (note == parameter.NoteSongYakusoku) {
-			SelectSong(4);
+		} else if (note == parameter.NoteSongDown) {
+			SelectSong(currentSong - 1);
+		} else if (note == parameter.NoteSongUp) {
+			SelectSong(currentSong + 1);
 		}
 	}
 }
