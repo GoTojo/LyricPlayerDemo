@@ -202,7 +202,7 @@ public class SMFPlayer
 		BeatTrack beatTrack = new BeatTrack(trackid, tracks, this);
 		tracks.Insert(0, beatTrack);
 		numOfMeasure = beatTrack.numOfMeasure;
-		UnityEngine.Debug.Log($"numOfMeasure: {numOfMeasure}");
+		// UnityEngine.Debug.Log($"numOfMeasure: {numOfMeasure}");
 		trackid++;
 		return true;
 	}

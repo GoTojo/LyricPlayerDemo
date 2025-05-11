@@ -61,7 +61,7 @@ public class MIDIEventMap : MIDIHandler
 			return;
 		}
 		LyricData data = new LyricData(lyric, position, currentMsec);
-		Debug.Log($"EventMap.LyricIn: currentMeasure:{currentMeasure}");
+		// Debug.Log($"EventMap.LyricIn: currentMeasure:{currentMeasure}");
 		lyrics[currentMeasure].Add(data);
 	}
 	public override void TempoIn(float msecPerQuaterNote, uint tempo, UInt32 currentMsec)
