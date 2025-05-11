@@ -13,7 +13,6 @@ public class Visualizer : MonoBehaviour
 	public SMFPlayer smfPlayer;
 	public SMFPlayer kanjiPlayer;
 	private LyricMode lyricMode = LyricMode.Original;
-	private MidiWatcher midiWatcher;
 
 	public enum LyricMode
 	{
@@ -29,6 +28,12 @@ public class Visualizer : MonoBehaviour
 			eventMap[i] = new MIDIEventMap();
 		}
 		lyricMode = (LyricMode)PlayerPrefs.GetInt("LyricMode");
+		MidiWatcher midiWatcher = MidiWatcher.Instance;
+		midiWatcher.onMidiIn += MIDIIn;
+		midiWatcher.onLyricIn += LyricIn;
+		midiWatcher.onTempoIn += TempoIn;
+		midiWatcher.onBeatIn += BeatIn;
+		midiWatcher.onMeasureIn += MeasureIn;
 	}
 	void OnDestroy()
 	{
@@ -46,20 +51,14 @@ public class Visualizer : MonoBehaviour
 	{
 	}
 
-	public void SetSMFPlayer(SMFPlayer player, SMFPlayer _kanjiPlayer, MidiWatcher midiWatcher)
+	public void SetSMFPlayer(SMFPlayer player, SMFPlayer _kanjiPlayer)
 	{
 		smfPlayer = player;
 		kanjiPlayer = _kanjiPlayer;
 		eventMap[0].Init(smfPlayer);
 		eventMap[1].Init(kanjiPlayer);
-		this.midiWatcher = midiWatcher;
-		smfPlayer.midiHandler = midiWatcher;
-		kanjiPlayer.midiHandler = midiWatcher;
-		midiWatcher.onMidiIn += MIDIIn;
-		midiWatcher.onLyricIn += LyricIn;
-		midiWatcher.onTempoIn += TempoIn;
-		midiWatcher.onBeatIn += BeatIn;
-		midiWatcher.onMeasureIn += MeasureIn;
+		smfPlayer.midiHandler = MidiWatcher.Instance;
+		kanjiPlayer.midiHandler = MidiWatcher.Instance;
 		SetLyricMode(lyricMode);
 	}
 

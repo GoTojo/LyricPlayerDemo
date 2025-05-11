@@ -40,11 +40,10 @@ public class LyricPlayer : MonoBehaviour
 			End();
 			return;
 		}
-		MidiWatcher midiWatcher = new MidiWatcher();
 		smfPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, false));
 		kanjiPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, true));
 		Visualizer visualizer = GetComponent<Visualizer>();
-		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer, midiWatcher);
+		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer);
 		audioSource.Play();
 		fIsPlaying = true;
 		smfPlayer.Start();
