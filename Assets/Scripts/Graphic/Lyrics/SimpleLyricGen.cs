@@ -114,7 +114,7 @@ public class SimpleLyricGen : MonoBehaviour
 
 	private void CreateLyric(int id, float position)
 	{
-		LyricObjectText(id, lyricNum, MidiEventMapAccessor.Instance.GetNumOfLyrics(curmeas), position);
+		LyricObjectText(id, lyricNum, MidiEventMapAccessor.Instance.GetNumOfLyrics(curmeas, id), position);
 		lyricNum++;
 	}
 
@@ -148,11 +148,6 @@ public class SimpleLyricGen : MonoBehaviour
 
 	public void MeasureIn(int measure, int measureInterval, UInt32 currentMsec)
 	{
-		string lyric = "";
-		for (var i = 0; i < MidiEventMapAccessor.Instance.GetNumOfLyrics(curmeas); i++) {
-			lyric += MidiEventMapAccessor.Instance.GetLyric(measure, i);
-		}
-		Debug.Log(lyric);
 		curmeas = measure;
 		measInterval = measureInterval;
 		lyricNum = 0;

@@ -20,7 +20,7 @@ public class MIDIEventMap : MIDIHandler
 			this.msec = msec;
 		}
 	};
-	private List<LyricData> [] lyrics = null;
+	List<List<List<LyricData>>> lyrics = new List<List<List<LyricData>>>();
 	private int currentMeasure = 0;
 
 	public MIDIEventMap()
@@ -28,7 +28,15 @@ public class MIDIEventMap : MIDIHandler
 	}
 	public void Init(SMFPlayer player)
 	{
-		lyrics = new List<LyricData>[player.numOfMeasure];
+		int numOfMeasure = player.numOfMeasure;
+		int numOfTrack = player.numOfTrack;
+		for (int meas = 0; meas < numOfMeasure; meas++) {
+			var row = new List<List<LyricData>>(); // 2次元目を格納するList
+			for (int track = 0; track < numOfTrack; track++) {
+				row.Add(new List<LyricData>()); // 空の3次元目を追加
+			}
+			lyrics.Add(row); // 1次元目に追加
+		}
 		MIDIHandler backupHandler = player.midiHandler;
 		player.midiHandler = this;
 		bool fLastMute = player.mute;
@@ -57,12 +65,11 @@ public class MIDIEventMap : MIDIHandler
 		if (lyrics == null) {
 			return;
 		}
-		if (currentMeasure >= lyrics.Length) {
+		if (currentMeasure >= lyrics.Count) {
 			return;
 		}
 		LyricData data = new LyricData(lyric, position, currentMsec);
-		// Debug.Log($"EventMap.LyricIn: currentMeasure:{currentMeasure}");
-		lyrics[currentMeasure].Add(data);
+		lyrics[currentMeasure][track].Add(data);
 	}
 	public override void TempoIn(float msecPerQuaterNote, uint tempo, UInt32 currentMsec)
 	{
@@ -79,35 +86,48 @@ public class MIDIEventMap : MIDIHandler
 			return;
 		}
 		currentMeasure = measure;
-		lyrics[currentMeasure] = new List<LyricData>();
 	}
 
-	public int GetNumOfLyrics(int measure)
+	public int GetNumOfLyrics(int measure, int track)
 	{
-		return lyrics[measure].Count;
+		return lyrics[measure][track].Count;
 	}
-	public LyricData GetLyricData(int measure, int num) {
-		if (measure < lyrics.Length) {
-			if (num < lyrics[measure].Count) {
-				return lyrics[measure][num];
+	public bool DataExist(int measure, int track, int num)
+	{
+		if (measure < lyrics.Count)
+		{
+			if (track < lyrics[measure].Count)
+			{
+				if (num < lyrics[measure][track].Count)
+				{
+					return true;
+				}
 			}
 		}
-		LyricData data = new LyricData();
-		return data;
+		return false;
 	}
-	public string GetLyric(int measure, int num)
+	public LyricData GetLyricData(int measure, int track, int num)
 	{
-		LyricData lyricData = GetLyricData(measure, num);
+		if (!DataExist(measure, track, num))
+		{
+			LyricData data = new LyricData();
+			return data;
+		}
+		return lyrics[measure][track][num];
+	}
+	public string GetLyric(int measure, int track, int num)
+	{
+		LyricData lyricData = GetLyricData(measure, track, num);
 		return lyricData.lyric;
 	}
-	public float GetPosition(int measure, int num)
+	public float GetPosition(int measure, int track, int num)
 	{
-		LyricData lyricData = GetLyricData(measure, num);
+		LyricData lyricData = GetLyricData(measure, track, num);
 		return lyricData.position;
 	}
-	public UInt32 GetMsec(int measure, int num)
+	public UInt32 GetMsec(int measure, int track, int num)
 	{
-		LyricData lyricData = GetLyricData(measure, num);
+		LyricData lyricData = GetLyricData(measure, track, num);
 		return lyricData.msec;
 	}
 }
@@ -142,24 +162,24 @@ public class MidiEventMapAccessor
 	{
 		currentMap = num;
 	}
-	public int GetNumOfLyrics(int measure, int map = -1)
+	public int GetNumOfLyrics(int measure, int track, int map = -1)
 	{
 		if (map < 0) map = currentMap;
-		return eventMap[map].GetNumOfLyrics(measure);
+		return eventMap[map].GetNumOfLyrics(measure, track);
 	}
-	public string GetLyric(int measure, int num, int map = -1)
+	public string GetLyric(int measure, int track, int num, int map = -1)
 	{
 		if (map < 0) map = currentMap;
-		return eventMap[map].GetLyric(measure, num);
+		return eventMap[map].GetLyric(measure, track, num);
 	}
-	public float GetPosition(int measure, int num, int map = -1)
+	public float GetPosition(int measure, int track, int num, int map = -1)
 	{
 		if (map < 0) map = currentMap;
-		return eventMap[map].GetPosition(measure, num);
+		return eventMap[map].GetPosition(measure, track, num);
 	}
-	public UInt32 GetMsec(int measure, int num, int map = -1)
+	public UInt32 GetMsec(int measure, int track, int num, int map = -1)
 	{
 		if (map < 0) map = currentMap;
-		return eventMap[map].GetMsec(measure, num);
+		return eventMap[map].GetMsec(measure, track, num);
 	}
 }

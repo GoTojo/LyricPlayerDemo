@@ -28,6 +28,7 @@ public class SMFPlayer
 	};
 	public Beat beat;
 	public int numOfMeasure = 0;
+	public int numOfTrack = 0;
 	private Stopwatch stopWatch = new Stopwatch();
 	private UInt32 nextEventTime = 0;
 	private UInt32 startTime = 0;
@@ -71,6 +72,7 @@ public class SMFPlayer
 				players.Add(player);
 			}
 		}
+		numOfTrack = tracks.Count;
 		// UnityEngine.Debug.Log("complete parsing SMF");
 	}
 	public void Reset()
