@@ -28,6 +28,12 @@ public class Visualizer : MonoBehaviour
 		MidiMaster.noteOnDelegate += NoteOn;
 		MidiMaster.noteOffDelegate += NoteOff;
 		MidiMaster.knobDelegate += knobChanged;
+		MidiWatcher midiWatcher = MidiWatcher.Instance;
+		midiWatcher.onMidiIn += MIDIIn;
+		midiWatcher.onLyricIn += LyricIn;
+		midiWatcher.onTempoIn += TempoIn;
+		midiWatcher.onBeatIn += BeatIn;
+		midiWatcher.onMeasureIn += MeasureIn;
 	}
 	void OnDestroy()
 	{
@@ -36,15 +42,16 @@ public class Visualizer : MonoBehaviour
 		MidiMaster.knobDelegate -= knobChanged;
 		PlayerPrefs.SetInt("LyricMode", (int)lyricMode);
 		// Debug.Log("Destract");
+		MidiWatcher midiWatcher = MidiWatcher.Instance;
+		midiWatcher.onMidiIn -= MIDIIn;
+		midiWatcher.onLyricIn -= LyricIn;
+		midiWatcher.onTempoIn -= TempoIn;
+		midiWatcher.onBeatIn -= BeatIn;
+		midiWatcher.onMeasureIn -= MeasureIn;
 	}
 	void Start()
 	{
-		MidiWatcher midiWatcher = LyricPlayer.midiWatcher;
-		midiWatcher.onMidiIn += MIDIIn;
-		midiWatcher.onLyricIn += LyricIn;
-		midiWatcher.onTempoIn += TempoIn;
-		midiWatcher.onBeatIn += BeatIn;
-		midiWatcher.onMeasureIn += MeasureIn;
+
 	}
 	// Update is called once per frame
 	void Update()

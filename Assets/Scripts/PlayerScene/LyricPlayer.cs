@@ -10,25 +10,10 @@ public class LyricPlayer : MonoBehaviour
 	private static SMFPlayer smfPlayer;
 	private static SMFPlayer kanjiPlayer;
 	private bool fIsPlaying = false;
-	public static MidiWatcher midiWatcher;
 
 	void Awake()
 	{
 		MidiMaster.noteOnDelegate += NoteOn;
-		midiWatcher = new MidiWatcher();
-	}
-	void OnDestroy()
-	{
-		MidiMaster.noteOnDelegate -= NoteOn;
-	}
-	private void NoteOn(MidiChannel channel, int note, float velocity)
-	{
-		if (note == parameter.NoteStopVideo) {
-			End();
-		}
-	}
-	void Start()
-	{
 		int songnum = PlayerPrefs.GetInt("Song");
 		audioSource = GetComponent<AudioSource>();
 		string clipname = SongInfo.GetAudioClipName(songnum);
@@ -43,10 +28,27 @@ public class LyricPlayer : MonoBehaviour
 		}
 		smfPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, false));
 		kanjiPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, true));
-		smfPlayer.midiHandler = midiWatcher;
-		kanjiPlayer.midiHandler = midiWatcher;
+		smfPlayer.midiHandler = MidiWatcher.Instance;
+		kanjiPlayer.midiHandler = MidiWatcher.Instance;
 		Visualizer visualizer = GetComponent<Visualizer>();
 		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer);
+		LyricList [] lyricLists = GetComponents<LyricList>();
+		foreach(LyricList lyricList in lyricLists) {
+			lyricList.Init();
+		}
+	}
+	void OnDestroy()
+	{
+		MidiMaster.noteOnDelegate -= NoteOn;
+	}
+	private void NoteOn(MidiChannel channel, int note, float velocity)
+	{
+		if (note == parameter.NoteStopVideo) {
+			End();
+		}
+	}
+	void Start()
+	{
 		audioSource.Play();
 		fIsPlaying = true;
 		smfPlayer.Start();

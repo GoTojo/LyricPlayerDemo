@@ -32,7 +32,7 @@ public class LyricList : MonoBehaviour
 	public List<Track> tracks = new List<Track>();
 	public int map = 0;
 
-	void Start()
+	public void Init()
 	{
 		string path = SongInfo.GetInfoPath(PlayerPrefs.GetInt("Song"), map != 0);
 
@@ -42,6 +42,9 @@ public class LyricList : MonoBehaviour
 			GenerateTracks();
 			Save(path);
 		}
+	}
+	void Start()
+	{
 	}
 	private void GenerateTracks()
 	{

@@ -11,9 +11,16 @@ public class SimpleLyricBehaviour : MonoBehaviour
 	private int curmeas = 0;
 	private int lifetime = 0;
 	// Start is called before the first frame update
+	void Awake()
+	{
+		MidiWatcher.Instance.onMeasureIn += MeasureIn;
+	}
+	void OnDestroy()
+	{
+		MidiWatcher.Instance.onMeasureIn -= MeasureIn;
+	}
 	void Start()
 	{
-		LyricPlayer.midiWatcher.onMeasureIn += MeasureIn;
 	}
 
 	// Update is called once per frame
@@ -61,13 +68,24 @@ public class SimpleLyricGen : MonoBehaviour
 	private int curmeas = 0;
 	private int measInterval = 4000;
 
-	void Start()
+	void Awake()
 	{
- 		MidiWatcher midiWatcher = LyricPlayer.midiWatcher;
+		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onMidiIn += MIDIIn;
 		midiWatcher.onLyricIn += LyricIn;
 		midiWatcher.onBeatIn += BeatIn;
 		midiWatcher.onMeasureIn += MeasureIn;
+	}
+	void Oestroy()
+	{
+		MidiWatcher midiWatcher = MidiWatcher.Instance;
+		midiWatcher.onMidiIn -= MIDIIn;
+		midiWatcher.onLyricIn -= LyricIn;
+		midiWatcher.onBeatIn -= BeatIn;
+		midiWatcher.onMeasureIn -= MeasureIn;
+	}
+	void Start()
+	{
 	}
 
 	private void LyricObjectText(int ch, int num, int numOfData, float position)
