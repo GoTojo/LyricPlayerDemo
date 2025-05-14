@@ -73,3 +73,13 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 *.json
+Assets/StreamingAssets/3分間のトキメキ(漢字).json.meta
+Assets/StreamingAssets/3分間のトキメキ.json.meta
+Assets/StreamingAssets/らーめんたべよう(漢字).json.meta
+Assets/StreamingAssets/らーめんたべよう.json.meta
+Assets/StreamingAssets/らーめんまだかな(漢字).json.meta
+Assets/StreamingAssets/らーめんまだかな.json.meta
+Assets/StreamingAssets/約束の場所へ(漢字).json.meta
+Assets/StreamingAssets/約束の場所へ.json.meta
+Assets/StreamingAssets/遥かな旅路(漢字).json.meta
+Assets/StreamingAssets/遥かな旅路.json.meta
