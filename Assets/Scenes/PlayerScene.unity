@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afdeeeb9a180d4072ada4786ccaf7ed4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameter: {fileID: 0}
+  parameter: {fileID: 11400000, guid: b72cd1d5dbedb40f381253b8155d37ad, type: 2}
   area:
     serializedVersion: 2
     x: -2
@@ -544,8 +544,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ad65a67378f545baa03721af0562b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parameter: {fileID: 0}
-  wall: {fileID: 0}
+  parameter: {fileID: 11400000, guid: b72cd1d5dbedb40f381253b8155d37ad, type: 2}
+  wall: {fileID: 1476044166}
   items:
   - {fileID: 0}
   - {fileID: 0}
@@ -628,6 +628,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks: []
   map: 1
+--- !u!1 &1476044166 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2674436535988290011, guid: 4dfec0c01339542458b71656d8d74932, type: 3}
+  m_PrefabInstance: {fileID: 596521959}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
