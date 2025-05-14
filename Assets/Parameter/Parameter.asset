@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afccbb6b365b94680b3bf306c60214af, type: 3}
   m_Name: Parameter
   m_EditorClassIdentifier: 
-  NoteSongTabeyo: 61
-  NoteSongMadakana: 63
-  NoteSongHaruka: 66
-  NoteSongSanpun: 68
-  NoteSongYakusoku: 70
+  NoteSongDown: 68
+  NoteSongUp: 70
   NoteStopVideo: 71
   NoteStartVideo: 72
+  NoteWallTypeRect: 60
+  NoteWallTypeCircle: 62
+  NoteLyricModeOriginal: 54
+  NoteLyricModeKanji: 56

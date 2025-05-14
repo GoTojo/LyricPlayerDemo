@@ -57,4 +57,10 @@ public class SongInfo
 		string option = isKanji ? "(漢字)" : "";
 		return $"{Application.streamingAssetsPath}/{GetBaseName(num)}{option}.mid";
 	}
+	public static string GetInfoPath(int num, bool isKanji)
+	{
+		if (!CheckSongNum(num)) return "";
+		string option = isKanji ? "(漢字)" : "";
+		return $"{Application.streamingAssetsPath}/{GetBaseName(num)}{option}.json";		
+	}
 }

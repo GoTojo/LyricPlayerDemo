@@ -20,7 +20,14 @@ public class MIDIEventMap : MIDIHandler
 			this.msec = msec;
 		}
 	};
-	List<List<List<LyricData>>> lyrics = new List<List<List<LyricData>>>();
+	public class TrackData
+	{
+		public string sentence;
+		public List<LyricData> data;
+	}
+	public List<List<TrackData>> lyrics = new List<List<TrackData>>();
+	public int numOfMeasure = 0;
+	public int numOfTrack = 0;
 	private int currentMeasure = 0;
 
 	public MIDIEventMap()
@@ -28,14 +35,16 @@ public class MIDIEventMap : MIDIHandler
 	}
 	public void Init(SMFPlayer player)
 	{
-		int numOfMeasure = player.numOfMeasure;
-		int numOfTrack = player.numOfTrack;
+		numOfMeasure = player.numOfMeasure;
+		numOfTrack = player.numOfTrack;
 		for (int meas = 0; meas < numOfMeasure; meas++) {
-			var row = new List<List<LyricData>>(); // 2次元目を格納するList
+			var tracks = new List<TrackData>();
 			for (int track = 0; track < numOfTrack; track++) {
-				row.Add(new List<LyricData>()); // 空の3次元目を追加
+				TrackData trackData = new TrackData();
+				trackData.data = new List<LyricData>();
+				tracks.Add(trackData); 
 			}
-			lyrics.Add(row); // 1次元目に追加
+			lyrics.Add(tracks);
 		}
 		MIDIHandler backupHandler = player.midiHandler;
 		player.midiHandler = this;
@@ -69,7 +78,8 @@ public class MIDIEventMap : MIDIHandler
 			return;
 		}
 		LyricData data = new LyricData(lyric, position, currentMsec);
-		lyrics[currentMeasure][track].Add(data);
+		lyrics[currentMeasure][track].data.Add(data);
+		lyrics[currentMeasure][track].sentence += lyric;
 	}
 	public override void TempoIn(float msecPerQuaterNote, uint tempo, UInt32 currentMsec)
 	{
@@ -90,16 +100,13 @@ public class MIDIEventMap : MIDIHandler
 
 	public int GetNumOfLyrics(int measure, int track)
 	{
-		return lyrics[measure][track].Count;
+		return lyrics[measure][track].data.Count;
 	}
-	public bool DataExist(int measure, int track, int num)
+	public bool DataExist(int measure, int track, int num = 0)
 	{
-		if (measure < lyrics.Count)
-		{
-			if (track < lyrics[measure].Count)
-			{
-				if (num < lyrics[measure][track].Count)
-				{
+		if (measure < lyrics.Count) {
+			if (track < lyrics[measure].Count) {
+				if (num < lyrics[measure][track].data.Count) {
 					return true;
 				}
 			}
@@ -108,12 +115,15 @@ public class MIDIEventMap : MIDIHandler
 	}
 	public LyricData GetLyricData(int measure, int track, int num)
 	{
-		if (!DataExist(measure, track, num))
-		{
+		if (!DataExist(measure, track, num)) {
 			LyricData data = new LyricData();
 			return data;
 		}
-		return lyrics[measure][track][num];
+		return lyrics[measure][track].data[num];
+	}
+	public string GetSentence(int measure, int track)
+	{
+		return lyrics[measure][track].sentence;
 	}
 	public string GetLyric(int measure, int track, int num)
 	{
@@ -162,6 +172,16 @@ public class MidiEventMapAccessor
 	{
 		currentMap = num;
 	}
+	public bool IsDataExist(int measure, int track, int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].DataExist(measure, track);
+	}
+	public string GetSentence(int measure, int track, int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].GetSentence(measure, track);
+	}
 	public int GetNumOfLyrics(int measure, int track, int map = -1)
 	{
 		if (map < 0) map = currentMap;
@@ -181,5 +201,15 @@ public class MidiEventMapAccessor
 	{
 		if (map < 0) map = currentMap;
 		return eventMap[map].GetMsec(measure, track, num);
+	}
+	public int GetNumOfMeasure(int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].numOfMeasure;
+	}
+	public int GetNumOfTrack(int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].numOfTrack;
 	}
 }
