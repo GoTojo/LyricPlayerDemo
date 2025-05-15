@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 1095297739}
   - component: {fileID: 1095297740}
   - component: {fileID: 1095297741}
+  - component: {fileID: 1095297742}
   m_Layer: 0
   m_Name: MainGameObject
   m_TagString: Untagged
@@ -628,6 +629,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tracks: []
   map: 1
+--- !u!114 &1095297742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1095297733}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1839c001ec14046e2b39b1f299b98272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentMap: 0
 --- !u!1 &1476044166 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2674436535988290011, guid: 4dfec0c01339542458b71656d8d74932, type: 3}

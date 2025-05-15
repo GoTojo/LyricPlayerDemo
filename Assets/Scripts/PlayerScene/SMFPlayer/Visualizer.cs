@@ -10,11 +10,11 @@ using System.Collections.Generic;
 public class Visualizer : MonoBehaviour
 {
 	public Parameter parameter;
-
 	public Rect area = new Rect(-2, 5, 4, 10);
 	public SMFPlayer smfPlayer;
 	public SMFPlayer kanjiPlayer;
 	private LyricMode lyricMode = LyricMode.Original;
+	MidiEventMapAccessor eventMap;
 
 	public enum LyricMode
 	{
@@ -62,7 +62,8 @@ public class Visualizer : MonoBehaviour
 	{
 		smfPlayer = player;
 		kanjiPlayer = _kanjiPlayer;
-		MidiEventMapAccessor.Instance.Init(smfPlayer, kanjiPlayer);
+		eventMap = GetComponent<MidiEventMapAccessor>();
+		eventMap.Init(smfPlayer, kanjiPlayer);
 		SetLyricMode(lyricMode);
 	}
 
@@ -72,12 +73,12 @@ public class Visualizer : MonoBehaviour
 		if (lyricMode == LyricMode.Kanji) {
 			smfPlayer.mute = true;
 			kanjiPlayer.mute = false;
-			MidiEventMapAccessor.Instance.SetCurrentMap(1);
+			eventMap.SetCurrentMap(1);
 			// Debug.Log($"LyricMode: kanji");
 		} else {
 			smfPlayer.mute = false;
 			kanjiPlayer.mute = true;
-			MidiEventMapAccessor.Instance.SetCurrentMap(0);
+			eventMap.SetCurrentMap(0);
 			// Debug.Log($"LyricMode: original");
 		}
 	}

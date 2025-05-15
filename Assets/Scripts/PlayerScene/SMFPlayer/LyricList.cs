@@ -48,16 +48,17 @@ public class LyricList : MonoBehaviour
 	}
 	private void GenerateTracks()
 	{
-		int numOfMeasure = MidiEventMapAccessor.Instance.GetNumOfMeasure(map);
-		int numOfTrack = MidiEventMapAccessor.Instance.GetNumOfTrack(map);
+		MidiEventMapAccessor eventMap = GetComponent<MidiEventMapAccessor>();
+		int numOfMeasure = eventMap.GetNumOfMeasure(map);
+		int numOfTrack = eventMap.GetNumOfTrack(map);
 
 		// Debug.Log($"numOfMeasure: {numOfMeasure}");
 		// Debug.Log($"numOfTrack: {numOfTrack}");
 		for (var track = 0; track < numOfTrack; track++) {
 			var trackData = new Track();
 			for (var meas = 0; meas < numOfMeasure; meas++) {
-				uint msec = (uint)MidiEventMapAccessor.Instance.GetMsec(meas, track, 0, map);
-				string sentence = MidiEventMapAccessor.Instance.GetSentence(meas, track, map);
+				uint msec = (uint)eventMap.GetMsec(meas, track, 0, map);
+				string sentence = eventMap.GetSentence(meas, track, map);
 				trackData.lyrics.Add(new LyricData(msec, sentence));
 				// Debug.Log($"meas:{meas} {msec}:{sentence}");
 			}
