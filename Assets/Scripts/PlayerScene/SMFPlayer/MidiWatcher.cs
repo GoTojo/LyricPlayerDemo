@@ -5,6 +5,7 @@
 /// 
 
 using System;
+using Unity.VisualScripting;
 using UnityEngine;  
 
 public class MidiWatcher : MIDIHandler
@@ -34,6 +35,15 @@ public class MidiWatcher : MIDIHandler
 
 	private MidiWatcher()
 	{
+	}
+
+	public void Clear()
+	{
+		onMidiIn = null;
+		onLyricIn = null;
+		onTempoIn = null;
+		onBeatIn = null;
+		onMeasureIn = null;
 	}
 
 	public override void MIDIIn(int track, byte[] midiEvent, float position, UInt32 currentMsec)

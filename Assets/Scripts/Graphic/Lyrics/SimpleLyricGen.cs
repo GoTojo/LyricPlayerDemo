@@ -15,10 +15,6 @@ public class SimpleLyricBehaviour : MonoBehaviour
 	{
 		MidiWatcher.Instance.onMeasureIn += MeasureIn;
 	}
-	void OnDestroy()
-	{
-		MidiWatcher.Instance.onMeasureIn -= MeasureIn;
-	}
 	void Start()
 	{
 	}

@@ -42,12 +42,6 @@ public class Visualizer : MonoBehaviour
 		MidiMaster.knobDelegate -= knobChanged;
 		PlayerPrefs.SetInt("LyricMode", (int)lyricMode);
 		// Debug.Log("Destract");
-		MidiWatcher midiWatcher = MidiWatcher.Instance;
-		midiWatcher.onMidiIn -= MIDIIn;
-		midiWatcher.onLyricIn -= LyricIn;
-		midiWatcher.onTempoIn -= TempoIn;
-		midiWatcher.onBeatIn -= BeatIn;
-		midiWatcher.onMeasureIn -= MeasureIn;
 	}
 	void Start()
 	{
