@@ -69,11 +69,11 @@ public class LyricList : MonoBehaviour
 	{
 		var wrapper = new TrackListWrapper { tracks = tracks };
 		string json = JsonUtility.ToJson(wrapper, true);
-		File.WriteAllText(path, json);
+		File.WriteAllText(path, json, new UTF8Encoding(false));
 	}
 	private void Load(string path)
 	{
-		string json = File.ReadAllText(path);
+		string json = File.ReadAllText(path, new UTF8Encoding(false));
 		var wrapper = JsonUtility.FromJson<TrackListWrapper>(json);
 		tracks = wrapper.tracks;
 	}
