@@ -63,7 +63,10 @@ public class SimpleLyricGen : MonoBehaviour
 	private int lyricNum = 0;
 	private int curmeas = 0;
 	private int measInterval = 4000;
-
+	private string [,] sentence;
+	private int curArea = 0;
+	private List<Track> [] tracks;
+	private MidiEventMapAccessor eventMap;
 	void Awake()
 	{
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
@@ -80,8 +83,20 @@ public class SimpleLyricGen : MonoBehaviour
 		midiWatcher.onBeatIn -= BeatIn;
 		midiWatcher.onMeasureIn -= MeasureIn;
 	}
-	void Start()
+	public void Init()
 	{
+		LyricList[] maps = GetComponents<LyricList>();
+		eventMap = GetComponent<MidiEventMapAccessor>();
+		const int numOfMap = MidiEventMapAccessor.numOfEventMap;
+		tracks = new List<Track>[numOfMap];
+		int numOfTrack = 0;
+		for (var i = 0; i < numOfMap; i++) {
+			tracks[i] = maps[i].tracks;
+			if (numOfTrack < tracks.Length) {
+				numOfTrack = tracks.Length;
+			}
+		}
+		sentence = new string[numOfMap, numOfTrack];
 	}
 
 	private void LyricObjectText(int ch, int num, int numOfData, float position)

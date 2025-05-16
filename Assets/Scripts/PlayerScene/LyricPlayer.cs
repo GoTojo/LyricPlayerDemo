@@ -36,6 +36,10 @@ public class LyricPlayer : MonoBehaviour
 		foreach(LyricList lyricList in lyricLists) {
 			lyricList.Init();
 		}
+		SimpleLyricGen simpleLyricGen = GetComponent<SimpleLyricGen>();
+		if (simpleLyricGen) {
+			simpleLyricGen.Init();
+		}
 	}
 	void OnDestroy()
 	{
