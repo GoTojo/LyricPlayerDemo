@@ -131,7 +131,7 @@ public class SimpleLyricGen : MonoBehaviour
 		float width = (numOfData != 0) ? area.width / numOfData : area.width;
 		float x = width * num + area.x + width / 2;
 		float areaY = area.height * UnityEngine.Random.Range(yMin, yMax) / 2;
-		float y = (curmeas % 2 != 0) ? areaY + 1.0f : areaY - area.y / 2 - 1.0f; 
+		float y = (curArea % 2 != 0) ? areaY + 1.0f : areaY - area.y / 2 - 1.0f; 
 		float size = UnityEngine.Random.Range(sizeMin, sizeMax);
 		Transform transform = text.GetComponent<Transform>();
 		RectTransform rectTransform = newObject.GetComponent<RectTransform>();
@@ -141,9 +141,18 @@ public class SimpleLyricGen : MonoBehaviour
 		transform.localScale = new Vector3(size, size, size);
 	}
 
-	private void CreateLyric(int id, float position)
+	private void CreateLyric(int track, float position)
 	{
-		LyricObjectText(id, lyricNum, MidiEventMapAccessor.Instance.GetNumOfLyrics(curmeas, id), position);
+		if (lyricNum == 0) {
+			if (track >= 0 && track < sentence.GetLength(1)) {
+				for (var map = 0; map < sentence.GetLength(0); map++) {
+					sentence[map, track] = tracks[map][track].lyrics[curmeas].sentence;
+					if (eventMap.currentMap == map) curArea++;
+					Debug.Log($"{curArea} {sentence[map, track]}");
+				}
+			}
+		}
+		LyricObjectText(track, lyricNum, eventMap.GetNumOfLyrics(curmeas, track), position);
 		lyricNum++;
 	}
 
