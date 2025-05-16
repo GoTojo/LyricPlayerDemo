@@ -22,7 +22,7 @@ public class MIDIEventMap : MIDIHandler
 	};
 	public class TrackData
 	{
-		public string sentence;
+		public string sentence = "";
 		public List<LyricData> data;
 	}
 	public List<List<TrackData>> lyrics = new List<List<TrackData>>();
