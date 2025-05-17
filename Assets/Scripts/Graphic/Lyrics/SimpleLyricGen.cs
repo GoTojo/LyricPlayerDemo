@@ -39,7 +39,7 @@ public class SimpleLyricBehaviour : MonoBehaviour
 		lifetime = measInterval * 2;
 	}
 
-	public void MeasureIn(int measure, int measureInterval, UInt32 currentMsec)
+	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
 	{
 		curmeas = measure;
 	}
@@ -156,7 +156,7 @@ public class SimpleLyricGen : MonoBehaviour
 		lyricNum++;
 	}
 
-	public void MIDIIn(int track, byte[] midiEvent, float position, UInt32 currentMsec)
+	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec)
 	{
 		byte status = (byte)(midiEvent[0] & 0xF0);
 		int ch = (status & 0xF0) >> 4;
@@ -175,16 +175,16 @@ public class SimpleLyricGen : MonoBehaviour
 		}
 	}
 
-	public void LyricIn(int track, string lyric, float position, UInt32 currentMsec)
+	public void LyricIn(int track, string lyric, float position, uint currentMsec)
 	{
 		curWord = lyric;
 	}
 
-	public void BeatIn(int numerator, int denominator, UInt32 currentMsec)
+	public void BeatIn(int numerator, int denominator, uint currentMsec)
 	{
 	}
 
-	public void MeasureIn(int measure, int measureInterval, UInt32 currentMsec)
+	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
 	{
 		curmeas = measure;
 		measInterval = measureInterval;

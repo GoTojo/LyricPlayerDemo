@@ -77,7 +77,7 @@ public class Visualizer : MonoBehaviour
 		}
 	}
 
-	public void MIDIIn(int track, byte[] midiEvent, float position, UInt32 currentMsec)
+	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec)
 	{
 		byte status = (byte)(midiEvent[0] & 0xF0);
 		int ch = (status & 0xF0) >> 4;
@@ -98,20 +98,20 @@ public class Visualizer : MonoBehaviour
 		}
 	}
 
-	public void LyricIn(int track, string lyric, float position, UInt32 currentMsec)
+	public void LyricIn(int track, string lyric, float position, uint currentMsec)
 	{
 		// Debug.Log($"lyric: {lyric}, position: {position}");
 	}
-	public void TempoIn(float msecPerQuaterNote, uint tempo, UInt32 currentMsec)
+	public void TempoIn(float msecPerQuaterNote, uint tempo, uint currentMsec)
 	{
 	}
 
-	public void BeatIn(int numerator, int denominator, UInt32 currentMsec)
+	public void BeatIn(int numerator, int denominator, uint currentMsec)
 	{
 		// LyricItem.OnBeat += () => { };
 	}
 
-	public void MeasureIn(int measure, int measureInterval, UInt32 currentMsec)
+	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
 	{
 	}
 

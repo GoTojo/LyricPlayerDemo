@@ -66,10 +66,10 @@ public class MIDIEventMap : MIDIHandler
 		currentMeasure = 0;
 	}
 
-	public override void MIDIIn(int track, byte[] midiEvent, float position, UInt32 currentMsec)
+	public override void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec)
 	{
 	}
-	public override void LyricIn(int track, string lyric, float position, UInt32 currentMsec)
+	public override void LyricIn(int track, string lyric, float position, uint currentMsec)
 	{
 		if (lyrics == null) {
 			return;
@@ -81,13 +81,13 @@ public class MIDIEventMap : MIDIHandler
 		lyrics[currentMeasure][track].data.Add(data);
 		lyrics[currentMeasure][track].sentence += lyric;
 	}
-	public override void TempoIn(float msecPerQuaterNote, uint tempo, UInt32 currentMsec)
+	public override void TempoIn(float msecPerQuaterNote, uint tempo, uint currentMsec)
 	{
 	}
-	public override void BeatIn(int numerator, int denominator, UInt32 currentMsec)
+	public override void BeatIn(int numerator, int denominator, uint currentMsec)
 	{
 	}
-	public override void MeasureIn(int measure, int measureInterval, UInt32 currentMsec)
+	public override void MeasureIn(int measure, int measureInterval, uint currentMsec)
 	{
 		if (lyrics == null) {
 			return;
