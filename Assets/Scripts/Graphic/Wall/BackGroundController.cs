@@ -27,7 +27,8 @@ public class BackGroundController : MonoBehaviour
 
 		midiWatcher.onMeasureIn += MeasureIn;
 	}
-	void OnDestroy() {
+	void OnDestroy()
+	{
 		MidiMaster.noteOnDelegate -= NoteOn;
 		MidiMaster.noteOffDelegate -= NoteOff;
 		MidiMaster.knobDelegate -= knobChanged;
@@ -89,33 +90,15 @@ public class BackGroundController : MonoBehaviour
 		for (var i = 0; i < numOfCube; i++) {
 			GameObject obj = new GameObject();
 			obj.transform.SetParent(wall.transform);
-			int colorId = Random.Range(0, 15);
 			LineRenderer lineRenderer = obj.AddComponent<LineRenderer>();
-			lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-			// Color color = colors[colorId];
-			// lineRenderer.startColor = color;
-			// lineRenderer.endColor = color;
-			// lineRenderer.material = (Material)Resources.Load($"material/BGItem {colorId}");
-			// MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
+			Material material = new Material(Shader.Find("Sprites/Default"));
+			lineRenderer.material = material;
+			MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
+			meshRenderer.material = material;
+			lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
+			meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 			lineRenderer.widthMultiplier = 0.05f;
-			lineRenderer.positionCount = segments + 1;
-
-			float x = Random.Range((float)area.x, (float)area.x + (float)area.width);
-			float y = Random.Range((float)area.y, (float)area.y - (float)area.height);
-			float r = Random.Range(1.0f, 3.0f);
-			float deltaTheta = 2.0f * Mathf.PI / segments;
-			float theta = 0.0f;
-
-			for (int j = 0; j < segments + 1; j++) {
-				float _x = r * Mathf.Cos(theta) + x;
-				float _y = r * Mathf.Sin(theta) + y;
-				Vector3 pos = new Vector3(_x, _y, 0f);
-				lineRenderer.SetPosition(j, pos);
-				theta += deltaTheta;
-			}
-			Rigidbody rigidbody = obj.AddComponent<Rigidbody>();
-			rigidbody.AddForce(new Vector3(Random.Range(-50.0f, 50.0f), Random.Range(-50.0f, 50.0f), 0.0f), ForceMode.Impulse);
-			bgObjectControllers.Add(new BGCircleController());
+			bgObjectControllers.Add(new BGCircleController(obj, area));
 		}
 	}
 
@@ -125,7 +108,7 @@ public class BackGroundController : MonoBehaviour
 
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
 	{
-		CreateCube();
+		CreateNew();
 	}
 
 	private void NoteOn(MidiChannel channel, int note, float velocity) {
