@@ -8,12 +8,12 @@ public class BackGroundController : MonoBehaviour
 {
 	public Parameter parameter;
 	// Start is called before the first frame update
-	public static Rect area = new Rect(-20, 10, 40, 20);
+	public static Rect area = new Rect(-10, 5, 20, 10);
 	public GameObject wall;
-	public static int numOfCube = 30;
+	public static int numOfCube = 8;
 	private Parameter.WallType type;
 	private const int segments = 100;
-	private BGQuadController [] quadController = new BGQuadController[numOfCube];
+	private List<BGQuadController> quadControllers = new List<BGQuadController>();
  
 	void Start()
 	{
@@ -36,8 +36,10 @@ public class BackGroundController : MonoBehaviour
 	}
 
 	// Update is called once per frame
-	void Update()
-	{
+	void Update() {
+		foreach (BGQuadController controller in quadControllers) {
+			controller.Update();
+		}
 	}
 
 	private void CreateNew()
@@ -50,32 +52,28 @@ public class BackGroundController : MonoBehaviour
 	}
 
 	private void SetColor() {
-		// BGQuad.SetColor();
-		// 	float h = 1.0f / (i + 1);
-		// 	GameObject obj = (GameObject)Resources.Load($"BGQuad");
-		// 	Renderer renderer = obj.GetComponent<Renderer>();
-		// 	Color color = Color.HSVToRGB(h, s, v);
-		// 	color.a = 0.8f;
-		// 	// Debug.Log($"Color: {color}");
-		// 	renderer.sharedMaterial.color = color;
-		// 	colors[i] = color;
-		// }
 	}
 
 	private void CreateCube()
 	{
-		for (var i = 0; i < numOfCube; i++)
-		{
-			int colorId = Random.Range(1, 16);
+		foreach (BGQuadController controller in quadControllers) {
+			if (controller.fDestroy) {
+				Destroy(controller.gameObject);
+				controller.Stop();
+			}
+		}
+		quadControllers.RemoveAll(controller => controller.fDestroy == true);
+		if (quadControllers.Count > 0) return;
+		for (var i = 0; i < numOfCube; i++) {
 			GameObject obj = (GameObject)Resources.Load("Prefab/Wall/BGQuad");
 			float x = Random.Range((float)area.x, (float)area.x + (float)area.width);
 			float y = Random.Range((float)area.y, (float)area.y - (float)area.height);
 			float size = Random.Range(2.0f, 5.0f);
 			Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
-			obj.transform.localScale = new Vector3(size, size, 0.01f);
 			GameObject instantiatedObj = Instantiate(obj, new Vector3(x, y, 0.1f), rotation);
+			instantiatedObj.transform.localScale = new Vector3(size, size, 0.01f);
 			instantiatedObj.transform.SetParent(wall.transform);
-			quadController[i] = new BGQuadController(instantiatedObj);
+			quadControllers.Add(new BGQuadController(instantiatedObj));
 		}
 	}
 
