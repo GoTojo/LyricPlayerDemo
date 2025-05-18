@@ -13,7 +13,7 @@ public class BackGroundController : MonoBehaviour
 	public static int numOfCube = 8;
 	private Parameter.WallType type;
 	private const int segments = 100;
-	private List<BGQuadController> quadControllers = new List<BGQuadController>();
+	private List<BGObjectController> bgObjectControllers = new List<BGObjectController>();
  
 	void Start()
 	{
@@ -37,7 +37,7 @@ public class BackGroundController : MonoBehaviour
 
 	// Update is called once per frame
 	void Update() {
-		foreach (BGQuadController controller in quadControllers) {
+		foreach (BGObjectController controller in bgObjectControllers) {
 			controller.Update();
 		}
 	}
@@ -56,14 +56,14 @@ public class BackGroundController : MonoBehaviour
 
 	private void CreateCube()
 	{
-		foreach (BGQuadController controller in quadControllers) {
+		foreach (BGObjectController controller in bgObjectControllers) {
 			if (controller.fDestroy) {
 				Destroy(controller.gameObject);
 				controller.Stop();
 			}
 		}
-		quadControllers.RemoveAll(controller => controller.fDestroy == true);
-		if (quadControllers.Count > 0) return;
+		bgObjectControllers.RemoveAll(controller => controller.fDestroy == true);
+		if (bgObjectControllers.Count > 0) return;
 		for (var i = 0; i < numOfCube; i++) {
 			GameObject obj = (GameObject)Resources.Load("Prefab/Wall/BGQuad");
 			float x = Random.Range((float)area.x, (float)area.x + (float)area.width);
@@ -73,44 +73,50 @@ public class BackGroundController : MonoBehaviour
 			GameObject instantiatedObj = Instantiate(obj, new Vector3(x, y, 0.1f), rotation);
 			instantiatedObj.transform.localScale = new Vector3(size, size, 0.01f);
 			instantiatedObj.transform.SetParent(wall.transform);
-			quadControllers.Add(new BGQuadController(instantiatedObj));
+			bgObjectControllers.Add(new BGQuadController(instantiatedObj));
 		}
 	}
 
 	private void CreateCircle()
 	{
-		// wall = new GameObject("WallPaper");
-		// for (var i = 0; i < numOfCube; i++) {
-		// 	GameObject obj = new GameObject();
-		// 	items[i] = obj;
-		// 	obj.transform.SetParent(wall.transform);
-		// 	int colorId = Random.Range(0, 15);
-		// 	LineRenderer lineRenderer = obj.AddComponent<LineRenderer>();
-		// 	lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
-		// 	Color color = colors[colorId];
-		// 	lineRenderer.startColor = color;
-		// 	lineRenderer.endColor = color;
-		// 	// lineRenderer.material = (Material)Resources.Load($"material/BGItem {colorId}");
-		// 	// MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
-		// 	lineRenderer.widthMultiplier = 0.05f;
-		// 	lineRenderer.positionCount = segments + 1;
+		foreach (BGObjectController controller in bgObjectControllers) {
+			if (controller.fDestroy) {
+				Destroy(controller.gameObject);
+				controller.Stop();
+			}
+		}
+		bgObjectControllers.RemoveAll(controller => controller.fDestroy == true);
+		for (var i = 0; i < numOfCube; i++) {
+			GameObject obj = new GameObject();
+			obj.transform.SetParent(wall.transform);
+			int colorId = Random.Range(0, 15);
+			LineRenderer lineRenderer = obj.AddComponent<LineRenderer>();
+			lineRenderer.material = new Material(Shader.Find("Sprites/Default"));
+			// Color color = colors[colorId];
+			// lineRenderer.startColor = color;
+			// lineRenderer.endColor = color;
+			// lineRenderer.material = (Material)Resources.Load($"material/BGItem {colorId}");
+			// MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
+			lineRenderer.widthMultiplier = 0.05f;
+			lineRenderer.positionCount = segments + 1;
 
-		// 	float x = Random.Range((float)area.x, (float)area.x + (float)area.width);
-		// 	float y = Random.Range((float)area.y, (float)area.y - (float)area.height);
-		// 	float r = Random.Range(1.0f, 3.0f);
-		// 	float deltaTheta = 2.0f * Mathf.PI / segments;
-		// 	float theta = 0.0f;
+			float x = Random.Range((float)area.x, (float)area.x + (float)area.width);
+			float y = Random.Range((float)area.y, (float)area.y - (float)area.height);
+			float r = Random.Range(1.0f, 3.0f);
+			float deltaTheta = 2.0f * Mathf.PI / segments;
+			float theta = 0.0f;
 
-		// 	for (int j = 0; j < segments + 1; j++) {
-		// 		float _x = r * Mathf.Cos(theta) + x;
-		// 		float _y = r * Mathf.Sin(theta) + y;
-		// 		Vector3 pos = new Vector3(_x, _y, 0f);
-		// 		lineRenderer.SetPosition(j, pos);
-		// 		theta += deltaTheta;
-		// 	}
-		// 	Rigidbody rigidbody = obj.AddComponent<Rigidbody>();
-		// 	rigidbody.AddForce(new Vector3(Random.Range(-50.0f, 50.0f), Random.Range(-50.0f, 50.0f), 0.0f), ForceMode.Impulse);
-		// }
+			for (int j = 0; j < segments + 1; j++) {
+				float _x = r * Mathf.Cos(theta) + x;
+				float _y = r * Mathf.Sin(theta) + y;
+				Vector3 pos = new Vector3(_x, _y, 0f);
+				lineRenderer.SetPosition(j, pos);
+				theta += deltaTheta;
+			}
+			Rigidbody rigidbody = obj.AddComponent<Rigidbody>();
+			rigidbody.AddForce(new Vector3(Random.Range(-50.0f, 50.0f), Random.Range(-50.0f, 50.0f), 0.0f), ForceMode.Impulse);
+			bgObjectControllers.Add(new BGCircleController());
+		}
 	}
 
 	public static void BeatIn()

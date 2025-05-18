@@ -1,25 +1,40 @@
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 
-public class BGQuadController
-{
+public abstract class BGObjectController {
+	public bool fDestroy = false;
+	public GameObject gameObject;
+
+	public abstract void Update();
+	public abstract void Stop();
+};
+
+public class BGCircleController : BGObjectController {
+	public override void Update()
+	{
+
+	}
+	public override void Stop()
+	{
+		
+	}
+};
+
+public class BGQuadController : BGObjectController {
 	public float colorS = 0.5f;
 	public float colorV = 0.8f;
-	public void SetColorS()
-	{
+	public void SetColorS() {
 		colorS = Random.Range(0.2f, 0.9f);
 	}
 	private int measureCount = 0;
-	public GameObject gameObject;
-	public bool fDestroy = false;
 	private BGQuadObject quadObject;
 	private float zoom = 1.0f;
 	private float orgScale = 1.0f;
-	public BGQuadController(GameObject obj)
-	{
+	public BGQuadController(GameObject obj) {
 		gameObject = obj;
 		quadObject = obj.GetComponent<BGQuadObject>();
 		int direction = Random.Range(0, 1);
@@ -34,8 +49,7 @@ public class BGQuadController
 		SetMyColor();
 	}
 
-	void SetMyColor()
-	{
+	void SetMyColor() {
 		float h = Random.Range(0.2f, 0.9f);
 		MeshRenderer renderer = gameObject.GetComponent<MeshRenderer>();
 		Color color = Color.HSVToRGB(h, colorS, colorV);
@@ -44,12 +58,11 @@ public class BGQuadController
 		renderer.material.color = color;
 	}
 
-	public void Update()
-	{
+	public override void Update() {
 		zoom = Mathf.Lerp(zoom, 1.0f, Time.deltaTime * 3f);
 		gameObject.transform.localScale = new Vector3(orgScale * zoom, orgScale * zoom, 0.01f);
 	}
-	public void Stop() {
+	public override void Stop() {
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onTempoIn -= TempoIn;
 		midiWatcher.onBeatIn -= BeatIn;
@@ -58,8 +71,7 @@ public class BGQuadController
 	public void TempoIn(float msecPerQuaterNote, uint tempo, uint currentMsec) {
 	}
 
-	public void BeatIn(int numerator, int denominator, uint currentMsec)
-	{
+	public void BeatIn(int numerator, int denominator, uint currentMsec) {
 		// LyricItem.OnBeat += () => { };
 		zoom = 1.5f;
 		gameObject.transform.localScale = new Vector3(orgScale * zoom, orgScale * zoom, 0.01f);
