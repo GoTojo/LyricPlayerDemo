@@ -136,7 +136,7 @@ public class SimpleLyricGen : MonoBehaviour
 		Transform transform = text.GetComponent<Transform>();
 		RectTransform rectTransform = newObject.GetComponent<RectTransform>();
 		rectTransform.sizeDelta = new Vector2(5.0f, 5.0f);
-		transform.position = new Vector3(x, y, 0.0f);
+		transform.position = new Vector3(x, y, -1.0f);
 		transform.Rotate(0.0f, 0.0f, UnityEngine.Random.Range(-rotateAngle, rotateAngle));
 		transform.localScale = new Vector3(size, size, size);
 	}

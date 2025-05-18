@@ -15,4 +15,8 @@ public class Parameter : ScriptableObject
     public int NoteWallTypeCircle = 0x3E;
     public int NoteLyricModeOriginal = 0x36;
     public int NoteLyricModeKanji = 0x38;
+    public enum WallType {
+        Rectangle,
+        Circle
+    }
 }
