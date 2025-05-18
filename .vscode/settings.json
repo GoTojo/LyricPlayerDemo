@@ -49,7 +49,10 @@
         "Obj/": true,
         "ProjectSettings/": true,
         "temp/": true,
-        "Temp/": true
+        "Temp/": true,
+        "editor.formatOnEnter": false,
+        "editor.formatOnPaste": false,
+        "files.trimTrailingWhitespace": false
     },
     "dotnet.defaultSolution": "LyricPlayer.sln"
 }

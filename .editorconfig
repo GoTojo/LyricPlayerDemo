@@ -1,6 +1,14 @@
-#  CSharp formatting rules:
 [*.cs]
-csharp_new_line_before_open_brace = none
-csharp_new_line_before_else = false
-csharp_new_line_before_catch = false
-csharp_new_line_before_finally = false
+# ブレースの前に改行を入れる設定
+# メソッド・型では改行あり
+csharp_new_line_before_open_brace = all
+csharp_new_line_before_open_brace_types = true
+csharp_new_line_before_open_brace_methods = true
+
+# 制御構文（if, for, while, etc.）では改行なし
+csharp_new_line_before_open_brace_control_blocks = false
+
+# プロパティ、ラムダなどは必要なら追加調整可能（ここではオフ）
+csharp_new_line_before_open_brace_properties = false
+csharp_new_line_before_open_brace_accessors = false
+csharp_new_line_before_open_brace_anonymous_methods = false
