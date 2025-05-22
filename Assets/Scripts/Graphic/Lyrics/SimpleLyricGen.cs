@@ -148,7 +148,7 @@ public class SimpleLyricGen : MonoBehaviour
 				for (var map = 0; map < sentence.GetLength(0); map++) {
 					sentence[map, track] = tracks[map][track].lyrics[curmeas].sentence;
 					if (eventMap.currentMap == map) curArea++;
-					Debug.Log($"{curArea} {sentence[map, track]}");
+					// Debug.Log($"{curArea} {sentence[map, track]}");
 				}
 			}
 		}

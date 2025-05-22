@@ -2,10 +2,15 @@
   "dependencies": {
     "com.unity.collab-proxy": "2.8.2",
     "com.unity.feature.development": "1.0.1",
+    "com.unity.nuget.newtonsoft-json": "3.0.2",
+    "com.unity.render-pipelines.universal": "14.0.9",
     "com.unity.textmeshpro": "3.0.6",
     "com.unity.timeline": "1.7.6",
+    "com.unity.toonshader": "0.11.0-preview",
     "com.unity.ugui": "1.0.0",
-    "com.unity.visualscripting": "1.9.1",
+    "com.unity.visualeffectgraph": "14.0.9",
+    "com.unity.visualscripting": "1.9.6",
+    "jp.keijiro.lasp": "2.1.7",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",
@@ -36,7 +41,15 @@
     "com.unity.modules.video": "1.0.0",
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
-    "com.unity.modules.xr": "1.0.0",
-    "com.unity.nuget.newtonsoft-json": "3.0.2"
-  }
+    "com.unity.modules.xr": "1.0.0"
+  },
+  "scopedRegistries": [
+    {
+      "name": "keijiro",
+      "url": "https://registry.npmjs.com",
+      "scopes": [
+        "jp.keijiro"
+      ]
+    }
+  ]
 }
