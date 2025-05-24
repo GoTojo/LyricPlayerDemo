@@ -10825,7 +10825,7 @@ GameObject:
   m_Component:
   - component: {fileID: 503062540}
   m_Layer: 0
-  m_Name: UnityChan (1)
+  m_Name: UnityChanColor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15744,7 +15744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2674436535988290011, guid: 4dfec0c01339542458b71656d8d74932, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6552095062266041072, guid: 4dfec0c01339542458b71656d8d74932, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20934,7 +20934,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &951077386
 Transform:
   m_ObjectHideFlags: 0
@@ -30917,6 +30917,13 @@ MonoBehaviour:
     y: 5
     width: 4
     height: 10
+  Wall: {fileID: 1476044166}
+  UnityChan: {fileID: 1801223687}
+  UnityChanBlack: {fileID: 503062539}
+  UnityChanColor: {fileID: 503062539}
+  Zeknova: {fileID: 349618358}
+  Snow: {fileID: 410511433}
+  Confetti: {fileID: 652939498}
 --- !u!114 &1095297738
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36646,7 +36653,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1801223688}
   m_Layer: 0
-  m_Name: UnityChan
+  m_Name: UnityChanBlack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -48,7 +48,7 @@ public class LyricPlayer : MonoBehaviour
 	}
 	private void NoteOn(MidiChannel channel, int note, float velocity)
 	{
-		if (note == parameter.NoteStopVideo) {
+		if (note == Parameter.NoteStopVideo) {
 			End();
 		}
 	}
@@ -83,6 +83,8 @@ public class LyricPlayer : MonoBehaviour
 	{
 		smfPlayer?.Stop();
 		kanjiPlayer?.Stop();
+		Visualizer visualizer = GetComponent<Visualizer>();
+		visualizer.BackupParams();
 		SceneManager.LoadScene("TitleScene");
 	}
 
