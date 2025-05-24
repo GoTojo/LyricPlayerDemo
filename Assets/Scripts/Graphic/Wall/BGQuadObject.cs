@@ -183,7 +183,7 @@ public class BGQuadController : BGObjectController {
 
 	public override void MeasureDo(int measure, int measureInterval, uint currentMsec) {
 		measureCount++;
-		if (measureCount < 2) {
+		if (measureCount < 4) {
 			SetColor();
 		} else {
 			fDestroy = true;
