@@ -40,6 +40,7 @@ public class LyricPlayer : MonoBehaviour
 		if (simpleLyricGen) {
 			simpleLyricGen.Init();
 		}
+		FontResource fontResource = FontResource.Instance;
 	}
 	void OnDestroy()
 	{

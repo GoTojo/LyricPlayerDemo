@@ -107,7 +107,8 @@ public class SimpleLyricGen : MonoBehaviour
 		SimpleLyricBehaviour behaviour = newObject.AddComponent<SimpleLyricBehaviour>();
 		behaviour.SetStartMeas(curmeas, measInterval);
 		TextMeshPro text = newObject.GetComponent<TextMeshPro>();
-		text.font = Resources.Load<TMP_FontAsset>("Fonts/JK-Maru-Gothic-M SDF");;
+		// text.font = Resources.Load<TMP_FontAsset>("Fonts/JK-Maru-Gothic-M SDF");
+		text.font = FontResource.Instance.GetFont(FontResource.Type.JKMaruGothic);
 		text.text = curWord;
 		switch (ch) {
 			default:
