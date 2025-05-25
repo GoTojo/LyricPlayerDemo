@@ -21,6 +21,7 @@ public class SMFPlayer
 	private List<TrackPlayer> players = new List<TrackPlayer>();
 	public MIDIHandler midiHandler = new MIDIHandler();
 	private bool playing = false;
+	private bool isEnd = false;
 	public struct Beat
 	{
 		public int unit;
@@ -58,6 +59,8 @@ public class SMFPlayer
 			return;
 		}
 		isValid = true;
+		playing = false;
+		isEnd = false;
 		tracks.Clear();
 		players.Clear();
 		// UnityEngine.Debug.Log("Loading SMF: " + filepath);
@@ -82,9 +85,11 @@ public class SMFPlayer
 		nextEventTime = 0;
 		startTime = 0;
 		lastMeasTime = 0;
+		isEnd = false;
 		foreach (TrackPlayer player in players){
 			player.Reset();
 		}
+		midiHandler.EventIn(MIDIHandler.Event.Reset);
 	}
 	public bool isPlaying()
 	{
@@ -102,6 +107,7 @@ public class SMFPlayer
 				nexttime = _nexttime;
 			}
 		}
+		isEnd = true;
 		return nexttime;
 	}
 
@@ -112,6 +118,7 @@ public class SMFPlayer
 			return false;
 		}
 		playing = true;
+		midiHandler.EventIn(MIDIHandler.Event.Start);
 		Reset();
 		stopWatch.Start();
 		if (_startTime < 0) {
@@ -130,15 +137,17 @@ public class SMFPlayer
 
 	public bool Update(UInt32 currentTime = 0)
 	{
+		if (playing == false) {
+			return false;
+		}
 		if (currentTime == 0) {
 			currentTime = (UInt32)stopWatch.ElapsedMilliseconds;
 		}
 		// UnityEngine.Debug.Log($"currentTime: {currentTime}");
 		while (currentTime >= nextEventTime) {
 			UInt32 nexttime = tickup();
-			if (nexttime == UInt32.MaxValue)
-			{
-				playing = false;
+			if (nexttime == UInt32.MaxValue) {
+				Stop();
 				break;
 			}
 			nextEventTime = nexttime + startTime;
@@ -154,6 +163,7 @@ public class SMFPlayer
 		}
 		stopWatch.Stop();
 		playing = false;
+		midiHandler.EventIn(isEnd ? MIDIHandler.Event.End : MIDIHandler.Event.Stop);
 		return true;
 	}
 

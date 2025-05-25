@@ -5,6 +5,12 @@
 using System;
 
 public class MIDIHandler {
+	public enum Event {
+		Start,
+		Stop,
+		Reset,
+		End
+	};
 	public virtual void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec)
 	{
 	}
@@ -18,6 +24,9 @@ public class MIDIHandler {
 	{
 	}
 	public virtual void MeasureIn(int measure, int measureInterval, uint currentMsec)
+	{
+	}
+	public virtual void EventIn(Event playerEvent)
 	{
 	}
 }
