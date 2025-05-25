@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-
 public class SimpleLyricBehaviour : MonoBehaviour
 {
 	private int startmeas = 0;
@@ -108,7 +107,7 @@ public class SimpleLyricGen : MonoBehaviour
 		behaviour.SetStartMeas(curmeas, measInterval);
 		TextMeshPro text = newObject.GetComponent<TextMeshPro>();
 		// text.font = Resources.Load<TMP_FontAsset>("Fonts/JK-Maru-Gothic-M SDF");
-		text.font = FontResource.Instance.GetFont(FontResource.Type.JKMaruGothic);
+		text.font = FontResource.Instance.GetFont();
 		text.text = curWord;
 		switch (ch) {
 			default:

@@ -41,6 +41,9 @@ public class LyricPlayer : MonoBehaviour
 			simpleLyricGen.Init();
 		}
 		FontResource fontResource = FontResource.Instance;
+		fontResource.LoadFont();
+		SentenceList sentenceList = GetComponent<SentenceList>();
+		sentenceList.Init();
 	}
 	void OnDestroy()
 	{

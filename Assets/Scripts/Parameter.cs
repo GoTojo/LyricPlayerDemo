@@ -34,6 +34,9 @@ public class Parameter
 		public static int NoteSongUp = 0x46;
 	public static int NoteStopVideo = 0x47;
 	public static int NoteStartVideo = 0x48;
+
+	public string [,] sentence;
+
 	public enum WallType {
 		Rectangle,
 		Circle

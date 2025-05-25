@@ -189,7 +189,9 @@ public class Visualizer : MonoBehaviour
 		if (note == Parameter.NoteLyricTypeDown) {
 		} else if (note == Parameter.NoteLyricTypeUp) {
 		} else if (note == Parameter.NoteLyricFontDown) {
+			FontResource.Instance.DecFont();
 		} else if (note == Parameter.NoteLyricFontUp) {
+			FontResource.Instance.IncFont();
 		} else if (note == Parameter.NoteLyricModeOriginal) {
 			SetLyricMode(LyricMode.Original);
 		} else if (note == Parameter.NoteLyricModeKanji) {
