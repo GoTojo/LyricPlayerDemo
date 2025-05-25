@@ -84,8 +84,9 @@ public class SimpleLyricGen : MonoBehaviour
 	}
 	public void Init()
 	{
-		LyricList[] maps = GetComponents<LyricList>();
-		eventMap = GetComponent<MidiEventMapAccessor>();
+		GameObject mainObj = GameObject.Find("MainGameObject");
+		LyricList[] maps = mainObj.GetComponents<LyricList>();
+		eventMap = mainObj.GetComponent<MidiEventMapAccessor>();
 		const int numOfMap = MidiEventMapAccessor.numOfEventMap;
 		tracks = new List<Track>[numOfMap];
 		int numOfTrack = 0;
