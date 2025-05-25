@@ -98,47 +98,58 @@ public class SimpleLyricGen : MonoBehaviour
 		sentence = new string[numOfMap, numOfTrack];
 	}
 
-	private void LyricObjectText(int ch, int num, int numOfData, float position)
+	private GameObject CreateText(string word, TMP_FontAsset font, Color color, float size, Vector3 position, float scale, float rotate)
 	{
-		// Debug.Log($"{curWord}, {num}/{numOfData}");
-		GameObject newObject = new GameObject("SimpleLyric");
-		newObject.AddComponent<TextMeshPro>();
-		SimpleLyricBehaviour behaviour = newObject.AddComponent<SimpleLyricBehaviour>();
-		behaviour.SetStartMeas(curmeas, measInterval);
-		TextMeshPro text = newObject.GetComponent<TextMeshPro>();
-		// text.font = Resources.Load<TMP_FontAsset>("Fonts/JK-Maru-Gothic-M SDF");
-		text.font = FontResource.Instance.GetFont();
-		text.text = curWord;
-		switch (ch) {
-			default:
-			case 1:
-				text.color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-				break;
-			case 2:
-				text.color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
-				break;
-			case 3:
-				text.color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
-				break;
-			case 4:
-				text.color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-				break;
-		}
+		GameObject	simpleLyric = new GameObject("SimpleLyric");
+		simpleLyric.AddComponent<TextMeshPro>();
+		TextMeshPro text = simpleLyric.GetComponent<TextMeshPro>();
+		text.font = font;
+		text.text = word;
+		text.color = color;
 		text.fontSize = 16;
 		text.fontSizeMax = 20;
 		text.fontSizeMin = 12;
 		text.autoSizeTextContainer = true;
+		Transform transform = text.GetComponent<Transform>();
+		RectTransform rectTransform =	simpleLyric.GetComponent<RectTransform>();
+		rectTransform.sizeDelta = new Vector2(size, size);
+		transform.position = position;
+		transform.Rotate(0.0f, 0.0f, rotate);
+		transform.localScale = new Vector3(scale, scale, scale);
+		return simpleLyric;
+	}
+
+	private void LyricObjectText(int ch, int num, int numOfData, float position)
+	{
+		TMP_FontAsset font = FontResource.Instance.GetFont();
+		Color color;
+		switch (ch) {
+			default:
+			case 1:
+				color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+				break;
+			case 2:
+				color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+				break;
+			case 3:
+				color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+				break;
+			case 4:
+				color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+				break;
+		}
 		float width = (numOfData != 0) ? area.width / numOfData : area.width;
 		float x = width * num + area.x + width / 2;
 		float areaY = area.height * UnityEngine.Random.Range(yMin, yMax) / 2;
 		float y = (curArea % 2 != 0) ? areaY + 1.0f : areaY - area.y / 2 - 1.0f; 
-		float size = UnityEngine.Random.Range(sizeMin, sizeMax);
-		Transform transform = text.GetComponent<Transform>();
-		RectTransform rectTransform = newObject.GetComponent<RectTransform>();
-		rectTransform.sizeDelta = new Vector2(5.0f, 5.0f);
-		transform.position = new Vector3(x, y, -1.0f);
-		transform.Rotate(0.0f, 0.0f, UnityEngine.Random.Range(-rotateAngle, rotateAngle));
-		transform.localScale = new Vector3(size, size, size);
+		Vector3 pos = new Vector3(x, y, -1.0f);
+		float scale = UnityEngine.Random.Range(sizeMin, sizeMax);
+		float rotate = UnityEngine.Random.Range(-rotateAngle, rotateAngle);
+
+		GameObject simpleLyric = CreateText(curWord, font, color, 5.0f, pos, scale, rotate);
+
+		SimpleLyricBehaviour behaviour = simpleLyric.AddComponent<SimpleLyricBehaviour>();
+		behaviour.SetStartMeas(curmeas, measInterval);
 	}
 
 	private void CreateLyric(int track, float position)
