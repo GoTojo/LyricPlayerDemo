@@ -123,22 +123,23 @@ public class SimpleLyricGen : MonoBehaviour
 	private void LyricObjectText(int ch, int num, int numOfData, float position)
 	{
 		TMP_FontAsset font = FontResource.Instance.GetFont();
-		Color color;
-		switch (ch) {
-			default:
-			case 1:
-				color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-				break;
-			case 2:
-				color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
-				break;
-			case 3:
-				color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
-				break;
-			case 4:
-				color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-				break;
-		}
+		Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+		// Color color;
+		// switch (ch) {
+		// 	default:
+		// 	case 1:
+		// 		color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+		// 		break;
+		// 	case 2:
+		// 		color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
+		// 		break;
+		// 	case 3:
+		// 		color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
+		// 		break;
+		// 	case 4:
+		// 		color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
+		// 		break;
+		// }
 		float width = (numOfData != 0) ? area.width / numOfData : area.width;
 		float x = width * num + area.x + width / 2;
 		float areaY = area.height * UnityEngine.Random.Range(yMin, yMax) / 2;

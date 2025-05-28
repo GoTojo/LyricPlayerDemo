@@ -18,7 +18,13 @@ public struct LyricData {
 
 [Serializable]
 public class Track {
+	public int id = 0;
+	public bool active = true;
 	public List<LyricData> lyrics = new List<LyricData>();
+	public Track(int id)
+	{
+		this.id = id;
+	}
 }
 
 [Serializable]
@@ -55,7 +61,7 @@ public class LyricList : MonoBehaviour
 		// Debug.Log($"numOfMeasure: {numOfMeasure}");
 		// Debug.Log($"numOfTrack: {numOfTrack}");
 		for (var track = 0; track < numOfTrack; track++) {
-			var trackData = new Track();
+			var trackData = new Track(track);
 			for (var meas = 0; meas < numOfMeasure; meas++) {
 				uint msec = (uint)eventMap.GetMsec(meas, track, 0, map);
 				string sentence = eventMap.GetSentence(meas, track, map);

@@ -5,27 +5,57 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using System;
 
-class SentenceList : MonoBehaviour
+public class SentenceList : MonoBehaviour
 {
-	public string [,] sentence;
-	private List<Track> [] tracks;
 	private MidiEventMapAccessor eventMap;
+	private List<Track> [] tracks;
 	
 	// LyricList, MidiEventMapが初期化した後に呼ぶ
 	public void Init()
 	{
-		LyricList[] maps = GetComponents<LyricList>();
-		eventMap = GetComponent<MidiEventMapAccessor>();
+		GameObject mainObj = GameObject.Find("MainGameObject");
+		LyricList[] maps = mainObj.GetComponents<LyricList>();
+		eventMap = mainObj.GetComponent<MidiEventMapAccessor>();
 		const int numOfMap = MidiEventMapAccessor.numOfEventMap;
 		tracks = new List<Track>[numOfMap];
-		int numOfTrack = 0;
 		for (var i = 0; i < numOfMap; i++) {
 			tracks[i] = maps[i].tracks;
-			if (numOfTrack < tracks.Length) {
-				numOfTrack = tracks.Length;
+		}
+	}
+	public bool IsActive(int track)
+	{
+		int map = eventMap.currentMap;
+		LyricData emptyData = new LyricData(0, "");
+		if (map > tracks.Length) return false;
+		List<Track> trackList = tracks[map];
+		if (track > trackList.Count) return false;
+		Track trackData = trackList[track];
+		return trackData.active;
+	}
+	public LyricData GetSentence(int track, int measure)
+	{
+		int map = eventMap.currentMap;
+		LyricData emptyData = new LyricData(0, "");
+		if (map > tracks.Length) return emptyData;
+		List<Track> trackList = tracks[map];
+		if (track > trackList.Count) return emptyData;
+		Track trackData = trackList[track];
+		if (measure > trackData.lyrics.Count) return emptyData;
+		return trackData.lyrics[measure];
+	}
+	public bool IsExist(int measure)
+	{
+		bool fIsExist = false;
+		int map = eventMap.currentMap;
+		for (int track = 0; track < tracks[map].Count; track++) {
+			string sentence = tracks[map][track].lyrics[measure].sentence;
+			if (!String.IsNullOrEmpty(sentence)) {
+				fIsExist = true;
+				break;
 			}
 		}
-		sentence = new string[numOfMap, numOfTrack];
+		return fIsExist;
 	}
 }

@@ -77,7 +77,7 @@ public class Visualizer : MonoBehaviour
 		kanjiPlayer = _kanjiPlayer;
 		eventMap = GetComponent<MidiEventMapAccessor>();
 		eventMap.Init(smfPlayer, kanjiPlayer);
-		SetLyricMode(lyricMode);
+		SetLyricMode(LyricMode.Kanji); // 最初は漢字で始める
 		ChangeParticle(particleType);
 		ChangeUnityChan(unityChanType);
 	}
