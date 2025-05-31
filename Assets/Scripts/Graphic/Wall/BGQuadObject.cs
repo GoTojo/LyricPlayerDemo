@@ -65,9 +65,9 @@ public class BGCircleController : BGObjectController
 	private float x;
 	private float y;
 	private float r;
+	public float colorH = 0.2f;
 	public float colorS = 0.5f;
 	public float colorV = 0.8f;
-	public float colorH = 0.2f;
 
 	public BGCircleController(GameObject obj, Rect area) : base(obj)
 	{
@@ -125,7 +125,7 @@ public class BGCircleController : BGObjectController
 		for (int i = 0; i < segments + 1; i++) {
 			float _x = _r * Mathf.Cos(theta) + x;
 			float _y = _r * Mathf.Sin(theta) + y;
-			Vector3 pos = new Vector3(_x, _y, 0f);
+			Vector3 pos = new Vector3(_x, _y, 8f);
 			lineRenderer.SetPosition(i, pos);
 			theta += deltaTheta;
 		}
@@ -135,6 +135,7 @@ public class BGCircleController : BGObjectController
 };
 
 public class BGQuadController : BGObjectController {
+	public float colorH = 0.2f;
 	public float colorS = 0.5f;
 	public float colorV = 0.8f;
 	public void SetColorS() {
@@ -158,8 +159,8 @@ public class BGQuadController : BGObjectController {
 
 	private void SetColor()
 	{
-		float h = Random.Range(0.2f, 0.9f);
-		Color color = Color.HSVToRGB(h, colorS, colorV);
+		float s = Random.Range(0.2f, 0.9f);
+		Color color = Color.HSVToRGB(colorH, s, colorV);
 		color.a = 0.8f;
 		// Debug.Log($"Color: {color}");
 		renderer.material.color = color;

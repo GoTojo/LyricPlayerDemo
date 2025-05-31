@@ -124,26 +124,12 @@ public class SimpleLyricGen : MonoBehaviour
 	{
 		TMP_FontAsset font = FontResource.Instance.GetFont();
 		Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-		// Color color;
-		// switch (ch) {
-		// 	default:
-		// 	case 1:
-		// 		color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-		// 		break;
-		// 	case 2:
-		// 		color = new Color(0.0f, 0.0f, 1.0f, 1.0f);
-		// 		break;
-		// 	case 3:
-		// 		color = new Color(0.0f, 1.0f, 0.0f, 1.0f);
-		// 		break;
-		// 	case 4:
-		// 		color = new Color(1.0f, 0.0f, 0.0f, 1.0f);
-		// 		break;
-		// }
 		float width = (numOfData != 0) ? area.width / numOfData : area.width;
 		float x = width * num + area.x + width / 2;
-		float areaY = area.height * UnityEngine.Random.Range(yMin, yMax) / 2;
-		float y = (curArea % 2 != 0) ? areaY + 1.0f : areaY - area.y / 2 - 1.0f; 
+		float yOffset = yMax / 2;
+		if (curArea % 2 != 0) yOffset *= -1;
+		float y = UnityEngine.Random.Range(yMin, yMax / 2) + yOffset;
+		  
 		Vector3 pos = new Vector3(x, y, -1.0f);
 		float scale = UnityEngine.Random.Range(sizeMin, sizeMax);
 		float rotate = UnityEngine.Random.Range(-rotateAngle, rotateAngle);

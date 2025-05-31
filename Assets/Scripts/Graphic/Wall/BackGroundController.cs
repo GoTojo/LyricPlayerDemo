@@ -8,7 +8,9 @@ public class BackGroundController : MonoBehaviour
 {
 	public Parameter parameter;
 	// Start is called before the first frame update
-	public static Rect area = new Rect(-10, 5, 20, 10);
+	public Rect area = new Rect(-30, 5, 60, 10);
+	public float sizeMin = 0.001f;
+	public float sizeMax = 0.003f;
 	public GameObject wall;
 	public static int numOfCube = 8;
 	private Parameter.WallType type;
@@ -69,9 +71,10 @@ public class BackGroundController : MonoBehaviour
 			GameObject obj = (GameObject)Resources.Load("Prefab/Wall/BGQuad");
 			float x = Random.Range((float)area.x, (float)area.x + (float)area.width);
 			float y = Random.Range((float)area.y, (float)area.y - (float)area.height);
-			float size = Random.Range(2.0f, 5.0f);
+			float size = Random.Range(sizeMin, sizeMax);
 			Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
-			GameObject instantiatedObj = Instantiate(obj, new Vector3(x, y, 0.1f), rotation);
+			GameObject instantiatedObj = Instantiate(obj, new Vector3(x, y, 8f), rotation);
+			instantiatedObj.transform.parent = wall.transform;
 			instantiatedObj.transform.localScale = new Vector3(size, size, 0.01f);
 			instantiatedObj.transform.SetParent(wall.transform);
 			bgObjectControllers.Add(new BGQuadController(instantiatedObj));
@@ -91,6 +94,7 @@ public class BackGroundController : MonoBehaviour
 			GameObject obj = new GameObject();
 			obj.transform.SetParent(wall.transform);
 			LineRenderer lineRenderer = obj.AddComponent<LineRenderer>();
+			// lineRenderer.useWorldSpace = false;
 			Material material = new Material(Shader.Find("Sprites/Default"));
 			lineRenderer.material = material;
 			MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
