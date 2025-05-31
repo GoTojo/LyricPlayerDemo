@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RamenController : MonoBehaviour
+public class RotateRamen : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()
@@ -13,6 +13,6 @@ public class RamenController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        gameObject.transform.Rotate(new Vector3(0, 300f, 0) * Time.deltaTime);
+		this.transform.Rotate(new Vector3(0, 300f, 0) * Time.deltaTime);        
     }
 }

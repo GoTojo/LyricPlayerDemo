@@ -15,9 +15,9 @@ public class Parameter
 	public static int NoteLyricFontDown = 0x34;
 	public static int NoteLyricFontUp = 0x35;
 		public static int NoteParticleSnow = 0x36;
-	public static int Note37 = 0x37;
+	public static int NoteRamenDown = 0x37;
 		public static int NoteParticleConfetti = 0x38;
-	public static int Note39 = 0x39;
+	public static int NoteRamenUp = 0x39;
 		public static int NoteParticleKiraKira = 0x3A;
 	public static int Note3B = 0x3B;
 
