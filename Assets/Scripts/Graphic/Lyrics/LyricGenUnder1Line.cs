@@ -107,7 +107,7 @@ public class LyricGenUnder1Line : MonoBehaviour
 			this.sentenceList = lyricGen.sentenceList;
 			TMP_FontAsset font = FontResource.Instance.GetFont();
 			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-			Vector3 pos = new Vector3(0, -4, -1.0f);
+			Vector3 pos = new Vector3(0, -6, -1.0f);
 			float scale = 1f;
 			float rotate = 0;
 			Vector2 size = new Vector2(20, 2);
