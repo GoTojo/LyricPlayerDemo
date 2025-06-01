@@ -31115,13 +31115,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area:
     serializedVersion: 2
-    x: -20
-    y: 6
-    width: 40
+    x: -10
+    y: -6
+    width: 20
     height: 12
   sizeMin: 0.001
   sizeMax: 0.003
   wall: {fileID: 1476044166}
+  numOfCube: 20
 --- !u!1 &1661787617
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,7 +12,7 @@ public class BackGroundController : MonoBehaviour
 	public float sizeMin = 0.001f;
 	public float sizeMax = 0.003f;
 	public GameObject wall;
-	public static int numOfCube = 8;
+	public int numOfCube = 8;
 	private Parameter.WallType type;
 	private const int segments = 100;
 	private List<BGObjectController> bgObjectControllers = new List<BGObjectController>();
@@ -70,7 +70,7 @@ public class BackGroundController : MonoBehaviour
 		for (var i = 0; i < numOfCube; i++) {
 			GameObject obj = (GameObject)Resources.Load("Prefab/Wall/BGQuad");
 			float x = Random.Range((float)area.x, (float)area.x + (float)area.width);
-			float y = Random.Range((float)area.y, (float)area.y - (float)area.height);
+			float y = Random.Range((float)area.y, (float)area.y + (float)area.height);
 			float size = Random.Range(sizeMin, sizeMax);
 			Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
 			GameObject instantiatedObj = Instantiate(obj, new Vector3(x, y, 8f), rotation);

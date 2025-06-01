@@ -65,8 +65,8 @@ public class BGCircleController : BGObjectController
 	private float x;
 	private float y;
 	private float r;
-	public float colorH = 0.2f;
-	public float colorS = 0.5f;
+	public float colorH = 0f;
+	public float colorS = 0.8f;
 	public float colorV = 0.8f;
 
 	public BGCircleController(GameObject obj, Rect area) : base(obj)
@@ -76,19 +76,14 @@ public class BGCircleController : BGObjectController
 		lineRenderer = obj.GetComponent<LineRenderer>();
 		material = obj.GetComponent<Material>();
 		x = Random.Range((float)area.x, (float)area.x + (float)area.width);
-		y = Random.Range((float)area.y, (float)area.y - (float)area.height);
+		y = Random.Range((float)area.y, (float)area.y + (float)area.height);
 		r = Random.Range(1.0f, 3.0f) * zoom;
-		colorH = Random.Range(0.2f, 0.9f);
+		colorH = Random.Range(0f, 1.0f);
 		Draw();
-	}
-	public void SetColorS()
-	{
-		colorS = Random.Range(0.2f, 0.9f);
 	}
 	public override void Update()
 	{
-		if (zoom > 1.0f)
-		{
+		if (zoom > 1.0f) {
 			zoom = Mathf.Lerp(zoom, 1.0f, Time.deltaTime * 3f);
 			Draw();
 		}
@@ -135,8 +130,7 @@ public class BGCircleController : BGObjectController
 };
 
 public class BGQuadController : BGObjectController {
-	public float colorH = 0.2f;
-	public float colorS = 0.5f;
+	public float colorS = 0.8f;
 	public float colorV = 0.8f;
 	public void SetColorS() {
 		colorS = Random.Range(0.2f, 0.9f);
@@ -159,9 +153,9 @@ public class BGQuadController : BGObjectController {
 
 	private void SetColor()
 	{
-		float s = Random.Range(0.2f, 0.9f);
-		Color color = Color.HSVToRGB(colorH, s, colorV);
-		color.a = 0.8f;
+		float h = Random.Range(0f, 1f);
+		Color color = Color.HSVToRGB(h, colorS, colorV);
+		color.a = 0.7f;
 		// Debug.Log($"Color: {color}");
 		renderer.material.color = color;
 	}
