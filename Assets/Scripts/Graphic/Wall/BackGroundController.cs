@@ -12,7 +12,8 @@ public class BackGroundController : MonoBehaviour
 	public float sizeMin = 0.001f;
 	public float sizeMax = 0.003f;
 	public GameObject wall;
-	public int numOfCube = 8;
+	public int numOfCube = 20;
+	public int numOfCircle = 10;
 	private Parameter.WallType type;
 	private const int segments = 100;
 	private List<BGObjectController> bgObjectControllers = new List<BGObjectController>();
@@ -73,7 +74,7 @@ public class BackGroundController : MonoBehaviour
 			float y = Random.Range((float)area.y, (float)area.y + (float)area.height);
 			float size = Random.Range(sizeMin, sizeMax);
 			Quaternion rotation = Quaternion.Euler(0, 0, Random.Range(0.0f, 360.0f));
-			GameObject instantiatedObj = Instantiate(obj, new Vector3(x, y, 8f), rotation);
+			GameObject instantiatedObj = Instantiate(obj, new Vector3(x, y, 19), rotation);
 			instantiatedObj.transform.parent = wall.transform;
 			instantiatedObj.transform.localScale = new Vector3(size, size, 0.01f);
 			instantiatedObj.transform.SetParent(wall.transform);
@@ -90,9 +91,10 @@ public class BackGroundController : MonoBehaviour
 			}
 		}
 		bgObjectControllers.RemoveAll(controller => controller.fDestroy == true);
-		for (var i = 0; i < numOfCube; i++) {
+		for (var i = 0; i < numOfCircle; i++) {
 			GameObject obj = new GameObject();
 			obj.transform.SetParent(wall.transform);
+			obj.transform.position = new Vector3(0, 0, 0);
 			LineRenderer lineRenderer = obj.AddComponent<LineRenderer>();
 			// lineRenderer.useWorldSpace = false;
 			Material material = new Material(Shader.Find("Sprites/Default"));
@@ -100,7 +102,6 @@ public class BackGroundController : MonoBehaviour
 			MeshRenderer meshRenderer = obj.AddComponent<MeshRenderer>();
 			meshRenderer.material = material;
 			lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-			meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 			lineRenderer.widthMultiplier = 0.05f;
 			bgObjectControllers.Add(new BGCircleController(obj, area));
 		}

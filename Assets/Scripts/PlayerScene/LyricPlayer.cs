@@ -36,11 +36,11 @@ public class LyricPlayer : MonoBehaviour
 		foreach(LyricList lyricList in lyricLists) {
 			lyricList.Init();
 		}
-		GameObject lyricObj = GameObject.Find("SimpleLyricGen");
-		SimpleLyricGen simpleLyricGen = lyricObj.GetComponent<SimpleLyricGen>();
-		if (simpleLyricGen) {
-			simpleLyricGen.Init();
-		}
+		// GameObject lyricObj = GameObject.Find("SimpleLyricGen");
+		// SimpleLyricGen simpleLyricGen = lyricObj.GetComponent<SimpleLyricGen>();
+		// if (simpleLyricGen) {
+		// 	simpleLyricGen.Init();
+		// }
 		FontResource fontResource = FontResource.Instance;
 		fontResource.LoadFont();
 		SentenceList sentenceList = GetComponent<SentenceList>();

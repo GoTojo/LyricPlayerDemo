@@ -5960,7 +5960,7 @@ GameObject:
   - component: {fileID: 410511434}
   - component: {fileID: 410511436}
   - component: {fileID: 410511435}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Snow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15743,6 +15743,10 @@ PrefabInstance:
       value: Wall
       objectReference: {fileID: 0}
     - target: {fileID: 2674436535988290011, guid: 4dfec0c01339542458b71656d8d74932, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2674436535988290011, guid: 4dfec0c01339542458b71656d8d74932, type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
@@ -15879,7 +15883,7 @@ GameObject:
   m_Component:
   - component: {fileID: 635129804}
   - component: {fileID: 635129803}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ramen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15931,7 +15935,7 @@ GameObject:
   - component: {fileID: 652939499}
   - component: {fileID: 652939501}
   - component: {fileID: 652939500}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: confetti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20760,7 +20764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669801530}
   - component: {fileID: 669801529}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Lyric
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20798,8 +20802,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 2032725705}
+  m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &705507993
@@ -21034,7 +21037,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 951077386}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31117,14 +31120,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area:
     serializedVersion: 2
-    x: -10
-    y: -6
-    width: 20
-    height: 12
+    x: -15
+    y: -7
+    width: 30
+    height: 14
   sizeMin: 0.001
-  sizeMax: 0.003
+  sizeMax: 0.005
   wall: {fileID: 1476044166}
   numOfCube: 20
+  numOfCircle: 10
 --- !u!1 &1564328891
 GameObject:
   m_ObjectHideFlags: 0
@@ -31136,7 +31140,7 @@ GameObject:
   - component: {fileID: 1564328894}
   - component: {fileID: 1564328893}
   - component: {fileID: 1564328892}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: RamenStorm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41777,61 +41781,6 @@ LightingSettings:
   m_PVRTiledBaking: 0
   m_NumRaysToShootPerTexel: -1
   m_RespectSceneVisibilityWhenBakingGI: 0
---- !u!1 &2032725704
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2032725705}
-  - component: {fileID: 2032725708}
-  m_Layer: 0
-  m_Name: SimpleLyricGen
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2032725705
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032725704}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 669801530}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2032725708
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2032725704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6632c09a44b8d4199b0d852a097af7b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  area:
-    serializedVersion: 2
-    x: -10
-    y: 3
-    width: 20
-    height: 6
-  sizeMin: 0.8
-  sizeMax: 0.8
-  yMin: 0
-  yMax: 3
-  rotateAngle: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
