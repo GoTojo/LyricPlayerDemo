@@ -21,6 +21,7 @@ public class Visualizer : MonoBehaviour
 	public GameObject zeknova;
 	public GameObject snow;
 	public GameObject confetti;
+	public GameObject ramen;
 
 	public Parameter.ParticleType	particleType;
 	public Parameter.UnityChanType	unityChanType;
@@ -140,6 +141,7 @@ public class Visualizer : MonoBehaviour
 		snow.SetActive(false);
 		confetti.SetActive(false);
 		zeknova.SetActive(false);
+		ramen.SetActive(false);
 		if (type != particleType) {
 			switch (type) {
 			case Parameter.ParticleType.Snow:
@@ -153,6 +155,9 @@ public class Visualizer : MonoBehaviour
 				break;
 			case Parameter.ParticleType.Zeknova:
 				zeknova.SetActive(true);
+				break;
+			case Parameter.ParticleType.Ramen:
+				ramen.SetActive(true);
 				break;
 			default:
 				break;
@@ -202,6 +207,8 @@ public class Visualizer : MonoBehaviour
 			ChangeParticle(Parameter.ParticleType.Confetti);
 		} else if (note == Parameter.NoteParticleKiraKira) {
 			ChangeParticle(Parameter.ParticleType.Zeknova);
+		} else if (note == Parameter.NoteParticleRamen) {
+			ChangeParticle(Parameter.ParticleType.Ramen);
 		} else if (note == Parameter.NoteUnityChanBlack) {
 			ChangeUnityChan(Parameter.UnityChanType.Black);
 		} else if (note == Parameter.NoteUnityChanColor) {
