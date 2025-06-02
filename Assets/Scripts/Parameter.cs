@@ -25,8 +25,8 @@ public class Parameter
 		public static int NoteUnityChanBlack = 0x3D;
 	public static int NoteWallTypeCircle = 0x3E;
 		public static int NoteUnityChanColor = 0x3F;
-	public static int NoteRamenDown = 0x40;
-	public static int NoteRamenUp = 0x41;
+	public static int NoteRamenStart = 0x40;
+	public static int Note41 = 0x41;
 		public static int Note42 = 0x42;
 	public static int Note43 = 0x43;
 		public static int NoteSongDown = 0x44;

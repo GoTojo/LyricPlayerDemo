@@ -8,17 +8,25 @@ public class RamenController : MonoBehaviour
 	private GameObject ramen;
 	private Vector3 orgScale = new Vector3(3, 3, 3);
 	public Rect area = new Rect(-10, 4, 20, 8);
-	public int grid = 2;
+	private int grid = 0;
+	public int maxGrid = 8;
+	private bool is1st = false;
 	private int numOfItem = 1;
 	private List<GameObject> objs = new List<GameObject>();
 	// Start is called before the first frame update
 	void Start()
 	{
 		MidiMaster.noteOnDelegate += NoteOn;
-		numOfItem = grid * grid;
+		MidiWatcher midiWatcher = MidiWatcher.Instance;
+		midiWatcher.onBeatIn += BeatIn;
+		numOfItem = 0;
 		Create();
 	}
-
+	public void Release()
+	{
+		MidiWatcher midiWatcher = MidiWatcher.Instance;
+		midiWatcher.onBeatIn -= BeatIn;
+	}
 	// Update is called once per frame
 	void Update()
 	{
@@ -42,13 +50,13 @@ public class RamenController : MonoBehaviour
 		int numOfLine = grid;
 		float width = area.width / numOfRow;
 		float height = area.height / numOfLine;
-		float x = area.x + (width * row) + (width / 2); 
-		float y = area.y - ((height * line) + (height / 2)); 
+		float x = area.x + (width * row) + (width / 2);
+		float y = area.y - ((height * line) + (height / 2));
 		Vector3 pos = new Vector3(x, y, 0);
 		return pos;
 	}
 
- 	private void Create()
+	private void Create()
 	{
 		if (grid == 0) return;
 		Vector3 scale = orgScale / grid;
@@ -61,11 +69,27 @@ public class RamenController : MonoBehaviour
 		}
 	}
 
+	public void CreateRamen()
+	{
+		grid = 1;
+		is1st = true;
+	}
+
 	private void NoteOn(MidiChannel channel, int note, float velocity)
 	{
-		if (note == Parameter.NoteRamenDown) {
-			grid--;
-		} else if (note == Parameter.NoteRamenUp) {
+		if (note == Parameter.NoteRamenStart) {
+			CreateRamen();
+		}
+	}
+
+	public void BeatIn(int numerator, int denominator, uint currentMsec)
+	{
+		// if (is1st) {
+		// 	is1st = false;
+		// } else
+		if (grid == maxGrid) {
+			grid = 0;
+		} else if (grid > 0) {
 			grid++;
 		}
 	}
