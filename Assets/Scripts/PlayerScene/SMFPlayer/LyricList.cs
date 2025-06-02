@@ -5,14 +5,18 @@ using UnityEngine;
 using System;
 using System.Text;
 using System.IO;
+using Unity.VisualScripting;
 
 [Serializable]
 public struct LyricData {
 	public uint msec;
 	public string sentence;
-	public LyricData(uint msec, string sentence) {
+	public List<string> effect;
+	public LyricData(uint msec, string sentence)
+	{
 		this.msec = msec;
 		this.sentence = sentence;
+		this.effect = new List<string>();
 	}
 }
 
