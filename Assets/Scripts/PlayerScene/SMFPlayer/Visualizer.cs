@@ -25,9 +25,10 @@ public class Visualizer : MonoBehaviour
 
 	public Parameter.ParticleType	particleType;
 	public Parameter.UnityChanType	unityChanType;
+	
+	private int particleMeasCount = 0;
 
-	public enum LyricMode
-	{
+	public enum LyricMode {
 		Original,
 		Kanji
 	}
@@ -135,6 +136,12 @@ public class Visualizer : MonoBehaviour
 
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
 	{
+		if (particleMeasCount > 0) {
+			particleMeasCount--;
+			if (particleMeasCount == 0) {
+				ChangeParticle(Parameter.ParticleType.Off);
+			}
+		}
 	}
 
 	private void ChangeParticle(Parameter.ParticleType type) {
@@ -151,7 +158,7 @@ public class Visualizer : MonoBehaviour
 				confetti.SetActive(true);
 				break;
 			case Parameter.ParticleType.Sakura:
-			// not yet
+				// not yet
 				break;
 			case Parameter.ParticleType.Zeknova:
 				zeknova.SetActive(true);
@@ -163,6 +170,7 @@ public class Visualizer : MonoBehaviour
 				break;
 			}
 			particleType = type;
+			particleMeasCount = 4;
 		} else {
 			particleType = Parameter.ParticleType.Off;
 		}
