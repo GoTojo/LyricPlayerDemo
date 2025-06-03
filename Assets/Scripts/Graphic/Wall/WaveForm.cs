@@ -6,7 +6,7 @@ using UnityEngine.Events;
 
 public class Waveform : MonoBehaviour
 {
-	private AudioSource audioSource;
+	public AudioSource audioSource;
 	private float[] audioData;
 	[HideInInspector] public float[] spectrumData = null;
 	private int dataOffset = 0;
@@ -16,6 +16,7 @@ public class Waveform : MonoBehaviour
 	public float waveLength = 20f;
 	public float yLength = 3f;
 	public float yOffset = 3f;
+	public bool active = false;
 	private LineRenderer lineRenderer;
 	private float zLine = 0.1f;
 
@@ -31,7 +32,6 @@ public class Waveform : MonoBehaviour
 		meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 		lineRenderer.widthMultiplier = 0.05f;
 		yLength = 3.0f;
-		audioSource = GetComponent<AudioSource>();
 		var clip = audioSource.clip;
 		audioData = new float[clip.channels * clip.samples];
 		clip.GetData(audioData, dataOffset);
@@ -48,20 +48,21 @@ public class Waveform : MonoBehaviour
 
 	private void FixedUpdate()
 	{
-		if (audioSource.isPlaying && audioSource.timeSamples < audioData.Length)
-		{
-			var startIndex = audioSource.timeSamples;
-			var endIndex = audioSource.timeSamples + sampleStep;
-			Inflate(
-				audioData, startIndex, endIndex,
-				samplingLinePoints,
-				waveLength, -waveLength / 2f, yLength
-			);
-			Render(samplingLinePoints);
-		}
-		else
-		{
-			Reset();
+		if (active) {
+			if (audioSource.isPlaying && audioSource.timeSamples < audioData.Length) {
+				var startIndex = audioSource.timeSamples;
+				var endIndex = audioSource.timeSamples + sampleStep;
+				Inflate(
+					audioData, startIndex, endIndex,
+					samplingLinePoints,
+					waveLength, -waveLength / 2f, yLength
+				);
+				Render(samplingLinePoints);
+			} else {
+				Reset();
+			}
+		} else {
+			lineRenderer.positionCount = 0;
 		}
 	}
 

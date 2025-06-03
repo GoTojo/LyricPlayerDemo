@@ -2,7 +2,7 @@
 # ブレースの前に改行を入れる設定
 # メソッド・型では改行あり
 csharp_new_line_before_open_brace_methods = true
-csharp_new_line_before_open_brace = never
+# csharp_new_line_before_open_brace = never
 csharp_new_line_before_else = false
 csharp_new_line_before_catch = false
 csharp_new_line_before_finally = false
@@ -16,8 +16,16 @@ csharp_new_line_before_open_brace_control_blocks = false
 # プロパティ、ラムダなどは必要なら追加調整可能（ここではオフ）
 csharp_new_line_before_open_brace_properties = false
 csharp_new_line_before_open_brace_accessors = false
-# csharp_new_line_before_open_brace_anonymous_methods = false
+csharp_new_line_before_open_brace_anonymous_methods = true
+csharp_indent_switch_labels = false
+
 [*]
+indent_style = tab
+indent_size = 4
+indent_case_contents_when_block = false
+indent_case_contents = true
+indent_case_labels = false
+
 cpp_indent_braces=false
 cpp_indent_multi_line_relative_to=outermost_parenthesis
 cpp_indent_within_parentheses=indent
