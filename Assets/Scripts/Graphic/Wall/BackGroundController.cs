@@ -14,7 +14,8 @@ public class BackGroundController : MonoBehaviour
 	public GameObject wall;
 	public int numOfCube = 20;
 	public int numOfCircle = 10;
-	private Parameter.WallType type;
+	public bool active = false;
+	public Parameter.WallType type;
 	private const int segments = 100;
 	private List<BGObjectController> bgObjectControllers = new List<BGObjectController>();
  
@@ -41,13 +42,26 @@ public class BackGroundController : MonoBehaviour
 
 	// Update is called once per frame
 	void Update() {
-		foreach (BGObjectController controller in bgObjectControllers) {
-			controller.Update();
+		if (active) {
+			foreach (BGObjectController controller in bgObjectControllers) {
+				controller.Update();
+			}
+		} else {
+			DestroyAll();
 		}
 	}
 
+	private void DestroyAll()
+	{
+		foreach (BGObjectController controller in bgObjectControllers) {
+			Destroy(controller.gameObject);
+			controller.Stop();
+		}
+		bgObjectControllers.Clear();
+	}
 	private void CreateNew()
 	{
+		if (!active) return;
 		if (type == Parameter.WallType.Circle) {
 			CreateCircle();
 		} else {
