@@ -20764,6 +20764,7 @@ GameObject:
   m_Component:
   - component: {fileID: 669801530}
   - component: {fileID: 669801529}
+  - component: {fileID: 669801531}
   m_Layer: 6
   m_Name: Lyric
   m_TagString: Untagged
@@ -20805,6 +20806,27 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &669801531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669801528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6632c09a44b8d4199b0d852a097af7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area:
+    serializedVersion: 2
+    x: -10
+    y: 0
+    width: 20
+    height: 2
+  sizeMin: 0.8
+  sizeMax: 0.8
+  rotateAngle: 0
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -30970,6 +30992,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791075e94e1234bda8b8ada6fc4a424a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  simpleLyricGen: {fileID: 669801531}
 --- !u!82 &1095297736
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31173,6 +31196,8 @@ MonoBehaviour:
   wall: {fileID: 1476044166}
   numOfCube: 20
   numOfCircle: 10
+  active: 0
+  type: 0
 --- !u!1 &1564328891
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,6 +22,10 @@ public class RamenController : MonoBehaviour
 		numOfItem = 0;
 		Create();
 	}
+	void OnDestroy()
+	{
+		MidiMaster.noteOnDelegate -= NoteOn;
+	}
 	public void Release()
 	{
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
