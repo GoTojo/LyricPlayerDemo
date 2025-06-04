@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RotateCharacter : MonoBehaviour
@@ -10,6 +12,8 @@ public class RotateCharacter : MonoBehaviour
 	private Dictionary<Renderer, Material[]> originalMaterials = new Dictionary<Renderer, Material[]>();
 	public bool isSilhouette = true;
 	private uint beatCount = 0;
+	private float targetTime = 0;
+	private bool fRotate = false;
 
 	void Start()
 	{
@@ -36,24 +40,28 @@ public class RotateCharacter : MonoBehaviour
 	void Update()
 	{
 		Transform transform = this.gameObject.transform;
-		if (fMidiTrigger) {
-			transform.rotation = Quaternion.Euler( 0f, 180f, 0f);
-			fMidiTrigger = false;
-		} else if (transform.eulerAngles.y <= 120 || transform.eulerAngles.y >= 180) {
-			transform.Rotate( 0f, 5f, 0f);
+		if (fRotate) {
+			// 1/4小節で300度回す
+			float deltaAngle = 300 * Time.deltaTime / targetTime;
+			transform.Rotate(0f, deltaAngle, 0f);
+			float angle = transform.eulerAngles.y;
+			if (angle >= 120 && angle < 180) {
+				transform.rotation = Quaternion.Euler(0f, 120f, 0f);
+				fRotate = false;
+			}
 		}
 	}
 
-	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
-	{
-		// fMidiTrigger = true;
+	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
+		// 1/4小節
+		transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+		targetTime = (float)measureInterval / 4000;
+		fRotate = true;
+		Debug.Log($"targetTime: {targetTime}");
 	}
 
 	public void BeatIn(int numerator, int denominator, uint currentMsec)
 	{
 		beatCount++;
-		if (beatCount % 2 == 0) {
-			fMidiTrigger = true;
-		}
 	}
 }
