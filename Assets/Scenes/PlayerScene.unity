@@ -10830,7 +10830,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &503062540
 Transform:
   m_ObjectHideFlags: 0
@@ -20790,6 +20790,7 @@ MonoBehaviour:
     y: 5
     width: 20
     height: 10
+  active: 1
   sentenceList: {fileID: 1095297744}
 --- !u!4 &669801530
 Transform:
@@ -20827,6 +20828,9 @@ MonoBehaviour:
   sizeMin: 0.8
   sizeMax: 0.8
   rotateAngle: 0
+  active: 0
+  measureCount: 1
+  eventMap: {fileID: 1095297742}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -30992,7 +30996,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 791075e94e1234bda8b8ada6fc4a424a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  simpleLyricGen: {fileID: 669801531}
 --- !u!82 &1095297736
 AudioSource:
   m_ObjectHideFlags: 0
@@ -31113,6 +31116,9 @@ MonoBehaviour:
   snow: {fileID: 410511433}
   confetti: {fileID: 652939498}
   ramen: {fileID: 1564328891}
+  backGroundController: {fileID: 1476044171}
+  simpleLyricGen: {fileID: 669801531}
+  ramenController: {fileID: 635129803}
   particleType: 0
   unityChanType: 0
 --- !u!114 &1095297742
@@ -41713,7 +41719,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1801223688
 Transform:
   m_ObjectHideFlags: 0

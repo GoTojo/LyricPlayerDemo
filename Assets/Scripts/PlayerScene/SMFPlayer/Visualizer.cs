@@ -22,12 +22,15 @@ public class Visualizer : MonoBehaviour {
 	public GameObject confetti;
 	public GameObject ramen;
 	public BackGroundController backGroundController;
+	public SimpleLyricGen simpleLyricGen;
+	public RamenController ramenController;
 
 	public Parameter.ParticleType particleType;
 	public Parameter.UnityChanType unityChanType;
 
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
+	private int newMeasure = -1;
 
 	public enum LyricMode {
 		Original,
@@ -68,6 +71,17 @@ public class Visualizer : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update() {
+		if (newMeasure >= 0) {
+			for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
+				if (sentenceList.IsActive(track, 1)) {
+					LyricData lyricData = sentenceList.GetSentence(track, newMeasure, 1);
+					foreach (string effect in lyricData.effect) {
+						ApplyEffectDelayed(effect);
+					}
+				}
+			}
+			newMeasure = -1;
+		}
 	}
 
 	public void SetSMFPlayer(SMFPlayer player, SMFPlayer _kanjiPlayer) {
@@ -133,10 +147,11 @@ public class Visualizer : MonoBehaviour {
 			if (sentenceList.IsActive(track, 1)) {
 				LyricData lyricData = sentenceList.GetSentence(track, measure, 1);
 				foreach (string effect in lyricData.effect) {
-					ApplyEffect(effect);
+					ApplyEffectNow(effect);
 				}
 			}
 		}
+		newMeasure = measure;
 	}
 
 	private void ChangeParticle(Parameter.ParticleType type) {
@@ -145,6 +160,7 @@ public class Visualizer : MonoBehaviour {
 		zeknova.SetActive(false);
 		ramen.SetActive(false);
 		if (type != particleType) {
+			particleMeasCount = 4;
 			switch (type) {
 			case Parameter.ParticleType.Snow:
 				snow.SetActive(true);
@@ -160,12 +176,12 @@ public class Visualizer : MonoBehaviour {
 				break;
 			case Parameter.ParticleType.Ramen:
 				ramen.SetActive(true);
+				particleMeasCount = 2;
 				break;
 			default:
 				break;
 			}
 			particleType = type;
-			particleMeasCount = 4;
 		} else {
 			particleType = Parameter.ParticleType.Off;
 		}
@@ -217,7 +233,17 @@ public class Visualizer : MonoBehaviour {
 		}
 	}
 
-	private void ApplyEffect(string effect) {
+	private void ApplyEffectNow(string effect) {
+		switch (effect) {
+		case "SimpleLyricOn":
+			simpleLyricGen.active = true;
+			break;
+		case "SimpleLyricOff":
+			simpleLyricGen.active = false;
+			break;
+		}
+	}
+	private void ApplyEffectDelayed(string effect) {
 		switch (effect) {
 		case "WallRect":
 			backGroundController.SetWallType(Parameter.WallType.Rectangle);
@@ -227,6 +253,9 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "WallOff":
 			backGroundController.SetWallType(Parameter.WallType.Off);
+			break;
+		case "RamenCup":
+			ramenController.CreateRamen();
 			break;
 		case "Snow":
 			ChangeParticle(Parameter.ParticleType.Snow);
@@ -251,6 +280,12 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "UCOff":
 			ChangeUnityChan(Parameter.UnityChanType.Off);
+			break;
+		case "SimpleLyricOn":
+			simpleLyricGen.active = true;
+			break;
+		case "SimpleLyricOff":
+			simpleLyricGen.active = false;
 			break;
 		}
 	}
