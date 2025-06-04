@@ -7,8 +7,7 @@ using MidiJack;
 using System;
 using System.Collections.Generic;
 
-public class Visualizer : MonoBehaviour
-{
+public class Visualizer : MonoBehaviour {
 	public Parameter parameter;
 	public Rect area = new Rect(-2, 5, 4, 10);
 	public SMFPlayer smfPlayer;
@@ -22,19 +21,20 @@ public class Visualizer : MonoBehaviour
 	public GameObject snow;
 	public GameObject confetti;
 	public GameObject ramen;
+	public BackGroundController backGroundController;
 
-	public Parameter.ParticleType	particleType;
-	public Parameter.UnityChanType	unityChanType;
-	
+	public Parameter.ParticleType particleType;
+	public Parameter.UnityChanType unityChanType;
+
 	private int particleMeasCount = 0;
+	private SentenceList sentenceList;
 
 	public enum LyricMode {
 		Original,
 		Kanji
 	}
 
-	void Awake()
-	{
+	void Awake() {
 		lyricMode = (LyricMode)PlayerPrefs.GetInt("LyricMode");
 		particleType = (Parameter.ParticleType)PlayerPrefs.GetInt("Parameter.ParticleType");
 		unityChanType = (Parameter.UnityChanType)PlayerPrefs.GetInt("Parameter.UnityChanType");
@@ -49,32 +49,28 @@ public class Visualizer : MonoBehaviour
 		midiWatcher.onBeatIn += BeatIn;
 		midiWatcher.onMeasureIn += MeasureIn;
 	}
-	void OnDestroy()
-	{
+	void OnDestroy() {
 		MidiMaster.noteOnDelegate -= NoteOn;
 		MidiMaster.noteOffDelegate -= NoteOff;
 		MidiMaster.knobDelegate -= knobChanged;
 		// Debug.Log("Destract");
 	}
-	public void BackupParams()
-	{
+	public void BackupParams() {
 		PlayerPrefs.SetInt("LyricMode", (int)lyricMode);
 		PlayerPrefs.SetInt("ParticleType", (int)particleType);
 		PlayerPrefs.SetInt("UnityChanType", (int)unityChanType);
-		// 次回起動時ユニティちゃんがスクリプトで色が変えるためactiveにしておく
+		// 次回起動時ユニティちゃんがスクリプトで色を変えるためactiveにしておく
 		unityChanBlack.SetActive(true);
 	}
-	void Start()
-	{
-
+	void Start() {
+		GameObject mainObj = GameObject.Find("MainGameObject");
+		sentenceList = mainObj.GetComponent<SentenceList>();
 	}
 	// Update is called once per frame
-	void Update()
-	{
+	void Update() {
 	}
 
-	public void SetSMFPlayer(SMFPlayer player, SMFPlayer _kanjiPlayer)
-	{
+	public void SetSMFPlayer(SMFPlayer player, SMFPlayer _kanjiPlayer) {
 		smfPlayer = player;
 		kanjiPlayer = _kanjiPlayer;
 		eventMap = GetComponent<MidiEventMapAccessor>();
@@ -82,11 +78,10 @@ public class Visualizer : MonoBehaviour
 		eventMap.SetCurrentMap(1);
 		kanjiPlayer.mute = false;
 		ChangeParticle(particleType);
-		ChangeUnityChan(unityChanType);
+		SetUnityChan(unityChanType);
 	}
 
-	public void ToggleLyricMode()
-	{
+	public void ToggleLyricMode() {
 		if (lyricMode == LyricMode.Kanji) {
 			lyricMode = LyricMode.Original;
 			// Debug.Log($"LyricMode: kanji");
@@ -97,46 +92,49 @@ public class Visualizer : MonoBehaviour
 		PlayerPrefs.SetInt("LyricMode", (int)lyricMode);
 	}
 
-	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec)
-	{
+	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {
 		byte status = (byte)(midiEvent[0] & 0xF0);
 		int ch = (status & 0xF0) >> 4;
 		switch (status) {
-			case 0x90:
-				if (midiEvent[2] == 0) {
-					// Debug.Log($"NoteOff, position: {position}");
-				} else {
-					// Debug.Log($"NoteOn, position: {position}");
-				}
-				break;
-			case 0x80:
+		case 0x90:
+			if (midiEvent[2] == 0) {
 				// Debug.Log($"NoteOff, position: {position}");
-				break;
-			default:
-				// Debug.Log($"MIDIData Status = {status}");
-				break;
+			} else {
+				// Debug.Log($"NoteOn, position: {position}");
+			}
+			break;
+		case 0x80:
+			// Debug.Log($"NoteOff, position: {position}");
+			break;
+		default:
+			// Debug.Log($"MIDIData Status = {status}");
+			break;
 		}
 	}
 
-	public void LyricIn(int track, string lyric, float position, uint currentMsec)
-	{
+	public void LyricIn(int track, string lyric, float position, uint currentMsec) {
 		// Debug.Log($"lyric: {lyric}, position: {position}");
 	}
-	public void TempoIn(float msecPerQuaterNote, uint tempo, uint currentMsec)
-	{
+	public void TempoIn(float msecPerQuaterNote, uint tempo, uint currentMsec) {
 	}
 
-	public void BeatIn(int numerator, int denominator, uint currentMsec)
-	{
+	public void BeatIn(int numerator, int denominator, uint currentMsec) {
 		// LyricItem.OnBeat += () => { };
 	}
 
-	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
-	{
+	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
 		if (particleMeasCount > 0) {
 			particleMeasCount--;
 			if (particleMeasCount == 0) {
 				ChangeParticle(Parameter.ParticleType.Off);
+			}
+		}
+		for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
+			if (sentenceList.IsActive(track, 1)) {
+				LyricData lyricData = sentenceList.GetSentence(track, measure, 1);
+				foreach (string effect in lyricData.effect) {
+					ApplyEffect(effect);
+				}
 			}
 		}
 	}
@@ -172,30 +170,30 @@ public class Visualizer : MonoBehaviour
 			particleType = Parameter.ParticleType.Off;
 		}
 	}
-
-	private void ChangeUnityChan(Parameter.UnityChanType type)
-	{
+	private void SetUnityChan(Parameter.UnityChanType type) {
+		switch (type) {
+		case Parameter.UnityChanType.Black:
+			unityChanBlack.SetActive(true);
+			break;
+		case Parameter.UnityChanType.Color:
+			unityChanColor.SetActive(true);
+			break;
+		default:
+			break;
+		}
+	}
+	private void ChangeUnityChan(Parameter.UnityChanType type) {
 		unityChanBlack.SetActive(false);
 		unityChanColor.SetActive(false);
 		if (type != unityChanType) {
-			switch (type) {
-			case Parameter.UnityChanType.Black:
-				unityChanBlack.SetActive(true);
-				break;
-			case Parameter.UnityChanType.Color:
-				unityChanColor.SetActive(true);
-				break;
-			default:
-				break;
-			}
+			SetUnityChan(type);
 			unityChanType = type;
 		} else {
 			unityChanType = Parameter.UnityChanType.Off;
 		}
 	}
 
-	private void NoteOn(MidiChannel channel, int note, float velocity)
-	{
+	private void NoteOn(MidiChannel channel, int note, float velocity) {
 		if (note == Parameter.NoteLyricTypeDown) {
 		} else if (note == Parameter.NoteLyricTypeUp) {
 		} else if (note == Parameter.NoteLyricFontDown) {
@@ -219,13 +217,49 @@ public class Visualizer : MonoBehaviour
 		}
 	}
 
-	private void NoteOff(MidiChannel channel, int note)
-	{
+	private void ApplyEffect(string effect) {
+		switch (effect) {
+		case "WallRect":
+			backGroundController.SetWallType(Parameter.WallType.Rectangle);
+			break;
+		case "WallCircle":
+			backGroundController.SetWallType(Parameter.WallType.Circle);
+			break;
+		case "WallOff":
+			backGroundController.SetWallType(Parameter.WallType.Off);
+			break;
+		case "Snow":
+			ChangeParticle(Parameter.ParticleType.Snow);
+			break;
+		case "Confetti":
+			ChangeParticle(Parameter.ParticleType.Confetti);
+			break;
+		case "Sakura":
+			ChangeParticle(Parameter.ParticleType.Sakura);
+			break;
+		case "Zeknova":
+			ChangeParticle(Parameter.ParticleType.Zeknova);
+			break;
+		case "Ramen":
+			ChangeParticle(Parameter.ParticleType.Ramen);
+			break;
+		case "UCBlack":
+			ChangeUnityChan(Parameter.UnityChanType.Black);
+			break;
+		case "UCColor":
+			ChangeUnityChan(Parameter.UnityChanType.Color);
+			break;
+		case "UCOff":
+			ChangeUnityChan(Parameter.UnityChanType.Off);
+			break;
+		}
+	}
+
+	private void NoteOff(MidiChannel channel, int note) {
 		// Debug.Log("NoteOff: " + channel + ", " + note);
 	}
 
-	private void knobChanged(MidiChannel ch, int ccNum, float value)
-	{
+	private void knobChanged(MidiChannel ch, int ccNum, float value) {
 		// Debug.Log($"knobChanged: ch{ch}, cc{ccNum}: {value}");
 	}
 }

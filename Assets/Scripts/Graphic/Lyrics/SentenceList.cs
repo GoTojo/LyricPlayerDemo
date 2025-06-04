@@ -7,14 +7,12 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class SentenceList : MonoBehaviour
-{
+public class SentenceList : MonoBehaviour {
 	private MidiEventMapAccessor eventMap;
-	private List<Track> [] tracks;
-	
+	private List<Track>[] tracks;
+
 	// LyricList, MidiEventMapが初期化した後に呼ぶ
-	public void Init()
-	{
+	public void Init() {
 		GameObject mainObj = GameObject.Find("MainGameObject");
 		LyricList[] maps = mainObj.GetComponents<LyricList>();
 		eventMap = mainObj.GetComponent<MidiEventMapAccessor>();
@@ -24,8 +22,10 @@ public class SentenceList : MonoBehaviour
 			tracks[i] = maps[i].tracks;
 		}
 	}
-	public bool IsActive(int track, int map = -1)
-	{
+	public int GetNumOfTrack() {
+		return tracks.Length;
+	}
+	public bool IsActive(int track, int map = -1) {
 		if (map < 0) map = eventMap.currentMap;
 		if (map > tracks.Length) return false;
 		List<Track> trackList = tracks[map];
@@ -33,8 +33,7 @@ public class SentenceList : MonoBehaviour
 		Track trackData = trackList[track];
 		return trackData.active;
 	}
-	public LyricData GetSentence(int track, int measure, int map = -1)
-	{
+	public LyricData GetSentence(int track, int measure, int map = -1) {
 		if (map < 0) map = eventMap.currentMap;
 		LyricData emptyData = new LyricData(0, "");
 		if (map > tracks.Length) return emptyData;
@@ -44,8 +43,7 @@ public class SentenceList : MonoBehaviour
 		if (measure > trackData.lyrics.Count) return emptyData;
 		return trackData.lyrics[measure];
 	}
-	public bool IsExist(int measure, int map = -1)
-	{
+	public bool IsExist(int measure, int map = -1) {
 		if (map < 0) map = eventMap.currentMap;
 		bool fIsExist = false;
 		for (int track = 0; track < tracks[map].Count; track++) {

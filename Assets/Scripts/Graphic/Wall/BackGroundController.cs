@@ -4,8 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MidiJack;
 
-public class BackGroundController : MonoBehaviour
-{
+public class BackGroundController : MonoBehaviour {
 	public Parameter parameter;
 	// Start is called before the first frame update
 	public Rect area = new Rect(-30, 5, 60, 10);
@@ -18,9 +17,8 @@ public class BackGroundController : MonoBehaviour
 	public Parameter.WallType type;
 	private const int segments = 100;
 	private List<BGObjectController> bgObjectControllers = new List<BGObjectController>();
- 
-	void Start()
-	{
+
+	void Start() {
 		type = (Parameter.WallType)PlayerPrefs.GetInt("WallType");
 		SetColor();
 		CreateNew();
@@ -31,8 +29,7 @@ public class BackGroundController : MonoBehaviour
 
 		midiWatcher.onMeasureIn += MeasureIn;
 	}
-	void OnDestroy()
-	{
+	void OnDestroy() {
 		MidiMaster.noteOnDelegate -= NoteOn;
 		MidiMaster.noteOffDelegate -= NoteOff;
 		MidiMaster.knobDelegate -= knobChanged;
@@ -51,16 +48,14 @@ public class BackGroundController : MonoBehaviour
 		}
 	}
 
-	private void DestroyAll()
-	{
+	private void DestroyAll() {
 		foreach (BGObjectController controller in bgObjectControllers) {
 			Destroy(controller.gameObject);
 			controller.Stop();
 		}
 		bgObjectControllers.Clear();
 	}
-	private void CreateNew()
-	{
+	private void CreateNew() {
 		if (!active) return;
 		if (type == Parameter.WallType.Circle) {
 			CreateCircle();
@@ -72,8 +67,7 @@ public class BackGroundController : MonoBehaviour
 	private void SetColor() {
 	}
 
-	private void CreateCube()
-	{
+	private void CreateCube() {
 		foreach (BGObjectController controller in bgObjectControllers) {
 			if (controller.fDestroy) {
 				Destroy(controller.gameObject);
@@ -96,8 +90,7 @@ public class BackGroundController : MonoBehaviour
 		}
 	}
 
-	private void CreateCircle()
-	{
+	private void CreateCircle() {
 		foreach (BGObjectController controller in bgObjectControllers) {
 			if (controller.fDestroy) {
 				Destroy(controller.gameObject);
@@ -121,13 +114,27 @@ public class BackGroundController : MonoBehaviour
 		}
 	}
 
-	public static void BeatIn()
-	{
+	public static void BeatIn() {
 	}
 
-	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
-	{
+	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
 		CreateNew();
+	}
+
+	public void SetWallType(Parameter.WallType type) {
+		switch (type) {
+		case Parameter.WallType.Rectangle:
+			active = true;
+			this.type = Parameter.WallType.Rectangle;
+			break;
+		case Parameter.WallType.Circle:
+			active = true;
+			this.type = Parameter.WallType.Circle;
+			break;
+		case Parameter.WallType.Off:
+			active = false;
+			break;
+		}
 	}
 
 	private void NoteOn(MidiChannel channel, int note, float velocity) {
