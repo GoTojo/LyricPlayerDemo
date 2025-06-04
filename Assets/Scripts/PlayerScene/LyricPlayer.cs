@@ -3,13 +3,14 @@ using UnityEngine.SceneManagement;
 using System.Text;
 using MidiJack;
 
-public class LyricPlayer : MonoBehaviour
-{
+public class LyricPlayer : MonoBehaviour {
 	public Parameter parameter;
 	private AudioSource audioSource;
 	private static SMFPlayer smfPlayer;
 	private static SMFPlayer kanjiPlayer;
 	private bool fIsPlaying = false;
+	private const float startWaitTime = 0.1f;
+	private float startWait = startWaitTime;
 
 	void Awake()
 	{
@@ -32,8 +33,8 @@ public class LyricPlayer : MonoBehaviour
 		kanjiPlayer.midiHandler = MidiWatcher.Instance;
 		Visualizer visualizer = GetComponent<Visualizer>();
 		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer);
-		LyricList [] lyricLists = GetComponents<LyricList>();
-		foreach(LyricList lyricList in lyricLists) {
+		LyricList[] lyricLists = GetComponents<LyricList>();
+		foreach (LyricList lyricList in lyricLists) {
 			lyricList.Init();
 		}
 		FontResource fontResource = FontResource.Instance;
@@ -54,6 +55,11 @@ public class LyricPlayer : MonoBehaviour
 	}
 	void Start()
 	{
+
+	}
+
+	void StartPlayer() 
+	{
 		audioSource.Play();
 		fIsPlaying = true;
 		smfPlayer.Start();
@@ -63,6 +69,13 @@ public class LyricPlayer : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
+		if (startWait > 0) {
+			startWait -= Time.deltaTime;
+			if (startWait <= 0) {
+				StartPlayer();
+			}
+			return;
+		}
 		if (Input.GetKey(KeyCode.Space)) {
 			End();
 		} else if (fIsPlaying) {
