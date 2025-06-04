@@ -24,19 +24,18 @@ public class SentenceList : MonoBehaviour
 			tracks[i] = maps[i].tracks;
 		}
 	}
-	public bool IsActive(int track)
+	public bool IsActive(int track, int map = -1)
 	{
-		int map = eventMap.currentMap;
-		LyricData emptyData = new LyricData(0, "");
+		if (map < 0) map = eventMap.currentMap;
 		if (map > tracks.Length) return false;
 		List<Track> trackList = tracks[map];
 		if (track > trackList.Count) return false;
 		Track trackData = trackList[track];
 		return trackData.active;
 	}
-	public LyricData GetSentence(int track, int measure)
+	public LyricData GetSentence(int track, int measure, int map = -1)
 	{
-		int map = eventMap.currentMap;
+		if (map < 0) map = eventMap.currentMap;
 		LyricData emptyData = new LyricData(0, "");
 		if (map > tracks.Length) return emptyData;
 		List<Track> trackList = tracks[map];
@@ -45,10 +44,10 @@ public class SentenceList : MonoBehaviour
 		if (measure > trackData.lyrics.Count) return emptyData;
 		return trackData.lyrics[measure];
 	}
-	public bool IsExist(int measure)
+	public bool IsExist(int measure, int map = -1)
 	{
+		if (map < 0) map = eventMap.currentMap;
 		bool fIsExist = false;
-		int map = eventMap.currentMap;
 		for (int track = 0; track < tracks[map].Count; track++) {
 			string sentence = tracks[map][track].lyrics[measure].sentence;
 			if (!String.IsNullOrEmpty(sentence)) {

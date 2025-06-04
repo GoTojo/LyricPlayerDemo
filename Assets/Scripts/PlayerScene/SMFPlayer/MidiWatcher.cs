@@ -5,21 +5,13 @@
 /// 
 
 using System;
+using System.Data;
+using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;  
 
-public class MidiWatcher : MIDIHandler
+public class MidiWatcherBase : MIDIHandler
 {
-	private static MidiWatcher _instance;  // singleton
-	public static MidiWatcher Instance
-	{
-		get {
-			if (_instance == null) {
-				_instance = new MidiWatcher();
-			}
-			return _instance;
-		}
-	}
 	public delegate void midiInHandler(int track, byte[] midiEvent, float position, uint currentMsec);
 	public delegate void lyricInHandler(int track, string lyric, float position, uint currentMsec);
 	public delegate void tempoInHandler(float msecPerQuaterNote, uint tempo, uint currentMsec);
@@ -32,10 +24,7 @@ public class MidiWatcher : MIDIHandler
 	public event beatInHandler 		onBeatIn;
 	public event measureInHandler 	onMeasureIn;
 	public event eventInHandler 	onEventIn;
-
-	private MidiWatcher()
-	{
-	}
+	protected int map;
 
 	public void Clear()
 	{
@@ -45,6 +34,10 @@ public class MidiWatcher : MIDIHandler
 		onBeatIn = null;
 		onMeasureIn = null;
 		onEventIn = null;
+	}
+	public int GetMap()
+	{
+		return map;
 	}
 
 	public override void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec)
@@ -74,5 +67,43 @@ public class MidiWatcher : MIDIHandler
 	{
 		// Debug.Log($"EventIn: Event: {PlayerEvent}");
 		onEventIn?.Invoke(playerEvent);
+	}
+}
+public class MidiWatcher : MidiWatcherBase
+{
+	private static MidiWatcher _instance;  // singleton
+	public static MidiWatcher Instance
+	{
+		get
+		{
+			if (_instance == null)
+			{
+				_instance = new MidiWatcher();
+			}
+			return _instance;
+		}
+	}
+
+	private MidiWatcher()
+	{
+		map = 1;
+	}
+}
+public class SubMidiWatcher : MidiWatcherBase
+{
+	private static SubMidiWatcher _instance;  // singleton
+	public static SubMidiWatcher Instance
+	{
+		get {
+			if (_instance == null) {
+				_instance = new SubMidiWatcher();
+			}
+			return _instance;
+		}
+	}
+
+	private SubMidiWatcher()
+	{
+		map = 0;
 	}
 }

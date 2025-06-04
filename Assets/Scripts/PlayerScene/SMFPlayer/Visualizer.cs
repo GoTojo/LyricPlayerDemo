@@ -13,7 +13,7 @@ public class Visualizer : MonoBehaviour
 	public Rect area = new Rect(-2, 5, 4, 10);
 	public SMFPlayer smfPlayer;
 	public SMFPlayer kanjiPlayer;
-	private LyricMode lyricMode = LyricMode.Original;
+	private LyricMode lyricMode = LyricMode.Kanji;
 	MidiEventMapAccessor eventMap;
 
 	public GameObject unityChanBlack;
@@ -79,25 +79,22 @@ public class Visualizer : MonoBehaviour
 		kanjiPlayer = _kanjiPlayer;
 		eventMap = GetComponent<MidiEventMapAccessor>();
 		eventMap.Init(smfPlayer, kanjiPlayer);
-		SetLyricMode(LyricMode.Kanji); // 最初は漢字で始める
+		eventMap.SetCurrentMap(1);
+		kanjiPlayer.mute = false;
 		ChangeParticle(particleType);
 		ChangeUnityChan(unityChanType);
 	}
 
-	public void SetLyricMode(LyricMode mode)
+	public void ToggleLyricMode()
 	{
-		lyricMode = mode;
 		if (lyricMode == LyricMode.Kanji) {
-			smfPlayer.mute = true;
-			kanjiPlayer.mute = false;
-			eventMap.SetCurrentMap(1);
+			lyricMode = LyricMode.Original;
 			// Debug.Log($"LyricMode: kanji");
 		} else {
-			smfPlayer.mute = false;
-			kanjiPlayer.mute = true;
-			eventMap.SetCurrentMap(0);
+			lyricMode = LyricMode.Kanji;
 			// Debug.Log($"LyricMode: original");
 		}
+		PlayerPrefs.SetInt("LyricMode", (int)lyricMode);
 	}
 
 	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec)
@@ -205,10 +202,8 @@ public class Visualizer : MonoBehaviour
 			FontResource.Instance.DecFont();
 		} else if (note == Parameter.NoteLyricFontUp) {
 			FontResource.Instance.IncFont();
-		} else if (note == Parameter.NoteLyricModeOriginal) {
-			SetLyricMode(LyricMode.Original);
-		} else if (note == Parameter.NoteLyricModeKanji) {
-			SetLyricMode(LyricMode.Kanji);
+		} else if (note == Parameter.NoteLyricModeToggle) {
+			ToggleLyricMode();
 		} else if (note == Parameter.NoteParticleSnow) {
 			ChangeParticle(Parameter.ParticleType.Snow);
 		} else if (note == Parameter.NoteParticleConfetti) {

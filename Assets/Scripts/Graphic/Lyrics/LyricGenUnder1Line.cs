@@ -11,10 +11,11 @@ class LyricGenControl
 	public int curmeas = 0;
 	public int measInterval = 2000;
 	public int lyricNum = 0;
+	private MidiWatcherBase midiWatcher;
 
-	public LyricGenControl()
+	public LyricGenControl(MidiWatcherBase midiWatcher)
 	{
-		MidiWatcher midiWatcher = MidiWatcher.Instance;
+		this.midiWatcher = midiWatcher;
 		midiWatcher.onMidiIn += MIDIIn;
 		midiWatcher.onLyricIn += LyricIn;
 		midiWatcher.onBeatIn += BeatIn;
@@ -24,7 +25,6 @@ class LyricGenControl
 
 	public void Release()
 	{
-		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onMidiIn -= MIDIIn;
 		midiWatcher.onLyricIn -= LyricIn;
 		midiWatcher.onBeatIn -= BeatIn;
@@ -93,34 +93,37 @@ class LyricGenControl
 public class LyricGenUnder1Line : MonoBehaviour
 {
 	public Rect area = new Rect(-10, -3, 20, 6);
+	public bool active = true;
 	class LyricGenUnder1LineControl : LyricGenControl
 	{
-		private GameObject gameObject;
 		private LyricGenUnder1Line lyricGen;
 		private SentenceList sentenceList;
 		private bool measureChanged = false;
 		private TextMeshPro text;
 		private int curMeas = 0;
-		public LyricGenUnder1LineControl(LyricGenUnder1Line lyricGen)
+		private int map;
+		public bool active = true;
+		public LyricGenUnder1LineControl(Vector3 position, LyricGenUnder1Line lyricGen, MidiWatcherBase midiWatcher) : base(midiWatcher)
 		{
+			this.map = midiWatcher.GetMap();
 			this.lyricGen = lyricGen;
 			this.sentenceList = lyricGen.sentenceList;
 			TMP_FontAsset font = FontResource.Instance.GetFont();
 			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-			Vector3 pos = new Vector3(0, -6, -1.0f);
 			float scale = 1f;
 			float rotate = 0;
 			Vector2 size = new Vector2(20, 2);
-			GameObject simpleLyric = CreateText("", font, color, size, pos, scale, rotate);
+			GameObject simpleLyric = CreateText("", font, color, size, position, scale, rotate);
 			this.text = simpleLyric.GetComponent<TextMeshPro>();
 			simpleLyric.transform.parent = lyricGen.transform;
 		}
 
-		protected override void OnMIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {}
-		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
-			if (!sentenceList.IsActive(track)) return;
+		protected override void OnMIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) { }
+		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec)
+		{
+			if (!sentenceList.IsActive(track, map)) return;
 			if (measureChanged) {
-				LyricData lyricData = sentenceList.GetSentence(track, curMeas);
+				LyricData lyricData = sentenceList.GetSentence(track, curMeas, map);
 				string sentence = lyricData.sentence;
 				if (sentence[0] == lyric[0]) {
 					text.font = FontResource.Instance.GetFont();
@@ -129,19 +132,21 @@ public class LyricGenUnder1Line : MonoBehaviour
 				}
 			}
 		}
-		protected override void OnBeatIn(int numerator, int denominator, uint currentMsec) {}
-		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {
+		protected override void OnBeatIn(int numerator, int denominator, uint currentMsec) { }
+		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec)
+		{
 			curMeas = measure;
-			if (sentenceList.IsExist(measure)) {
+			if (active && sentenceList.IsExist(measure, map)) {
 				measureChanged = true;
 			} else {
 				measureChanged = false;
 				text.text = "";
 			}
 		}
-		protected override void OnEventIn(MIDIHandler.Event playerEvent) {}
+		protected override void OnEventIn(MIDIHandler.Event playerEvent) { }
 	};
 	LyricGenUnder1LineControl control;
+	LyricGenUnder1LineControl controlSub;
 	private string lyric = "";
 	public SentenceList sentenceList;
 
@@ -149,10 +154,12 @@ public class LyricGenUnder1Line : MonoBehaviour
 	{
 		GameObject mainObj = GameObject.Find("MainGameObject");
 		sentenceList = mainObj.GetComponent<SentenceList>();
-		control = new LyricGenUnder1LineControl(this);
+		control = new LyricGenUnder1LineControl(new Vector3(0, -6, -1.0f), this, MidiWatcher.Instance);
+		controlSub = new LyricGenUnder1LineControl(new Vector3(0, -4, -1.0f), this, SubMidiWatcher.Instance);
 	}
 
 	void Update()
 	{
+		controlSub.active = (PlayerPrefs.GetInt("LyricMode") == 0);
 	}
 }
