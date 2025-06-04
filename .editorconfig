@@ -12,8 +12,7 @@ csharp_new_line_between_query_expression_clauses = false
 
 csharp_new_line_before_open_brace = none
 csharp_new_line_before_open_brace_types = false
-csharp_new_line_before_open_brace_methods = false
-csharp_new_line_before_open_brace_properties = false
+# csharp_new_line_before_open_brace_methods = false
 csharp_new_line_before_open_brace_accessors = false
 csharp_new_line_before_open_brace_anonymous_methods = false
 csharp_new_line_before_open_brace_control_blocks = false

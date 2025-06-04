@@ -2,7 +2,7 @@
 	"omnisharp.enableEditorConfigSupport": true,
 	"[csharp]": {
 		"editor.defaultFormatter": "ms-dotnettools.csharp",
-		"editor.formatOnSave": true
+		"editor.formatOnSave": false
 	},
     "files.exclude": {
         "**/.DS_Store": true,
