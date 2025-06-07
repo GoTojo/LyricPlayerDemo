@@ -552,7 +552,7 @@
                 {
                     "msec": 16211,
                     "sentence": "朝",
-                    "control":["UCOff", "WallOff"]
+                    "control":["UCOff", "WallOff", "SunOn"]
                 },
                 {
                     "msec": 17831,
@@ -582,12 +582,12 @@
                 {
                     "msec": 25925,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOn"]
+                    "control":["SimpleLyricOn", "SunOff"]
                 },
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["RamenCup","SimpleLyricOff"]
+                    "control":["RamenCupAuto","SimpleLyricOff"]
                 },
                 {
                     "msec": 0,

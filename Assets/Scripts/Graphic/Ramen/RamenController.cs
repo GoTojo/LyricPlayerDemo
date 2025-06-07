@@ -8,9 +8,9 @@ public class RamenController : MonoBehaviour
 	private GameObject ramen;
 	private Vector3 orgScale = new Vector3(3, 3, 3);
 	public Rect area = new Rect(-10, 4, 20, 8);
-	private int grid = 0;
+	public bool autoIncrease = false;
+	public int grid = 0;
 	public int maxGrid = 8;
-	private bool is1st = false;
 	private int numOfItem = 1;
 	private List<GameObject> objs = new List<GameObject>();
 	// Start is called before the first frame update
@@ -76,7 +76,6 @@ public class RamenController : MonoBehaviour
 	public void CreateRamen()
 	{
 		grid = 1;
-		is1st = true;
 	}
 
 	private void NoteOn(MidiChannel channel, int note, float velocity)
@@ -88,9 +87,6 @@ public class RamenController : MonoBehaviour
 
 	public void BeatIn(int numerator, int denominator, uint currentMsec)
 	{
-		// if (is1st) {
-		// 	is1st = false;
-		// } else
 		if (grid == maxGrid) {
 			grid = 0;
 		} else if (grid > 0) {

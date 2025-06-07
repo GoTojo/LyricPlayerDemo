@@ -21,6 +21,7 @@ public class Visualizer : MonoBehaviour {
 	public GameObject snow;
 	public GameObject confetti;
 	public GameObject ramen;
+	public GameObject sun;
 	public BackGroundController backGroundController;
 	public SimpleLyricGen simpleLyricGen;
 	public RamenController ramenController;
@@ -254,7 +255,7 @@ public class Visualizer : MonoBehaviour {
 		case "WallOff":
 			backGroundController.SetWallType(Parameter.WallType.Off);
 			break;
-		case "RamenCup":
+		case "RamenCupAuto":
 			ramenController.CreateRamen();
 			break;
 		case "Snow":
@@ -286,6 +287,14 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "SimpleLyricOff":
 			simpleLyricGen.active = false;
+			break;
+		case "SunOn":
+			sun.SetActive(true);
+			break;
+		case "SunOff":
+			sun.SetActive(false);
+			break;
+		default:
 			break;
 		}
 	}
