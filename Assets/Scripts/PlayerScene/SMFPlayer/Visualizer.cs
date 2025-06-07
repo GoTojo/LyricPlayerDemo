@@ -17,11 +17,13 @@ public class Visualizer : MonoBehaviour {
 
 	public GameObject unityChanBlack;
 	public GameObject unityChanColor;
+	public GameObject unityChanRunning;
 	public GameObject zeknova;
 	public GameObject snow;
 	public GameObject confetti;
 	public GameObject ramen;
 	public GameObject sun;
+	public GameObject ramenDisk;
 	public BackGroundController backGroundController;
 	public SimpleLyricGen simpleLyricGen;
 	public RamenController ramenController;
@@ -242,6 +244,12 @@ public class Visualizer : MonoBehaviour {
 		case "SimpleLyricOff":
 			simpleLyricGen.active = false;
 			break;
+		case "RamenDiskOn":
+			ramenDisk.SetActive(true);
+			break;
+		case "RamenDiskOff":
+			ramenDisk.SetActive(false);
+			break;
 		}
 	}
 	private void ApplyControlDelayed(string effect) {
@@ -293,6 +301,12 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "SunOff":
 			sun.SetActive(false);
+			break;
+		case "UnityChanRunOn":
+			unityChanRunning.SetActive(true);
+			break;
+		case "UnityChanRunOff":
+			unityChanRunning.SetActive(false);
 			break;
 		default:
 			break;

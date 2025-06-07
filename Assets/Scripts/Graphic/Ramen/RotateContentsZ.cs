@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class RotateContentsZ : MonoBehaviour {
-	private float rotationTime = 8000; // 4measure at BPM120
+	private float rotationTime = 8; // 4measure at BPM120
 	// Start is called before the first frame update
 	void Start() {
 		MidiWatcher midiWatcher = MidiWatcher.Instance;

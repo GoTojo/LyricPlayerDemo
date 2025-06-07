@@ -502,7 +502,7 @@
                 {
                     "msec": 0,
                     "sentence": "らーめん食べよう",
-                    "control":["WallRect", "SimpleLyricOn"]
+                    "control":["WallRect", "SimpleLyricOn", "RamenDiskOn", "UnityChanRunOn"]
                 },
                 {
                     "msec": 0,
@@ -512,7 +512,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["UCBlack", "SimpleLyricOff"]
+                    "control":["UCBlack", "SimpleLyricOff", "UnityChanRunOff"]
                 },
                 {
                     "msec": 0,
@@ -552,7 +552,7 @@
                 {
                     "msec": 16211,
                     "sentence": "朝",
-                    "control":["UCOff", "WallOff", "SunOn"]
+                    "control":["UCOff", "WallOff", "SunOn", "UnityChanRunOn"]
                 },
                 {
                     "msec": 17831,
