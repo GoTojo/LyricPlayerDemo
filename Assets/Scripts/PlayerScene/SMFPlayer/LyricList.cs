@@ -11,12 +11,12 @@ using Unity.VisualScripting;
 public struct LyricData {
 	public uint msec;
 	public string sentence;
-	public List<string> effect;
+	public List<string> control;
 	public LyricData(uint msec, string sentence)
 	{
 		this.msec = msec;
 		this.sentence = sentence;
-		this.effect = new List<string>();
+		this.control = new List<string>();
 	}
 }
 

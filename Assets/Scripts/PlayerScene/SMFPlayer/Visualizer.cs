@@ -75,8 +75,8 @@ public class Visualizer : MonoBehaviour {
 			for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
 				if (sentenceList.IsActive(track, 1)) {
 					LyricData lyricData = sentenceList.GetSentence(track, newMeasure, 1);
-					foreach (string effect in lyricData.effect) {
-						ApplyEffectDelayed(effect);
+					foreach (string control in lyricData.control) {
+						ApplyControlDelayed(control);
 					}
 				}
 			}
@@ -146,8 +146,8 @@ public class Visualizer : MonoBehaviour {
 		for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
 			if (sentenceList.IsActive(track, 1)) {
 				LyricData lyricData = sentenceList.GetSentence(track, measure, 1);
-				foreach (string effect in lyricData.effect) {
-					ApplyEffectNow(effect);
+				foreach (string control in lyricData.control) {
+					ApplyControlNow(control);
 				}
 			}
 		}
@@ -233,7 +233,7 @@ public class Visualizer : MonoBehaviour {
 		}
 	}
 
-	private void ApplyEffectNow(string effect) {
+	private void ApplyControlNow(string effect) {
 		switch (effect) {
 		case "SimpleLyricOn":
 			simpleLyricGen.active = true;
@@ -243,7 +243,7 @@ public class Visualizer : MonoBehaviour {
 			break;
 		}
 	}
-	private void ApplyEffectDelayed(string effect) {
+	private void ApplyControlDelayed(string effect) {
 		switch (effect) {
 		case "WallRect":
 			backGroundController.SetWallType(Parameter.WallType.Rectangle);
