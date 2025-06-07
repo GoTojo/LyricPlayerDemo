@@ -98,7 +98,9 @@ public class LyricGenUnder1Line : MonoBehaviour
 	{
 		private LyricGenUnder1Line lyricGen;
 		private SentenceList sentenceList;
-		private bool measureChanged = false;
+		private string sentence = "";
+		private bool reserveDisplay = false;
+		private bool updateSentence = false;
 		private TextMeshPro text;
 		private int curMeas = 0;
 		private int map;
@@ -119,16 +121,28 @@ public class LyricGenUnder1Line : MonoBehaviour
 		}
 
 		protected override void OnMIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) { }
-		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec)
-		{
+		private void GetSentence(int track, int measure) {
+			LyricData lyricData = sentenceList.GetSentence(track, measure, map);
+			sentence = lyricData.sentence;
+			if (!string.IsNullOrEmpty(sentence)) {
+				reserveDisplay = true;
+				updateSentence = false;
+			}
+		}
+		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
 			if (!sentenceList.IsActive(track, map)) return;
-			if (measureChanged) {
-				LyricData lyricData = sentenceList.GetSentence(track, curMeas, map);
-				string sentence = lyricData.sentence;
-				if (sentence[0] == lyric[0]) {
+			if (updateSentence) {
+				GetSentence(track, curMeas);
+			}
+			if (sentence.StartsWith(lyric)) {
+				if (reserveDisplay) {
 					text.font = FontResource.Instance.GetFont();
 					text.text = sentence;
-					measureChanged = false;
+					reserveDisplay = false;
+				}
+				sentence = sentence.Substring(lyric.Length);
+				if (sentence.Length == 0) {
+					GetSentence(track, curMeas + 1);
 				}
 			}
 		}
@@ -137,9 +151,9 @@ public class LyricGenUnder1Line : MonoBehaviour
 		{
 			curMeas = measure;
 			if (active && sentenceList.IsExist(measure, map)) {
-				measureChanged = true;
+				updateSentence = true;
 			} else {
-				measureChanged = false;
+				updateSentence = false;
 				text.text = "";
 			}
 		}
@@ -147,7 +161,6 @@ public class LyricGenUnder1Line : MonoBehaviour
 	};
 	LyricGenUnder1LineControl control;
 	LyricGenUnder1LineControl controlSub;
-	private string lyric = "";
 	public SentenceList sentenceList;
 
 	void Start()
