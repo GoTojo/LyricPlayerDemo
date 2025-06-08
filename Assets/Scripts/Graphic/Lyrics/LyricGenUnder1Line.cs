@@ -5,26 +5,31 @@
 using UnityEngine;
 using TMPro;
 
-class LyricGenControl 
-{
+class LyricGenControl {
 	public string curWord = "";
-	public int curmeas = 0;
+	public int curMeas = 0;
 	public int measInterval = 2000;
 	public int lyricNum = 0;
-	private MidiWatcherBase midiWatcher;
+	public bool active = true;
+	private int map;
+	private SentenceList sentenceList;
+	private string sentence = "";
 
-	public LyricGenControl(MidiWatcherBase midiWatcher)
-	{
+	private MidiWatcherBase midiWatcher;
+	private bool reserveDisplay = false;
+	private bool updateSentence = false;
+	public LyricGenControl(SentenceList sentenceList, MidiWatcherBase midiWatcher) {
 		this.midiWatcher = midiWatcher;
 		midiWatcher.onMidiIn += MIDIIn;
 		midiWatcher.onLyricIn += LyricIn;
 		midiWatcher.onBeatIn += BeatIn;
 		midiWatcher.onMeasureIn += MeasureIn;
 		midiWatcher.onEventIn += EventIn;
+		this.map = midiWatcher.GetMap();
+		this.sentenceList = sentenceList;
 	}
 
-	public void Release()
-	{
+	public void Release() {
 		midiWatcher.onMidiIn -= MIDIIn;
 		midiWatcher.onLyricIn -= LyricIn;
 		midiWatcher.onBeatIn -= BeatIn;
@@ -32,9 +37,8 @@ class LyricGenControl
 		midiWatcher.onEventIn -= EventIn;
 	}
 
-	public GameObject CreateText(string word, TMP_FontAsset font, Color color, Vector2 sizeDelta, Vector3 position, float scale, float rotate)
-	{
-		GameObject	simpleLyric = new GameObject("SimpleLyric");
+	public GameObject CreateText(string word, TMP_FontAsset font, Color color, Vector2 sizeDelta, Vector3 position, float scale, float rotate) {
+		GameObject simpleLyric = new GameObject("SimpleLyric");
 		simpleLyric.AddComponent<TextMeshPro>();
 		TextMeshPro text = simpleLyric.GetComponent<TextMeshPro>();
 		text.font = font;
@@ -46,7 +50,7 @@ class LyricGenControl
 		text.autoSizeTextContainer = false;
 		text.alignment = TextAlignmentOptions.Center;
 		Transform transform = text.GetComponent<Transform>();
-		RectTransform rectTransform =	simpleLyric.GetComponent<RectTransform>();
+		RectTransform rectTransform = simpleLyric.GetComponent<RectTransform>();
 		rectTransform.sizeDelta = sizeDelta;
 		transform.position = position;
 		transform.Rotate(0.0f, 0.0f, rotate);
@@ -54,32 +58,55 @@ class LyricGenControl
 		return simpleLyric;
 	}
 
-	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec)
-	{
+	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {
 		OnMIDIIn(track, midiEvent, position, currentMsec);
 	}
 
-	public void LyricIn(int track, string lyric, float position, uint currentMsec)
-	{
+	public void LyricIn(int track, string lyric, float position, uint currentMsec) {
 		curWord = lyric;
+		if (!sentenceList.IsActive(track, map)) return;
+		if (updateSentence) {
+			GetSentence(track, curMeas);
+		}
+		if (sentence.StartsWith(lyric)) {
+			if (reserveDisplay) {
+				OnTextChanged(sentence);
+				reserveDisplay = false;
+			}
+			sentence = sentence.Substring(lyric.Length);
+			if (sentence.Length == 0) {
+				GetSentence(track, curMeas + 1);
+			}
+		}
 		OnLyricIn(track, lyric, position, currentMsec);
 	}
 
-	public void BeatIn(int numerator, int denominator, uint currentMsec)
-	{
+	public void BeatIn(int numerator, int denominator, uint currentMsec) {
 		OnBeatIn(numerator, denominator, currentMsec);
 	}
-
-	public void MeasureIn(int measure, int measureInterval, uint currentMsec)
-	{
-		curmeas = measure;
+	private void GetSentence(int track, int measure) {
+		LyricData lyricData = sentenceList.GetSentence(track, measure, map);
+		sentence = lyricData.sentence;
+		if (!string.IsNullOrEmpty(sentence)) {
+			reserveDisplay = true;
+			updateSentence = false;
+		}
+	}
+	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
+		curMeas = measure;
 		measInterval = measureInterval;
 		lyricNum = 0;
+		curMeas = measure;
+		if (active && sentenceList.IsExist(measure, map)) {
+			updateSentence = true;
+		} else {
+			updateSentence = false;
+			OnTextChanged("");
+		}
 		OnMeasureIn(measure, measureInterval, currentMsec);
 	}
 
-	public void EventIn(MIDIHandler.Event playerEvent)
-	{
+	public void EventIn(MIDIHandler.Event playerEvent) {
 		OnEventIn(playerEvent);
 	}
 
@@ -88,28 +115,16 @@ class LyricGenControl
 	protected virtual void OnBeatIn(int numerator, int denominator, uint currentMsec) {}
 	protected virtual void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {}
 	protected virtual void OnEventIn(MIDIHandler.Event playerEvent) {}
+	protected virtual void OnTextChanged(string sentence) {}
 }
 
 public class LyricGenUnder1Line : MonoBehaviour
 {
 	public Rect area = new Rect(-10, -3, 20, 6);
 	public bool active = true;
-	class LyricGenUnder1LineControl : LyricGenControl
-	{
-		private LyricGenUnder1Line lyricGen;
-		private SentenceList sentenceList;
-		private string sentence = "";
-		private bool reserveDisplay = false;
-		private bool updateSentence = false;
+	class LyricGenUnder1LineControl : LyricGenControl {
 		private TextMeshPro text;
-		private int curMeas = 0;
-		private int map;
-		public bool active = true;
-		public LyricGenUnder1LineControl(Vector3 position, LyricGenUnder1Line lyricGen, MidiWatcherBase midiWatcher) : base(midiWatcher)
-		{
-			this.map = midiWatcher.GetMap();
-			this.lyricGen = lyricGen;
-			this.sentenceList = lyricGen.sentenceList;
+		public LyricGenUnder1LineControl(Vector3 position, LyricGenUnder1Line lyricGen, MidiWatcherBase midiWatcher) : base(lyricGen.sentenceList, midiWatcher) {
 			TMP_FontAsset font = FontResource.Instance.GetFont();
 			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 			float scale = 1f;
@@ -119,45 +134,11 @@ public class LyricGenUnder1Line : MonoBehaviour
 			this.text = simpleLyric.GetComponent<TextMeshPro>();
 			simpleLyric.transform.parent = lyricGen.transform;
 		}
-
-		protected override void OnMIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) { }
-		private void GetSentence(int track, int measure) {
-			LyricData lyricData = sentenceList.GetSentence(track, measure, map);
-			sentence = lyricData.sentence;
-			if (!string.IsNullOrEmpty(sentence)) {
-				reserveDisplay = true;
-				updateSentence = false;
-			}
+		protected override void OnEventIn(MIDIHandler.Event playerEvent) {}
+		protected override void OnTextChanged(string sentence) {
+			text.font = FontResource.Instance.GetFont();
+			text.text = sentence;
 		}
-		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
-			if (!sentenceList.IsActive(track, map)) return;
-			if (updateSentence) {
-				GetSentence(track, curMeas);
-			}
-			if (sentence.StartsWith(lyric)) {
-				if (reserveDisplay) {
-					text.font = FontResource.Instance.GetFont();
-					text.text = sentence;
-					reserveDisplay = false;
-				}
-				sentence = sentence.Substring(lyric.Length);
-				if (sentence.Length == 0) {
-					GetSentence(track, curMeas + 1);
-				}
-			}
-		}
-		protected override void OnBeatIn(int numerator, int denominator, uint currentMsec) { }
-		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec)
-		{
-			curMeas = measure;
-			if (active && sentenceList.IsExist(measure, map)) {
-				updateSentence = true;
-			} else {
-				updateSentence = false;
-				text.text = "";
-			}
-		}
-		protected override void OnEventIn(MIDIHandler.Event playerEvent) { }
 	};
 	LyricGenUnder1LineControl control;
 	LyricGenUnder1LineControl controlSub;
