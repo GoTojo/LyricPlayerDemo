@@ -13,12 +13,14 @@ public class Waveform : MonoBehaviour
 
 	int sampleStep = 0;
 	Vector3[] samplingLinePoints = null;
-	public float waveLength = 20f;
-	public float yLength = 3f;
-	public float yOffset = 3f;
+	public float waveLength = 30f;
+	public float yLength = 20f;
+	public float yOffset = 0f;
 	public bool active = false;
 	private LineRenderer lineRenderer;
 	private float zLine = 0.1f;
+	public Color startColor;
+	public Color endColor;
 
 	void Start()
 	{
@@ -30,8 +32,33 @@ public class Waveform : MonoBehaviour
 		meshRenderer.material = material;
 		lineRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
 		meshRenderer.shadowCastingMode = UnityEngine.Rendering.ShadowCastingMode.Off;
-		lineRenderer.widthMultiplier = 0.05f;
-		yLength = 3.0f;
+		var curve = new AnimationCurve();
+		Keyframe kf1 = new Keyframe(0.0f, 0.05f);
+		Keyframe kf2 = new Keyframe(0.1f, 0.2f);
+		Keyframe kf3 = new Keyframe(0.3f, 0.07f);
+		Keyframe kf4 = new Keyframe(0.5f, 0.12f);
+		Keyframe kf5 = new Keyframe(0.7f, 0.2f);
+		Keyframe kf6 = new Keyframe(0.9f, 0.1f);
+		Keyframe kf7 = new Keyframe(1.0f, 0.05f); 
+		kf1.weightedMode = WeightedMode.None;
+		kf2.weightedMode = WeightedMode.None;
+		kf3.weightedMode = WeightedMode.None;
+		kf4.weightedMode = WeightedMode.None;
+		kf5.weightedMode = WeightedMode.None;
+		kf6.weightedMode = WeightedMode.None;
+		kf7.weightedMode = WeightedMode.None;
+		curve.AddKey(kf1);
+		curve.AddKey(kf2);
+		curve.AddKey(kf3);
+		curve.AddKey(kf4);
+		curve.AddKey(kf5);
+		curve.AddKey(kf6);
+		curve.AddKey(kf7);
+		lineRenderer.widthCurve = curve;
+		lineRenderer.widthMultiplier = 1.0f;
+		lineRenderer.startColor = startColor;
+		lineRenderer.endColor = endColor;
+
 		var clip = audioSource.clip;
 		audioData = new float[clip.channels * clip.samples];
 		clip.GetData(audioData, dataOffset);

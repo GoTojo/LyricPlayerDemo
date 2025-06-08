@@ -547,12 +547,12 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":[]
+                    "control":["WaveFormOn"]
                 },
                 {
                     "msec": 16211,
                     "sentence": "朝",
-                    "control":["UCOff", "WallOff", "SunOn", "UnityChanRunOn"]
+                    "control":["UCOff", "WallOff", "SunOn", "UnityChanRunOn","WaveFormOff"]
                 },
                 {
                     "msec": 17831,

@@ -5217,7 +5217,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &350108568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35754,17 +35754,19 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1726091890}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5be3e738ea0b4aa7b7f423f1dab9d78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   audioSource: {fileID: 1095297736}
   spectrumData: []
-  waveLength: 20
-  yLength: 3
-  yOffset: 3
+  waveLength: 30
+  yLength: 20
+  yOffset: 0
   active: 0
+  startColor: {r: 0.4669811, g: 1, b: 0.4793769, a: 1}
+  endColor: {r: 0.34057966, g: 0.9716981, b: 0.01375042, a: 1}
 --- !u!4 &1726091892
 Transform:
   m_ObjectHideFlags: 0

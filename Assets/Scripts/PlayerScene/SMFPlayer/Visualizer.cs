@@ -24,6 +24,7 @@ public class Visualizer : MonoBehaviour {
 	public GameObject ramen;
 	public GameObject sun;
 	public GameObject ramenDisk;
+	public Waveform waveform;
 	public BackGroundController backGroundController;
 	public SimpleLyricGen simpleLyricGen;
 	public RamenController ramenController;
@@ -269,6 +270,12 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "UCOff":
 			ChangeUnityChan(Parameter.UnityChanType.Off);
+			break;
+		case "WaveFormOn":
+			waveform.active = true;
+			break;
+		case "WaveFormOff":
+			waveform.active = false;
 			break;
 		}
 	}
