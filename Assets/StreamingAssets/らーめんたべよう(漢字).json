@@ -552,7 +552,7 @@
                 {
                     "msec": 16211,
                     "sentence": "朝",
-                    "control":["UCOff", "WallOff", "SunOn", "UnityChanRunOn","WaveFormOff"]
+                    "control":["UCOff", "WallOff", "Sun_8", "UnityChanRunOn","WaveFormOff"]
                 },
                 {
                     "msec": 17831,
@@ -582,7 +582,7 @@
                 {
                     "msec": 25925,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOn", "SunOff"]
+                    "control":["SimpleLyricOn", "Sun_Off"]
                 },
                 {
                     "msec": 0,
@@ -712,7 +712,7 @@
                 {
                     "msec": 68061,
                     "sentence": "３時だ",
-                    "control":[]
+                    "control":["Sun_15"]
                 },
                 {
                     "msec": 69681,
@@ -747,7 +747,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["SimpleLyricOff"]
+                    "control":["SimpleLyricOff", "Sun_Off"]
                 },
                 {
                     "msec": 0,
@@ -792,7 +792,7 @@
                 {
                     "msec": 93988,
                     "sentence": "お昼だ",
-                    "control":[]
+                    "control":["Sun_12"]
                 },
                 {
                     "msec": 95608,
@@ -827,7 +827,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["SimpleLyricOff"]
+                    "control":["SimpleLyricOff", "Sun_Off"]
                 },
                 {
                     "msec": 0,

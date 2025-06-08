@@ -22,7 +22,7 @@ public class Visualizer : MonoBehaviour {
 	public GameObject snow;
 	public GameObject confetti;
 	public GameObject ramen;
-	public GameObject sun;
+	public SunController sun;
 	public GameObject ramenDisk;
 	public Waveform waveform;
 	public BackGroundController backGroundController;
@@ -239,8 +239,9 @@ public class Visualizer : MonoBehaviour {
 	//	Measureイベントですぐにactiveにする
 	//	Measureイベントを受けて処理を行うタイプに使用する
 	//
-	private void ApplyControlNow(string effect) {
-		switch (effect) {
+	private void ApplyControlNow(string command) {
+		string[] args = command.Split("_");
+		switch (args[0]) {
 		case "SimpleLyricOn":
 			simpleLyricGen.active = true;
 			break;
@@ -279,8 +280,9 @@ public class Visualizer : MonoBehaviour {
 			break;
 		}
 	}
-	private void ApplyControlDelayed(string effect) {
-		switch (effect) {
+	private void ApplyControlDelayed(string command) {
+		string[] args = command.Split("_");
+		switch (args[0]) {
 		case "RamenCupAuto":
 			ramenController.CreateRamen();
 			break;
@@ -305,11 +307,8 @@ public class Visualizer : MonoBehaviour {
 		case "SimpleLyricOff":
 			simpleLyricGen.active = false;
 			break;
-		case "SunOn":
-			sun.SetActive(true);
-			break;
-		case "SunOff":
-			sun.SetActive(false);
+		case "Sun":
+			if (args.Length >= 2) sun.SetCommand(args[1]);
 			break;
 		case "UnityChanRunOn":
 			unityChanRunning.SetActive(true);
