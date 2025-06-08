@@ -632,7 +632,7 @@
                 {
                     "msec": 42135,
                     "sentence": "夜",
-                    "control":[]
+                    "control":["Night_On"]
                 },
                 {
                     "msec": 43756,
@@ -667,7 +667,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["SimpleLyricOff"]
+                    "control":["SimpleLyricOff", "Night_Off"]
                 },
                 {
                     "msec": 0,

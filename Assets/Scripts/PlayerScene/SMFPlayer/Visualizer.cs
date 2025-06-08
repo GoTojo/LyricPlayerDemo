@@ -24,9 +24,12 @@ public class Visualizer : MonoBehaviour {
 	public GameObject ramen;
 	public SunController sun;
 	public GameObject ramenDisk;
+	public GameObject night;
 	public Waveform waveform;
 	public BackGroundController backGroundController;
 	public SimpleLyricGen simpleLyricGen;
+	public LyricGenMultiLine multiLineL;
+	public LyricGenMultiLine multiLineR;
 	public RamenController ramenController;
 
 	public Parameter.ParticleType particleType;
@@ -248,6 +251,22 @@ public class Visualizer : MonoBehaviour {
 		case "SimpleLyricOff":
 			simpleLyricGen.active = false;
 			break;
+		case "MultiLine":
+			if (args.Length < 2) break;
+			LyricGenMultiLine multiLine;
+			if (args[1] == "L") {
+				multiLine = multiLineL;
+			} else if (args[1] == "R") {
+				multiLine = multiLineR;
+			} else {
+				break;
+			}
+			if (args[2] == "On") {
+				multiLine.SetActive(true);
+			} else if (args[2] == "Off") {
+				multiLine.SetActive(false);
+			}
+			break;
 		case "RamenDiskOn":
 			ramenDisk.SetActive(true);
 			break;
@@ -315,6 +334,14 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "UnityChanRunOff":
 			unityChanRunning.SetActive(false);
+			break;
+		case "Night":
+			if (args.Length < 2) break;
+			if (args[1] == "On") {
+				night.SetActive(true);
+			} else if (args[1] == "Off") {
+				night.SetActive(false);
+			}
 			break;
 		default:
 			break;
