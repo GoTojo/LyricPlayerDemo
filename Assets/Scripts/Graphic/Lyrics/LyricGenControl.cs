@@ -35,7 +35,7 @@ class LyricGenControl {
 		midiWatcher.onEventIn -= EventIn;
 	}
 
-	public GameObject CreateText(string word, TMP_FontAsset font, Color color, Vector2 sizeDelta, Vector3 position, float scale, float rotate) {
+	public GameObject CreateText(string word, TMP_FontAsset font, Color color, TextAlignmentOptions align, Vector2 sizeDelta, Vector3 position, float scale, float rotate) {
 		GameObject simpleLyric = new GameObject("SimpleLyric");
 		simpleLyric.AddComponent<TextMeshPro>();
 		TextMeshPro text = simpleLyric.GetComponent<TextMeshPro>();
@@ -46,13 +46,13 @@ class LyricGenControl {
 		text.fontSizeMax = 12;
 		text.fontSizeMin = 12;
 		text.autoSizeTextContainer = false;
-		text.alignment = TextAlignmentOptions.Center;
+		text.alignment = align;
 		Transform transform = text.GetComponent<Transform>();
 		RectTransform rectTransform = simpleLyric.GetComponent<RectTransform>();
 		rectTransform.sizeDelta = sizeDelta;
 		transform.position = position;
 		transform.Rotate(0.0f, 0.0f, rotate);
-		transform.localScale = new Vector3(scale, scale, scale);
+		simpleLyric.transform.localScale = new Vector3(scale, scale, scale);
 		return simpleLyric;
 	}
 
@@ -83,6 +83,7 @@ class LyricGenControl {
 		OnBeatIn(numerator, denominator, currentMsec);
 	}
 	private void GetSentence(int track, int measure) {
+		if (!active) return;
 		LyricData lyricData = sentenceList.GetSentence(track, measure, map);
 		sentence = lyricData.sentence;
 		if (!string.IsNullOrEmpty(sentence)) {

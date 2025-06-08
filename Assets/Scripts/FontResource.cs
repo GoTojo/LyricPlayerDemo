@@ -59,7 +59,7 @@ class FontResource
 	}
 	public TMP_FontAsset GetFont()
 	{
-		TMP_FontAsset font = fontJKMaruGothic;
+		TMP_FontAsset font;
 		switch (curFontType) {
 		default:
 		case Type.JKMaruGothic:

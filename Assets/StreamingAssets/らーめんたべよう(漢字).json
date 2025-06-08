@@ -547,7 +547,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["WaveFormOn"]
+                    "control":["WaveFormOn", "MultiLine_L_On"]
                 },
                 {
                     "msec": 16211,
@@ -562,7 +562,7 @@
                 {
                     "msec": 19450,
                     "sentence": "とても",
-                    "control":[]
+                    "control":["MultiLine_L_Clear"]
                 },
                 {
                     "msec": 21069,
@@ -572,7 +572,7 @@
                 {
                     "msec": 22687,
                     "sentence": "おなか",
-                    "control":[]
+                    "control":["MultiLine_L_Off", "MultiLine_R_On"]
                 },
                 {
                     "msec": 24306,
@@ -582,7 +582,7 @@
                 {
                     "msec": 25925,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOn", "Sun_Off"]
+                    "control":["SimpleLyricOn", "Sun_Off", "MultiLine_R_Off"]
                 },
                 {
                     "msec": 0,
@@ -627,7 +627,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":[]
+                    "control":["MultiLine_L_On"]
                 },
                 {
                     "msec": 42135,
@@ -642,7 +642,7 @@
                 {
                     "msec": 45375,
                     "sentence": "おなか",
-                    "control":[]
+                    "control":["MultiLine_L_Clear"]
                 },
                 {
                     "msec": 46994,
@@ -652,7 +652,7 @@
                 {
                     "msec": 48613,
                     "sentence": "体重気に",
-                    "control":[]
+                    "control":["MultiLine_L_Off", "MultiLine_R_On"]
                 },
                 {
                     "msec": 50232,
@@ -662,7 +662,7 @@
                 {
                     "msec": 51851,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOn"]
+                    "control":["SimpleLyricOn", "MultiLine_R_Off"]
                 },
                 {
                     "msec": 0,

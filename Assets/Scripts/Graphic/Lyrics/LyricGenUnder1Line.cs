@@ -17,7 +17,7 @@ public class LyricGenUnder1Line : MonoBehaviour
 			float scale = 1f;
 			float rotate = 0;
 			Vector2 size = new Vector2(20, 2);
-			GameObject simpleLyric = CreateText("", font, color, size, position, scale, rotate);
+			GameObject simpleLyric = CreateText("", font, color, TextAlignmentOptions.Center, size, position, scale, rotate);
 			this.text = simpleLyric.GetComponent<TextMeshPro>();
 			simpleLyric.transform.parent = lyricGen.transform;
 		}
