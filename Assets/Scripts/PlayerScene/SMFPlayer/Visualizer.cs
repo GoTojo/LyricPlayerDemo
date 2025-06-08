@@ -41,7 +41,7 @@ public class Visualizer : MonoBehaviour {
 	}
 
 	void Awake() {
-		lyricMode = (LyricMode)PlayerPrefs.GetInt("LyricMode");
+		lyricMode = LyricMode.Kanji;
 		particleType = (Parameter.ParticleType)PlayerPrefs.GetInt("Parameter.ParticleType");
 		unityChanType = (Parameter.UnityChanType)PlayerPrefs.GetInt("Parameter.UnityChanType");
 
@@ -62,11 +62,9 @@ public class Visualizer : MonoBehaviour {
 		// Debug.Log("Destract");
 	}
 	public void BackupParams() {
-		PlayerPrefs.SetInt("LyricMode", (int)lyricMode);
+		PlayerPrefs.SetInt("LyricMode", (int)LyricMode.Kanji);
 		PlayerPrefs.SetInt("ParticleType", (int)particleType);
 		PlayerPrefs.SetInt("UnityChanType", (int)unityChanType);
-		// 次回起動時ユニティちゃんがスクリプトで色を変えるためactiveにしておく
-		unityChanBlack.SetActive(true);
 	}
 	void Start() {
 		GameObject mainObj = GameObject.Find("MainGameObject");
@@ -236,6 +234,10 @@ public class Visualizer : MonoBehaviour {
 		}
 	}
 
+	//
+	//	Measureイベントですぐにactiveにする
+	//	Measureイベントを受けて処理を行うタイプに使用する
+	//
 	private void ApplyControlNow(string effect) {
 		switch (effect) {
 		case "SimpleLyricOn":
@@ -250,10 +252,6 @@ public class Visualizer : MonoBehaviour {
 		case "RamenDiskOff":
 			ramenDisk.SetActive(false);
 			break;
-		}
-	}
-	private void ApplyControlDelayed(string effect) {
-		switch (effect) {
 		case "WallRect":
 			backGroundController.SetWallType(Parameter.WallType.Rectangle);
 			break;
@@ -263,6 +261,19 @@ public class Visualizer : MonoBehaviour {
 		case "WallOff":
 			backGroundController.SetWallType(Parameter.WallType.Off);
 			break;
+		case "UCBlack":
+			ChangeUnityChan(Parameter.UnityChanType.Black);
+			break;
+		case "UCColor":
+			ChangeUnityChan(Parameter.UnityChanType.Color);
+			break;
+		case "UCOff":
+			ChangeUnityChan(Parameter.UnityChanType.Off);
+			break;
+		}
+	}
+	private void ApplyControlDelayed(string effect) {
+		switch (effect) {
 		case "RamenCupAuto":
 			ramenController.CreateRamen();
 			break;
@@ -280,15 +291,6 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "Ramen":
 			ChangeParticle(Parameter.ParticleType.Ramen);
-			break;
-		case "UCBlack":
-			ChangeUnityChan(Parameter.UnityChanType.Black);
-			break;
-		case "UCColor":
-			ChangeUnityChan(Parameter.UnityChanType.Color);
-			break;
-		case "UCOff":
-			ChangeUnityChan(Parameter.UnityChanType.Off);
 			break;
 		case "SimpleLyricOn":
 			simpleLyricGen.active = true;

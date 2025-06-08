@@ -502,7 +502,7 @@
                 {
                     "msec": 0,
                     "sentence": "らーめん食べよう",
-                    "control":["WallRect", "SimpleLyricOn", "RamenDiskOn", "UnityChanRunOn"]
+                    "control":["SimpleLyricOn"]
                 },
                 {
                     "msec": 0,
@@ -512,7 +512,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["UCBlack", "SimpleLyricOff", "UnityChanRunOff"]
+                    "control":["WallRect", "UCBlack", "SimpleLyricOff", "RamenDiskOn"]
                 },
                 {
                     "msec": 0,
