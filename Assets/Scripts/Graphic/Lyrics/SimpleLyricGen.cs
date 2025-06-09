@@ -66,6 +66,7 @@ public class SimpleLyricGen : MonoBehaviour {
 	public float sizeMin = 0.8f;
 	public float sizeMax = 0.8f;
 	public float rotateAngle = 0.0f;
+	public TMP_FontAsset font;
 	public bool active = false;
 	public int measureCount = 1;
 	private string curWord = "";
@@ -109,7 +110,6 @@ public class SimpleLyricGen : MonoBehaviour {
 	}
 
 	private void LyricObjectText(int ch, int num, int numOfData, float position) {
-		TMP_FontAsset font = FontResource.Instance.GetFont();
 		Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 		float width = (numOfData != 0) ? area.width / numOfData : area.width;
 		float x = width * num + area.x + width / 2;
