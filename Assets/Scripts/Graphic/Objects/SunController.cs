@@ -29,7 +29,7 @@ public class SunController : MonoBehaviour {
 		switch (command) {
 		case "8":
 			renderer.enabled = true;
-			this.gameObject.transform.position = new Vector3(-12f, 5f, 0);
+			this.gameObject.transform.position = new Vector3(-10f, 5f, 0);
 			break;
 		case "12":
 			renderer.enabled = true;
@@ -37,7 +37,7 @@ public class SunController : MonoBehaviour {
 			break;
 		case "15":
 			renderer.enabled = true;
-			this.gameObject.transform.position = new Vector3(8f, 5f, 0);
+			this.gameObject.transform.position = new Vector3(6f, 5f, 0);
 			break;
 		case "Off":
 			renderer.enabled = false;
