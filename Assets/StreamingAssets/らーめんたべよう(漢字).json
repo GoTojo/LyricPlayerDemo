@@ -512,7 +512,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["WallRect", "UCBlack", "SimpleLyricOff", "RamenDiskOn"]
+                    "control":["WallRect", "UCBlack", "SimpleLyricOff"]
                 },
                 {
                     "msec": 0,
@@ -552,7 +552,7 @@
                 {
                     "msec": 16211,
                     "sentence": "朝",
-                    "control":["UCOff", "WallOff", "Sun_8", "UnityChanRunOn","WaveFormOff"]
+                    "control":["UCOff", "WallOff", "Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn"]
                 },
                 {
                     "msec": 17831,
@@ -582,17 +582,12 @@
                 {
                     "msec": 25925,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOn", "Sun_Off", "MultiLine_R_Off"]
+                    "control":["SimpleLyricOn", "Sun_Off", "MultiLine_R_Off", "UnityChanRunOff", "RamenDiskOff"]
                 },
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["RamenCupAuto","SimpleLyricOff"]
-                },
-                {
-                    "msec": 0,
-                    "sentence": "",
-                    "control":[]
+                    "control":["RamenCupAuto","SimpleLyricOff","WallCircle","WallOn"]
                 },
                 {
                     "msec": 0,
@@ -602,7 +597,7 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":[]
+                    "control":["UCBlack"]
                 },
                 {
                     "msec": 0,
@@ -612,7 +607,12 @@
                 {
                     "msec": 0,
                     "sentence": "",
-                    "control":["Zeknova"]
+                    "control":[""]
+                },
+                {
+                    "msec": 0,
+                    "sentence": "",
+                    "control":[]
                 },
                 {
                     "msec": 0,
@@ -632,7 +632,7 @@
                 {
                     "msec": 42135,
                     "sentence": "夜",
-                    "control":["Night_On"]
+                    "control":["Night_On","WallOff","UCOff","UnityChanRunOn","RamenDiskOn"]
                 },
                 {
                     "msec": 43756,
@@ -662,7 +662,7 @@
                 {
                     "msec": 51851,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOn", "MultiLine_R_Off"]
+                    "control":["SimpleLyricOn", "MultiLine_R_Off", "UnityChanRunOff","RamenDiskOff"]
                 },
                 {
                     "msec": 0,
@@ -712,7 +712,7 @@
                 {
                     "msec": 68061,
                     "sentence": "３時だ",
-                    "control":["Sun_15"]
+                    "control":["Sun_15","UnityChanRunOn","RamenDiskOn"]
                 },
                 {
                     "msec": 69681,
@@ -742,7 +742,7 @@
                 {
                     "msec": 77778,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOn"]
+                    "control":["SimpleLyricOn","UnityChanRunOff","RamenDiskOff"]
                 },
                 {
                     "msec": 0,
@@ -792,7 +792,7 @@
                 {
                     "msec": 93988,
                     "sentence": "お昼だ",
-                    "control":["Sun_12"]
+                    "control":["Sun_12","UnityChanRunOn","RamenDiskOn"]
                 },
                 {
                     "msec": 95608,
@@ -822,7 +822,7 @@
                 {
                     "msec": 103704,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOn"]
+                    "control":["SimpleLyricOn","UnityChanRunOff","RamenDiskOff"]
                 },
                 {
                     "msec": 0,
@@ -872,7 +872,7 @@
                 {
                     "msec": 119914,
                     "sentence": "らーめん",
-                    "control":[]
+                    "control":["UnityChanRunOn","RamenDiskOn"]
                 },
                 {
                     "msec": 121532,
@@ -952,7 +952,7 @@
                 {
                     "msec": 145839,
                     "sentence": "らーめん",
-                    "control":["SimpleLyricOn"]
+                    "control":["SimpleLyricOn","UnityChanRunOn","RamenDiskOn"]
                 },
                 {
                     "msec": 147457,
@@ -982,11 +982,12 @@
                 {
                     "msec": 155549,
                     "sentence": "らーめん食べよう",
-                    "control":["SimpleLyricOff"]
+                    "control":["SimpleLyricOff","UnityChanRunOff","RamenDiskOff"]
                 },
                 {
                     "msec": 0,
-                    "sentence": ""
+                    "sentence": "",
+					"control": ["UnityChanRunOn","RamenDiskOn"]
                 }
             ]
         },

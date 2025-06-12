@@ -21,6 +21,7 @@ public class Waveform : MonoBehaviour
 	private float zLine = 0.1f;
 	public Color startColor;
 	public Color endColor;
+	public GameObject background;
 
 	void Start()
 	{
@@ -75,6 +76,7 @@ public class Waveform : MonoBehaviour
 
 	private void FixedUpdate()
 	{
+		// background.SetActive(active);
 		if (active) {
 			if (audioSource.isPlaying && audioSource.timeSamples < audioData.Length) {
 				var startIndex = audioSource.timeSamples;
