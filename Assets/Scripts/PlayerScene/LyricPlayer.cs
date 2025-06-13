@@ -12,6 +12,8 @@ public class LyricPlayer : MonoBehaviour {
 	private const float startWaitTime = 0.1f;
 	private float startWait = startWaitTime;
 	private FadeController fader;
+	public GameObject blackOut;
+	private float endTimer = 0;
 
 	void Awake()
 	{
@@ -57,15 +59,16 @@ public class LyricPlayer : MonoBehaviour {
 	void Start()
 	{
 		fader = FindObjectOfType<FadeController>();
-		fader.FadeIn();
+		// fader.FadeIn();
 	}
 
-	void StartPlayer() 
-	{
+	void StartPlayer() {
 		audioSource.Play();
 		fIsPlaying = true;
 		smfPlayer.Start();
 		kanjiPlayer.Start();
+		endTimer = 2f;
+		blackOut.SetActive(false);
 	}
 
 	// Update is called once per frame
@@ -90,7 +93,11 @@ public class LyricPlayer : MonoBehaviour {
 			// End();
 		}
 		if (!audioSource.isPlaying) {
-			End();
+			blackOut.SetActive(true);
+			endTimer -= Time.deltaTime;
+			if (endTimer <= 0) {
+				End();
+			}
 		}
 	}
 
