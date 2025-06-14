@@ -80,7 +80,7 @@ public class Visualizer : MonoBehaviour {
 			for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
 				if (sentenceList.IsActive(track, 1)) {
 					LyricData lyricData = sentenceList.GetSentence(track, newMeasure, 1);
-					foreach (string control in lyricData.control) {
+					foreach (string control in lyricData.beats[0].controls) {
 						ApplyControlDelayed(control);
 					}
 				}
@@ -151,7 +151,7 @@ public class Visualizer : MonoBehaviour {
 		for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
 			if (sentenceList.IsActive(track, 1)) {
 				LyricData lyricData = sentenceList.GetSentence(track, measure, 1);
-				foreach (string control in lyricData.control) {
+				foreach (string control in lyricData.beats[0].controls) {
 					ApplyControlNow(control);
 				}
 			}

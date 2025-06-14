@@ -8,15 +8,23 @@ using System.IO;
 using Unity.VisualScripting;
 
 [Serializable]
+public class ControlList {
+	public List<string> controls = new List<string>();
+}
+
+[Serializable]
 public struct LyricData {
 	public uint msec;
 	public string sentence;
-	public List<string> control;
-	public LyricData(uint msec, string sentence)
-	{
+	public List<ControlList> beats;
+	public LyricData(uint msec, string sentence, int numofbeat) {
 		this.msec = msec;
 		this.sentence = sentence;
-		this.control = new List<string>();
+		this.beats = new List<ControlList>();
+		for (var i = 0; i < numofbeat; i++) {
+			ControlList controlList = new ControlList();
+			this.beats.Add(controlList);
+		}
 	}
 }
 
@@ -69,7 +77,8 @@ public class LyricList : MonoBehaviour
 			for (var meas = 0; meas < numOfMeasure; meas++) {
 				uint msec = (uint)eventMap.GetMsec(meas, track, 0, map);
 				string sentence = eventMap.GetSentence(meas, track, map);
-				trackData.lyrics.Add(new LyricData(msec, sentence));
+				SMFPlayer.Beat beat = eventMap.GetBeat(meas);
+				trackData.lyrics.Add(new LyricData(msec, sentence, beat.unit));
 				// Debug.Log($"meas:{meas} {msec}:{sentence}");
 			}
 			tracks.Add(trackData);

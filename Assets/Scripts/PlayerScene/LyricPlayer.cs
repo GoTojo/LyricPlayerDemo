@@ -11,7 +11,6 @@ public class LyricPlayer : MonoBehaviour {
 	private bool fIsPlaying = false;
 	private const float startWaitTime = 0.1f;
 	private float startWait = startWaitTime;
-	private FadeController fader;
 	public GameObject blackOut;
 	private float endTimer = 0;
 
@@ -58,7 +57,7 @@ public class LyricPlayer : MonoBehaviour {
 	}
 	void Start()
 	{
-		fader = FindObjectOfType<FadeController>();
+		// fader = FindObjectOfType<FadeController>();
 		// fader.FadeIn();
 	}
 

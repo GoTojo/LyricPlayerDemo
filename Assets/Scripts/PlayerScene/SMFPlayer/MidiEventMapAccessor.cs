@@ -66,4 +66,9 @@ public class MidiEventMapAccessor : MonoBehaviour
 		if (map < 0) map = currentMap;
 		return eventMap[map].numOfTrack;
 	}
+	public SMFPlayer.Beat GetBeat(int measure, int map = -1)
+	{
+		if (map < 0) map = currentMap;
+		return eventMap[map].GetBeat(measure);
+	}
 }
