@@ -38,6 +38,7 @@ public class Visualizer : MonoBehaviour {
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
 	private int newMeasure = -1;
+	private int curMeasure = 0;
 
 	public enum LyricMode {
 		Original,
@@ -139,6 +140,15 @@ public class Visualizer : MonoBehaviour {
 
 	public void BeatIn(int numerator, int denominator, uint currentMsec) {
 		// LyricItem.OnBeat += () => { };
+		if (numerator == 0) return;  // Beat0のcontrolはMeasureInで適用済
+		for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
+			if (sentenceList.IsActive(track, 1)) {
+				LyricData lyricData = sentenceList.GetSentence(track, curMeasure, 1);
+				foreach (string control in lyricData.beats[numerator].controls) {
+					ApplyControlNow(control);
+				}
+			}
+		}
 	}
 
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
@@ -148,6 +158,7 @@ public class Visualizer : MonoBehaviour {
 				ChangeParticle(Parameter.ParticleType.Off);
 			}
 		}
+		// beat0のcontrolはMeasureInで適用する
 		for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
 			if (sentenceList.IsActive(track, 1)) {
 				LyricData lyricData = sentenceList.GetSentence(track, measure, 1);
@@ -157,6 +168,7 @@ public class Visualizer : MonoBehaviour {
 			}
 		}
 		newMeasure = measure;
+		curMeasure = measure;
 	}
 
 	private void ChangeParticle(Parameter.ParticleType type) {
