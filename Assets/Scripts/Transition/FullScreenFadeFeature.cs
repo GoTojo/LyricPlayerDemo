@@ -3,7 +3,6 @@ using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
 public class FullScreenFadeFeature : ScriptableRendererFeature {
-	public bool active;
 	class FullScreenFadePass : ScriptableRenderPass {
 		Material fadeMaterial;
 
@@ -31,7 +30,6 @@ public class FullScreenFadeFeature : ScriptableRendererFeature {
 	}
 
 	public override void AddRenderPasses(ScriptableRenderer renderer, ref RenderingData renderingData) {
-		if (!active) return;
 		if (fadeMaterial != null) {
 			renderer.EnqueuePass(fadePass);
 		}
