@@ -5346,12 +5346,12 @@ GameObject:
   m_Component:
   - component: {fileID: 219786182}
   m_Layer: 0
-  m_Name: UnityChanShift
+  m_Name: UnityChanShiftAll
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &219786182
 Transform:
   m_ObjectHideFlags: 0
@@ -32398,12 +32398,14 @@ MonoBehaviour:
   unityChanBlack: {fileID: 1801223687}
   unityChanColor: {fileID: 503062539}
   unityChanRunning: {fileID: 1082495338}
+  unityChanShift: {fileID: 219786181}
   zeknova: {fileID: 349618358}
   snow: {fileID: 410511433}
   confetti: {fileID: 652939498}
   ramen: {fileID: 1564328891}
   sun: {fileID: 1115443757}
   ramenDisk: {fileID: 2032318217}
+  ramenFloor: {fileID: 1265290041}
   night: {fileID: 1170470069}
   waveform: {fileID: 1726091891}
   backGroundController: {fileID: 1476044171}
@@ -32820,7 +32822,7 @@ Transform:
   m_GameObject: {fileID: 1265290041}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 7, z: 0}
+  m_LocalPosition: {x: 0, y: 7, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:

@@ -18,12 +18,14 @@ public class Visualizer : MonoBehaviour {
 	public GameObject unityChanBlack;
 	public GameObject unityChanColor;
 	public GameObject unityChanRunning;
+	public GameObject unityChanShift;
 	public GameObject zeknova;
 	public GameObject snow;
 	public GameObject confetti;
 	public GameObject ramen;
 	public SunController sun;
 	public GameObject ramenDisk;
+	public GameObject ramenFloor;
 	public GameObject night;
 	public Waveform waveform;
 	public BackGroundController backGroundController;
@@ -285,6 +287,12 @@ public class Visualizer : MonoBehaviour {
 		case "RamenDiskOff":
 			ramenDisk.SetActive(false);
 			break;
+		case "RamenFloorOn":
+			ramenFloor.SetActive(true);
+			break;
+		case "RamenFloorOff":
+			ramenFloor.SetActive(false);
+			break;
 		case "WallRect":
 			backGroundController.SetWallType(Parameter.WallType.Rectangle);
 			break;
@@ -346,6 +354,12 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "UnityChanRunOff":
 			unityChanRunning.SetActive(false);
+			break;
+		case "UnityChanShiftOn":
+			unityChanShift.SetActive(true);
+			break;
+		case "UnityChanShiftOff":
+			unityChanShift.SetActive(false);
 			break;
 		case "Night":
 			if (args.Length < 2) break;
