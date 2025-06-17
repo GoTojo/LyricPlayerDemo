@@ -14,6 +14,7 @@ public class Visualizer : MonoBehaviour {
 	public SMFPlayer kanjiPlayer;
 	private LyricMode lyricMode = LyricMode.Kanji;
 	MidiEventMapAccessor eventMap;
+	public EffectSwitcher effectSwitcher;
 
 	public GameObject unityChanBlack;
 	public GameObject unityChanColor;
@@ -41,6 +42,8 @@ public class Visualizer : MonoBehaviour {
 	private SentenceList sentenceList;
 	private int newMeasure = -1;
 	private int curMeasure = 0;
+	private int curBeat = 0;
+	private bool beatEffectApplied = true;
 
 	public enum LyricMode {
 		Original,
@@ -79,16 +82,16 @@ public class Visualizer : MonoBehaviour {
 	}
 	// Update is called once per frame
 	void Update() {
-		if (newMeasure >= 0) {
+		if (!beatEffectApplied) {
 			for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
 				if (sentenceList.IsActive(track, 1)) {
 					LyricData lyricData = sentenceList.GetSentence(track, newMeasure, 1);
-					foreach (string control in lyricData.beats[0].controls) {
+					foreach (string control in lyricData.beats[curBeat].controls) {
 						ApplyControlDelayed(control);
 					}
 				}
 			}
-			newMeasure = -1;
+			beatEffectApplied = false;
 		}
 	}
 
@@ -141,7 +144,8 @@ public class Visualizer : MonoBehaviour {
 	}
 
 	public void BeatIn(int numerator, int denominator, uint currentMsec) {
-		// LyricItem.OnBeat += () => { };
+		curBeat = numerator;
+		beatEffectApplied = false;
 		if (numerator == 0) return;  // Beat0のcontrolはMeasureInで適用済
 		for (var track = 0; track < sentenceList.GetNumOfTrack(); track++) {
 			if (sentenceList.IsActive(track, 1)) {
@@ -316,6 +320,9 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "WaveFormOff":
 			waveform.active = false;
+			break;
+		case "Effect":
+			effectSwitcher.ChangeEffect(args);
 			break;
 		}
 	}

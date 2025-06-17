@@ -1779,7 +1779,7 @@
 					"sentence": "らーめん食べよう",
 					"beats": [
 						{
-							"controls": ["SimpleLyricOn"]
+							"controls": ["SimpleLyricOn", "Effect_Off"]
 						},
 						{
 							"controls": []
@@ -1815,7 +1815,7 @@
 					"sentence": "",
 					"beats": [
 						{
-							"controls": ["WallRect", "UCBlack", "SimpleLyricOff"]
+							"controls": ["WallRect", "UCBlack", "SimpleLyricOff","UnityChanShiftOn"]
 						},
 						{
 							"controls": []
@@ -1950,7 +1950,7 @@
 							"controls": []
 						},
 						{
-							"controls": []
+							"controls": ["UCOff", "WallOff","UnityChanShiftOff"]
 						}
 					]
 				},
@@ -1959,7 +1959,7 @@
 					"sentence": "朝",
 					"beats": [
 						{
-							"controls": ["UCOff", "WallOff", "Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn"]
+							"controls": ["Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn"]
 						},
 						{
 							"controls": []
@@ -2067,16 +2067,16 @@
 					"sentence": "らーめん食べよう",
 					"beats": [
 						{
+							"controls": []
+						},
+						{
+							"controls": []
+						},
+						{
+							"controls": []
+						},
+						{
 							"controls": ["SimpleLyricOn", "Sun_Off", "MultiLine_R_Off", "UnityChanRunOff", "RamenDiskOff"]
-						},
-						{
-							"controls": []
-						},
-						{
-							"controls": []
-						},
-						{
-							"controls": []
 						}
 					]
 				},
@@ -2373,7 +2373,25 @@
 					"sentence": "",
 					"beats": [
 						{
+							"controls": []
+						},
+						{
+							"controls": []
+						},
+						{
+							"controls": []
+						},
+						{
 							"controls": ["SimpleLyricOff", "Night_Off"]
+						}
+					]
+				},
+				{
+					"msec": 0,
+					"sentence": "",
+					"beats": [
+						{
+							"controls": ["UCColor", "UnityChanShiftOn", "Effect_RGBShift"]
 						},
 						{
 							"controls": []
@@ -2508,25 +2526,7 @@
 							"controls": []
 						},
 						{
-							"controls": []
-						}
-					]
-				},
-				{
-					"msec": 0,
-					"sentence": "",
-					"beats": [
-						{
-							"controls": []
-						},
-						{
-							"controls": []
-						},
-						{
-							"controls": []
-						},
-						{
-							"controls": []
+							"controls": ["UCOff", "UnityChanShiftOff", "Effect_Off"]
 						}
 					]
 				},

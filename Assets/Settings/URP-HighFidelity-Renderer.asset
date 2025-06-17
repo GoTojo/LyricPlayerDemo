@@ -10,10 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 193e6038541af4664abc8e8bd50aa985, type: 3}
-  m_Name: FullScreenFadeFeature
+  m_Name: FullScreenEffectFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  fadeMaterial: {fileID: 2100000, guid: 306eba0ad04a845b79c3a3e25fbc8b25, type: 2}
+  gritchShader: {fileID: 2100000, guid: d522f1cf226fd4365bafd343197b2fff, type: 2}
+  brightnessContrastSaturation: {fileID: 2100000, guid: 5cfeb8148d23c418da5a7d9e2e51f447, type: 2}
+  displacement: {fileID: 2100000, guid: 6be9d53a464eb4327bb0e09d31a3a7c2, type: 2}
+  kaleidoscopeImageEffect: {fileID: 2100000, guid: 2ebeb5351115c46c3bd6d91d17cd5b80, type: 2}
+  shaker: {fileID: 2100000, guid: 7f2c1b4ebea854c9faabd5abdcc9c4a0, type: 2}
+  colorControl: {fileID: 2100000, guid: 636d5aed483cd4b1f86a06a019716b73, type: 2}
+  dotMatrix: {fileID: 2100000, guid: baf988628ca1a4ff7a9656c8875e63c2, type: 2}
+  outline: {fileID: 2100000, guid: 7b177adc2702b441e8bf5a0851eda118, type: 2}
+  slitscan: {fileID: 2100000, guid: be5028bd1a8444e7f9686690ac8254df, type: 2}
+  cutSlider: {fileID: 2100000, guid: cfa7b563f6d8d475eb901b181fc3e0da, type: 2}
+  dotScreen: {fileID: 2100000, guid: 7c062aa0d1aed4f6d8223f7276ca6083, type: 2}
+  poster: {fileID: 2100000, guid: 82d9d36db01b74b239de22b40bcff82d, type: 2}
+  squres: {fileID: 2100000, guid: 4689c4d9d27b74ec98f2e249d2e8c198, type: 2}
+  digitalGlitch: {fileID: 2100000, guid: e4121298fc5014f3da22fa71ead0c049, type: 2}
+  film: {fileID: 2100000, guid: eb7ac75bd4f3c4b43989b3431eae9b38, type: 2}
+  rgbShift: {fileID: 2100000, guid: 306eba0ad04a845b79c3a3e25fbc8b25, type: 2}
+  twist: {fileID: 2100000, guid: 909497845ab394d0ea8df5887ac6323f, type: 2}
+  effectMaterial: {fileID: 0}
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
