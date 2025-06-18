@@ -29,8 +29,8 @@ public class LyricPlayer : MonoBehaviour {
 			End();
 			return;
 		}
-		smfPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, false));
-		kanjiPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, true));
+		smfPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, false), SongInfo.numOfMeasure[songnum]);
+		kanjiPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, true), SongInfo.numOfMeasure[songnum]);
 		smfPlayer.midiHandler = SubMidiWatcher.Instance;
 		kanjiPlayer.midiHandler = MidiWatcher.Instance;
 		Visualizer visualizer = GetComponent<Visualizer>();

@@ -7,6 +7,8 @@ using System.IO;
 using System;
 using System.Diagnostics;
 using UnityEngine;
+using System.Linq;
+using Unity.VisualScripting;
 
 public class SMFPlayer
 {
@@ -45,7 +47,7 @@ public class SMFPlayer
 		}
 		return value;
 	}
-	public SMFPlayer(string filepath)
+	public SMFPlayer(string filepath, int totalMeasure = -1)
 	{
 		if (string.IsNullOrEmpty(filepath)) {
 			UnityEngine.Debug.Log("File path is null or empty.");
@@ -68,7 +70,7 @@ public class SMFPlayer
 		using (FileStream fs = new FileStream(filepath, FileMode.Open, FileAccess.Read))
 		{
 			BinaryReader reader = new BinaryReader(fs);
-			isValid = ParseChunk(reader);
+			isValid = ParseChunk(reader, totalMeasure);
 			foreach (TrackData track in tracks)
 			{
 				TrackPlayer player = new TrackPlayer(track, this);
@@ -107,7 +109,7 @@ public class SMFPlayer
 				nexttime = _nexttime;
 			}
 		}
-		isEnd = true;
+		// isEnd = true;
 		return nexttime;
 	}
 
@@ -183,7 +185,7 @@ public class SMFPlayer
 		return (position < 1.0f) ? position : 1.0f;
 	}
 
-	private bool ParseChunk(BinaryReader reader) 
+	private bool ParseChunk(BinaryReader reader, int totalMeasure = -1) 
 	{
 		char[] type = new char[4];
 		int trackid = 0;
@@ -211,7 +213,7 @@ public class SMFPlayer
 				break;
 			}
 		} while (reader.BaseStream.Position < reader.BaseStream.Length);
-		BeatTrack beatTrack = new BeatTrack(trackid, tracks, this);
+		BeatTrack beatTrack = new BeatTrack(trackid, tracks, this, totalMeasure);
 		tracks.Insert(0, beatTrack);
 		numOfMeasure = beatTrack.numOfMeasure;
 		// UnityEngine.Debug.Log($"numOfMeasure: {numOfMeasure}");
@@ -324,7 +326,7 @@ public class SMFPlayer
 		public bool isValid = true;
 		private SMFPlayer smfPlayer;
 		private byte runningStatus = 0;
-		public TrackParser(int trackid, BinaryReader reader, SMFPlayer player):base(trackid, player) {
+		public TrackParser(int trackid, BinaryReader reader, SMFPlayer player, int totalMeasure = -1) : base(trackid, player) {
 			smfPlayer = player;
 			runningStatus = 0;
 			UInt32 size = SMFPlayer.BEReader(reader, 4);
@@ -337,10 +339,9 @@ public class SMFPlayer
 			reader.Read(data, 0, (int)size);
 			long endPosition = reader.BaseStream.Position + size;
 			BinaryReader bufferReader = new BinaryReader(new MemoryStream(data));
-			ParseBody(bufferReader, endPosition);
+			ParseBody(bufferReader, endPosition, totalMeasure);
 		}
-		private void ParseBody(BinaryReader reader, long endPosition)
-		{
+		private void ParseBody(BinaryReader reader, long endPosition, int totalMeasure = -1) {
 			while (reader.BaseStream.Position < endPosition) {
 				UInt32 deltaTime = ParseDeltaTime(reader);
 				// UnityEngine.Debug.Log($"deltaTime: {deltaTime}");
@@ -507,10 +508,10 @@ public class SMFPlayer
 		private const byte typeMeasure = 1;
 		private const byte typeTimeSignature = 2;
 		public int numOfMeasure = 0;
-		public BeatTrack(int id, List<TrackData> trackData, SMFPlayer player):base(id, player) {
+		public BeatTrack(int id, List<TrackData> trackData, SMFPlayer player, int totalMeasure = -1) : base(id, player) {
 			this.player = player;
 			UInt32 currentTick = 0;
-			UInt32 [] nextEventTick = new UInt32 [trackData.Count];
+			UInt32[] nextEventTick = new UInt32[trackData.Count];
 			beat.unit = 4;
 			beat.count = 4;
 			ticksForBeat = (int)player.tpqn * 4 / 4;
@@ -540,16 +541,63 @@ public class SMFPlayer
 				CheckBeat();
 				currentTick++;
 			} while (!allIsEnd);
+			{
+				byte[] data = midiEvents[midiEvents.Count - 1].data;
+				if (data[0] == typeBeat && data[1] == 0) {
+					// 最後のデータがMeasureとBeat0の場合は削除する　（EndOfTrackで作られたと思われる)
+					midiEvents.RemoveAt(midiEvents.Count - 1);
+					midiEvents.RemoveAt(midiEvents.Count - 1);
+					currentMeasure--;
+				}
+			}
+			int realMeasure = currentMeasure;
+			if (currentMeasure < totalMeasure) {
+				byte[] data;
+				int lastMeasureIndex = midiEvents.Count - 1;
+				while (lastMeasureIndex >= 0) {
+					data = midiEvents[lastMeasureIndex].data;
+					if (data[0] == typeMeasure) break;
+					lastMeasureIndex--;
+				}
+				int numOfEvent = midiEvents.Count - lastMeasureIndex;
+				MIDIEvent[] measEvents = new MIDIEvent[numOfEvent];
+				midiEvents.CopyTo(lastMeasureIndex, measEvents, 0, numOfEvent);
+				for (; currentMeasure <= totalMeasure; currentMeasure++) {
+					for (var i = 0; i < measEvents.Length; i++) {
+						byte[] newData = new byte[measEvents[i].data.Length];
+						Array.Copy(measEvents[i].data, newData, measEvents[i].data.Length);
+						if (newData[0] == typeMeasure) {
+							newData[1] = (byte)currentMeasure;
+						}
+						Add(measEvents[i].deltaTime, newData);
+					}
+				}
+			}
 			numOfMeasure = currentMeasure;
+			// UnityEngine.Debug.Log("---- Show Final Events ----");
 			// Reset();
 			// while (!IsEnd()) {
-			// 	UnityEngine.Debug.Log("#deltaTime: " + GetDeltaTime());
-			// 	UnityEngine.Debug.Log("#data: " + GetData()[0]);
-			// 	UnityEngine.Debug.Log("#msec: " + GetMsec());
+			// 	string type;
+			// 	switch (GetData()[0]) {
+			// 	case typeBeat:
+			// 		type = "Beat";
+			// 		break;
+			// 	case typeMeasure:
+			// 		type = $"Measure";
+			// 		break;
+			// 	case typeTimeSignature:
+			// 		type = "timeSignature";
+			// 		break;
+			// 	default:
+			// 		type = "Unknown";
+			// 		break;
+			// 	}
+			// 	UnityEngine.Debug.Log($"deltaTime: {GetDeltaTime()}, data: {type}, {GetData()[1]}, msec: {GetMsec()}");
 			// 	if (!Next()) {
 			// 		break;
 			// 	}
-			// };
+			// }
+			// UnityEngine.Debug.Log($"realMeasure: {realMeasure}, numOfMeasure: {numOfMeasure}");
 		}
 		public override void Reset()
 		{
@@ -576,14 +624,13 @@ public class SMFPlayer
 			Add((UInt32)deltaTime, data);
 			counterForBeat = ticksForBeat;
 		}
-		private void AddMeasure(int deltaTime)
-		{
-			byte [] data = new byte [2];
+		private void AddMeasure(int deltaTime) {
+			byte[] data = new byte[2];
 			data[0] = typeMeasure;
 			data[1] = (byte)currentMeasure;
 			currentMeasure++;
 			currentBeat = 0;
-			Add((UInt32)deltaTime, data);
+			Add((uint)deltaTime, data);
 			AddBeat(0);
 			counterForMeasure = ticksForMeasure;
 		}

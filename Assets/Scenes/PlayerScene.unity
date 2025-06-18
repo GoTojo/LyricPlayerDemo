@@ -21582,7 +21582,7 @@ MonoBehaviour:
   amount: 0.01
   angle: 60
   time: 0.1
-  active: 0
+  active: 1
 --- !u!4 &789381142
 Transform:
   m_ObjectHideFlags: 0
@@ -21610,6 +21610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e8f8f1d3b214645b4ce506cca37328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  effectFeature: {fileID: -2622006584530454775, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
 --- !u!1 &802079854
 GameObject:
   m_ObjectHideFlags: 0
@@ -32408,6 +32409,7 @@ MonoBehaviour:
     y: 5
     width: 4
     height: 10
+  effectSwitcher: {fileID: 789381143}
   unityChanBlack: {fileID: 1801223687}
   unityChanColor: {fileID: 503062539}
   unityChanRunning: {fileID: 1082495338}
