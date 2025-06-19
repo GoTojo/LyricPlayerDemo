@@ -1905,7 +1905,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-							"controls": ["SimpleLyricOn", "MultiLine_R_Off", "UnityChanRunOff","RamenDiskOff"]
+							"controls": ["SimpleLyricOn","UnityChanRunOff","RamenDiskOff", "MultiLine_R_Off"]
                         },
                         {
                             "controls": []
@@ -2229,7 +2229,7 @@
                     "sentence": "らーめん",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricOn","UnityChanRunOn","RamenDiskOn"]
+                            "controls": ["Sun_Off","SimpleLyricOn","UnityChanRunOn","RamenDiskOn"]
                         },
                         {
                             "controls": []
