@@ -33,6 +33,6 @@ Material:
     - nIntensity: 0.5
     - sCount: 4096
     - sIntensity: 0.05
-    - time: 0
+    - time: 0.02
     m_Colors: []
   m_BuildTextureStacks: []

@@ -1329,7 +1329,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-							"controls": ["Effect_RGBShift", "SimpleLyricOn", "WaveFormOn"]
+							"controls": ["SimpleLyricOn", "WaveFormOn", "Effect_Off"]
                         },
                         {
                             "controls": ["WaveFormOff"]
@@ -1365,7 +1365,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["WallRect", "UCBlack", "SimpleLyricOff","UnityChanShiftOn"]
+							"controls": ["Effect_RGBShift", "WallRect", "UCBlack", "SimpleLyricOff","UnityChanShiftOn"]
                         },
                         {
                             "controls": []
@@ -1509,7 +1509,7 @@
                     "sentence": "朝",
                     "beats": [
                         {
-							"controls": ["UCOff", "WallOff","Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn", "Effect_RGBShift"]
+							"controls": ["UCOff", "WallOff","Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn", "Effect_Off"]
                         },
                         {
                             "controls": []

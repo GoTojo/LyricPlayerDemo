@@ -2,9 +2,7 @@ using UnityEngine;
 
 public class GlitchShaderControl : MonoBehaviour {
 	public Material material;
-	[SerializeField, Range(0.1f, 1.0f)]
 	public float intensity = 1;
-	
 	public float filterRadius = 1;
 	public float flip_up = 1;
 	public float flip_down = 1;

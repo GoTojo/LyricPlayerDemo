@@ -29,9 +29,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - rand: 0
+    - rand: 0.153
     - timer: 0
     - val2: 1
-    - val3: 1
+    - val3: 0.03
     m_Colors: []
   m_BuildTextureStacks: []

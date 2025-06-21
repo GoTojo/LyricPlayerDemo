@@ -8,8 +8,8 @@ public class TwistControl : MonoBehaviour {
 	public float timer = 0f;
 	[SerializeField, Range(0f, 1f)]
 	public float c1 = 0.1f;
-	[SerializeField, Range(0f, 1f)]
-	public float c2 = 0.1f;
+	[SerializeField, Range(0f, 0.03f)]
+	public float c2 = 0.01f;
 	public bool active = false;
 	void Start() {
 		MidiWatcher midiWatcher = MidiWatcher.Instance;

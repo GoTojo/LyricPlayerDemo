@@ -21747,7 +21747,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   effectFeature: {fileID: -2622006584530454775, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
   type: 0
-  manual: 1
+  manual: 0
 --- !u!114 &789381144
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21762,10 +21762,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: d522f1cf226fd4365bafd343197b2fff, type: 2}
   intensity: 1
-  filterRadius: 1
-  flip_up: 1
-  flip_down: 1
-  displace: 1
+  filterRadius: 3
+  flip_up: 0
+  flip_down: 3
+  displace: 100
   scale: 1
   active: 1
 --- !u!114 &789381145
@@ -21781,6 +21781,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: e4121298fc5014f3da22fa71ead0c049, type: 2}
+  amount: 0.08
+  angle: 0.02
+  seed: 0.02
+  seed_x: 0.02
+  seed_y: 0.02
+  distortion_x: 0.5
+  distortion_y: 0.6
+  col_s: 0.05
+  bypass: 0
   active: 1
 --- !u!114 &789381146
 MonoBehaviour:
@@ -21829,6 +21838,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 909497845ab394d0ea8df5887ac6323f, type: 2}
+  rand: 0.153
+  timer: 0
+  c1: 1
+  c2: 0.03
   active: 1
 --- !u!114 &789381149
 MonoBehaviour:
@@ -21843,6 +21856,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 4689c4d9d27b74ec98f2e249d2e8c198, type: 2}
+  scale: 54
+  size: 0.356
   active: 1
 --- !u!114 &789381150
 MonoBehaviour:
@@ -21857,6 +21872,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: be5028bd1a8444e7f9686690ac8254df, type: 2}
+  slit_h: 0.01
   active: 1
 --- !u!114 &789381151
 MonoBehaviour:
@@ -21871,8 +21887,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 7f2c1b4ebea854c9faabd5abdcc9c4a0, type: 2}
-  vec_x: 1
-  vec_y: 1
+  vec_x: 0.08
+  vec_y: 0.08
   active: 1
 --- !u!114 &789381152
 MonoBehaviour:
@@ -21932,7 +21948,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: eb7ac75bd4f3c4b43989b3431eae9b38, type: 2}
-  time: 0
+  time: 0.02
   nIntensity: 0.5
   sIntensity: 0.05
   sCount: 4096
@@ -21967,7 +21983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f08c52f92e194c968ab57f3c2195b6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  material: {fileID: 0}
+  material: {fileID: 2100000, guid: baf988628ca1a4ff7a9656c8875e63c2, type: 2}
   spacing: 10
   size: 4
   blur: 4

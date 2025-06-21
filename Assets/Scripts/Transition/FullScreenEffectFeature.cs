@@ -25,7 +25,7 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 
 	public enum EffectType {
 		Off,
-		GritchShader,
+		GlitchShader,
 		BrightnessContrastSaturation,
 		Displacement,
 		KaleidoscopeImageEffect,
@@ -43,7 +43,7 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 		RGBShift,
 		Twist,
 	}
-	public Material gritchShader;
+	public Material glitchShader;
 	public Material brightnessContrastSaturation;
 	public Material displacement;
 	public Material kaleidoscopeImageEffect;
@@ -72,9 +72,9 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 	public void SetMatrial(EffectType type)
 	{
 		switch (type) {
-		case EffectType.GritchShader:
+		case EffectType.GlitchShader:
 			curType = type;
-			effectMaterial = gritchShader;
+			effectMaterial = glitchShader;
 			break;
 		case EffectType.BrightnessContrastSaturation:
 			curType = type;

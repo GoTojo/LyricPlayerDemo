@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FullScreenEffectFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  gritchShader: {fileID: 2100000, guid: d522f1cf226fd4365bafd343197b2fff, type: 2}
+  glitchShader: {fileID: 2100000, guid: d522f1cf226fd4365bafd343197b2fff, type: 2}
   brightnessContrastSaturation: {fileID: 2100000, guid: 5cfeb8148d23c418da5a7d9e2e51f447, type: 2}
   displacement: {fileID: 2100000, guid: 6be9d53a464eb4327bb0e09d31a3a7c2, type: 2}
   kaleidoscopeImageEffect: {fileID: 2100000, guid: 2ebeb5351115c46c3bd6d91d17cd5b80, type: 2}
@@ -30,7 +30,6 @@ MonoBehaviour:
   film: {fileID: 2100000, guid: eb7ac75bd4f3c4b43989b3431eae9b38, type: 2}
   rgbShift: {fileID: 2100000, guid: 306eba0ad04a845b79c3a3e25fbc8b25, type: 2}
   twist: {fileID: 2100000, guid: 909497845ab394d0ea8df5887ac6323f, type: 2}
-  effectMaterial: {fileID: 0}
 --- !u!114 &-1878332245247344467
 MonoBehaviour:
   m_ObjectHideFlags: 0
