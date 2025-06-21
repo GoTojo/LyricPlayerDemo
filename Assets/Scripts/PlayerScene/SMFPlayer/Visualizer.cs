@@ -37,6 +37,7 @@ public class Visualizer : MonoBehaviour {
 
 	public Parameter.ParticleType particleType;
 	public Parameter.UnityChanType unityChanType;
+	public GameObject blackOut;
 
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
@@ -331,6 +332,14 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "Effect":
 			effectSwitcher.ChangeEffect(args);
+			break;
+		case "BlackOut":
+			if (args.Length < 2) break;
+			if (args[1] == "On") {
+				blackOut.SetActive(true);
+			} else if (args[1] == "Off") {
+				blackOut.SetActive(false);
+			}
 			break;
 		}
 	}

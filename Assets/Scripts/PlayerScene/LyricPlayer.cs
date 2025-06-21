@@ -66,7 +66,7 @@ public class LyricPlayer : MonoBehaviour {
 		fIsPlaying = true;
 		smfPlayer.Start();
 		kanjiPlayer.Start();
-		endTimer = 2f;
+		endTimer = 1f;
 		blackOut.SetActive(false);
 	}
 

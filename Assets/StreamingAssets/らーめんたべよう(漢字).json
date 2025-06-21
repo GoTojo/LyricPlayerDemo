@@ -1338,7 +1338,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["Ramen"]
                         }
                     ]
                 },
@@ -1347,7 +1347,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Ramen"]
+							"controls": []
                         },
                         {
                             "controls": ["WaveFormOn"]
@@ -1923,7 +1923,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["Zeknova"]
+                            "controls": []
                         },
                         {
                             "controls": []
@@ -1941,7 +1941,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["UCColor", "UnityChanShiftOn", "Effect_RGBShift"]
+							"controls": ["UCColor", "UnityChanShiftOn", "Effect_RGBShift", "WallRect"]
                         },
                         {
                             "controls": []
@@ -2085,7 +2085,7 @@
                     "sentence": "３時だ",
                     "beats": [
                         {
-							"controls": ["UCOff", "UnityChanShiftOff", "Effect_Off", "Sun_15","UnityChanRunOn","RamenDiskOn"]
+							"controls": ["WallOff", "UCOff", "UnityChanShiftOff", "Effect_Off", "Sun_15","UnityChanRunOn","RamenDiskOn"]
                         },
                         {
                             "controls": []
@@ -2355,7 +2355,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["Sun_8", "SimpleLyricOff"]
+                            "controls": ["SimpleLyricOff"]
                         },
                         {
                             "controls": []
@@ -2364,7 +2364,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["Sun_8"]
                         }
                     ]
                 },
@@ -2390,17 +2390,17 @@
                     "msec": 0,
                     "sentence": "",
                     "beats": [
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
                         {
                             "controls": ["Sun_15"]
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
                         }
                     ]
                 },
@@ -2426,17 +2426,17 @@
                     "msec": 0,
                     "sentence": "",
                     "beats": [
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
                         {
                             "controls": ["Sun_Off", "Night_On"]
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
                         }
                     ]
                 },
@@ -2507,18 +2507,18 @@
                         {
                             "controls": []
                         },
-                        {
-                            "controls": []
-                        }
-                    ]
-                },
-                {
-                    "msec": 0,
-                    "sentence": "",
-                    "beats": [
                         {
                             "controls": ["UnityChanRunOff","RamenDiskOff", "Night_Off", "WallRect", "UCColor", "UnityChanShiftOn"]
-                        },
+                        }
+                    ]
+                },
+                {
+                    "msec": 0,
+                    "sentence": "",
+                    "beats": [
+                        {
+                            "controls": []
+						},
                         {
                             "controls": []
                         },
@@ -2571,7 +2571,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["WallOff", "UCOff", "UnityChanShiftOff"]
+                            "controls": []
                         },
                         {
                             "controls": []
@@ -2595,7 +2595,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["WallOff", "UCOff", "UnityChanShiftOff", "BlackOut_On"]
                         },
                         {
                             "controls": []
