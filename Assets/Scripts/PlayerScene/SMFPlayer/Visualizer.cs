@@ -39,6 +39,8 @@ public class Visualizer : MonoBehaviour {
 	public Parameter.UnityChanType unityChanType;
 	public GameObject blackOut;
 
+	public RotateContentsZ rotateContentsZ;
+
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
 	private int newMeasure = -1;
@@ -407,6 +409,13 @@ public class Visualizer : MonoBehaviour {
 		case Parameter.CCRGBShiftAmount:
 		case Parameter.CCRGBShiftAngle:
 			effectSwitcher.ChangeParameter((int)ch, ccNum, value);
+			break;
+		case Parameter.CCRamenRotate:
+			rotateContentsZ.ChangeRotationTime(value);
+			ApplyControlNow("RamenDiskOn");
+			ApplyControlDelayed("UnityChanRunOn");
+			break;
+		default:
 			break;
 		}
 	}

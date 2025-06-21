@@ -32888,6 +32888,7 @@ MonoBehaviour:
   particleType: 0
   unityChanType: 0
   blackOut: {fileID: 1635863068}
+  rotateContentsZ: {fileID: 2032318223}
 --- !u!114 &1095297742
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -35,7 +35,8 @@ public class Parameter {
 	public static int NoteStartVideo = 0x48;	// C5
 
 	public const int CCRGBShiftAmount = 14; 
-	public const int CCRGBShiftAngle = 15; 
+	public const int CCRGBShiftAngle = 15;
+	public const int CCRamenRotate = 16;
 
 	public string[,] sentence;
 

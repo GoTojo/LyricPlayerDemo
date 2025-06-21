@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class RotateContentsZ : MonoBehaviour {
 	private float rotationTime = 8; // 4measure at BPM120
-	// Start is called before the first frame update
+									// Start is called before the first frame update
+	private int manualCount = 0;
 	void Start() {
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onMeasureIn += MeasureIn;
@@ -18,6 +19,16 @@ public class RotateContentsZ : MonoBehaviour {
 
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
 		// 4小節
-		rotationTime = (float)measureInterval * 4 / 1000 ;
+		if (manualCount > 0) {
+			manualCount--;
+		} else {
+			rotationTime = (float)measureInterval * 4 / 1000;
+		}
+	}
+	public void ChangeRotationTime(float f) {
+		float t = 1 - f;
+		if (t <= 0) return;
+		rotationTime = t;
+		manualCount = 3;
 	}
 }
