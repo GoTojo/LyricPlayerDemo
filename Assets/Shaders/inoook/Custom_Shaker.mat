@@ -29,7 +29,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - blur_vec_x: 1
-    - blur_vec_y: 1
+    - blur_vec_x: 2
+    - blur_vec_y: 0
     m_Colors: []
   m_BuildTextureStacks: []
