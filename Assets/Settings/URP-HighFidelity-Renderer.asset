@@ -25,7 +25,7 @@ MonoBehaviour:
   cutSlider: {fileID: 2100000, guid: cfa7b563f6d8d475eb901b181fc3e0da, type: 2}
   dotScreen: {fileID: 2100000, guid: 7c062aa0d1aed4f6d8223f7276ca6083, type: 2}
   poster: {fileID: 2100000, guid: 82d9d36db01b74b239de22b40bcff82d, type: 2}
-  squres: {fileID: 2100000, guid: 4689c4d9d27b74ec98f2e249d2e8c198, type: 2}
+  squares: {fileID: 2100000, guid: 4689c4d9d27b74ec98f2e249d2e8c198, type: 2}
   digitalGlitch: {fileID: 2100000, guid: e4121298fc5014f3da22fa71ead0c049, type: 2}
   film: {fileID: 2100000, guid: eb7ac75bd4f3c4b43989b3431eae9b38, type: 2}
   rgbShift: {fileID: 2100000, guid: 306eba0ad04a845b79c3a3e25fbc8b25, type: 2}

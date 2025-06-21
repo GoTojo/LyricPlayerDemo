@@ -403,6 +403,11 @@ public class Visualizer : MonoBehaviour {
 	}
 
 	private void knobChanged(MidiChannel ch, int ccNum, float value) {
-		// Debug.Log($"knobChanged: ch{ch}, cc{ccNum}: {value}");
+		switch (ccNum) {
+		case Parameter.CCRGBShiftAmount:
+		case Parameter.CCRGBShiftAngle:
+			effectSwitcher.ChangeParameter((int)ch, ccNum, value);
+			break;
+		}
 	}
 }

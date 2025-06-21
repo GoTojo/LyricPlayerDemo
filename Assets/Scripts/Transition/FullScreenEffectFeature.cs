@@ -37,7 +37,7 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 		CutSlider,
 		DotScreen,
 		Poster,
-		Squres,
+		Squares,
 		DigitalGlitch,
 		Film,
 		RGBShift,
@@ -55,7 +55,7 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 	public Material cutSlider;
 	public Material dotScreen;
 	public Material poster;
-	public Material squres;
+	public Material squares;
 	public Material digitalGlitch;
 	public Material film;
 	public Material rgbShift;
@@ -120,9 +120,9 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 			curType = type;
 			effectMaterial = poster;
 			break;
-		case EffectType.Squres:
+		case EffectType.Squares:
 			curType = type;
-			effectMaterial = squres;
+			effectMaterial = squares;
 			break;
 		case EffectType.DigitalGlitch:
 			curType = type;

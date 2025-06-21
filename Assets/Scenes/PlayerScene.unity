@@ -21717,6 +21717,7 @@ MonoBehaviour:
   amount: 0.015
   angle: 60
   time: 0.2
+  manualCount: 2
   active: 1
 --- !u!4 &789381142
 Transform:
@@ -21746,7 +21747,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   effectFeature: {fileID: -2622006584530454775, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
-  type: 0
+  type: 16
+  glitchShader: {fileID: 789381144}
+  brightnessContrastSaturation: {fileID: 789381147}
+  displacement: {fileID: 789381158}
+  kaleidoscopeImageEffect: {fileID: 789381154}
+  shaker: {fileID: 789381151}
+  colorControl: {fileID: 789381146}
+  dotMatrix: {fileID: 789381157}
+  outline: {fileID: 789381153}
+  slitscan: {fileID: 789381150}
+  cutSlider: {fileID: 789381159}
+  dotScreen: {fileID: 789381156}
+  poster: {fileID: 789381152}
+  squares: {fileID: 789381149}
+  digitalGlitch: {fileID: 789381145}
+  film: {fileID: 789381155}
+  rgbShift: {fileID: 789381141}
+  twist: {fileID: 789381148}
+  manualCount: 2
   manual: 0
 --- !u!114 &789381144
 MonoBehaviour:
