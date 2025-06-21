@@ -28,7 +28,7 @@ public class Visualizer : MonoBehaviour {
 	public GameObject ramenDisk;
 	public GameObject ramenFloor;
 	public GameObject night;
-	public Waveform waveform;
+	public GameObject wave;
 	public BackGroundController backGroundController;
 	public SimpleLyricGen simpleLyricGen;
 	public LyricGenMultiLine multiLineL;
@@ -270,6 +270,7 @@ public class Visualizer : MonoBehaviour {
 			simpleLyricGen.active = false;
 			break;
 		case "MultiLine":
+		case "MultiRow":
 			if (args.Length < 2) break;
 			LyricGenMultiLine multiLine;
 			if (args[1] == "L") {
@@ -277,7 +278,14 @@ public class Visualizer : MonoBehaviour {
 			} else if (args[1] == "R") {
 				multiLine = multiLineR;
 			} else {
+				multiLineL.SetActive(false);
+				multiLineR.SetActive(false);
 				break;
+			}
+			if (args[0] == "MultiRow") {
+				multiLine.vertical = true;
+			} else if (args[2] == "Off") {
+				multiLine.vertical = false;
 			}
 			if (args[2] == "On") {
 				multiLine.SetActive(true);
@@ -316,10 +324,10 @@ public class Visualizer : MonoBehaviour {
 			ChangeUnityChan(Parameter.UnityChanType.Off);
 			break;
 		case "WaveFormOn":
-			waveform.active = true;
+			wave.SetActive(true);
 			break;
 		case "WaveFormOff":
-			waveform.active = false;
+			wave.SetActive(false);
 			break;
 		case "Effect":
 			effectSwitcher.ChangeEffect(args);

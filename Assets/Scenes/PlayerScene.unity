@@ -5351,7 +5351,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &219786182
 Transform:
   m_ObjectHideFlags: 0
@@ -21630,13 +21630,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 785098588}
+  - component: {fileID: 785098589}
   m_Layer: 0
   m_Name: Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &785098588
 Transform:
   m_ObjectHideFlags: 0
@@ -21646,7 +21647,7 @@ Transform:
   m_GameObject: {fileID: 785098587}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -21654,6 +21655,18 @@ Transform:
   - {fileID: 1726091892}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &785098589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785098587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2fbba60d15e0401a91a187c44f2d180, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &789381140
 GameObject:
   m_ObjectHideFlags: 0
@@ -21685,9 +21698,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: 306eba0ad04a845b79c3a3e25fbc8b25, type: 2}
-  amount: 0.01
+  amount: 0.015
   angle: 60
-  time: 0.1
+  time: 0.2
   active: 1
 --- !u!4 &789381142
 Transform:
@@ -32528,7 +32541,7 @@ MonoBehaviour:
   ramenDisk: {fileID: 2032318217}
   ramenFloor: {fileID: 1265290041}
   night: {fileID: 1170470069}
-  waveform: {fileID: 1726091891}
+  wave: {fileID: 785098587}
   backGroundController: {fileID: 1476044171}
   simpleLyricGen: {fileID: 669801531}
   multiLineL: {fileID: 1288210102}
@@ -33576,12 +33589,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area:
     serializedVersion: 2
-    x: -15
-    y: -7
-    width: 30
-    height: 14
+    x: -12
+    y: -8
+    width: 24
+    height: 16
   sizeMin: 0.001
-  sizeMax: 0.005
+  sizeMax: 0.003
   wall: {fileID: 1476044166}
   numOfCube: 20
   numOfCircle: 10
@@ -38570,7 +38583,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1576073433
 Transform:
   m_ObjectHideFlags: 0
@@ -39237,7 +39250,7 @@ MonoBehaviour:
   waveLength: 30
   yLength: 20
   yOffset: 0
-  active: 0
+  active: 1
   startColor: {r: 0.4669811, g: 1, b: 0.4793769, a: 1}
   endColor: {r: 0.34057966, g: 0.9716981, b: 0.01375042, a: 1}
   background: {fileID: 0}
