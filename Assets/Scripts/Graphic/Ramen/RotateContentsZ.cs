@@ -13,8 +13,10 @@ public class RotateContentsZ : MonoBehaviour {
 									// Start is called before the first frame update
 	private int manualCount = 0;
 	private int curMeas = 0;
+	private int startMeas = 0;
 	private float curAngle = 0;
 	private int phase = 0;
+	private bool active = false;
 	void Start() {
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onMeasureIn += MeasureIn;
@@ -47,13 +49,19 @@ public class RotateContentsZ : MonoBehaviour {
 	}
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
 		// 4小節で一周
+		if (curMeas + 1 < measure) {
+			startMeas = measure - 1;
+			if (startMeas < 0) {
+				startMeas = 0;
+			}
+		}
 		curMeas = measure;
 		if (manualCount > 0) {
 			manualCount--;
 		} else {
 			rotationTime = (float)measureInterval * 4 / 1000;
 		}
-		phase = curMeas % 4;
+		phase = (curMeas - startMeas) % 4;
 		if (phase == 0) curAngle = 0;
 	}
 	public void ChangeRotationTime(float f) {
@@ -61,5 +69,8 @@ public class RotateContentsZ : MonoBehaviour {
 		if (t <= 0) return;
 		rotationTime = t;
 		manualCount = 2;
+	}
+	public void SetActive(bool f) {
+		this.active = true;
 	}
 }
