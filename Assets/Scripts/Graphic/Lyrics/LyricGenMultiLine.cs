@@ -18,7 +18,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 	public int maxLine = 5;
 	public SentenceList sentenceList;
 	public bool active = true;
-	class LyricGenMultiLineControl : LyricGenControl {
+	class LyricGenMultiLineControl : LyricGenLineBase {
 		public int maxLine = 5;
 		public float scale = 1f;
 		public bool vertical = false;

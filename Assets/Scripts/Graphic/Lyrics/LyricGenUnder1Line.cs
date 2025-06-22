@@ -9,7 +9,7 @@ public class LyricGenUnder1Line : MonoBehaviour
 {
 	public Rect area = new Rect(-10, -3, 20, 6);
 	public bool active = true;
-	class LyricGenUnder1LineControl : LyricGenControl {
+	class LyricGenUnder1LineControl : LyricGenLineBase {
 		private TextMeshPro text;
 		public LyricGenUnder1LineControl(Vector3 position, LyricGenUnder1Line lyricGen, MidiWatcherBase midiWatcher) : base(lyricGen.sentenceList, midiWatcher) {
 			TMP_FontAsset font = FontResource.Instance.GetFont();
