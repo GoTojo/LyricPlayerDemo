@@ -78,6 +78,7 @@ public class SimpleLyricGen : MonoBehaviour {
 	}
 
 	private void LyricObjectText(int num, int numOfData) {
+		if (!active) return;
 		Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 		float width = (numOfData != 0) ? area.width / numOfData : area.width;
 		float x = width * num + area.x + width / 2;
@@ -91,7 +92,6 @@ public class SimpleLyricGen : MonoBehaviour {
 	}
 
 	private void CreateLyric() {
-		if (!active) return;
 		if (sentence.Length == 0) {
 			ClearSentence();
 			lyricNum = 0;
