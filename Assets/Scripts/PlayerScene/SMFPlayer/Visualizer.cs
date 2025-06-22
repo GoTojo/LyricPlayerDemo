@@ -34,6 +34,7 @@ public class Visualizer : MonoBehaviour {
 	public SimpleLyricGen simpleLyricGenUp;
 	public LyricGenMultiLine multiLineL;
 	public LyricGenMultiLine multiLineR;
+	public TextMeshPro titleCenter;
 	public RamenController ramenController;
 
 	public Parameter.ParticleType particleType;
@@ -107,7 +108,10 @@ public class Visualizer : MonoBehaviour {
 		eventMap.SetCurrentMap(1);
 		kanjiPlayer.mute = false;
 		ChangeParticle(particleType);
-		SetUnityChan(unityChanType);
+		SetUnityChan(unityChanType);	
+	}
+	public void SetTitle(String title) {
+		titleCenter.text = title;
 	}
 
 	public void ToggleLyricMode() {
@@ -355,6 +359,12 @@ public class Visualizer : MonoBehaviour {
 	private void ApplyControlDelayed(string command) {
 		string[] args = command.Split("_");
 		switch (args[0]) {
+		case "TitleCenterOn":
+			titleCenter.enabled = true;
+			break;
+		case "TitleCenterOff":
+			titleCenter.enabled = false;
+			break;
 		case "RamenCupAuto":
 			ramenController.CreateRamen();
 			break;

@@ -35,6 +35,7 @@ public class LyricPlayer : MonoBehaviour {
 		kanjiPlayer.midiHandler = MidiWatcher.Instance;
 		Visualizer visualizer = GetComponent<Visualizer>();
 		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer);
+		visualizer.SetTitle(SongInfo.GetTitle(songnum));
 		LyricList[] lyricLists = GetComponents<LyricList>();
 		foreach (LyricList lyricList in lyricLists) {
 			lyricList.Init();
