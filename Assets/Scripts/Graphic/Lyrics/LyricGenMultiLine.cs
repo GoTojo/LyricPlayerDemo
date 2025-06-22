@@ -6,6 +6,8 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
+using System;
+using UnityEngine.AI;
 
 public class LyricGenMultiLine : MonoBehaviour {
 	public Rect area = new Rect(-6, -4, 20, 6);
@@ -29,6 +31,11 @@ public class LyricGenMultiLine : MonoBehaviour {
 		private float textHight = 2f;
 		private float textWidth = 2f;
 		private int lyricCount = 0;
+		private String sentence = "";
+		private int sentenceLength = 0;
+
+		private int waitCount = 3;
+		private int waitClear = 0;
 		public LyricGenMultiLineControl(Rect area, float textHight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(lyricGen.sentenceList, MidiWatcher.Instance) {
 			this.area = area;
 			this.textHight = textHight;
@@ -73,12 +80,28 @@ public class LyricGenMultiLine : MonoBehaviour {
 			lyrics.Clear();
 			lyricCount = 0;
 		}
-		protected override void OnEventIn(MIDIHandler.Event playerEvent) { }
-		protected override void OnTextChanged(string text) {
-			if (lyricCount >= maxLine) Clear();
-			if (!string.IsNullOrEmpty(text)) {
-				CreateText(text);
+		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
+			if (sentence.Length == 0) {
+				sentence = GetSentence();
+				sentenceLength = sentence.Length;
+				if (sentenceLength > 0) {
+					if (lyricCount >= maxLine) Clear();
+					CreateText(sentence);
+					waitClear = waitCount;
+				}
 			}
+			// Debug.Log($"{lyricNum}/{sentenceLength}: {curWord}");
+			sentence = sentence.Substring(lyric.Length);
+		}
+		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {
+			if (waitClear > 0) {
+				waitClear--;
+				if (waitClear <= 0) {
+					Clear();
+				} 
+			}
+		}
+		protected override void OnEventIn(MIDIHandler.Event playerEvent) {
 		}
 	};
 	LyricGenMultiLineControl control;
@@ -99,5 +122,6 @@ public class LyricGenMultiLine : MonoBehaviour {
 		control.Clear();
 		active = f;
 		control.active = f;
+		control.vertical = vertical;
 	}
 }

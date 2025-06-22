@@ -5283,7 +5283,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161126168}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
   m_Name: 
@@ -33033,7 +33033,9 @@ MonoBehaviour:
   simpleLyricGenUp: {fileID: 1598179921}
   multiLineL: {fileID: 1288210102}
   multiLineR: {fileID: 381461214}
-  titleCenter: {fileID: 161126168}
+  multiLineL1: {fileID: 1549570594}
+  multiLineR1: {fileID: 1419467185}
+  titleCenter: {fileID: 161126170}
   ramenController: {fileID: 635129803}
   particleType: 0
   unityChanType: 0
@@ -33978,7 +33980,7 @@ GameObject:
   - component: {fileID: 1419467184}
   - component: {fileID: 1419467185}
   m_Layer: 6
-  m_Name: MultiRowR
+  m_Name: MultiR2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34014,7 +34016,7 @@ MonoBehaviour:
   area:
     serializedVersion: 2
     x: 11
-    y: -3
+    y: -1
     width: 20
     height: 6
   font: {fileID: 11400000, guid: 85a0824a6607c4876a991d154ff13c39, type: 2}
@@ -34235,7 +34237,7 @@ GameObject:
   - component: {fileID: 1549570593}
   - component: {fileID: 1549570594}
   m_Layer: 6
-  m_Name: MultiRowL
+  m_Name: MultiL1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34271,7 +34273,7 @@ MonoBehaviour:
   area:
     serializedVersion: 2
     x: -5
-    y: -4
+    y: -1
     width: 20
     height: 6
   font: {fileID: 11400000, guid: def3f52187ed044479d27e430acf2403, type: 2}
