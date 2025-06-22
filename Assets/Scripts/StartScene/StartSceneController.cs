@@ -7,7 +7,6 @@ using MidiJack;
 
 public class StartSceneController : MonoBehaviour
 {
-	private const int numOfSong = 5;
     private GameObject loadingPanel;
 	private TMP_Text songtitle;
 	public GameObject titlePanel;
@@ -52,7 +51,7 @@ public class StartSceneController : MonoBehaviour
 	private void SelectSong(int num)
 	{
 		if (num < 0) return;
-		if (num >= numOfSong) return;
+		if (num >= SongInfo.NumOfSongs()) return;
 		songtitle.SetText(SongInfo.GetTitle(num));
 		PlayerPrefs.SetInt("Song", num);
 		currentSong = num;

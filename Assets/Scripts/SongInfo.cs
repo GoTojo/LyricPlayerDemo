@@ -7,23 +7,23 @@ public class SongInfo
     private static string [] songbasenamesAscii = new string [] {
 		@"tabeyo",
 		@"madakana",
-		@"遥かな旅路",
-		@"3分間のトキメキ",
-		@"約束の場所へ"
+		// @"遥かな旅路",
+		// @"3分間のトキメキ",
+		// @"約束の場所へ"
 	};
     private static string [] songtitle = new string [] {
 		@"らーめんたべよう",
 		@"らーめんまだかな",
-		@"遥かな旅路",
-		@"3分間のトキメキ",
-		@"約束の場所へ"
+		// @"遥かな旅路",
+		// @"3分間のトキメキ",
+		// @"約束の場所へ"
 	};
 	public static int[] numOfMeasure{ get; } = new int[] {
 		72, // @"らーめんたべよう",
 		72, // @"らーめんまだかな",
-		-1, // @"遥かな旅路",
-		-1, // @"3分間のトキメキ",
-		-1, // @"約束の場所へ"
+		// -1, // @"遥かな旅路",
+		// -1, // @"3分間のトキメキ",
+		// -1, // @"約束の場所へ"
 	};
 
 	public static int NumOfSongs() {
