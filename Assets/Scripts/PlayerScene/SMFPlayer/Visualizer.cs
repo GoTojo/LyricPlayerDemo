@@ -31,6 +31,7 @@ public class Visualizer : MonoBehaviour {
 	public GameObject wave;
 	public BackGroundController backGroundController;
 	public SimpleLyricGen simpleLyricGen;
+	public SimpleLyricGen simpleLyricGenUp;
 	public LyricGenMultiLine multiLineL;
 	public LyricGenMultiLine multiLineR;
 	public RamenController ramenController;
@@ -272,6 +273,12 @@ public class Visualizer : MonoBehaviour {
 		case "SimpleLyricOff":
 			simpleLyricGen.active = false;
 			break;
+		case "SimpleLyricUpOn":
+			simpleLyricGenUp.active = true;
+			break;
+		case "SimpleLyricUpOff":
+			simpleLyricGenUp.active = false;
+			break;
 		case "MultiLine":
 		case "MultiRow":
 			if (args.Length < 2) break;
@@ -371,6 +378,12 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "SimpleLyricOff":
 			simpleLyricGen.active = false;
+			break;
+		case "SimpleLyricUpOn":
+			simpleLyricGenUp.active = true;
+			break;
+		case "SimpleLyricUpOff":
+			simpleLyricGenUp.active = false;
 			break;
 		case "Sun":
 			if (args.Length >= 2) sun.SetCommand(args[1]);

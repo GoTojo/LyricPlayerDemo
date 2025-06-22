@@ -29,10 +29,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - grayscale: 1
+    - grayscale: 0
     - nIntensity: 0.5
     - sCount: 4096
-    - sIntensity: 0.05
-    - time: 0.02
+    - sIntensity: 0.07
+    - time: 1
     m_Colors: []
   m_BuildTextureStacks: []

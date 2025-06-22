@@ -21114,7 +21114,6 @@ GameObject:
   m_Component:
   - component: {fileID: 669801530}
   - component: {fileID: 669801529}
-  - component: {fileID: 669801531}
   m_Layer: 6
   m_Name: Lyric
   m_TagString: Untagged
@@ -21159,33 +21158,10 @@ Transform:
   - {fileID: 381461213}
   - {fileID: 1549570593}
   - {fileID: 1419467184}
+  - {fileID: 1598179920}
+  - {fileID: 1487683947}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &669801531
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669801528}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6632c09a44b8d4199b0d852a097af7b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  area:
-    serializedVersion: 2
-    x: -10
-    y: 0
-    width: 20
-    height: 2
-  sizeMin: 1.3
-  sizeMax: 1.2
-  rotateAngle: 0
-  font: {fileID: 11400000, guid: 21779dbec12c9477d996b4738a71123f, type: 2}
-  active: 0
-  measureCount: 1
-  eventMap: {fileID: 1095297742}
 --- !u!1001 &675066976
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21967,11 +21943,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   material: {fileID: 2100000, guid: eb7ac75bd4f3c4b43989b3431eae9b38, type: 2}
-  time: 0.02
+  time: 1
   nIntensity: 0.5
-  sIntensity: 0.05
+  sIntensity: 0.07
   sCount: 4096
-  grayscale: 1
+  grayscale: 0
   active: 1
 --- !u!114 &789381156
 MonoBehaviour:
@@ -22061,7 +22037,7 @@ Transform:
   m_GameObject: {fileID: 802079854}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: -15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32881,7 +32857,8 @@ MonoBehaviour:
   night: {fileID: 1170470069}
   wave: {fileID: 785098587}
   backGroundController: {fileID: 1476044171}
-  simpleLyricGen: {fileID: 669801531}
+  simpleLyricGen: {fileID: 1487683948}
+  simpleLyricGenUp: {fileID: 1598179921}
   multiLineL: {fileID: 1288210102}
   multiLineR: {fileID: 381461214}
   ramenController: {fileID: 635129803}
@@ -33940,6 +33917,63 @@ MonoBehaviour:
   numOfCircle: 10
   active: 0
   type: 0
+--- !u!1 &1487683946
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1487683947}
+  - component: {fileID: 1487683948}
+  m_Layer: 6
+  m_Name: SimpleLyricGenCenter
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1487683947
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487683946}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 669801530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1487683948
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1487683946}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6632c09a44b8d4199b0d852a097af7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area:
+    serializedVersion: 2
+    x: -10
+    y: 0
+    width: 20
+    height: 2
+  sizeMin: 1.2
+  sizeMax: 1.3
+  rotateAngle: 0
+  font: {fileID: 11400000, guid: 21779dbec12c9477d996b4738a71123f, type: 2}
+  active: 0
+  eventMap: {fileID: 1095297742}
+  sentenceList: {fileID: 1095297744}
 --- !u!1001 &1536162797
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -39117,6 +39151,63 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587285840}
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1598179919
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1598179920}
+  - component: {fileID: 1598179921}
+  m_Layer: 6
+  m_Name: SimpleLyricGenUpper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1598179920
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598179919}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 669801530}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1598179921
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598179919}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6632c09a44b8d4199b0d852a097af7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  area:
+    serializedVersion: 2
+    x: -10
+    y: 3
+    width: 20
+    height: 2
+  sizeMin: 1.2
+  sizeMax: 1.3
+  rotateAngle: 0
+  font: {fileID: 11400000, guid: 21779dbec12c9477d996b4738a71123f, type: 2}
+  active: 0
+  eventMap: {fileID: 1095297742}
+  sentenceList: {fileID: 1095297744}
 --- !u!4 &1631503856 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2829148430046862697, guid: fdf678a7193c58346a367114b3da57ac, type: 3}

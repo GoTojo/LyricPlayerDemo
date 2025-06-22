@@ -15,18 +15,19 @@ public class SimpleLyric : LyricGenBase {
 }
 
 public class SimpleLyricGen : MonoBehaviour {
-	public Rect area = new Rect(-10, 5, 20, 10);
-	public float sizeMin = 0.8f;
-	public float sizeMax = 0.8f;
+	public Rect area = new Rect(-10, 0, 20, 2);
+	public float sizeMin = 1.2f;
+	public float sizeMax = 1.3f;
 	public float rotateAngle = 0.0f;
 	public TMP_FontAsset font;
 	public bool active = false;
-	public int measureCount = 1;
+	private int measureCount = 2;
 	private string curWord = "";
 	private int lyricNum = 0;
 	private int sentenceLength = 0;
 	private int curmeas = 0;
 	private int measInterval = 4000;
+	private int waitClear = 0;
 	public MidiEventMapAccessor eventMap;
 	public SentenceList sentenceList;
 	private SimpleLyric simpleLyric;
@@ -77,7 +78,6 @@ public class SimpleLyricGen : MonoBehaviour {
 	}
 
 	private void LyricObjectText(int num, int numOfData) {
-		if (!active) return;
 		Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 		float width = (numOfData != 0) ? area.width / numOfData : area.width;
 		float x = width * num + area.x + width / 2;
@@ -91,16 +91,18 @@ public class SimpleLyricGen : MonoBehaviour {
 	}
 
 	private void CreateLyric() {
+		if (!active) return;
 		if (sentence.Length == 0) {
 			ClearSentence();
 			lyricNum = 0;
 			sentence = simpleLyric.GetSentence();
 			sentenceLength = sentence.Length;
 		}
-		Debug.Log($"{lyricNum}/{sentenceLength}: {curWord}");
+		// Debug.Log($"{lyricNum}/{sentenceLength}: {curWord}");
 		LyricObjectText(lyricNum, sentenceLength);
 		sentence = sentence.Substring(curWord.Length);
 		lyricNum++;
+		waitClear = measureCount;
 	}
 
 	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {
@@ -130,12 +132,21 @@ public class SimpleLyricGen : MonoBehaviour {
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
 		curmeas = measure;
 		measInterval = measureInterval;
+		if (sentence.Length == 0) {
+			if (waitClear > 0) {
+				waitClear--;
+				if (waitClear <= 0) {
+					ClearSentence();
+				}
+			} 
+		}
 	}
 	private void ClearSentence() {
 		for (var i = 0; i < lyrics.Count; i++) {
 			Destroy(lyrics[i]);
 		}
 		lyrics.Clear();
+		waitClear = 0;
 	}
 	public void OnSentenceChanged(String sentence) {
 		// if (string.IsNullOrEmpty(this.sentence)) this.sentence = sentence;
