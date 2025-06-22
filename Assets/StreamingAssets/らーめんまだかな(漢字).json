@@ -1329,7 +1329,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["Night_On","RamenFloorOn"]
+                            "controls": ["TitleCenterOn", "Effect_Film", "Night_On"]
                         },
                         {
                             "controls": []
@@ -1365,7 +1365,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["TitleCenterOff", "RamenFloorOn"]
                         },
                         {
                             "controls": []
@@ -1455,7 +1455,7 @@
                     "sentence": "らーめん",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["MultiRow_L1_On"]
                         },
                         {
                             "controls": []
@@ -1497,7 +1497,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["MultiRow_L1_Clear"]
                         },
                         {
                             "controls": []
@@ -1518,7 +1518,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["MultiRow_L1_Off"]
                         }
                     ]
                 },
@@ -1527,7 +1527,7 @@
                     "sentence": "とんこつ",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricOn"]
+                            "controls": ["SimpleLyricUpOn"]
                         },
                         {
                             "controls": []
@@ -1536,7 +1536,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["MultiRow_L1_On","SimpleLyricUpOff"]
                         }
                     ]
                 },
@@ -1545,7 +1545,7 @@
                     "sentence": "麺を入れるよ",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricOff"]
+                            "controls": []
                         },
                         {
                             "controls": []
@@ -1617,7 +1617,7 @@
                     "sentence": "らーめんまだかな",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["MultiRow_L1_Off","SimpleLyricUpOn"]
                         },
                         {
                             "controls": []
@@ -1761,7 +1761,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["SimpleLyricUpOff"]
                         },
                         {
                             "controls": []
@@ -1905,7 +1905,7 @@
                     "sentence": "準備を",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["MultiRow_R1_On"]
                         },
                         {
                             "controls": []
@@ -1959,7 +1959,7 @@
                     "sentence": "海苔",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricOn"]
+                            "controls": []
                         },
                         {
                             "controls": []
@@ -1977,7 +1977,7 @@
                     "sentence": "ゆでたまご",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["MultiRow_R1_Off", "SimpleLyricUpOn"]
                         },
                         {
                             "controls": []
@@ -1986,7 +1986,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["MultiRow_R1_On", "SimpleLyricUpOff"]
                         }
                     ]
                 },
@@ -1995,7 +1995,7 @@
                     "sentence": "チャーシューも",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricOff"]
+                            "controls": []
                         },
                         {
                             "controls": []
@@ -2058,7 +2058,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["MultiRow_R1_Off", "SimpleLyricUpOn"]
                         }
                     ]
                 },
@@ -2136,7 +2136,7 @@
                 },
                 {
                     "msec": 73098,
-                    "sentence": "ーめんまだかなら",
+                    "sentence": "らーめんまだかな",
                     "beats": [
                         {
                             "controls": []
@@ -2571,7 +2571,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["BlackOut_On"]
                         },
                         {
                             "controls": []

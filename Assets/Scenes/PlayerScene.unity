@@ -22199,7 +22199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &802079855
 Transform:
   m_ObjectHideFlags: 0
@@ -34015,11 +34015,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   area:
     serializedVersion: 2
-    x: 11
+    x: 10
     y: -1
     width: 20
     height: 6
-  font: {fileID: 11400000, guid: 85a0824a6607c4876a991d154ff13c39, type: 2}
+  font: {fileID: 11400000, guid: 83b7358ea5ac34d5f8ece305a824a593, type: 2}
   scale: 0.7
   textHight: 1
   textWidth: 1
@@ -34276,7 +34276,7 @@ MonoBehaviour:
     y: -1
     width: 20
     height: 6
-  font: {fileID: 11400000, guid: def3f52187ed044479d27e430acf2403, type: 2}
+  font: {fileID: 11400000, guid: 83b7358ea5ac34d5f8ece305a824a593, type: 2}
   scale: 0.7
   textHight: 1
   textWidth: 1
