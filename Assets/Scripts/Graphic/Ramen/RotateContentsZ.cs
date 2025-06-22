@@ -29,6 +29,6 @@ public class RotateContentsZ : MonoBehaviour {
 		float t = 1 - f;
 		if (t <= 0) return;
 		rotationTime = t;
-		manualCount = 3;
+		manualCount = 2;
 	}
 }
