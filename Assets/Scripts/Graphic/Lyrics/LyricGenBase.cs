@@ -2,16 +2,17 @@
 // 小節毎の歌詞を取得、SMFPlayerからのイベントで適切なタイミングを判断、歌詞の切り替えを行う
 using UnityEngine;
 using Unity.VisualScripting;
+using System;
 
-class LyricGenBase {
+public class LyricGenBase {
 	public string curWord = "";
 	public int curMeas = 0;
 	public int measInterval = 2000;
-	public int lyricNum = 0;
 	public bool active = true;
 	private int map;
 	private SentenceList sentenceList;
 	private string sentence = "";
+	private string orgSentence = "";
 
 	private MidiWatcherBase midiWatcher;
 	private bool reserveDisplay = false;
@@ -64,6 +65,7 @@ class LyricGenBase {
 	private void GetSentence(int track, int measure) {
 		if (!active) return;
 		LyricData lyricData = sentenceList.GetSentence(track, measure, map);
+		orgSentence = lyricData.sentence;
 		sentence = lyricData.sentence;
 		if (!string.IsNullOrEmpty(sentence)) {
 			reserveDisplay = true;
@@ -73,7 +75,6 @@ class LyricGenBase {
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
 		curMeas = measure;
 		measInterval = measureInterval;
-		lyricNum = 0;
 		curMeas = measure;
 		if (active && sentenceList.IsExist(measure, map)) {
 			updateSentence = true;
@@ -88,7 +89,11 @@ class LyricGenBase {
 		OnEventIn(playerEvent);
 	}
 
-	protected virtual void OnMIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {}
+	public String GetSentence() {
+		return orgSentence;
+	}
+
+	protected virtual void OnMIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) { }
 	protected virtual void OnLyricIn(int track, string lyric, float position, uint currentMsec) {}
 	protected virtual void OnBeatIn(int numerator, int denominator, uint currentMsec) {}
 	protected virtual void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {}

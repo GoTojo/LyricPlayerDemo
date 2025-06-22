@@ -4,60 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class SimpleLyricBehaviour : MonoBehaviour {
-	private int startmeas = 0;
-	private int curmeas = 0;
-	private int measInterval = 0;
-	private float lifetime = 0;
-	private int measCount = 1;
-	// Start is called before the first frame update
-	void Awake() {
-		MidiWatcher.Instance.onMeasureIn += MeasureIn;
-		MidiWatcher.Instance.onLyricIn += LyricIn;
-		MidiWatcher.Instance.onEventIn += EventIn;
+public class SimpleLyric : LyricGenBase {
+	private SimpleLyricGen simpleLyricGen;
+	public SimpleLyric(SimpleLyricGen simpleLyricGen) : base(simpleLyricGen.sentenceList, MidiWatcher.Instance) {
+		this.simpleLyricGen = simpleLyricGen;
 	}
-	void OnDestroy() {
-		MidiWatcher.Instance.onMeasureIn -= MeasureIn;
-		MidiWatcher.Instance.onLyricIn -= LyricIn;
-		MidiWatcher.Instance.onEventIn -= EventIn;
-	}
-	void Start() {
-	}
-
-	// Update is called once per frame
-	void Update() {
-		if (curmeas > startmeas + measCount) {
-			Destroy(this.gameObject);
-		} else if (lifetime > 0) {
-			lifetime -= Time.deltaTime;
-			if (lifetime < 0) {
-				Destroy(this.gameObject);
-			}
-		}
-	}
-	public void SetStartMeas(int meas, int measureCount) {
-		startmeas = meas;
-		curmeas = meas;
-		measCount = measureCount;
-	}
-	public void LyricIn(int track, string lyric, float position, uint currentMsec) {
-		if (curmeas > startmeas) {
-			Destroy(this.gameObject);
-		}
-	}
-	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
-		curmeas = measure;
-		measInterval = measureInterval;
-	}
-	public void EventIn(MIDIHandler.Event playerEvent) {
-		switch (playerEvent) {
-		case MIDIHandler.Event.Stop:
-		case MIDIHandler.Event.End:
-			lifetime = measInterval / 1000f;
-			break;
-		default:
-			break;
-		}
+	protected override void OnTextChanged(string sentence) {
+		simpleLyricGen.OnSentenceChanged(sentence);
 	}
 }
 
@@ -71,9 +24,14 @@ public class SimpleLyricGen : MonoBehaviour {
 	public int measureCount = 1;
 	private string curWord = "";
 	private int lyricNum = 0;
+	private int sentenceLength = 0;
 	private int curmeas = 0;
 	private int measInterval = 4000;
 	public MidiEventMapAccessor eventMap;
+	public SentenceList sentenceList;
+	private SimpleLyric simpleLyric;
+	private String sentence = "";
+	private List<GameObject> lyrics = new List<GameObject>();
 	void Awake() {
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onMidiIn += MIDIIn;
@@ -87,6 +45,15 @@ public class SimpleLyricGen : MonoBehaviour {
 		midiWatcher.onLyricIn -= LyricIn;
 		midiWatcher.onBeatIn -= BeatIn;
 		midiWatcher.onMeasureIn -= MeasureIn;
+	}
+
+	void Start() {
+		simpleLyric = new SimpleLyric(this);
+		simpleLyric.active = this.active;
+	}
+
+	void Update() {
+		simpleLyric.active = this.active;
 	}
 
 	private GameObject CreateText(string word, TMP_FontAsset font, Color color, float size, Vector3 position, float scale, float rotate) {
@@ -109,7 +76,8 @@ public class SimpleLyricGen : MonoBehaviour {
 		return simpleLyric;
 	}
 
-	private void LyricObjectText(int ch, int num, int numOfData, float position) {
+	private void LyricObjectText(int num, int numOfData) {
+		if (!active) return;
 		Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 		float width = (numOfData != 0) ? area.width / numOfData : area.width;
 		float x = width * num + area.x + width / 2;
@@ -118,27 +86,30 @@ public class SimpleLyricGen : MonoBehaviour {
 		Vector3 pos = new Vector3(x, y, -1.0f);
 		float scale = UnityEngine.Random.Range(sizeMin, sizeMax);
 		float rotate = UnityEngine.Random.Range(-rotateAngle, rotateAngle);
-
 		GameObject simpleLyric = CreateText(curWord, font, color, 5.0f, pos, scale, rotate);
-
-		SimpleLyricBehaviour behaviour = simpleLyric.AddComponent<SimpleLyricBehaviour>();
-		behaviour.SetStartMeas(curmeas, measureCount);
+		lyrics.Add(simpleLyric);
 	}
 
-	private void CreateLyric(int track, float position) {
-		if (!active) return;
-		LyricObjectText(track, lyricNum, eventMap.GetNumOfLyrics(curmeas, track), position);
+	private void CreateLyric() {
+		if (sentence.Length == 0) {
+			ClearSentence();
+			lyricNum = 0;
+			sentence = simpleLyric.GetSentence();
+			sentenceLength = sentence.Length;
+		}
+		Debug.Log($"{lyricNum}/{sentenceLength}: {curWord}");
+		LyricObjectText(lyricNum, sentenceLength);
+		sentence = sentence.Substring(curWord.Length);
 		lyricNum++;
 	}
 
 	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {
 		byte status = (byte)(midiEvent[0] & 0xF0);
-		int ch = (status & 0xF0) >> 4;
 		switch (status) {
 		case 0x90:
 			if (midiEvent[2] == 0) {
 			} else {
-				CreateLyric(track, position);
+				CreateLyric();
 			}
 			break;
 		case 0x80:
@@ -159,6 +130,14 @@ public class SimpleLyricGen : MonoBehaviour {
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
 		curmeas = measure;
 		measInterval = measureInterval;
-		lyricNum = 0;
+	}
+	private void ClearSentence() {
+		for (var i = 0; i < lyrics.Count; i++) {
+			Destroy(lyrics[i]);
+		}
+		lyrics.Clear();
+	}
+	public void OnSentenceChanged(String sentence) {
+		// if (string.IsNullOrEmpty(this.sentence)) this.sentence = sentence;
 	}
 }
