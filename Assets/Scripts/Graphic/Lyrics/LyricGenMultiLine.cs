@@ -21,6 +21,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 	public SentenceList sentenceList;
 	public bool active = true;
 	class LyricGenMultiLineControl : LyricGenLineBase {
+		public bool active = false;
 		public int maxLine = 5;
 		public float scale = 1f;
 		public bool vertical = false;
@@ -42,6 +43,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 			this.textWidth = textWidth;
 			this.font = font;
 			this.lyricGen = lyricGen;
+			forceMeasureChange = true;
 		}
 		private void CreateText(string text) {
 			if (!active) return;
@@ -80,28 +82,40 @@ public class LyricGenMultiLine : MonoBehaviour {
 			lyrics.Clear();
 			lyricCount = 0;
 		}
-		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
-			if (sentence.Length == 0) {
-				sentence = GetSentence();
-				sentenceLength = sentence.Length;
-				if (sentenceLength > 0) {
-					if (lyricCount >= maxLine) Clear();
-					CreateText(sentence);
-					waitClear = waitCount;
-				}
+		private void UpdateSentence(String text) {
+			if (sentence == text) return;
+			sentence = text;
+			sentenceLength = sentence.Length;
+			Debug.Log($"UpdateSentence: {text}");
+			if (sentenceLength > 0) {
+				if (lyricCount >= maxLine) Clear();
+				CreateText(sentence);
+				waitClear = waitCount;
 			}
-			// Debug.Log($"{lyricNum}/{sentenceLength}: {curWord}");
-			sentence = sentence.Substring(lyric.Length);
+		}
+		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
+			// if (sentence.Length == 0) {
+			// 	UpdateSentence(GetSentence());
+			// }
+			// // Debug.Log($"{lyricNum}/{sentenceLength}: {curWord}");
+			// if (sentence.Length >= lyric.Length) {
+			// 	sentence = sentence.Substring(lyric.Length);
+			// }
 		}
 		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {
 			if (waitClear > 0) {
 				waitClear--;
 				if (waitClear <= 0) {
 					Clear();
-				} 
+				}
 			}
 		}
 		protected override void OnEventIn(MIDIHandler.Event playerEvent) {
+		}
+		protected override void OnTextChanged(string sentence) {
+			// if (string.IsNullOrEmpty(this.sentence)) {
+				UpdateSentence(sentence);
+			// }
 		}
 	};
 	LyricGenMultiLineControl control;

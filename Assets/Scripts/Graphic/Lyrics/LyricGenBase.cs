@@ -8,7 +8,6 @@ public class LyricGenBase {
 	public string curWord = "";
 	public int curMeas = 0;
 	public int measInterval = 2000;
-	public bool active = true;
 	private int map;
 	private SentenceList sentenceList;
 	private string sentence = "";
@@ -17,6 +16,7 @@ public class LyricGenBase {
 	private MidiWatcherBase midiWatcher;
 	private bool reserveDisplay = false;
 	private bool updateSentence = true;
+	public bool forceMeasureChange = false;
 	public LyricGenBase(SentenceList sentenceList, MidiWatcherBase midiWatcher) {
 		this.midiWatcher = midiWatcher;
 		midiWatcher.onMidiIn += MIDIIn;
@@ -44,11 +44,11 @@ public class LyricGenBase {
 		curWord = lyric;
 		if (!sentenceList.IsActive(track, map)) return;
 		if (updateSentence) {
-			GetSentence(track, curMeas);
+			if (sentence.Length == 0 || forceMeasureChange) GetSentence(track, curMeas);
 		}
 		if (sentence.StartsWith(lyric)) {
 			if (reserveDisplay) {
-				if (active) OnTextChanged(sentence);
+				OnTextChanged(sentence);
 				reserveDisplay = false;
 			}
 			sentence = sentence.Substring(lyric.Length);
@@ -79,9 +79,6 @@ public class LyricGenBase {
 			updateSentence = true;
 		} else {
 			updateSentence = false;
-		}
-		if (!active) {
-			OnTextChanged("");
 		}
 		OnMeasureIn(measure, measureInterval, currentMsec);
 	}
