@@ -13,6 +13,8 @@ public class RotateContentsZ : MonoBehaviour {
 									// Start is called before the first frame update
 	private int manualCount = 0;
 	private int curMeas = 0;
+	private float curAngle = 0;
+	private int phase = 0;
 	void Start() {
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onMeasureIn += MeasureIn;
@@ -27,14 +29,19 @@ public class RotateContentsZ : MonoBehaviour {
 			float deltaAngle = 360 * Time.deltaTime / rotationTime;
 			this.transform.Rotate(0f, 0f, -deltaAngle);
 		} else if (type == Type.HalfAndStop) {
-			int phase = curMeas % 4;
+			float deltaAngle = 360 * Time.deltaTime / (rotationTime / 2);
 			if (phase < 2) {
-				float deltaAngle = 360 * Time.deltaTime / (rotationTime / 2);
 				this.transform.Rotate(0f, 0f, -deltaAngle);
+				curAngle += deltaAngle;
 			} else {
 				Vector3 angle = this.transform.eulerAngles;
-				angle.z = 0;
-				this.transform.eulerAngles = angle;
+				if (curAngle < 360) {
+					this.transform.Rotate(0f, 0f, -deltaAngle);
+					curAngle += deltaAngle;
+				} else if (angle.z != 0) {
+					angle.z = 0;
+					this.transform.eulerAngles = angle;
+				}
 			}
 		}
 	}
@@ -46,6 +53,8 @@ public class RotateContentsZ : MonoBehaviour {
 		} else {
 			rotationTime = (float)measureInterval * 4 / 1000;
 		}
+		phase = curMeas % 4;
+		if (phase == 0) curAngle = 0;
 	}
 	public void ChangeRotationTime(float f) {
 		float t = 1 - f;
