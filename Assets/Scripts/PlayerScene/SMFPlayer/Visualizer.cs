@@ -44,6 +44,7 @@ public class Visualizer : MonoBehaviour {
 	public GameObject blackOut;
 
 	public RotateContentsZ rotateContentsZ;
+	public RotateContentsZ rotateContentsZ1;
 
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
@@ -445,8 +446,9 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case Parameter.CCRamenRotate:
 			rotateContentsZ.ChangeRotationTime(value);
-			ApplyControlNow("RamenDiskOn");
-			ApplyControlDelayed("UnityChanRunOn");
+			rotateContentsZ1.ChangeRotationTime(value);
+			// ApplyControlNow("RamenDiskOn");
+			// ApplyControlDelayed("UnityChanRunOn");
 			break;
 		default:
 			break;
