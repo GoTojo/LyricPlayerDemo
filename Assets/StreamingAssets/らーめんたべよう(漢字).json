@@ -1608,7 +1608,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["SimpleLyricOn"]
+                            "controls": ["SimpleLyricOn", "Bulb"]
                         }
                     ]
                 },

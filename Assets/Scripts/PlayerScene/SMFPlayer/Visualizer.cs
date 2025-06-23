@@ -45,6 +45,7 @@ public class Visualizer : MonoBehaviour {
 
 	public RotateContentsZ rotateContentsZ;
 	public RotateContentsZ rotateContentsZ1;
+	public Bulb bulb;
 
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
@@ -264,6 +265,8 @@ public class Visualizer : MonoBehaviour {
 			ChangeUnityChan(Parameter.UnityChanType.Black);
 		} else if (note == Parameter.NoteUnityChanColor) {
 			ChangeUnityChan(Parameter.UnityChanType.Color);
+		} else if (note == Parameter.NoteBulbOn) {
+			bulb.Create();
 		}
 	}
 
@@ -364,6 +367,9 @@ public class Visualizer : MonoBehaviour {
 			} else if (args[1] == "Off") {
 				blackOut.SetActive(false);
 			}
+			break;
+		case "Bulb":
+			bulb.Create();
 			break;
 		}
 	}

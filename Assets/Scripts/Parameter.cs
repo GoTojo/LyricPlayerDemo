@@ -10,7 +10,7 @@ public class Parameter {
 	public static int NoteLyricTypeDown = 0x30; // C3
 	public static int NoteLyricModeToggle = 0x31;
 	public static int NoteLyricTypeUp = 0x32;	// D3
-	public static int Note33 = 0x33;
+	public static int NoteBulbOn = 0x33;
 	public static int NoteLyricFontDown = 0x34;	// E3
 	public static int NoteLyricFontUp = 0x35;	// F3
 	public static int NoteParticleSnow = 0x36;
