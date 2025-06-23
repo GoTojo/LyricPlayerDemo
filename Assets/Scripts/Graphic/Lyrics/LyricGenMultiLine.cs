@@ -20,6 +20,8 @@ public class LyricGenMultiLine : MonoBehaviour {
 	public int maxLine = 5;
 	public SentenceList sentenceList;
 	public bool active = true;
+	private int curMeas = -1;
+	private int lastSentenceMeas = -1;
 	class LyricGenMultiLineControl : LyricGenLineBase {
 		public bool active = false;
 		public int maxLine = 5;
@@ -33,17 +35,21 @@ public class LyricGenMultiLine : MonoBehaviour {
 		private float textWidth = 2f;
 		private int lyricCount = 0;
 		private String sentence = "";
+		private String orgSentence = "";
 		private int sentenceLength = 0;
 
 		private int waitCount = 3;
 		private int waitClear = 0;
+		private int lastSentenceMeas = -1;
+		private bool measureChanged = false;
+		private SentenceList sentenceList;
 		public LyricGenMultiLineControl(Rect area, float textHight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(lyricGen.sentenceList, MidiWatcher.Instance) {
 			this.area = area;
 			this.textHight = textHight;
 			this.textWidth = textWidth;
 			this.font = font;
 			this.lyricGen = lyricGen;
-			forceMeasureChange = true;
+			this.sentenceList = lyricGen.sentenceList;
 		}
 		private void CreateText(string text) {
 			if (!active) return;
@@ -74,6 +80,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 			lyric.transform.parent = lyricGen.transform;
 			lyrics.Add(lyric);
 			lyricCount++;
+			waitClear = waitCount;
 		}
 		public void Clear() {
 			foreach (var lyric in lyrics) {
@@ -82,25 +89,31 @@ public class LyricGenMultiLine : MonoBehaviour {
 			lyrics.Clear();
 			lyricCount = 0;
 		}
-		private void UpdateSentence(String text) {
-			if (sentence == text) return;
-			sentence = text;
-			sentenceLength = sentence.Length;
-			Debug.Log($"UpdateSentence: {text}");
-			if (sentenceLength > 0) {
-				if (lyricCount >= maxLine) Clear();
-				CreateText(sentence);
-				waitClear = waitCount;
+		private void GetSentence(int track, int measure) {
+			if (measure == curMeas) {
+				measure += 1;
+			} else {
+				measure = curMeas;
 			}
+			LyricData lyricData = sentenceList.GetSentence(track, measure, MidiEventMapAccessor.kanjiMap);
+			orgSentence = lyricData.sentence;
+			sentence = lyricData.sentence;
+			lastSentenceMeas = measure;
 		}
 		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
-			// if (sentence.Length == 0) {
-			// 	UpdateSentence(GetSentence());
-			// }
-			// // Debug.Log($"{lyricNum}/{sentenceLength}: {curWord}");
-			// if (sentence.Length >= lyric.Length) {
-			// 	sentence = sentence.Substring(lyric.Length);
-			// }
+			if (sentence.Length == 0) {
+				GetSentence(track, lastSentenceMeas);
+				if (sentence.Length == 0) {
+					GetSentence(track, lastSentenceMeas);
+				}
+				if (lyricCount >= maxLine) {
+					Clear();
+				}
+				CreateText(orgSentence);
+			}
+			if (sentence.Length >= lyric.Length) {
+				sentence = sentence.Substring(lyric.Length);
+			}
 		}
 		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {
 			if (waitClear > 0) {
@@ -113,9 +126,6 @@ public class LyricGenMultiLine : MonoBehaviour {
 		protected override void OnEventIn(MIDIHandler.Event playerEvent) {
 		}
 		protected override void OnTextChanged(string sentence) {
-			// if (string.IsNullOrEmpty(this.sentence)) {
-				UpdateSentence(sentence);
-			// }
 		}
 	};
 	LyricGenMultiLineControl control;
