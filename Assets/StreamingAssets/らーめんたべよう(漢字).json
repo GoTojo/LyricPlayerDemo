@@ -1932,7 +1932,7 @@
                             "controls": []
                         },
                         {
-							"controls": ["SimpleLyricOff", "Night_Off"]
+							"controls": ["SimpleLyricOff"]
                         }
                     ]
                 },
@@ -1941,7 +1941,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["UCColor", "UnityChanShiftOn", "Effect_RGBShift", "WallRect"]
+							"controls": ["Night_Off", "UCColor", "UnityChanShiftOn", "Effect_RGBShift", "WallRect"]
                         },
                         {
                             "controls": []
