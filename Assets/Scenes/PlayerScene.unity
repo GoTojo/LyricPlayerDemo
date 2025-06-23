@@ -21310,7 +21310,7 @@ MonoBehaviour:
     y: 5
     width: 20
     height: 10
-  active: 1
+  active: 0
   sentenceList: {fileID: 1095297744}
 --- !u!4 &669801530
 Transform:
