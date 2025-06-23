@@ -8,6 +8,8 @@ using System.Collections.Generic;
 using System;
 
 public class SentenceList : MonoBehaviour {
+	public const int orginalMap = MidiEventMapAccessor.originalMap;
+	public const int kanjiMap = MidiEventMapAccessor.kanjiMap;
 	private MidiEventMapAccessor eventMap;
 	private List<Track>[] tracks;
 

@@ -34,22 +34,14 @@ public class LyricGenMultiLine : MonoBehaviour {
 		private float textHight = 2f;
 		private float textWidth = 2f;
 		private int lyricCount = 0;
-		private String sentence = "";
-		private String orgSentence = "";
-		private int sentenceLength = 0;
-
 		private int waitCount = 3;
 		private int waitClear = 0;
-		private int lastSentenceMeas = -1;
-		private bool measureChanged = false;
-		private SentenceList sentenceList;
-		public LyricGenMultiLineControl(Rect area, float textHight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(lyricGen.sentenceList, MidiWatcher.Instance) {
+		public LyricGenMultiLineControl(Rect area, float textHight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(lyricGen.sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
 			this.area = area;
 			this.textHight = textHight;
 			this.textWidth = textWidth;
 			this.font = font;
 			this.lyricGen = lyricGen;
-			this.sentenceList = lyricGen.sentenceList;
 		}
 		private void CreateText(string text) {
 			if (!active) return;
@@ -89,31 +81,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 			lyrics.Clear();
 			lyricCount = 0;
 		}
-		private void GetSentence(int track, int measure) {
-			if (measure == curMeas) {
-				measure += 1;
-			} else {
-				measure = curMeas;
-			}
-			LyricData lyricData = sentenceList.GetSentence(track, measure, MidiEventMapAccessor.kanjiMap);
-			orgSentence = lyricData.sentence;
-			sentence = lyricData.sentence;
-			lastSentenceMeas = measure;
-		}
 		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
-			if (sentence.Length == 0) {
-				GetSentence(track, lastSentenceMeas);
-				if (sentence.Length == 0) {
-					GetSentence(track, lastSentenceMeas);
-				}
-				if (lyricCount >= maxLine) {
-					Clear();
-				}
-				CreateText(orgSentence);
-			}
-			if (sentence.Length >= lyric.Length) {
-				sentence = sentence.Substring(lyric.Length);
-			}
 		}
 		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {
 			if (waitClear > 0) {
@@ -126,6 +94,10 @@ public class LyricGenMultiLine : MonoBehaviour {
 		protected override void OnEventIn(MIDIHandler.Event playerEvent) {
 		}
 		protected override void OnTextChanged(string sentence) {
+			if (lyricCount >= maxLine) {
+				Clear();
+			}
+			CreateText(sentence);
 		}
 	};
 	LyricGenMultiLineControl control;

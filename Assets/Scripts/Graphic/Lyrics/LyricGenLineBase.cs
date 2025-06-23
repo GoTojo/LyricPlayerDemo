@@ -6,7 +6,7 @@ using Unity.VisualScripting;
 
 class LyricGenLineBase : LyricGenBase
 {
-	public LyricGenLineBase(SentenceList sentenceList, MidiWatcherBase midiWatcher) : base(sentenceList, midiWatcher)
+	public LyricGenLineBase(SentenceList sentenceList, int map, MidiWatcherBase midiWatcher) : base(sentenceList, map, midiWatcher)
 	{
 	}
 	public string ToVertical(string input)
