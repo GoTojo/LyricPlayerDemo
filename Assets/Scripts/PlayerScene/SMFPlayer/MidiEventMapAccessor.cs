@@ -5,8 +5,9 @@
 using UnityEngine;
 using System;
 
-public class MidiEventMapAccessor : MonoBehaviour
-{
+public class MidiEventMapAccessor : MonoBehaviour {
+	public const int originalMap = 0;
+	public const int kanjiMap = 1;
 	public const int numOfEventMap = 2;
 	private MIDIEventMap[] eventMap = new MIDIEventMap[numOfEventMap];
 	public int currentMap = 0;
@@ -19,8 +20,8 @@ public class MidiEventMapAccessor : MonoBehaviour
 	}
 	public void Init(SMFPlayer player, SMFPlayer subplayer)
 	{
-		eventMap[0].Init(player);
-		eventMap[1].Init(subplayer);
+		eventMap[originalMap].Init(player);
+		eventMap[kanjiMap].Init(subplayer);
 	}
 	public void SetCurrentMap(int num)
 	{
