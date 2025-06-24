@@ -46,6 +46,7 @@ public class Visualizer : MonoBehaviour {
 	public RotateContentsZ rotateContentsZ;
 	public RotateContentsZ rotateContentsZ1;
 	public Bulb bulb;
+	public Rocket rocket;
 
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
@@ -61,8 +62,8 @@ public class Visualizer : MonoBehaviour {
 
 	void Awake() {
 		lyricMode = LyricMode.Kanji;
-		particleType = (Parameter.ParticleType)PlayerPrefs.GetInt("Parameter.ParticleType");
-		unityChanType = (Parameter.UnityChanType)PlayerPrefs.GetInt("Parameter.UnityChanType");
+		// particleType = (Parameter.ParticleType)PlayerPrefs.GetInt("Parameter.ParticleType");
+		// unityChanType = (Parameter.UnityChanType)PlayerPrefs.GetInt("Parameter.UnityChanType");
 
 		MidiMaster.noteOnDelegate += NoteOn;
 		MidiMaster.noteOffDelegate += NoteOff;
@@ -81,9 +82,9 @@ public class Visualizer : MonoBehaviour {
 		// Debug.Log("Destract");
 	}
 	public void BackupParams() {
-		PlayerPrefs.SetInt("LyricMode", (int)LyricMode.Kanji);
-		PlayerPrefs.SetInt("ParticleType", (int)particleType);
-		PlayerPrefs.SetInt("UnityChanType", (int)unityChanType);
+		// PlayerPrefs.SetInt("LyricMode", (int)LyricMode.Kanji);
+		// PlayerPrefs.SetInt("ParticleType", (int)particleType);
+		// PlayerPrefs.SetInt("UnityChanType", (int)unityChanType);
 	}
 	void Start() {
 		GameObject mainObj = GameObject.Find("MainGameObject");
@@ -267,6 +268,8 @@ public class Visualizer : MonoBehaviour {
 			ChangeUnityChan(Parameter.UnityChanType.Color);
 		} else if (note == Parameter.NoteBulbOn) {
 			bulb.Create();
+		} else if (note == Parameter.NoteRocketLaunch) {
+			rocket.Launch();
 		}
 	}
 
@@ -446,6 +449,9 @@ public class Visualizer : MonoBehaviour {
 
 	private void knobChanged(MidiChannel ch, int ccNum, float value) {
 		switch (ccNum) {
+		case Parameter.CCSetFont:
+			FontResource.Instance.SetCurFont((FontResource.Type)value);
+			break;
 		case Parameter.CCRGBShiftAmount:
 		case Parameter.CCRGBShiftAngle:
 			effectSwitcher.ChangeParameter((int)ch, ccNum, value);
