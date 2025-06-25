@@ -47,6 +47,7 @@ public class Visualizer : MonoBehaviour {
 	public RotateContentsZ rotateContentsZ1;
 	public Bulb bulb;
 	public Rocket rocket;
+	public Icons icons;
 
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
@@ -373,6 +374,18 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "Bulb":
 			bulb.Create();
+			break;
+		case "Rocket":
+			rocket.Launch();
+			break;
+		case "Dango":
+			icons.Create("Dango", new Vector3(3, 5, 0), Quaternion.Euler(0, 0, 0));
+			break;
+		case "Cake":
+			icons.Create("Cake", new Vector3(-3, 5, 0), Quaternion.Euler(0, 0, 0));
+			break;
+		case "Donburi":
+			icons.Create("Donburi", new Vector3(0, 6, 0), Quaternion.Euler(0, 0, 0));
 			break;
 		}
 	}

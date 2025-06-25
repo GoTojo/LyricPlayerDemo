@@ -33,6 +33,7 @@ public class RGBShiftController : MonoBehaviour {
 	}
 	public void Angle(float value) {
 		angle = value * 180f;
+		_manualCount = manualCount;
 	}
 	public void Amount(float value) {
 		_amount = value / 10f;

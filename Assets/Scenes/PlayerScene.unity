@@ -10894,6 +10894,7 @@ GameObject:
   - component: {fileID: 418280317}
   - component: {fileID: 418280316}
   - component: {fileID: 418280315}
+  - component: {fileID: 418280321}
   m_Layer: 0
   m_Name: Icons
   m_TagString: Untagged
@@ -11000,8 +11001,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26a6b6c09cf9b4b7bb15a6acede0548b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lauchPointL: {x: -10, y: -5, z: 0}
-  lauchPointR: {x: 20, y: -5, z: 0}
+--- !u!114 &418280321
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 418280312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe1789142d1744b80a44fb88b98957ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &460515774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33167,6 +33178,8 @@ MonoBehaviour:
   rotateContentsZ: {fileID: 2032318223}
   rotateContentsZ1: {fileID: 1760627364}
   bulb: {fileID: 418280313}
+  rocket: {fileID: 418280320}
+  icons: {fileID: 418280319}
 --- !u!114 &1095297742
 MonoBehaviour:
   m_ObjectHideFlags: 0

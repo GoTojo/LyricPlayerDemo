@@ -8,7 +8,6 @@ public class Icons : MonoBehaviour
 	// Start is called before the first frame update
 	void Start()
 	{
-
 	}
 
 	// Update is called once per frame
@@ -17,8 +16,9 @@ public class Icons : MonoBehaviour
 
 	}
 
-	void Create(string name, Vector3 pos, float angle)
-	{
-		
+	public void Create(string name, Vector3 pos, Quaternion angle) {
+		GameObject prefab = Resources.Load<GameObject>($"Prefab/Icons/{name}");
+		GameObject obj = Instantiate(prefab, pos, angle);
+		Destroy(obj, 2);
 	}
 }
