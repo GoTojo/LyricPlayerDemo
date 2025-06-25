@@ -33180,6 +33180,9 @@ MonoBehaviour:
   bulb: {fileID: 418280313}
   rocket: {fileID: 418280320}
   icons: {fileID: 418280319}
+  shootingStar: {fileID: 418280316}
+  naruto: {fileID: 418280317}
+  ufo: {fileID: 418280318}
 --- !u!114 &1095297742
 MonoBehaviour:
   m_ObjectHideFlags: 0

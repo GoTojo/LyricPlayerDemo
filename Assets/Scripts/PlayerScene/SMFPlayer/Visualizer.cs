@@ -48,7 +48,9 @@ public class Visualizer : MonoBehaviour {
 	public Bulb bulb;
 	public Rocket rocket;
 	public Icons icons;
-
+	public ShootingStar shootingStar;
+	public Naruto naruto;
+	public UFO ufo;
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
 	private int newMeasure = -1;
@@ -386,6 +388,21 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "Donburi":
 			icons.Create("Donburi", new Vector3(0, 6, 0), Quaternion.Euler(0, 0, 0));
+			break;
+		case "ShootingStar":
+			shootingStar.Trigger("ShootingStar", 12, 0.3f, false);
+			break;
+		case "Comet":
+			shootingStar.Trigger("Comet", 12, 0.3f, false);
+			break;
+		case "NarutoStar":
+			shootingStar.Trigger("Naruto", 12, 0.1f, true);
+			break;
+		case "Naruto":
+			naruto.Begin();
+			break;
+		case "UFO":
+			ufo.Create();
 			break;
 		}
 	}

@@ -1365,7 +1365,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["TitleCenterOff", "RamenFloorOn"]
+                            "controls": ["TitleCenterOff", "RamenFloorOn", "Rocket"]
                         },
                         {
                             "controls": []
@@ -1401,7 +1401,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["UFO"]
                         },
                         {
                             "controls": []
@@ -1437,7 +1437,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["ShootingStar"]
                         },
                         {
                             "controls": []
@@ -1599,7 +1599,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["Naruto"]
                         },
                         {
                             "controls": []
@@ -1743,7 +1743,7 @@
                     "sentence": "待ちきれないよ",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["NarutoStar"]
                         },
                         {
                             "controls": []
@@ -1761,25 +1761,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricUpOff"]
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        }
-                    ]
-                },
-                {
-                    "msec": 0,
-                    "sentence": "",
-                    "beats": [
-                        {
-                            "controls": []
+                            "controls": ["SimpleLyricUpOff", "Naruto"]
                         },
                         {
                             "controls": []
@@ -1888,6 +1870,24 @@
                     "beats": [
                         {
                             "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        }
+                    ]
+                },
+                {
+                    "msec": 0,
+                    "sentence": "",
+                    "beats": [
+                        {
+                            "controls": ["Rocket"]
                         },
                         {
                             "controls": []
@@ -2049,7 +2049,7 @@
                     "sentence": "らーめんまだかな",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["UFO"]
                         },
                         {
                             "controls": []
@@ -2355,7 +2355,43 @@
                     "sentence": "",
                     "beats": [
                         {
+                            "controls": ["ShootingStar"]
+                        },
+                        {
                             "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        }
+                    ]
+                },
+                {
+                    "msec": 0,
+                    "sentence": "",
+                    "beats": [
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
+                        }
+                    ]
+                },
+                {
+                    "msec": 0,
+                    "sentence": "",
+                    "beats": [
+                        {
+                            "controls": ["UFO"]
                         },
                         {
                             "controls": []
@@ -2463,43 +2499,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        }
-                    ]
-                },
-                {
-                    "msec": 0,
-                    "sentence": "",
-                    "beats": [
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        }
-                    ]
-                },
-                {
-                    "msec": 0,
-                    "sentence": "",
-                    "beats": [
-                        {
-                            "controls": []
+                            "controls": ["Naruto"]
                         },
                         {
                             "controls": []
