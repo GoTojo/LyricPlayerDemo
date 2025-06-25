@@ -1617,7 +1617,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-                            "controls": ["MultiLine_R_Off"]
+                            "controls": ["MultiLine_R_Off", "Donburi"]
                         },
                         {
                             "controls": []
@@ -1797,7 +1797,7 @@
                     "sentence": "夜",
                     "beats": [
                         {
-							"controls": ["Night_On","WallOff","UCOff","UnityChanRunOn","RamenDiskOn","UnityChanShiftOff"]
+							"controls": ["Night_On","WallOff","UCOff","UnityChanRunOn","RamenDiskOn","UnityChanShiftOff", "ShootingStar"]
                         },
                         {
                             "controls": []
@@ -1815,7 +1815,7 @@
                     "sentence": "更けたら",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["UFO"]
                         },
                         {
                             "controls": []
@@ -2121,7 +2121,7 @@
                     "sentence": "何",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["Cake"]
                         },
                         {
                             "controls": []
@@ -2139,7 +2139,7 @@
                     "sentence": "食べよう",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["Dango"]
                         },
                         {
                             "controls": []
@@ -2184,7 +2184,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["Bulb"]
                         }
                     ]
                 },
@@ -2193,7 +2193,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
 						{
-							"controls": ["SimpleLyricOn","MultiRow_R_Off"]
+							"controls": ["SimpleLyricOn","MultiRow_R_Off","Donburi"]
 						},
                         {
                             "controls": []
@@ -2337,7 +2337,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["NarutoStar"]
                         },
                         {
                             "controls": []
@@ -2445,7 +2445,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["Rocket", "ShootingStar"]
                         },
                         {
                             "controls": []
