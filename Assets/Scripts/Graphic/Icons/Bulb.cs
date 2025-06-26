@@ -1,15 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data;
-using Unity.VisualScripting;
-using UnityEditor.ShaderGraph.Internal;
 using UnityEngine;
 
 public class Bulb : MonoBehaviour {
 	private GameObject bulb = null;
-	private const float animtime = 0.08f;
+	private const float animtime = 0.03f;
 	private float totalAngle = 0;
-	private const float lifetime = 1f;
 	private float age = 0f;
 	// Start is called before the first frame update
 	void Start() {
@@ -32,9 +29,9 @@ public class Bulb : MonoBehaviour {
 
 	}
 
-	public void Create() {
+	public void Create(Vector3 pos, float lifetime) {
 		GameObject obj = Resources.Load<GameObject>("Prefab/Icons/Bulb");
-		bulb = Instantiate(obj, new Vector3(1, 5.5f, 0), Quaternion.Euler(0, 0, 30));
+		bulb = Instantiate(obj, pos, Quaternion.Euler(0, 0, 30), this.transform);
 		age = lifetime;
 		totalAngle = 0;
 	}

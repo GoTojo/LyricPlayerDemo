@@ -10,6 +10,8 @@ public class UFO : MonoBehaviour {
 	private float speed = 0.05f;
 	private float cycle = 0.3f;
 	private float posY = 6;
+	private float xMin = -14;
+	private float xMax = 14;
 	void Start() {
 	}
 
@@ -17,17 +19,18 @@ public class UFO : MonoBehaviour {
 	void Update() {
 		if (ufo) {
 			Vector3 pos = ufo.transform.position;
-			pos.x += speed;
+			pos.x += speed * Time.deltaTime;
 			pos.y = posY + Mathf.Sin(pos.x) * cycle;
 			ufo.transform.position = pos;
-			if (pos.x > 14) {
+			if (pos.x > xMax) {
 				Destroy(ufo);
 				ufo = null;
 			}
 		}
 	}
-	public void Create() {
+	public void Create(float lifetime) {
 		GameObject obj = Resources.Load<GameObject>("Prefab/Icons/UFO");
-		ufo = Instantiate(obj, new Vector3(-14, posY, 0), Quaternion.Euler(0, 0, 0));
+		speed = (xMax - xMin) / lifetime;
+		ufo = Instantiate(obj, new Vector3(xMin, posY, 0), Quaternion.Euler(0, 0, 0));
 	}
 }

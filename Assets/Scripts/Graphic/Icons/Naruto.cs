@@ -66,10 +66,11 @@ public class Naruto : MonoBehaviour {
 		wait = interval;
 		life = lifetime;
 	}
-	public void Begin() {
+	public void Begin(float lifetime) {
 		if (num == -1) {
 			num = 0;
 			order = order.OrderBy(a => Guid.NewGuid()).ToList();
+			this.lifetime = lifetime;
 			Create();
 		}
 	}

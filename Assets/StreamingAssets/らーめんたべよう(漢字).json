@@ -1329,7 +1329,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-							"controls": ["SimpleLyricOn", "WaveFormOn", "Effect_Off"]
+							"controls": ["SimpleLyricOn", "WaveFormOn", "Effect_Film"]
                         },
                         {
                             "controls": ["WaveFormOff"]
@@ -1494,13 +1494,13 @@
 							"controls": ["Ramen", "WaveFormOn", "MultiLine_L_On", "UnityChanShiftOff"]
                         },
                         {
-                            "controls": ["WaveFormOff"]
+                            "controls": ["WaveFormOff","Effect_DotScreen"]
                         },
                         {
-                            "controls": ["Effect_DotScreen"]
+                            "controls": ["Effect_Off"]
                         },
                         {
-							"controls": []
+							"controls": ["Effect_Outline"]
                         }
                     ]
                 },
@@ -1509,7 +1509,7 @@
                     "sentence": "朝",
                     "beats": [
                         {
-							"controls": ["UCOff", "WallOff","Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn", "Effect_Off"]
+							"controls": ["UCOff", "WallOff","Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn", "Effect_Film"]
                         },
                         {
                             "controls": []
@@ -1635,7 +1635,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Sun_Off", "UnityChanRunOff", "RamenDiskOff", "RamenCupAuto","SimpleLyricOff","WallCircle","WallOn"]
+							"controls": ["Sun_Off", "UnityChanRunOff", "RamenDiskOff", "RamenCupAuto","SimpleLyricOff","WallCircle","WallOn", "Effect_RGBShift"]
                         },
                         {
                             "controls": []
@@ -1797,7 +1797,7 @@
                     "sentence": "夜",
                     "beats": [
                         {
-							"controls": ["Night_On","WallOff","UCOff","UnityChanRunOn","RamenDiskOn","UnityChanShiftOff", "ShootingStar"]
+							"controls": ["Night_On","WallOff","UCOff","UnityChanRunOn","RamenDiskOn","UnityChanShiftOff", "ShootingStar", "Effect_Off"]
                         },
                         {
                             "controls": []
@@ -2085,7 +2085,7 @@
                     "sentence": "３時だ",
                     "beats": [
                         {
-							"controls": ["WallOff", "UCOff", "UnityChanShiftOff", "Effect_Off", "Sun_15","UnityChanRunOn","RamenDiskOn"]
+							"controls": ["WallOff", "UCOff", "UnityChanShiftOff", "Effect_Film", "Sun_15","UnityChanRunOn","RamenDiskOn"]
                         },
                         {
                             "controls": []
@@ -2178,13 +2178,13 @@
                             "controls": []
                         },
                         {
-                            "controls": []
-                        },
-                        {
-                            "controls": []
-                        },
-                        {
                             "controls": ["Bulb"]
+                        },
+                        {
+                            "controls": []
+                        },
+                        {
+                            "controls": []
                         }
                     ]
                 },

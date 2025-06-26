@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ShootingStar : MonoBehaviour {
 	// Start is called before the first frame update
-	private Rect area = new Rect(-14, -8, 28, 16);
+	private Rect area = new Rect(-15, -9, 30, 18);
 	private int numOfItem = 0;
 	private int num = -1;
 	private float interval = 0;
@@ -32,12 +32,12 @@ public class ShootingStar : MonoBehaviour {
 			int active = 0;
 			for (var i = 0; i < items.Count; i++) {
 				Transform transform = items[i].transform;
-				if (transform.position.x < area.xMin || transform.position.y < area.yMin) {
-					continue;
-				}
-				transform.position = new Vector3(transform.position.x + deltaX, transform.position.y + deltaY, 0);
+				transform.localPosition = new Vector3(transform.localPosition.x + deltaX, transform.localPosition.y + deltaY, 0);
 				if (fRotate) {
 					transform.Rotate(0f, 0f, Time.deltaTime * rotationSpeed);
+				}
+				if (transform.localPosition.x < area.xMin || transform.localPosition.y < area.yMin) {
+					continue;
 				}
 	 			active++;
 			}
@@ -52,13 +52,13 @@ public class ShootingStar : MonoBehaviour {
 	}
 	void Create() {
 		if (num >= numOfItem || num < 0) return;
-		GameObject obj = Resources.Load<GameObject>(name);
+		GameObject prefab = Resources.Load<GameObject>(name);
 		float xOffset = area.width * 0.3f;
 		float w = area.width / numOfItem;
 		float x = area.x + xOffset + w * num + w / 2;
 		float y = area.yMax;
-		Debug.Log($"{x}, {y}");
-		items.Add(Instantiate(obj, new Vector3(x, y, 0), Quaternion.Euler(0, 0, 0)));
+		GameObject item = Instantiate(prefab, new Vector3(x, y, this.transform.position.z), Quaternion.Euler(0, 0, 0), this.transform);
+		items.Add(item);
 		num++;
 		wait = interval;
 	}

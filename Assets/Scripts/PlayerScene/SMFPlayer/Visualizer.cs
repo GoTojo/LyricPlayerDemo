@@ -57,6 +57,8 @@ public class Visualizer : MonoBehaviour {
 	private int curMeasure = 0;
 	private int curBeat = 0;
 	private bool beatEffectApplied = true;
+	private float beatInterval = 0.5f;
+	private float measureInterval = 2f;
 
 	public enum LyricMode {
 		Original,
@@ -174,6 +176,8 @@ public class Visualizer : MonoBehaviour {
 	}
 
 	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
+		beatInterval = (float)measureInterval / (float)kanjiPlayer.beat.count / 1000f;
+		this.measureInterval = (float)measureInterval / 1000f;
 		if (particleMeasCount > 0) {
 			particleMeasCount--;
 			if (particleMeasCount == 0) {
@@ -270,7 +274,7 @@ public class Visualizer : MonoBehaviour {
 		} else if (note == Parameter.NoteUnityChanColor) {
 			ChangeUnityChan(Parameter.UnityChanType.Color);
 		} else if (note == Parameter.NoteBulbOn) {
-			bulb.Create();
+			bulb.Create(new Vector3(2.6f, 6, 0), beatInterval * 2);
 		} else if (note == Parameter.NoteRocketLaunch) {
 			rocket.Launch();
 		}
@@ -375,19 +379,19 @@ public class Visualizer : MonoBehaviour {
 			}
 			break;
 		case "Bulb":
-			bulb.Create();
+			bulb.Create(new Vector3(2.6f, 6, 0), beatInterval * 2);
 			break;
 		case "Rocket":
 			rocket.Launch();
 			break;
 		case "Dango":
-			icons.Create("Dango", new Vector3(3, 5, 0), Quaternion.Euler(0, 0, 0));
+			icons.Create("Dango", new Vector3(2.6f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 2);
 			break;
 		case "Cake":
-			icons.Create("Cake", new Vector3(-3, 5, 0), Quaternion.Euler(0, 0, 0));
+			icons.Create("Cake", new Vector3(-3.3f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 2);
 			break;
 		case "Donburi":
-			icons.Create("Donburi", new Vector3(0, 6, 0), Quaternion.Euler(0, 0, 0));
+			icons.Create("Donburi", new Vector3(-3.3f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 2);
 			break;
 		case "ShootingStar":
 			shootingStar.Trigger("ShootingStar", 12, 0.3f, false);
@@ -399,10 +403,10 @@ public class Visualizer : MonoBehaviour {
 			shootingStar.Trigger("Naruto", 12, 0.1f, true);
 			break;
 		case "Naruto":
-			naruto.Begin();
+			naruto.Begin(beatInterval * 2);
 			break;
 		case "UFO":
-			ufo.Create();
+			ufo.Create(measureInterval * 2);
 			break;
 		}
 	}

@@ -16,9 +16,9 @@ public class Icons : MonoBehaviour
 
 	}
 
-	public void Create(string name, Vector3 pos, Quaternion angle) {
+	public void Create(string name, Vector3 pos, Quaternion angle, float lifetime) {
 		GameObject prefab = Resources.Load<GameObject>($"Prefab/Icons/{name}");
 		GameObject obj = Instantiate(prefab, pos, angle);
-		Destroy(obj, 2);
+		Destroy(obj, lifetime);
 	}
 }

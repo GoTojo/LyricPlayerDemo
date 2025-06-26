@@ -101,7 +101,7 @@ public class BackGroundController : MonoBehaviour {
 		for (var i = 0; i < numOfCircle; i++) {
 			GameObject obj = new GameObject();
 			obj.transform.SetParent(wall.transform);
-			obj.transform.position = new Vector3(0, 0, 0);
+			obj.transform.localPosition = new Vector3(0, 0, 0);
 			LineRenderer lineRenderer = obj.AddComponent<LineRenderer>();
 			// lineRenderer.useWorldSpace = false;
 			Material material = new Material(Shader.Find("Sprites/Default"));
