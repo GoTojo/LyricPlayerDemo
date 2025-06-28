@@ -320,7 +320,7 @@ public class Visualizer : MonoBehaviour {
 			wave.SetActive(false);
 			break;
 		case "Effect":
-			effectSwitcher.ChangeEffect(args);
+			effectSwitcher.ChangeEffect(args, beatInterval);
 			break;
 		case "BlackOut":
 			if (args.Length < 2) break;

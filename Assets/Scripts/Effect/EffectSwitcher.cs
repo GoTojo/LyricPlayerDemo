@@ -27,16 +27,37 @@ public class EffectSwitcher : MonoBehaviour {
 	public  FilmControl	film;
 	public  RGBShiftController	rgbShift;
 	public  TwistControl	twist;
-	private float pasttime = 0;
+	private float manualLifeTime = 0;
+	private float pulseEffectTime = 0;
 	public bool manual = false;
-	public void ChangeEffect(string[] args) {
+	public void ChangeEffect(string[] args, float beatInterval) {
 		if (manual) return;
-		curType = Enum.Parse<FullScreenEffectFeature.EffectType>(args[1]);
-		effectFeature.SetMatrial(curType);
+		float time = 0;
+		if (args.Length <= 2) {
+			return;
+		} else if (args.Length >= 3) {
+			switch (args[2]) {
+			case "HalfBeat":
+				time = beatInterval / 2;
+				break;
+			case "QuaterBeat":
+				time = beatInterval / 4;
+				break;
+			default:
+				break;
+			}
+		}
+		if (time > 0) {
+			pulseEffectTime = time;
+			effectFeature.SetMatrial(Enum.Parse<FullScreenEffectFeature.EffectType>(args[1]));
+		} else {
+			curType = Enum.Parse<FullScreenEffectFeature.EffectType>(args[1]);
+			effectFeature.SetMatrial(curType);
+		}
 	}
 	public string ChangeParameter(int ch, int ccNum, float value, float lifetime) {
 		manual = true;
-		pasttime = lifetime;
+		manualLifeTime = lifetime;
 		string paramName = "";
 		switch (ccNum) {
 		case Parameter.CCRGBShiftAmount:
@@ -77,12 +98,13 @@ public class EffectSwitcher : MonoBehaviour {
 		return paramName;
 	}
 	void Start() {
-		curType = effectFeature.GetEffectType();
+		curType = FullScreenEffectFeature.EffectType.Off;
+		effectFeature.SetMatrial(curType);
 	}
 	void Update() {
-		if (pasttime > 0) {
-			pasttime -= Time.deltaTime;
-			if (pasttime <= 0) {
+		if (manualLifeTime > 0) {
+			manualLifeTime -= Time.deltaTime;
+			if (manualLifeTime <= 0) {
 				manual = false;
 				effectFeature.SetMatrial(FullScreenEffectFeature.EffectType.Off);
 			}
@@ -90,6 +112,12 @@ public class EffectSwitcher : MonoBehaviour {
 		if (manual) {
 			if (curType != type) {
 				curType = type;
+				effectFeature.SetMatrial(curType);
+			}
+		}
+		if (pulseEffectTime > 0) {
+			pulseEffectTime -= Time.deltaTime;
+			if (pulseEffectTime <= 0) {
 				effectFeature.SetMatrial(curType);
 			}
 		}

@@ -1494,13 +1494,13 @@
 							"controls": ["Ramen", "WaveFormOn", "MultiLine_L_On", "UnityChanShiftOff"]
                         },
                         {
-                            "controls": ["WaveFormOff","Effect_DotScreen"]
+                            "controls": ["WaveFormOff","Effect_DotScreen_QuaterBeat"]
                         },
                         {
-                            "controls": ["Effect_Off"]
+                            "controls": ["Effect_Twist_QuaterBeat"]
                         },
                         {
-							"controls": ["Effect_Outline"]
+							"controls": ["Effect_Outline_QuaterBeat"]
                         }
                     ]
                 },
