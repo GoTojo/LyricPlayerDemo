@@ -22029,6 +22029,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62e8f8f1d3b214645b4ce506cca37328, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiPanelControl: {fileID: 0}
   effectFeature: {fileID: -2622006584530454775, guid: c40be3174f62c4acf8c1216858c64956, type: 2}
   type: 16
   glitchShader: {fileID: 789381144}
@@ -22368,7 +22369,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &813825899
 RectTransform:
   m_ObjectHideFlags: 0
@@ -46990,7 +46991,7 @@ MonoBehaviour:
   m_fontColor32:
     serializedVersion: 2
     rgba: 4294442898
-  m_fontColor: {r: 0.5707547, g: 1, b: 0.96756476, a: 1}
+  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

@@ -29,6 +29,7 @@ public class UFO : MonoBehaviour {
 		}
 	}
 	public void Create(float lifetime) {
+		if (ufo) return;
 		GameObject obj = Resources.Load<GameObject>("Prefab/Icons/UFO");
 		speed = (xMax - xMin) / lifetime;
 		ufo = Instantiate(obj, new Vector3(xMin, posY, 0), Quaternion.Euler(0, 0, 0));

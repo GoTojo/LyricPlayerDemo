@@ -28,7 +28,7 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 		GlitchShader,
 		BrightnessContrastSaturation,
 		Displacement,
-		KaleidoscopeImageEffect,
+		Kaleidoscope,
 		Shaker,
 		ColorControl,
 		DotMatrix,
@@ -84,7 +84,7 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 			curType = type;
 			effectMaterial = displacement;
 			break;
-		case EffectType.KaleidoscopeImageEffect:
+		case EffectType.Kaleidoscope:
 			curType = type;
 			effectMaterial = kaleidoscopeImageEffect;
 			break;

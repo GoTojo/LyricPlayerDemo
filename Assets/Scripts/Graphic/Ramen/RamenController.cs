@@ -80,9 +80,9 @@ public class RamenController : MonoBehaviour
 
 	private void NoteOn(MidiChannel channel, int note, float velocity)
 	{
-		if (note == Parameter.NoteRamenStart) {
-			CreateRamen();
-		}
+		// if (note == Parameter.NoteRamenStart) {
+		// 	CreateRamen();
+		// }
 	}
 
 	public void BeatIn(int numerator, int denominator, uint currentMsec)

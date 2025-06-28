@@ -52,7 +52,7 @@ public class LyricPlayer : MonoBehaviour {
 	}
 	private void NoteOn(MidiChannel channel, int note, float velocity)
 	{
-		if (note == Parameter.NoteStopVideo) {
+		if (note == Parameter.NoteStartStop) {
 			End();
 		}
 	}

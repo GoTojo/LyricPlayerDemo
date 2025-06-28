@@ -59,7 +59,7 @@ public class StartSceneController : MonoBehaviour
 
 	private void NoteOn(MidiChannel channel, int note, float velocity)
 	{
-		if (note == Parameter.NoteStartVideo) {
+		if (note == Parameter.NoteStartStop) {
 			LoadMainScene();
 		} else if (note == Parameter.NoteSongDown) {
 			SelectSong(currentSong - 1);

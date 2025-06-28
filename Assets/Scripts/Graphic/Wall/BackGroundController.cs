@@ -139,11 +139,11 @@ public class BackGroundController : MonoBehaviour {
 
 	private void NoteOn(MidiChannel channel, int note, float velocity) {
 		// Debug.Log("NoteOn: " + channel + ", " + note + ", " + velocity);
-		if (note == Parameter.NoteWallTypeRect) {
-			type = Parameter.WallType.Rectangle;
-		} else if (note == Parameter.NoteWallTypeCircle) {
-			type = Parameter.WallType.Circle;
-		}
+		// if (note == Parameter.NoteWallTypeRect) {
+		// 	type = Parameter.WallType.Rectangle;
+		// } else if (note == Parameter.NoteWallTypeCircle) {
+		// 	type = Parameter.WallType.Circle;
+		// }
 	}
 
 	private void NoteOff(MidiChannel channel, int note) {

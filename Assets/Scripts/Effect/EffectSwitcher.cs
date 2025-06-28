@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -26,36 +27,62 @@ public class EffectSwitcher : MonoBehaviour {
 	public  FilmControl	film;
 	public  RGBShiftController	rgbShift;
 	public  TwistControl	twist;
-	public float manualCount = 2f;
-	private float _manualCount = 0;
+	private float pasttime = 0;
 	public bool manual = false;
 	public void ChangeEffect(string[] args) {
 		if (manual) return;
 		curType = Enum.Parse<FullScreenEffectFeature.EffectType>(args[1]);
 		effectFeature.SetMatrial(curType);
 	}
-	public void ChangeParameter(int ch, int ccNum, float value) {
-		_manualCount = manualCount;
+	public string ChangeParameter(int ch, int ccNum, float value, float lifetime) {
 		manual = true;
+		pasttime = lifetime;
+		string paramName = "";
 		switch (ccNum) {
 		case Parameter.CCRGBShiftAmount:
+			paramName = "RGBShift: Amount";
 			type = FullScreenEffectFeature.EffectType.RGBShift;
 			rgbShift.Amount(value);
 			break;
 		case Parameter.CCRGBShiftAngle:
+			paramName = "RGBShift: Angle";
 			type = FullScreenEffectFeature.EffectType.RGBShift;
 			rgbShift.Angle(value);
 			break;
+		case Parameter.CCEffectSelect:
+			FullScreenEffectFeature.EffectType[] typeTbl = new FullScreenEffectFeature.EffectType[] {
+				FullScreenEffectFeature.EffectType.GlitchShader,
+				// FullScreenEffectFeature.EffectType.BrightnessContrastSaturation,
+				FullScreenEffectFeature.EffectType.Displacement,
+				FullScreenEffectFeature.EffectType.Kaleidoscope,
+				FullScreenEffectFeature.EffectType.Shaker,
+				// FullScreenEffectFeature.EffectType.ColorControl,
+				FullScreenEffectFeature.EffectType.DotMatrix,
+				FullScreenEffectFeature.EffectType.Outline,
+				FullScreenEffectFeature.EffectType.Slitscan,
+				FullScreenEffectFeature.EffectType.CutSlider,
+				FullScreenEffectFeature.EffectType.DotScreen,
+				FullScreenEffectFeature.EffectType.Poster,
+				FullScreenEffectFeature.EffectType.Squares,
+				FullScreenEffectFeature.EffectType.DigitalGlitch,
+				FullScreenEffectFeature.EffectType.Film,
+				// FullScreenEffectFeature.EffectType.RGBShift,
+				FullScreenEffectFeature.EffectType.Twist,
+			};
+			type = typeTbl[(int)(value * (typeTbl.Length - 1))];
+			paramName = type.ToString();
+			break;
 		}
 		effectFeature.SetMatrial(type);
+		return paramName;
 	}
 	void Start() {
 		curType = effectFeature.GetEffectType();
 	}
 	void Update() {
-		if (_manualCount > 0) {
-			_manualCount -= Time.deltaTime;
-			if (_manualCount <= 0) {
+		if (pasttime > 0) {
+			pasttime -= Time.deltaTime;
+			if (pasttime <= 0) {
 				manual = false;
 				effectFeature.SetMatrial(FullScreenEffectFeature.EffectType.Off);
 			}

@@ -119,21 +119,9 @@ public class Visualizer : MonoBehaviour {
 		eventMap.SetCurrentMap(1);
 		kanjiPlayer.mute = false;
 		ChangeParticle(particleType);
-		SetUnityChan(unityChanType);	
 	}
 	public void SetTitle(String title) {
 		titleCenter.text = title;
-	}
-
-	public void ToggleLyricMode() {
-		if (lyricMode == LyricMode.Kanji) {
-			lyricMode = LyricMode.Original;
-			// Debug.Log($"LyricMode: kanji");
-		} else {
-			lyricMode = LyricMode.Kanji;
-			// Debug.Log($"LyricMode: original");
-		}
-		PlayerPrefs.SetInt("LyricMode", (int)lyricMode);
 	}
 
 	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {
@@ -233,23 +221,19 @@ public class Visualizer : MonoBehaviour {
 	private void SetUnityChan(Parameter.UnityChanType type) {
 		switch (type) {
 		case Parameter.UnityChanType.Black:
+			unityChanColor.SetActive(false);
 			unityChanBlack.SetActive(true);
 			break;
 		case Parameter.UnityChanType.Color:
+			unityChanBlack.SetActive(false);
 			unityChanColor.SetActive(true);
+			break;
+		case Parameter.UnityChanType.Off:
+			unityChanBlack.SetActive(false);
+			unityChanColor.SetActive(false);
 			break;
 		default:
 			break;
-		}
-	}
-	private void ChangeUnityChan(Parameter.UnityChanType type) {
-		unityChanBlack.SetActive(false);
-		unityChanColor.SetActive(false);
-		if (type != unityChanType) {
-			SetUnityChan(type);
-			unityChanType = type;
-		} else {
-			unityChanType = Parameter.UnityChanType.Off;
 		}
 	}
 
@@ -326,13 +310,13 @@ public class Visualizer : MonoBehaviour {
 			backGroundController.SetWallType(Parameter.WallType.Off);
 			break;
 		case "UCBlack":
-			ChangeUnityChan(Parameter.UnityChanType.Black);
+			SetUnityChan(Parameter.UnityChanType.Black);
 			break;
 		case "UCColor":
-			ChangeUnityChan(Parameter.UnityChanType.Color);
+			SetUnityChan(Parameter.UnityChanType.Color);
 			break;
 		case "UCOff":
-			ChangeUnityChan(Parameter.UnityChanType.Off);
+			SetUnityChan(Parameter.UnityChanType.Off);
 			break;
 		case "WaveFormOn":
 			wave.SetActive(true);
@@ -451,30 +435,32 @@ public class Visualizer : MonoBehaviour {
 	}
 
 	private void NoteOn(MidiChannel channel, int note, float velocity) {
-		if (note == Parameter.NoteLyricTypeDown) {
-		} else if (note == Parameter.NoteLyricTypeUp) {
-		} else if (note == Parameter.NoteLyricFontDown) {
-			FontResource.Instance.DecFont();
-		} else if (note == Parameter.NoteLyricFontUp) {
-			FontResource.Instance.IncFont();
-		} else if (note == Parameter.NoteLyricModeToggle) {
-			ToggleLyricMode();
-		} else if (note == Parameter.NoteParticleSnow) {
+		string paramText = "";
+		if (note == Parameter.NoteParticleSnow) {
 			ChangeParticle(Parameter.ParticleType.Snow);
 		} else if (note == Parameter.NoteParticleConfetti) {
 			ChangeParticle(Parameter.ParticleType.Confetti);
 		} else if (note == Parameter.NoteParticleKiraKira) {
 			ChangeParticle(Parameter.ParticleType.Zeknova);
-		} else if (note == Parameter.NoteParticleRamen) {
-			ChangeParticle(Parameter.ParticleType.Ramen);
 		} else if (note == Parameter.NoteUnityChanBlack) {
-			ChangeUnityChan(Parameter.UnityChanType.Black);
+			SetUnityChan(Parameter.UnityChanType.Black);
 		} else if (note == Parameter.NoteUnityChanColor) {
-			ChangeUnityChan(Parameter.UnityChanType.Color);
-		} else if (note == Parameter.NoteBulbOn) {
-			bulb.Create(new Vector3(2.6f, 6, 0), beatInterval * 2);
+			SetUnityChan(Parameter.UnityChanType.Color);
+		} else if (note == Parameter.NoteUnityChanOff) {
+			SetUnityChan(Parameter.UnityChanType.Off);
+		} else if (note == Parameter.NoteComet) {
+			shootingStar.Trigger("Comet", 6, 0.3f, false);
+		} else if (note == Parameter.NoteShootingStar) {
+			shootingStar.Trigger("ShootingStar", 6, 0.3f, false);
+		} else if (note == Parameter.NoteUFO) {
+			ufo.Create(measureInterval * 2);
 		} else if (note == Parameter.NoteRocketLaunch) {
 			rocket.Launch();
+		} else if (note == Parameter.NoteNaruto) {
+			naruto.Begin(beatInterval * 2);
+		}
+		if (paramText.Length != 0) {
+			uiPanelControl.Show(paramText, measureInterval);
 		}
 	}
 
@@ -491,12 +477,11 @@ public class Visualizer : MonoBehaviour {
 			paramText = fontType.ToString();
 			break;
 		case Parameter.CCRGBShiftAmount:
-			paramText = "RGBShift: Amount";
-			effectSwitcher.ChangeParameter((int)ch, ccNum, value);
-			break;
 		case Parameter.CCRGBShiftAngle:
-			paramText = "RGBShift: Angle";
-			effectSwitcher.ChangeParameter((int)ch, ccNum, value);
+			paramText = effectSwitcher.ChangeParameter((int)ch, ccNum, value, 2 * measureInterval);
+			break;
+		case Parameter.CCEffectSelect:
+			paramText = effectSwitcher.ChangeParameter((int)ch, ccNum, value, 3 * measureInterval);
 			break;
 		case Parameter.CCRamenRotate:
 			paramText = "Rotate Speed";
