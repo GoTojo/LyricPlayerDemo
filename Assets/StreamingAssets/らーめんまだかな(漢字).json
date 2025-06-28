@@ -1437,7 +1437,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["ShootingStar"]
+                            "controls": ["ShootingStar", "Snow"]
                         },
                         {
                             "controls": []

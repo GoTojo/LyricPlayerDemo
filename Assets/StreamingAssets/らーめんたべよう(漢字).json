@@ -1335,7 +1335,7 @@
                             "controls": ["WaveFormOff"]
                         },
                         {
-                            "controls": []
+                            "controls": ["Effect_Twist_QuaterBeat"]
                         },
                         {
                             "controls": ["Ramen"]
@@ -1353,10 +1353,10 @@
                             "controls": ["WaveFormOn"]
                         },
                         {
-                            "controls": ["WaveFormOff"]
+                            "controls": ["WaveFormOff","Effect_Twist_QuaterBeat"]
                         },
                         {
-                            "controls": []
+                            "controls": [  ]
                         }
                     ]
                 },
@@ -1671,7 +1671,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["UCBlack", "UnityChanShiftOn"]
+							"controls": ["UCBlack", "UnityChanShiftOn",  "Effect_RGBShift"]
                         },
                         {
                             "controls": []
@@ -1869,7 +1869,7 @@
                     "sentence": "体重気に",
                     "beats": [
                         {
-							"controls": ["MultiLine_L_Off", "MultiLine_R_On"]
+							"controls": ["MultiLine_L_Off", "MultiLine_R_On", "Co met"]
                         },
                         {
                             "controls": []
@@ -1887,7 +1887,7 @@
                     "sentence": "なるけど",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["Snow"]
                         },
                         {
                             "controls": []
@@ -2127,7 +2127,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["Dango"]
                         },
                         {
                             "controls": []
@@ -2139,7 +2139,7 @@
                     "sentence": "食べよう",
                     "beats": [
                         {
-                            "controls": ["Dango"]
+                            "controls": []
                         },
                         {
                             "controls": []
@@ -2193,7 +2193,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
 						{
-							"controls": ["SimpleLyricOn","MultiRow_R_Off","Donburi"]
+							"controls": ["SimpleLyricOn","MultiRow_R_Off","Donburi", "Confetti"]
 						},
                         {
                             "controls": []
@@ -2325,7 +2325,7 @@
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["Ramen"]
                         },
                         {
                             "controls": []
@@ -2340,13 +2340,13 @@
                             "controls": ["NarutoStar"]
                         },
                         {
-                            "controls": []
+                            "controls": ["Effect_Twist_QuaterBeat"]
                         },
                         {
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["Effect_Twist_QuaterBeat"]
                         }
                     ]
                 },
@@ -2508,7 +2508,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["UnityChanRunOff","RamenDiskOff", "Night_Off", "WallRect", "UCColor", "UnityChanShiftOn"]
+                            "controls": ["UnityChanRunOff","RamenDiskOff", "Night_Off", "WallRect", "UCColor", "UnityChanShiftOn", "Effect_RGBShift"]
                         }
                     ]
                 },
@@ -2553,7 +2553,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["Confetti"]
                         },
                         {
                             "controls": []
