@@ -13,6 +13,7 @@ public class Visualizer : MonoBehaviour {
 	public SMFPlayer smfPlayer;
 	public SMFPlayer kanjiPlayer;
 	public UIPanelControl uiPanelControl;
+	public GameObject infoPanel;
 	private LyricMode lyricMode = LyricMode.Kanji;
 	MidiEventMapAccessor eventMap;
 	public EffectSwitcher effectSwitcher;
@@ -58,6 +59,7 @@ public class Visualizer : MonoBehaviour {
 	private bool beatEffectApplied = true;
 	private float beatInterval = 0.5f;
 	private float measureInterval = 2f;
+	private bool showInfo = false;
 
 	public enum LyricMode {
 		Original,
@@ -453,6 +455,9 @@ public class Visualizer : MonoBehaviour {
 			rocket.Launch();
 		} else if (note == Parameter.NoteNaruto) {
 			naruto.Begin(beatInterval * 2);
+		} else if (note == Parameter.NoteSongDown || note == Parameter.NoteSongUp) {
+			showInfo = !showInfo;
+			infoPanel.SetActive(showInfo);
 		}
 		if (paramText.Length != 0) {
 			uiPanelControl.Show(paramText, measureInterval);
