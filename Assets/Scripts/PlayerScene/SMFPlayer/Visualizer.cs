@@ -337,13 +337,13 @@ public class Visualizer : MonoBehaviour {
 			rocket.Launch();
 			break;
 		case "Dango":
-			icons.Create("Dango", new Vector3(2.6f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 2);
+			icons.Create("Dango", measureInterval * 2);
 			break;
 		case "Cake":
-			icons.Create("Cake", new Vector3(-3.3f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 2);
+			icons.Create("Cake", measureInterval * 2);
 			break;
 		case "Donburi":
-			icons.Create("Donburi", new Vector3(-3.3f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 4);
+			icons.Create("Donburi", measureInterval * 2);
 			break;
 		case "ShootingStar":
 			shootingStar.Trigger("ShootingStar", 12, 0.3f, false);
