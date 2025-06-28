@@ -61,7 +61,7 @@ public class Naruto : MonoBehaviour {
 		float w = area.width / numOfNaruto;
 		float x = area.x + w * order[num] + UnityEngine.Random.Range(0f, w);
 		float y = UnityEngine.Random.Range(area.yMin, area.yMax);
-		naruto[num] = Instantiate(obj, new Vector3(x, y, 0), Quaternion.Euler(0, 0, 0));
+		naruto[num] = Instantiate(obj, new Vector3(x, y, 8), Quaternion.Euler(0, 0, 0));
 		num++;
 		wait = interval;
 		life = lifetime;

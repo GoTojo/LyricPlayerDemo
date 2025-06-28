@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Rocket : MonoBehaviour {
 	// Start is called before the first frame update
-	private Vector3 lauchPoint = new Vector3(-10, -5, 0);
-	private const float endX = 13;
+	private Vector3 lauchPoint = new Vector3(-10, -5, 8);
+	private const float endX = 14;
+	private const float endY = -12;
 	private GameObject rocket = null;
 	private Vector3 lastPosition;
 	void Start() {
@@ -21,7 +22,7 @@ public class Rocket : MonoBehaviour {
 			rotation.y = 0;
 			rocket.transform.rotation = rotation;
 			lastPosition = position;
-			if (position.x >= endX) {
+			if (position.x >= endX || position.y <= endY) {
 				Destroy(rocket);
 				rocket = null;
 			}

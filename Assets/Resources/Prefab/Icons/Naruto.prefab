@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4308754751094387109}
   - component: {fileID: 5378630361182209189}
   - component: {fileID: 2154771222228848578}
-  - component: {fileID: 3395931956946321156}
+  - component: {fileID: 6420532842163633553}
   m_Layer: 0
   m_Name: Naruto
   m_TagString: Untagged
@@ -107,7 +107,7 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 10210, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &3395931956946321156
+--- !u!54 &6420532842163633553
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -132,5 +132,5 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 8
   m_CollisionDetection: 0
