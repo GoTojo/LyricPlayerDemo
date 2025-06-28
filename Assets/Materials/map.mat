@@ -29,7 +29,7 @@ Material:
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
+  m_CustomRenderQueue: 2003
   stringTagMap: {}
   disabledShaderPasses: []
   m_LockedProperties: 
@@ -115,7 +115,7 @@ Material:
     - _OcclusionStrength: 1
     - _Parallax: 0.005
     - _QueueControl: 0
-    - _QueueOffset: 0
+    - _QueueOffset: 3
     - _ReceiveShadows: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
@@ -125,24 +125,27 @@ Material:
     - _Surface: 0
     - _WorkflowMode: 1
     - _ZWrite: 1
-    - _amplitude: 0.02
+    - _alpha: 0
+    - _amplitude: 0.03
     - _base_intensity: 10
     - _intensity: 0.01
     - _power: 0.5
-    - _power1: 0.08
-    - _range_max: 1.5
-    - _range_min: 0.01
-    - _range_min1: 0.7
+    - _power1: 0.02
+    - _range_max: 1.4
+    - _range_max1: 0.9
+    - _range_min: 0.2
+    - _range_min1: 0.3
     - _scroll_speed: 2
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.2, g: 0.2, b: 0.2, a: 1}
-    - _emit_color: {r: 0.9694671, g: 1, b: 0.4666667, a: 1}
-    - _end_color: {r: 0.08919374, g: 0, b: 0.49056602, a: 0}
+    - _emit_color: {r: 0.94982517, g: 0.9811321, b: 0.44891423, a: 1}
+    - _end_color: {r: 0.057271272, g: 0.12741879, b: 0.3679245, a: 0}
+    - _end_color1: {r: 0, g: 0, b: 0, a: 0}
     - _offset: {r: -2.2, g: 1, b: 0, a: 0}
     - _scale: {r: 0.04, g: 0.02, b: 0, a: 0}
     - _start_color: {r: 0.9716981, g: 0.9607713, b: 0.38042897, a: 0}
-    - _start_color1: {r: 0.022116425, g: 0.6698113, b: 0.09874303, a: 0}
+    - _start_color1: {r: 0.15690637, g: 0.8113208, b: 0.41140082, a: 0}
   m_BuildTextureStacks: []

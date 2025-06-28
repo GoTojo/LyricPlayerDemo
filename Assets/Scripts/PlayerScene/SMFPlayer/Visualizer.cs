@@ -21,10 +21,8 @@ public class Visualizer : MonoBehaviour {
 	public GameObject unityChanColor;
 	public GameObject unityChanRunning;
 	public GameObject unityChanShift;
-	public GameObject zeknova;
-	public GameObject snow;
-	public GameObject confetti;
-	public GameObject ramen;
+	public ZeknovaController zeknovaController;
+	public ParticleController particleController;
 	public SunController sun;
 	public GameObject ramenDisk;
 	public GameObject ramenFloor;
@@ -187,28 +185,25 @@ public class Visualizer : MonoBehaviour {
 	}
 
 	private void ChangeParticle(Parameter.ParticleType type) {
-		snow.SetActive(false);
-		confetti.SetActive(false);
-		zeknova.SetActive(false);
-		ramen.SetActive(false);
+		particleController.Stop();
+		zeknovaController.Stop();
 		if (type != particleType) {
-			particleMeasCount = 4;
+			particleMeasCount = 2;
 			switch (type) {
 			case Parameter.ParticleType.Snow:
-				snow.SetActive(true);
+				particleController.Play(ParticleController.Type.Snow);
 				break;
 			case Parameter.ParticleType.Confetti:
-				confetti.SetActive(true);
+				particleController.Play(ParticleController.Type.Confetti);
 				break;
 			case Parameter.ParticleType.Sakura:
 				// not yet
 				break;
 			case Parameter.ParticleType.Zeknova:
-				zeknova.SetActive(true);
+				zeknovaController.Play();
 				break;
 			case Parameter.ParticleType.Ramen:
-				ramen.SetActive(true);
-				particleMeasCount = 2;
+				particleController.Play(ParticleController.Type.Ramen);
 				break;
 			default:
 				break;

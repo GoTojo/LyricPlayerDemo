@@ -29,15 +29,15 @@ public class SunController : MonoBehaviour {
 		switch (command) {
 		case "8":
 			sun.SetActive(true);
-			sun.transform.position = new Vector3(-10f, 5f, 0);
+			sun.transform.position = new Vector3(-10f, 5f, 9);
 			break;
 		case "12":
 			sun.SetActive(true);
-			sun.transform.position = new Vector3(0f, 5f, 0);
+			sun.transform.position = new Vector3(0f, 5f, 9);
 			break;
 		case "15":
 			sun.SetActive(true);
-			sun.transform.position = new Vector3(6f, 5f, 0);
+			sun.transform.position = new Vector3(6f, 5f, 9);
 			break;
 		case "Off":
 			sun.SetActive(false);
