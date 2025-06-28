@@ -5,6 +5,7 @@ using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 public class EffectSwitcher : MonoBehaviour {
+	public UIPanelControl uiPanelControl;
 	public FullScreenEffectFeature effectFeature;
 	public FullScreenEffectFeature.EffectType type;
 	private FullScreenEffectFeature.EffectType curType;

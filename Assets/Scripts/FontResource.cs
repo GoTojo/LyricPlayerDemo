@@ -5,8 +5,7 @@
 using UnityEngine;
 using TMPro;
 
-class FontResource
-{
+class FontResource {
 	public enum Type {
 		JKMaruGothic,
 		DelaGothicOne,
@@ -16,8 +15,7 @@ class FontResource
 		RocknRollOne
 	};
 	private static FontResource _instance;  // singleton
-	public static FontResource Instance
-	{
+	public static FontResource Instance {
 		get {
 			if (_instance == null) {
 				_instance = new FontResource();
@@ -33,11 +31,9 @@ class FontResource
 	private TMP_FontAsset fontRocknRollOne;
 	private Type curFontType = Type.JKMaruGothic;
 
-	FontResource()
-	{
+	FontResource() {
 	}
-	public void LoadFont()
-	{
+	public void LoadFont() {
 		fontJKMaruGothic = Resources.Load<TMP_FontAsset>("Fonts/JK-Maru-Gothic-M SDF");
 		fontDelaGothicOne = Resources.Load<TMP_FontAsset>("Fonts/DelaGothicOne-Regular SDF");
 		fontHachiMaruPop = Resources.Load<TMP_FontAsset>("Fonts/HachiMaruPop-Regular SDF");
@@ -45,8 +41,7 @@ class FontResource
 		fontLightNovelPOP = Resources.Load<TMP_FontAsset>("Fonts/LightNovelPOPv2 SDF");
 		fontRocknRollOne = Resources.Load<TMP_FontAsset>("Fonts/RocknRollOne-Regular SDF");
 	}
-	public void SetCurFont(Type type)
-	{
+	public void SetCurFont(Type type) {
 		curFontType = type;
 	}
 	public void IncFont() {
@@ -57,8 +52,7 @@ class FontResource
 		if (curFontType == Type.JKMaruGothic) return;
 		curFontType = (Type)((int)curFontType - 1);
 	}
-	public TMP_FontAsset GetFont()
-	{
+	public TMP_FontAsset GetFont() {
 		TMP_FontAsset font;
 		switch (curFontType) {
 		default:
@@ -77,10 +71,13 @@ class FontResource
 		case Type.LightNovelPOP:
 			font = fontLightNovelPOP;
 			break;
-		case Type.RocknRollOne			:
+		case Type.RocknRollOne:
 			font = fontRocknRollOne;
 			break;
 		}
 		return font;
+	}
+	public int numOfFontType() {
+		return System.Enum.GetNames(typeof(Type)).Length;
 	}
 }

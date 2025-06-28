@@ -12,6 +12,7 @@ public class Visualizer : MonoBehaviour {
 	public Rect area = new Rect(-2, 5, 4, 10);
 	public SMFPlayer smfPlayer;
 	public SMFPlayer kanjiPlayer;
+	public UIPanelControl uiPanelControl;
 	private LyricMode lyricMode = LyricMode.Kanji;
 	MidiEventMapAccessor eventMap;
 	public EffectSwitcher effectSwitcher;
@@ -252,34 +253,6 @@ public class Visualizer : MonoBehaviour {
 		}
 	}
 
-	private void NoteOn(MidiChannel channel, int note, float velocity) {
-		if (note == Parameter.NoteLyricTypeDown) {
-		} else if (note == Parameter.NoteLyricTypeUp) {
-		} else if (note == Parameter.NoteLyricFontDown) {
-			FontResource.Instance.DecFont();
-		} else if (note == Parameter.NoteLyricFontUp) {
-			FontResource.Instance.IncFont();
-		} else if (note == Parameter.NoteLyricModeToggle) {
-			ToggleLyricMode();
-		} else if (note == Parameter.NoteParticleSnow) {
-			ChangeParticle(Parameter.ParticleType.Snow);
-		} else if (note == Parameter.NoteParticleConfetti) {
-			ChangeParticle(Parameter.ParticleType.Confetti);
-		} else if (note == Parameter.NoteParticleKiraKira) {
-			ChangeParticle(Parameter.ParticleType.Zeknova);
-		} else if (note == Parameter.NoteParticleRamen) {
-			ChangeParticle(Parameter.ParticleType.Ramen);
-		} else if (note == Parameter.NoteUnityChanBlack) {
-			ChangeUnityChan(Parameter.UnityChanType.Black);
-		} else if (note == Parameter.NoteUnityChanColor) {
-			ChangeUnityChan(Parameter.UnityChanType.Color);
-		} else if (note == Parameter.NoteBulbOn) {
-			bulb.Create(new Vector3(2.6f, 6, 0), beatInterval * 2);
-		} else if (note == Parameter.NoteRocketLaunch) {
-			rocket.Launch();
-		}
-	}
-
 	//
 	//	Measureイベントですぐにactiveにする
 	//	Measureイベントを受けて処理を行うタイプに使用する
@@ -477,27 +450,64 @@ public class Visualizer : MonoBehaviour {
 		}
 	}
 
+	private void NoteOn(MidiChannel channel, int note, float velocity) {
+		if (note == Parameter.NoteLyricTypeDown) {
+		} else if (note == Parameter.NoteLyricTypeUp) {
+		} else if (note == Parameter.NoteLyricFontDown) {
+			FontResource.Instance.DecFont();
+		} else if (note == Parameter.NoteLyricFontUp) {
+			FontResource.Instance.IncFont();
+		} else if (note == Parameter.NoteLyricModeToggle) {
+			ToggleLyricMode();
+		} else if (note == Parameter.NoteParticleSnow) {
+			ChangeParticle(Parameter.ParticleType.Snow);
+		} else if (note == Parameter.NoteParticleConfetti) {
+			ChangeParticle(Parameter.ParticleType.Confetti);
+		} else if (note == Parameter.NoteParticleKiraKira) {
+			ChangeParticle(Parameter.ParticleType.Zeknova);
+		} else if (note == Parameter.NoteParticleRamen) {
+			ChangeParticle(Parameter.ParticleType.Ramen);
+		} else if (note == Parameter.NoteUnityChanBlack) {
+			ChangeUnityChan(Parameter.UnityChanType.Black);
+		} else if (note == Parameter.NoteUnityChanColor) {
+			ChangeUnityChan(Parameter.UnityChanType.Color);
+		} else if (note == Parameter.NoteBulbOn) {
+			bulb.Create(new Vector3(2.6f, 6, 0), beatInterval * 2);
+		} else if (note == Parameter.NoteRocketLaunch) {
+			rocket.Launch();
+		}
+	}
+
 	private void NoteOff(MidiChannel channel, int note) {
 		// Debug.Log("NoteOff: " + channel + ", " + note);
 	}
 
 	private void knobChanged(MidiChannel ch, int ccNum, float value) {
+		string paramText = "";
 		switch (ccNum) {
 		case Parameter.CCSetFont:
-			FontResource.Instance.SetCurFont((FontResource.Type)value);
+			FontResource.Type fontType = (FontResource.Type)((FontResource.Instance.numOfFontType() - 1) * value);
+			FontResource.Instance.SetCurFont(fontType);
+			paramText = fontType.ToString();
 			break;
 		case Parameter.CCRGBShiftAmount:
+			paramText = "RGBShift: Amount";
+			effectSwitcher.ChangeParameter((int)ch, ccNum, value);
+			break;
 		case Parameter.CCRGBShiftAngle:
+			paramText = "RGBShift: Angle";
 			effectSwitcher.ChangeParameter((int)ch, ccNum, value);
 			break;
 		case Parameter.CCRamenRotate:
+			paramText = "Rotate Speed";
 			rotateContentsZ.ChangeRotationTime(value);
 			rotateContentsZ1.ChangeRotationTime(value);
-			// ApplyControlNow("RamenDiskOn");
-			// ApplyControlDelayed("UnityChanRunOn");
 			break;
 		default:
 			break;
+		}
+		if (paramText.Length != 0) {
+			uiPanelControl.Show(paramText, measureInterval);
 		}
 	}
 }

@@ -34,7 +34,7 @@ public class Parameter {
 	public static int NoteStopVideo = 0x47 + 12;		// B4
 	public static int NoteStartVideo = 0x48 + 12;	// C5
 
-	public const int CCSetFont = 0x0c; 
+	public const int CCSetFont = 0x49; 
 	public const int CCRGBShiftAmount = 0x5c; 
 	public const int CCRGBShiftAngle = 0x5b;
 	public const int CCRamenRotate = 0x47;
