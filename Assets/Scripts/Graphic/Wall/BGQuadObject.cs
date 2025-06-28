@@ -120,7 +120,7 @@ public class BGCircleController : BGObjectController
 		for (int i = 0; i < segments + 1; i++) {
 			float _x = _r * Mathf.Cos(theta) + x;
 			float _y = _r * Mathf.Sin(theta) + y;
-			Vector3 pos = new Vector3(_x, _y, 8f);
+			Vector3 pos = new Vector3(_x, _y, 15);
 			lineRenderer.SetPosition(i, pos);
 			theta += deltaTheta;
 		}
