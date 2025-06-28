@@ -343,7 +343,7 @@ public class Visualizer : MonoBehaviour {
 			icons.Create("Cake", new Vector3(-3.3f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 2);
 			break;
 		case "Donburi":
-			icons.Create("Donburi", new Vector3(-3.3f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 2);
+			icons.Create("Donburi", new Vector3(-3.3f, 6, 0), Quaternion.Euler(0, 0, 0), beatInterval * 4);
 			break;
 		case "ShootingStar":
 			shootingStar.Trigger("ShootingStar", 12, 0.3f, false);
