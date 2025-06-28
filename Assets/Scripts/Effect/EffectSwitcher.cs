@@ -33,7 +33,7 @@ public class EffectSwitcher : MonoBehaviour {
 	public void ChangeEffect(string[] args, float beatInterval) {
 		if (manual) return;
 		float time = 0;
-		if (args.Length <= 2) {
+		if (args.Length < 2) {
 			return;
 		} else if (args.Length >= 3) {
 			switch (args[2]) {
