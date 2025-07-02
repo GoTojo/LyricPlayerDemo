@@ -348,13 +348,40 @@ public class Visualizer : MonoBehaviour {
 			icons.Create("Donburi", measureInterval * 2);
 			break;
 		case "ShootingStar":
-			shootingStar.Trigger("ShootingStar", 12, 0.3f, false);
+			if (args.Length > 1) {
+				try {
+					int num = int.Parse(args[1]);
+					shootingStar.Trigger("ShootingStar", num, 0.3f, false);
+				} catch {
+					shootingStar.Trigger("ShootingStar", 12, 0.3f, false);
+				}
+			} else {
+				shootingStar.Trigger("ShootingStar", 12, 0.3f, false);
+			}
 			break;
 		case "Comet":
-			shootingStar.Trigger("Comet", 12, 0.3f, false);
+			if (args.Length > 1) {
+				try {
+					int num = int.Parse(args[1]);
+					shootingStar.Trigger("Comet", num, 0.3f, false);
+				} catch {
+					shootingStar.Trigger("Comet", 12, 0.3f, false);
+				}
+			} else {
+				shootingStar.Trigger("Comet", 12, 0.3f, false);
+			}
 			break;
 		case "NarutoStar":
-			shootingStar.Trigger("Naruto", 12, 0.1f, true);
+			if (args.Length > 1) {
+				try {
+					int num = int.Parse(args[1]);
+					shootingStar.Trigger("Naruto", num, 0.3f, false);
+				} catch {
+					shootingStar.Trigger("Naruto", 12, 0.3f, false);
+				}
+			} else {
+				shootingStar.Trigger("Naruto", 12, 0.3f, false);
+			}
 			break;
 		case "Naruto":
 			naruto.Begin(beatInterval * 2);
