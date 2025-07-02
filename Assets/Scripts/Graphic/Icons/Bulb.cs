@@ -20,8 +20,8 @@ public class Bulb : MonoBehaviour {
 				Destroy(bulb);
 				bulb = null;
 			}
-			if (totalAngle < 60) {
-				float angle = 60 / animtime * Time.deltaTime;
+			if (totalAngle < 30) {
+				float angle = 30 / animtime * Time.deltaTime;
 				bulb.transform.Rotate(0f, 0f, -angle);
 				totalAngle += angle;
 			}
@@ -31,7 +31,7 @@ public class Bulb : MonoBehaviour {
 
 	public void Create(Vector3 pos, float lifetime) {
 		GameObject obj = Resources.Load<GameObject>("Prefab/Icons/Bulb");
-		bulb = Instantiate(obj, pos, Quaternion.Euler(0, 0, 30), this.transform);
+		bulb = Instantiate(obj, pos, Quaternion.Euler(0, 0, 0), this.transform);
 		age = lifetime;
 		totalAngle = 0;
 	}
