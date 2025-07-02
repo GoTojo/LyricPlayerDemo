@@ -15,7 +15,7 @@ public class FullScreenEffectFeature : ScriptableRendererFeature {
 		public override void Execute(ScriptableRenderContext context, ref RenderingData renderingData) {
 			CommandBuffer cmd = CommandBufferPool.Get("FullScreenEffect");
 
-			RenderTargetIdentifier source = renderingData.cameraData.renderer.cameraColorTarget;
+			RenderTargetIdentifier source = renderingData.cameraData.renderer.cameraColorTargetHandle;
 
 			cmd.Blit(source, source, effectMaterial);
 			context.ExecuteCommandBuffer(cmd);

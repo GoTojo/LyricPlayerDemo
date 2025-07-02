@@ -20,8 +20,6 @@ public class LyricGenMultiLine : MonoBehaviour {
 	public int maxLine = 5;
 	public SentenceList sentenceList;
 	public bool active = true;
-	private int curMeas = -1;
-	private int lastSentenceMeas = -1;
 	class LyricGenMultiLineControl : LyricGenLineBase {
 		public bool active = false;
 		public int maxLine = 5;

@@ -8,14 +8,14 @@ public class UnityChanShift : MonoBehaviour {
 	// Start is called before the first frame update
 	private Transform unityChan;
 	private Transform ramen;
-	private Transform light;
+	private Transform lightObj;
 	public bool flipHorizontally = false;
 	void Start() {
 		MidiWatcher.Instance.onBeatIn += BeatIn;
 		MidiWatcher.Instance.onMeasureIn += MeasureIn;
 		unityChan = this.transform.Find("Unity-Chan");
 		ramen = this.transform.Find("ramen");
-		light = this.transform.Find("Light");
+		lightObj = this.transform.Find("Light");
 		locate();
 	}
 
@@ -26,11 +26,11 @@ public class UnityChanShift : MonoBehaviour {
 		if (flipHorizontally) {
 			unityChan.localPosition = new Vector3(leftx, -1.2f, 0);
 			ramen.localPosition = new Vector3(rightx, 0, 0);
-			light.localPosition = new Vector3(rightx, 0, -7);
+			lightObj.localPosition = new Vector3(rightx, 0, -7);
 		} else {
 			unityChan.localPosition = new Vector3(rightx, -1.2f, 0);
 			ramen.localPosition = new Vector3(leftx, 0, 0);
-			light.localPosition = new Vector3(leftx, 0, -7);
+			lightObj.localPosition = new Vector3(leftx, 0, -7);
 		}
 	}
 

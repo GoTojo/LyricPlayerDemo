@@ -16,7 +16,6 @@ public class RotateContentsZ : MonoBehaviour {
 	private int startMeas = 0;
 	private float curAngle = 0;
 	private int phase = 0;
-	private bool active = false;
 	void Start() {
 		MidiWatcher midiWatcher = MidiWatcher.Instance;
 		midiWatcher.onMeasureIn += MeasureIn;
@@ -71,6 +70,6 @@ public class RotateContentsZ : MonoBehaviour {
 		manualCount = 2;
 	}
 	public void SetActive(bool f) {
-		this.active = true;
+		// this.active = true;
 	}
 }

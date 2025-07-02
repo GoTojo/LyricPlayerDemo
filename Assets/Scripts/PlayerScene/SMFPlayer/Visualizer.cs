@@ -14,7 +14,7 @@ public class Visualizer : MonoBehaviour {
 	public SMFPlayer kanjiPlayer;
 	public UIPanelControl uiPanelControl;
 	public GameObject infoPanel;
-	private LyricMode lyricMode = LyricMode.Kanji;
+	// private LyricMode lyricMode;
 	MidiEventMapAccessor eventMap;
 	public EffectSwitcher effectSwitcher;
 
@@ -67,7 +67,7 @@ public class Visualizer : MonoBehaviour {
 	}
 
 	void Awake() {
-		lyricMode = LyricMode.Kanji;
+		// lyricMode = LyricMode.Kanji;
 		// particleType = (Parameter.ParticleType)PlayerPrefs.GetInt("Parameter.ParticleType");
 		// unityChanType = (Parameter.UnityChanType)PlayerPrefs.GetInt("Parameter.UnityChanType");
 

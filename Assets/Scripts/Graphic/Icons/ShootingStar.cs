@@ -39,7 +39,7 @@ public class ShootingStar : MonoBehaviour {
 				if (transform.localPosition.x < area.xMin || transform.localPosition.y < area.yMin) {
 					continue;
 				}
-	 			active++;
+				active++;
 			}
 			if (active == 0) {
 				foreach (GameObject item in items) {

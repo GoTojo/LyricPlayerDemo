@@ -14,8 +14,6 @@ public class LyricGenUnder1Line : MonoBehaviour
 		private TextMeshPro text;
 		private int waitCount = 3;
 		private int waitClear = 0;
-		private string sentence = "";
-		private int sentenceLength = 0;
 		public LyricGenUnder1LineControl(Vector3 position, LyricGenUnder1Line lyricGen, int map, MidiWatcherBase midiWatcher) : base(lyricGen.sentenceList, map, midiWatcher) {
 			TMP_FontAsset font = FontResource.Instance.GetFont();
 			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
@@ -24,7 +22,7 @@ public class LyricGenUnder1Line : MonoBehaviour
 			Vector2 size = new Vector2(20, 2);
 			GameObject simpleLyric = CreateText("", font, color, TextAlignmentOptions.Center, size, position, scale, rotate);
 			this.text = simpleLyric.GetComponent<TextMeshPro>();
-			simpleLyric.transform.parent = lyricGen.transform;
+			simpleLyric.transform.SetParent(lyricGen.transform);
 		}
 		protected override void OnTextChanged(string sentence) {
 			text.font = FontResource.Instance.GetFont();
@@ -36,9 +34,9 @@ public class LyricGenUnder1Line : MonoBehaviour
 			if (waitClear > 0) {
 				waitClear--;
 				if (waitClear <= 0) {
-					sentence = "";
+					// sentence = "";
 					text.text = "";
-					sentenceLength = 0;
+					// sentenceLength = 0;
 				}
 			}
 		}

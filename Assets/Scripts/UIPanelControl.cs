@@ -7,7 +7,6 @@ using System.Threading;
 public class UIPanelControl : MonoBehaviour {
 	public Image uiPanel;
 	public TMPro.TMP_Text text;
-	private float lifetime = 2;
 	private float lefttime = 0;
 	// Start is called before the first frame update
 	void Start() {
