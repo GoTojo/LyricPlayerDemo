@@ -20,7 +20,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 	public int maxLine = 5;
 	public SentenceList sentenceList;
 	public bool active = true;
-	class LyricGenMultiLineControl : LyricGenLineBase {
+	class LyricGenMultiLineControl : LyricGenMultiLineBase {
 		public bool active = false;
 		public int maxLine = 5;
 		public float scale = 1f;
@@ -34,31 +34,12 @@ public class LyricGenMultiLine : MonoBehaviour {
 		private int lyricCount = 0;
 		private int waitCount = 3;
 		private int waitClear = 0;
-		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(lyricGen.sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
+		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(area, textHeight, textWidth, lyricGen.sentenceList) {
 			this.area = area;
 			this.textHeight = textHeight;
 			this.textWidth = textWidth;
 			this.font = font;
 			this.lyricGen = lyricGen;
-		}
-		private void GetTextArea(string text, ref Vector3 position, ref Vector2 size) {
-			float x;
-			float y;
-			float w;
-			float h;
-			if (vertical) {
-				w = textWidth;
-				h = area.height;
-				x = area.xMin - textWidth * lyricCount;
-				y = area.yMax;
-			} else {
-				w = area.width;
-				h = textHeight;
-				x = area.x;
-				y = area.yMax - h * lyricCount;
-			}
-			size = new Vector2(w, h);
-			position = new Vector3(x, y, 0);
 		}
 		private void CreateText(string text) {
 			if (!active) return;
@@ -67,7 +48,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 			TextAlignmentOptions alignment;
 			Vector2 size = new Vector2();
 			Vector3 position = new Vector3();
-			GetTextArea(text, ref position, ref size);
+			GetTextArea(lyricCount, vertical, ref position, ref size);
 			if (vertical) {
 				alignment = TextAlignmentOptions.Top;
 				text = ToVertical(text);

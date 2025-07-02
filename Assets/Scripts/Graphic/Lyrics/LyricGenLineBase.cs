@@ -4,25 +4,18 @@ using UnityEngine;
 using TMPro;
 using Unity.VisualScripting;
 
-class LyricGenLineBase : LyricGenBase
-{
-	public LyricGenLineBase(SentenceList sentenceList, int map, MidiWatcherBase midiWatcher) : base(sentenceList, map, midiWatcher)
-	{
+class LyricGenLineBase : LyricGenBase {
+	public LyricGenLineBase(SentenceList sentenceList, int map, MidiWatcherBase midiWatcher) : base(sentenceList, map, midiWatcher) {
 	}
-	public string ToVertical(string input)
-	{
+	public string ToVertical(string input) {
 		var builder = new System.Text.StringBuilder();
 
-		foreach (char c in input)
-		{
-			if (c == 'ー' || c == '～' || c == '―' || c == '…')
-			{
+		foreach (char c in input) {
+			if (c == 'ー' || c == '～' || c == '―' || c == '…') {
 				builder.Append("<rotate=90>");
 				builder.Append(c);
 				builder.Append("</rotate>");
-			}
-			else
-			{
+			} else {
 				builder.Append(c);
 			}
 			builder.Append('\n');
@@ -30,8 +23,7 @@ class LyricGenLineBase : LyricGenBase
 
 		return builder.ToString();
 	}
-	public GameObject CreateText(string word, TMP_FontAsset font, Color color, TextAlignmentOptions align, Vector2 sizeDelta, Vector3 position, float scale, float rotate)
-	{
+	public GameObject CreateText(string word, TMP_FontAsset font, Color color, TextAlignmentOptions align, Vector2 sizeDelta, Vector3 position, float scale, float rotate) {
 		GameObject simpleLyric = new GameObject("SimpleLyric");
 		simpleLyric.AddComponent<TextMeshPro>();
 		TextMeshPro text = simpleLyric.GetComponent<TextMeshPro>();
@@ -54,3 +46,33 @@ class LyricGenLineBase : LyricGenBase
 		return simpleLyric;
 	}
 }
+
+class LyricGenMultiLineBase : LyricGenLineBase {
+	private Rect area;
+	private float textHeight = 2f;
+	private float textWidth = 2f;
+	public LyricGenMultiLineBase(Rect area, float textHeight, float textWidth, SentenceList sentenceList) : base(sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
+		this.area = area;
+		this.textHeight = textHeight;
+		this.textWidth = textWidth;
+	}
+	public void GetTextArea(int num, bool vertical, ref Vector3 position, ref Vector2 size) {
+		float x;
+		float y;
+		float w;
+		float h;
+		if (vertical) {
+			w = textWidth;
+			h = area.height;
+			x = area.xMin - textWidth * num;
+			y = area.yMax;
+		} else {
+			w = area.width;
+			h = textHeight;
+			x = area.x;
+			y = area.yMax - h * num;
+		}
+		size = new Vector2(w, h);
+		position = new Vector3(x, y, 0);
+	}
+};
