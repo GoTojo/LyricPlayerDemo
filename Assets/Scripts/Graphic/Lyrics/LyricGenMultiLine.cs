@@ -13,7 +13,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 	public Rect area = new Rect(-6, -4, 20, 6);
 	public TMP_FontAsset font;
 	public float scale = 0.7f;
-	public float textHight = 1.0f;
+	public float textHeight = 1.0f;
 	public float textWidth = 1f;
 
 	public bool vertical = false;
@@ -31,14 +31,14 @@ public class LyricGenMultiLine : MonoBehaviour {
 		private TMP_FontAsset font;
 		private LyricGenMultiLine lyricGen;
 		private Rect area;
-		private float textHight = 2f;
+		private float textHeight = 2f;
 		private float textWidth = 2f;
 		private int lyricCount = 0;
 		private int waitCount = 3;
 		private int waitClear = 0;
-		public LyricGenMultiLineControl(Rect area, float textHight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(lyricGen.sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
+		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(lyricGen.sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
 			this.area = area;
-			this.textHight = textHight;
+			this.textHeight = textHeight;
 			this.textWidth = textWidth;
 			this.font = font;
 			this.lyricGen = lyricGen;
@@ -61,7 +61,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 				text = ToVertical(text);
 			} else {
 				w = area.width;
-				h = textHight;
+				h = textHeight;
 				x = area.x;
 				y = area.yMax - h * lyricCount;
 				alignment = TextAlignmentOptions.TopLeft;
@@ -103,7 +103,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 	LyricGenMultiLineControl control;
 
 	void Start() {
-		control = new LyricGenMultiLineControl(area, textHight, textWidth, font, this);
+		control = new LyricGenMultiLineControl(area, textHeight, textWidth, font, this);
 		control.maxLine = maxLine;
 		control.scale = scale;
 		control.vertical = vertical;
