@@ -1356,7 +1356,7 @@
                             "controls": ["WaveFormOff","Effect_Twist_QuaterBeat"]
                         },
                         {
-                            "controls": [  ]
+                            "controls": []
                         }
                     ]
                 },
@@ -1365,7 +1365,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Effect_RGBShift", "WallRect", "UCBlack", "SimpleLyricOff","UnityChanShiftOn"]
+							"controls": ["Effect_RGBShift", "WallRect", "UCBlack", "SimpleLyricOff", "UnityChanShiftOn"]
                         },
                         {
                             "controls": []
@@ -1473,7 +1473,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": [ "UnityChanShiftOn"]
+							"controls": ["UnityChanShiftOn"]
                         },
                         {
                             "controls": []
@@ -1491,7 +1491,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Ramen", "WaveFormOn", "MultiLine_L_On", "UnityChanShiftOff"]
+							"controls": ["Ramen", "WaveFormOn", "MultiLine_L_On"]
                         },
                         {
                             "controls": ["WaveFormOff","Effect_DotScreen_QuaterBeat"]
@@ -1509,7 +1509,7 @@
                     "sentence": "朝",
                     "beats": [
                         {
-							"controls": ["UCOff", "WallOff","Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn", "Effect_Film"]
+							"controls": ["UCOff", "UnityChanShiftOff", "WallOff","Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn", "Effect_Film"]
                         },
                         {
                             "controls": []
@@ -2337,16 +2337,16 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-                            "controls": ["NarutoStar"]
+                            "controls": ["NarutoStar_6"]
                         },
                         {
-                            "controls": ["Effect_Twist_QuaterBeat"]
+                            "controls": ["Effect_Twist_QuaterBeat","WaveFormOn"]
                         },
                         {
-                            "controls": []
+                            "controls": ["WaveFormOff"]
                         },
                         {
-                            "controls": ["Effect_Twist_QuaterBeat"]
+                            "controls": ["Effect_Twist_QuaterBeat","WaveFormOn"]
                         }
                     ]
                 },
@@ -2355,7 +2355,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricOff"]
+                            "controls": ["WaveFormOff", "SimpleLyricOff"]
                         },
                         {
                             "controls": []
