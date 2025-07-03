@@ -1536,7 +1536,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiRow_L1_On","SimpleLyricUpOff"]
+                            "controls": ["MultiRow_R1_On","SimpleLyricUpOff"]
                         }
                     ]
                 },
@@ -1617,7 +1617,7 @@
                     "sentence": "らーめんまだかな",
                     "beats": [
                         {
-                            "controls": ["MultiRow_L1_Off","SimpleLyricUpOn"]
+                            "controls": ["MultiRow_R1_Off","SimpleLyricUpOn"]
                         },
                         {
                             "controls": []
@@ -1905,7 +1905,7 @@
                     "sentence": "準備を",
                     "beats": [
                         {
-                            "controls": ["MultiRow_R1_On"]
+                            "controls": ["MultiRowWord_RW_On"]
                         },
                         {
                             "controls": []
@@ -1977,7 +1977,7 @@
                     "sentence": "ゆでたまご",
                     "beats": [
                         {
-                            "controls": ["MultiRow_R1_Off", "SimpleLyricUpOn"]
+                            "controls": ["MultiRowWord_RW_Off", "SimpleLyricUpOn"]
                         },
                         {
                             "controls": []
@@ -1986,7 +1986,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiRow_R1_On", "SimpleLyricUpOff"]
+                            "controls": ["MultiRowWord_LW_On", "SimpleLyricUpOff"]
                         }
                     ]
                 },
@@ -2058,7 +2058,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiRow_R1_Off", "SimpleLyricUpOn"]
+                            "controls": ["MultiRowWord_LW_Off", "SimpleLyricUpOn"]
                         }
                     ]
                 },

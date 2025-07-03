@@ -36,6 +36,8 @@ public class Visualizer : MonoBehaviour {
 	public LyricGenMultiLine multiLineR;
 	public LyricGenMultiLine multiLineL1;
 	public LyricGenMultiLine multiLineR1;
+	public LyricGenMultiLineByWord multiLineLW;
+	public LyricGenMultiLineByWord multiLineRW;
 	public TextMeshPro titleCenter;
 	public RamenController ramenController;
 
@@ -283,6 +285,32 @@ public class Visualizer : MonoBehaviour {
 				multiLine.SetActive(false);
 			} else if (args[2] == "Clear") {
 				multiLine.Clear();
+			}
+			break;
+		case "MultiLineWord":
+		case "MultiRowWord":
+			if (args.Length < 2) break;
+			LyricGenMultiLineByWord multiLineWord;
+			if (args[1] == "LW") {
+				multiLineWord = multiLineLW;
+			} else if (args[1] == "RW") {
+				multiLineWord = multiLineRW;
+			} else {
+				multiLineLW.SetActive(false);
+				multiLineRW.SetActive(false);
+				break;
+			}
+			if (args[0] == "MultiRowWord") {
+				multiLineWord.vertical = true;
+			} else if (args[2] == "Off") {
+				multiLineWord.vertical = false;
+			}
+			if (args[2] == "On") {
+				multiLineWord.SetActive(true);
+			} else if (args[2] == "Off") {
+				multiLineWord.SetActive(false);
+			} else if (args[2] == "Clear") {
+				multiLineWord.Clear();
 			}
 			break;
 		case "RamenDiskOn":
