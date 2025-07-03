@@ -276,7 +276,7 @@ public class Visualizer : MonoBehaviour {
 			}
 			if (args[0] == "MultiRow") {
 				multiLine.vertical = true;
-			} else if (args[2] == "Off") {
+			} else if (args[0] == "MultiLine") {
 				multiLine.vertical = false;
 			}
 			if (args[2] == "On") {
@@ -291,9 +291,9 @@ public class Visualizer : MonoBehaviour {
 		case "MultiRowWord":
 			if (args.Length < 2) break;
 			LyricGenMultiLineByWord multiLineWord;
-			if (args[1] == "LW") {
+			if (args[1] == "L") {
 				multiLineWord = multiLineLW;
-			} else if (args[1] == "RW") {
+			} else if (args[1] == "R") {
 				multiLineWord = multiLineRW;
 			} else {
 				multiLineLW.SetActive(false);
@@ -302,7 +302,7 @@ public class Visualizer : MonoBehaviour {
 			}
 			if (args[0] == "MultiRowWord") {
 				multiLineWord.vertical = true;
-			} else if (args[2] == "Off") {
+			} else if (args[0] == "MultiLineWord") {
 				multiLineWord.vertical = false;
 			}
 			if (args[2] == "On") {

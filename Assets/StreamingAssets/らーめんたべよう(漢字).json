@@ -2076,7 +2076,7 @@
                             "controls": []
                         },
                         {
-							"controls": ["MultiRow_L_On"]
+							"controls": ["MultiLineWord_L_On"]
                         }
                     ]
                 },
@@ -2157,7 +2157,7 @@
                     "sentence": "やっぱり",
                     "beats": [
                         {
-                            "controls": ["MultiRow_L_Off", "MultiRow_R_On"]
+                            "controls": ["MultiLineWord_L_Off", "MultiLineWord_R_On"]
                         },
                         {
                             "controls": []
@@ -2193,7 +2193,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
 						{
-							"controls": ["SimpleLyricOn","MultiRow_R_Off","Donburi", "Confetti"]
+							"controls": ["SimpleLyricOn","MultiLineWord_R_Off","Donburi", "Confetti"]
 						},
                         {
                             "controls": []
@@ -2373,13 +2373,13 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["Cake"]
                         },
                         {
                             "controls": []
                         },
                         {
-                            "controls": []
+                            "controls": ["Dango"]
                         },
                         {
                             "controls": []
@@ -2391,7 +2391,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": []
+                            "controls": ["Donburi"]
                         },
                         {
                             "controls": []
