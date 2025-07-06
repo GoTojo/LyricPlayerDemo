@@ -5,7 +5,23 @@ using TMPro;
 using System.Collections.Generic;
 
 class LyricGenLineBase : LyricGenBase {
-	public LyricGenLineBase(SentenceList sentenceList, int map, MidiWatcherBase midiWatcher) : base(sentenceList, map, midiWatcher) {
+	private Rect area;
+	protected float textHeight = 2f;
+	protected float textWidth = 2f;
+	protected List<GameObject> lyrics = new List<GameObject>();
+	protected TMP_FontAsset font;
+	protected Transform transform;
+	protected int line = 0;
+	public int maxLine = 5;
+	public float scale = 1;
+
+	public bool vertical = false;
+	public LyricGenLineBase(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform, SentenceList sentenceList) : base(sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
+		this.area = area;
+		this.textHeight = textHeight;
+		this.textWidth = textWidth;
+		this.font = font;
+		this.transform = transform;
 	}
 	public string ToVertical(string input) {
 		var builder = new System.Text.StringBuilder();
@@ -22,49 +38,6 @@ class LyricGenLineBase : LyricGenBase {
 		}
 
 		return builder.ToString();
-	}
-	public GameObject CreateText(string word, TMP_FontAsset font, Color color, TextAlignmentOptions align, Vector2 sizeDelta, Vector3 position, float scale, float rotate) {
-		GameObject simpleLyric = new GameObject("SimpleLyric");
-		simpleLyric.AddComponent<TextMeshPro>();
-		TextMeshPro text = simpleLyric.GetComponent<TextMeshPro>();
-		text.font = font;
-		text.text = word;
-		text.color = color;
-		text.fontSize = 12;
-		text.fontSizeMax = 12;
-		text.fontSizeMin = 12;
-		text.autoSizeTextContainer = false;
-		text.alignment = align;
-		text.lineSpacing = -30;
-		Transform transform = text.GetComponent<Transform>();
-		RectTransform rectTransform = simpleLyric.GetComponent<RectTransform>();
-		rectTransform.sizeDelta = sizeDelta;
-		// rectTransform.pivot = new Vector2(0.5f, 1);
-		transform.position = position;
-		transform.Rotate(0.0f, 0.0f, rotate);
-		simpleLyric.transform.localScale = new Vector3(scale, scale, scale);
-		return simpleLyric;
-	}
-}
-
-class LyricGenMultiLineBase : LyricGenLineBase {
-	private Rect area;
-	protected float textHeight = 2f;
-	protected float textWidth = 2f;
-	protected List<GameObject> lyrics = new List<GameObject>();
-	protected TMP_FontAsset font;
-	protected Transform transform;
-	protected int line = 0;
-	public int maxLine = 5;
-	public float scale = 1;
-
-	public bool vertical = false;
-	public LyricGenMultiLineBase(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform, SentenceList sentenceList) : base(sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
-		this.area = area;
-		this.textHeight = textHeight;
-		this.textWidth = textWidth;
-		this.font = font;
-		this.transform = transform;
 	}
 	public void GetTextArea(int num, bool vertical, ref Vector3 position, ref Vector2 size) {
 		float x;

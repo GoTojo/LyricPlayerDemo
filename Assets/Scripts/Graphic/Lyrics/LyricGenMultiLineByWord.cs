@@ -16,7 +16,7 @@ public class LyricGenMultiLineByWord : MonoBehaviour {
 	public int maxLine = 5;
 	public SentenceList sentenceList;
 	public bool active = true;
-	class LyricGenMultiLineControl : LyricGenMultiLineBase {
+	class LyricGenMultiLineControl : LyricGenLineBase {
 		private int numOfWord = 0;
 		private float measureInterval = 0;
 		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform, SentenceList sentenceList) : base(area, textHeight, textWidth, font, transform, sentenceList) {

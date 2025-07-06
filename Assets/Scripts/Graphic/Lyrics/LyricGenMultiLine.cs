@@ -20,7 +20,7 @@ public class LyricGenMultiLine : MonoBehaviour {
 	public int maxLine = 5;
 	public SentenceList sentenceList;
 	public bool active = true;
-	class LyricGenMultiLineControl : LyricGenMultiLineBase {
+	class LyricGenMultiLineControl : LyricGenLineBase {
 		private int waitCount = 3;
 		private int waitClear = 0;
 		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform, SentenceList sentenceList) : base(area, textHeight, textWidth, font, transform, sentenceList) {
