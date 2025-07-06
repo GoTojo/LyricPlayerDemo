@@ -2,7 +2,7 @@
 // 小節毎の歌詞を取得、SMFPlayerからのイベントで適切なタイミングを判断、歌詞の切り替えを行う
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 
 class LyricGenLineBase : LyricGenBase {
 	public LyricGenLineBase(SentenceList sentenceList, int map, MidiWatcherBase midiWatcher) : base(sentenceList, map, midiWatcher) {
@@ -49,12 +49,22 @@ class LyricGenLineBase : LyricGenBase {
 
 class LyricGenMultiLineBase : LyricGenLineBase {
 	private Rect area;
-	private float textHeight = 2f;
-	private float textWidth = 2f;
-	public LyricGenMultiLineBase(Rect area, float textHeight, float textWidth, SentenceList sentenceList) : base(sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
+	protected float textHeight = 2f;
+	protected float textWidth = 2f;
+	protected List<GameObject> lyrics = new List<GameObject>();
+	protected TMP_FontAsset font;
+	protected Transform transform;
+	protected int line = 0;
+	public int maxLine = 5;
+	public float scale = 1;
+
+	public bool vertical = false;
+	public LyricGenMultiLineBase(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform, SentenceList sentenceList) : base(sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
 		this.area = area;
 		this.textHeight = textHeight;
 		this.textWidth = textWidth;
+		this.font = font;
+		this.transform = transform;
 	}
 	public void GetTextArea(int num, bool vertical, ref Vector3 position, ref Vector2 size) {
 		float x;
@@ -74,5 +84,37 @@ class LyricGenMultiLineBase : LyricGenLineBase {
 		}
 		size = new Vector2(w, h);
 		position = new Vector3(x, y, 0);
+	}
+	protected GameObject CreateText(string text) {
+		if (!active) return null;
+		Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+		float rotate = 0;
+		TextAlignmentOptions alignment;
+		Vector2 size = new Vector2();
+		Vector3 position = new Vector3();
+		GetTextArea(line, vertical, ref position, ref size);
+		GetPosition(ref position.x, ref position.y);
+		if (vertical) {
+			alignment = TextAlignmentOptions.Top;
+			text = ToVertical(text);
+		} else {
+			alignment = TextAlignmentOptions.TopLeft;
+		}
+		GameObject lyric = CreateText(text, font, color, alignment, size, position, scale, rotate);
+		lyric.transform.SetParent(transform);
+		lyrics.Add(lyric);
+		return lyric;
+	}
+	protected virtual void GetPosition(ref float x, ref float y) {
+	}
+	public void Clear() {
+		foreach (var lyric in lyrics) {
+			Object.Destroy(lyric);
+		}
+		lyrics.Clear();
+		line = 0;
+		OnCleared();
+	}
+	protected virtual void OnCleared() {
 	}
 };

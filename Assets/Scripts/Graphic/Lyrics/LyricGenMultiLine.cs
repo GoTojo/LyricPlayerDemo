@@ -21,54 +21,9 @@ public class LyricGenMultiLine : MonoBehaviour {
 	public SentenceList sentenceList;
 	public bool active = true;
 	class LyricGenMultiLineControl : LyricGenMultiLineBase {
-		public bool active = false;
-		public int maxLine = 5;
-		public float scale = 1f;
-		public bool vertical = false;
-		private List<GameObject> lyrics = new List<GameObject>();
-		private TMP_FontAsset font;
-		private LyricGenMultiLine lyricGen;
-		private Rect area;
-		private float textHeight = 2f;
-		private float textWidth = 2f;
-		private int lyricCount = 0;
 		private int waitCount = 3;
 		private int waitClear = 0;
-		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, LyricGenMultiLine lyricGen) : base(area, textHeight, textWidth, lyricGen.sentenceList) {
-			this.area = area;
-			this.textHeight = textHeight;
-			this.textWidth = textWidth;
-			this.font = font;
-			this.lyricGen = lyricGen;
-		}
-		private void CreateText(string text) {
-			if (!active) return;
-			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-			float rotate = 0;
-			TextAlignmentOptions alignment;
-			Vector2 size = new Vector2();
-			Vector3 position = new Vector3();
-			GetTextArea(lyricCount, vertical, ref position, ref size);
-			if (vertical) {
-				alignment = TextAlignmentOptions.Top;
-				text = ToVertical(text);
-			} else {
-				alignment = TextAlignmentOptions.TopLeft;
-			}
-			GameObject lyric = CreateText(text, font, color, alignment, size, position, scale, rotate);
-			lyric.transform.SetParent(lyricGen.transform);
-			lyrics.Add(lyric);
-			lyricCount++;
-			waitClear = waitCount;
-		}
-		public void Clear() {
-			foreach (var lyric in lyrics) {
-				Destroy(lyric);
-			}
-			lyrics.Clear();
-			lyricCount = 0;
-		}
-		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
+		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform, SentenceList sentenceList) : base(area, textHeight, textWidth, font, transform, sentenceList) {
 		}
 		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {
 			if (waitClear > 0) {
@@ -78,19 +33,19 @@ public class LyricGenMultiLine : MonoBehaviour {
 				}
 			}
 		}
-		protected override void OnEventIn(MIDIHandler.Event playerEvent) {
-		}
 		protected override void OnTextChanged(string sentence) {
-			if (lyricCount >= maxLine) {
+			if (line >= maxLine) {
 				Clear();
 			}
 			CreateText(sentence);
+			line++;
+			waitClear = waitCount;
 		}
 	};
 	LyricGenMultiLineControl control;
 
 	void Start() {
-		control = new LyricGenMultiLineControl(area, textHeight, textWidth, font, this);
+		control = new LyricGenMultiLineControl(area, textHeight, textWidth, font, this.transform, sentenceList);
 		control.maxLine = maxLine;
 		control.scale = scale;
 		control.vertical = vertical;

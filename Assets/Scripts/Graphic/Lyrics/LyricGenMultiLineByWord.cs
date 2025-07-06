@@ -4,10 +4,6 @@
 
 using UnityEngine;
 using TMPro;
-using System.Collections.Generic;
-using Unity.IO.LowLevel.Unsafe;
-using System;
-using UnityEngine.AI;
 
 public class LyricGenMultiLineByWord : MonoBehaviour {
 	public Rect area = new Rect(-6, -4, 20, 6);
@@ -21,64 +17,27 @@ public class LyricGenMultiLineByWord : MonoBehaviour {
 	public SentenceList sentenceList;
 	public bool active = true;
 	class LyricGenMultiLineControl : LyricGenMultiLineBase {
-		public bool active = false;
-		public int maxLine = 5;
-		public float scale = 1f;
-		public bool vertical = false;
-		private List<GameObject> lyrics = new List<GameObject>();
-		private TMP_FontAsset font;
-		private LyricGenMultiLineByWord lyricGen;
-		private Rect area;
-		private float textHeight = 2f;
-		private float textWidth = 2f;
-		private int line = 0;
 		private int numOfWord = 0;
 		private float measureInterval = 0;
-		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, LyricGenMultiLineByWord lyricGen) : base(area, textHeight, textWidth, lyricGen.sentenceList) {
-			this.area = area;
-			this.textHeight = textHeight;
-			this.textWidth = textWidth;
-			this.font = font;
-			this.lyricGen = lyricGen;
+		public LyricGenMultiLineControl(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform, SentenceList sentenceList) : base(area, textHeight, textWidth, font, transform, sentenceList) {
 		}
-		private void CreateText(string word) {
-			if (!active) return;
-			int length = word.Length;
-			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-			float rotate = 0;
-			TextAlignmentOptions alignment;
-			Vector2 size = new Vector2();
-			Vector3 position = new Vector3();
-			GetTextArea(line, vertical, ref position, ref size);
+		protected override void GetPosition(ref float x, ref float y) {
 			if (vertical) {
-				alignment = TextAlignmentOptions.Top;
-				position.y -= textHeight * numOfWord;
-				word = ToVertical(word);
+				y -= textHeight * numOfWord;
 			} else {
-				alignment = TextAlignmentOptions.TopLeft;
-				position.x += textWidth * numOfWord;
+				x += textWidth * numOfWord;
 			}
-			GameObject lyric = CreateText(word, font, color, alignment, size, position, scale, rotate);
-			lyric.transform.SetParent(lyricGen.transform);
-			lyrics.Add(lyric);
-			Destroy(lyric, measureInterval * 2);
-			numOfWord += length;
 		}
-		public void Clear() {
-			foreach (var lyric in lyrics) {
-				Destroy(lyric);
-			}
-			lyrics.Clear();
-			line = 0;
+		protected override void OnCleared() {
 			numOfWord = 0;
 		}
 		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
-			CreateText(lyric);
+			GameObject obj = CreateText(lyric);
+			if (obj) Destroy(obj, measureInterval * 2);
+			numOfWord += lyric.Length;
 		}
 		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {
 			this.measureInterval = measureInterval / 1000f;
-		}
-		protected override void OnEventIn(MIDIHandler.Event playerEvent) {
 		}
 		protected override void OnTextChanged(string sentence) {
 			if (line >= maxLine) {
@@ -92,7 +51,7 @@ public class LyricGenMultiLineByWord : MonoBehaviour {
 	LyricGenMultiLineControl control;
 
 	void Start() {
-		control = new LyricGenMultiLineControl(area, textHeight, textWidth, font, this);
+		control = new LyricGenMultiLineControl(area, textHeight, textWidth, font, this.transform, sentenceList);
 		control.maxLine = maxLine;
 		control.scale = scale;
 		control.vertical = vertical;

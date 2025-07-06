@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using System;
 
 public class LyricGenBase {
+	public bool active = false;
 	public string curWord = "";
 	public int curMeas = 0;
 	public int lastSentenceMeas = -1;

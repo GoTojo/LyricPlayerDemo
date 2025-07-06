@@ -10,7 +10,6 @@ public class LyricGenUnder1Line : MonoBehaviour
 	public Rect area = new Rect(-10, -3, 20, 6);
 	public bool active = true;
 	class LyricGenUnder1LineControl : LyricGenLineBase {
-		public bool active = false;
 		private TextMeshPro text;
 		private int waitCount = 3;
 		private int waitClear = 0;
