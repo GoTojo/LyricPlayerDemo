@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class SimpleLyricGen : MonoBehaviour {
 	public Rect area = new Rect(-10, 0, 20, 2);
@@ -11,143 +12,98 @@ public class SimpleLyricGen : MonoBehaviour {
 	public float rotateAngle = 0.0f;
 	public TMP_FontAsset font;
 	public bool active = false;
-	private int measureCount = 2;
-	private string curWord = "";
-	private int lyricNum = 0;
-	private int sentenceLength = 0;
-	private int curmeas = 0;
-	private int measInterval = 4000;
-	private int waitClear = 0;
 	public MidiEventMapAccessor eventMap;
 	public SentenceList sentenceList;
-	private String sentence = "";
-	private int lastSentenceMeas = -1;
-	private List<GameObject> lyrics = new List<GameObject>();
-	void Awake() {
-		MidiWatcher midiWatcher = MidiWatcher.Instance;
-		midiWatcher.onMidiIn += MIDIIn;
-		midiWatcher.onLyricIn += LyricIn;
-		midiWatcher.onBeatIn += BeatIn;
-		midiWatcher.onMeasureIn += MeasureIn;
-	}
-	void OnDestroy() {
-		MidiWatcher midiWatcher = MidiWatcher.Instance;
-		midiWatcher.onMidiIn -= MIDIIn;
-		midiWatcher.onLyricIn -= LyricIn;
-		midiWatcher.onBeatIn -= BeatIn;
-		midiWatcher.onMeasureIn -= MeasureIn;
-	}
+	class LyricGenControl : LyricGenBase {
+		private Transform transform;
+		private Rect area;
+		private float sizeMin = 1.2f;
+		private float sizeMax = 1.3f;
+		private float rotateAngle = 0.0f;
+		private TMP_FontAsset font;
+		private Vector2 sizeDelta = new Vector2(5, 5);
+		private int waitCount = 3;
+		private int waitClear = 0;
+		public int measureCount = 2;
+		private float measureInterval = 2;
+		private string curWord = "";
+		private int lyricNum = 0;
+		private int sentenceLength = 0;
 
-	private GameObject CreateText(string word, TMP_FontAsset font, Color color, float size, Vector3 position, float scale, float rotate) {
-		GameObject simpleLyric = new GameObject("SimpleLyric");
-		simpleLyric.AddComponent<TextMeshPro>();
-		TextMeshPro text = simpleLyric.GetComponent<TextMeshPro>();
-		text.font = font;
-		text.text = word;
-		text.color = color;
-		text.fontSize = 16;
-		text.fontSizeMax = 20;
-		text.fontSizeMin = 12;
-		text.autoSizeTextContainer = true;
-		Transform transform = text.GetComponent<Transform>();
-		RectTransform rectTransform = simpleLyric.GetComponent<RectTransform>();
-		rectTransform.sizeDelta = new Vector2(size, size);
-		transform.position = position;
-		transform.Rotate(0.0f, 0.0f, rotate);
-		transform.localScale = new Vector3(scale, scale, scale);
-		return simpleLyric;
-	}
+		private List<GameObject> lyrics = new List<GameObject>();
 
-	private void LyricObjectText(int num, int numOfData) {
-		if (!active) return;
-		Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-		float width = (numOfData != 0) ? area.width / numOfData : area.width;
-		float x = width * num + area.x + width / 2;
-		float y = UnityEngine.Random.Range(area.yMin, area.yMax);
 
-		Vector3 pos = new Vector3(x, y, -1.0f);
-		float scale = UnityEngine.Random.Range(sizeMin, sizeMax);
-		float rotate = UnityEngine.Random.Range(-rotateAngle, rotateAngle);
-		GameObject simpleLyric = CreateText(curWord, font, color, 5.0f, pos, scale, rotate);
-		lyrics.Add(simpleLyric);
-	}
-	private void UpdateSentence(int track, int meas) {
-		ClearSentence();
-		if (meas == curmeas) {
-			meas += 1;
-		} else {
-			meas = curmeas;
+		public LyricGenControl(Rect area, TMP_FontAsset font, float sizeMin, float sizeMax, float rotateAngle, Transform transform, SentenceList sentenceList) : base(sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
+			this.area = area;
+			this.font = font;
+			this.sizeMin = sizeMin;
+			this.sizeMax = sizeMax;
+			this.rotateAngle = rotateAngle;
+			this.transform = transform;
+			fontSize = 16;
+			autoSizeTextContainer = true;
 		}
-		LyricData data = sentenceList.GetSentence(track, meas, MidiEventMapAccessor.kanjiMap);
-		lastSentenceMeas = meas;
-		lyricNum = 0;
-		sentence = data.sentence;
-		// Debug.Log($"UpdateSentence: {meas}:{sentence}");
-		sentenceLength = sentence.Length;
-	}
-	private void CreateLyric(int track) {
-		if (sentence.Length == 0) {
-			// Debug.Log($"CreateLyric: {simpleLyric.GetSentence()}");
-			UpdateSentence(track, lastSentenceMeas);
-			if (sentenceLength == 0) {
-				UpdateSentence(track, lastSentenceMeas);
+		private void CreateLyric() {
+			if (!active) return;
+			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+			float width = (sentenceLength != 0) ? area.width / sentenceLength : area.width;
+			float x = width * lyricNum + area.x + width / 2;
+			float y = UnityEngine.Random.Range(area.yMin, area.yMax);
+			Vector3 pos = new Vector3(x, y, -1);
+			float scale = UnityEngine.Random.Range(sizeMin, sizeMax);
+			float rotate = UnityEngine.Random.Range(-rotateAngle, rotateAngle);
+			GameObject lyric = CreateText(curWord, font, color, TextAlignmentOptions.Top, sizeDelta, pos, scale, rotate);
+			lyric.transform.SetParent(transform);
+			lyrics.Add(lyric);
+			lyricNum++;
+			waitClear = measureCount;
+		}
+		public void Clear() {
+			foreach (var lyric in lyrics) {
+				Destroy(lyric);
 			}
-		}
-		// Debug.Log($"{lyricNum}/{sentenceLength}: {curWord}");
-		LyricObjectText(lyricNum, sentenceLength);
-		if (sentence.Length >= curWord.Length) {
-			sentence = sentence.Substring(curWord.Length);
-			lyricNum += curWord.Length;
-		} else { // error
-			// Debug.Log("sentenceLength to short");
-			sentence = "";
-			sentenceLength = 0;
+			lyrics.Clear();
 			lyricNum = 0;
 		}
-		waitClear = measureCount;
-	}
-
-	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {
-		byte status = (byte)(midiEvent[0] & 0xF0);
-		switch (status) {
-		case 0x90:
-			if (midiEvent[2] == 0) {
-			} else {
-				CreateLyric(track);
+		protected override void OnMIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {
+			byte status = (byte)(midiEvent[0] & 0xF0);
+			switch (status) {
+			case 0x90:
+				if (midiEvent[2] == 0) {
+				} else {
+					CreateLyric();
+				}
+				break;
+			case 0x80:
+				break;
+			default:
+				break;
 			}
-			break;
-		case 0x80:
-			break;
-		default:
-			// Debug.Log($"MIDIData Status = {status}");
-			break;
 		}
-	}
-
-	public void LyricIn(int track, string lyric, float position, uint currentMsec) {
-		curWord = lyric;
-	}
-
-	public void BeatIn(int numerator, int denominator, uint currentMsec) {
-	}
-
-	public void MeasureIn(int measure, int measureInterval, uint currentMsec) {
-		curmeas = measure;
-		measInterval = measureInterval;
-		if (sentence.Length == 0) {
+		protected override void OnLyricIn(int track, string lyric, float position, uint currentMsec) {
+			curWord = lyric;
+		}
+		protected override void OnMeasureIn(int measure, int measureInterval, uint currentMsec) {
+			this.measureInterval = measureInterval / 1000f;
+			curMeas = measure;
 			if (waitClear > 0) {
 				waitClear--;
 				if (waitClear <= 0) {
-					ClearSentence();
+					Clear();
 				}
 			}
 		}
-	}
-	private void ClearSentence() {
-		for (var i = 0; i < lyrics.Count; i++) {
-			Destroy(lyrics[i]);
+		protected override void OnTextChanged(string sentence) {
+			Clear();
+			sentenceLength = sentence.Length;
 		}
-		lyrics.Clear();
-		waitClear = 0;
+	};
+	LyricGenControl control;
+	void Start() {
+		control = new LyricGenControl(area, font, sizeMin, sizeMax, rotateAngle, this.transform, sentenceList);
+	}
+	public void SetActive(bool f) {
+		this.active = f;
+		control.active = f;
 	}
 }

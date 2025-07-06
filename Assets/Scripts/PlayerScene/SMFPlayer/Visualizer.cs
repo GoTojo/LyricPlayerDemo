@@ -244,16 +244,16 @@ public class Visualizer : MonoBehaviour {
 		string[] args = command.Split("_");
 		switch (args[0]) {
 		case "SimpleLyricOn":
-			simpleLyricGen.active = true;
+			simpleLyricGen.SetActive(true);
 			break;
 		case "SimpleLyricOff":
-			simpleLyricGen.active = false;
+			simpleLyricGen.SetActive(false);
 			break;
 		case "SimpleLyricUpOn":
-			simpleLyricGenUp.active = true;
+			simpleLyricGenUp.SetActive(true);
 			break;
 		case "SimpleLyricUpOff":
-			simpleLyricGenUp.active = false;
+			simpleLyricGenUp.SetActive(false);
 			break;
 		case "MultiLine":
 		case "MultiRow":
@@ -445,18 +445,6 @@ public class Visualizer : MonoBehaviour {
 			break;
 		case "Ramen":
 			ChangeParticle(Parameter.ParticleType.Ramen);
-			break;
-		case "SimpleLyricOn":
-			simpleLyricGen.active = true;
-			break;
-		case "SimpleLyricOff":
-			simpleLyricGen.active = false;
-			break;
-		case "SimpleLyricUpOn":
-			simpleLyricGenUp.active = true;
-			break;
-		case "SimpleLyricUpOff":
-			simpleLyricGenUp.active = false;
 			break;
 		case "Sun":
 			if (args.Length >= 2) sun.SetCommand(args[1]);

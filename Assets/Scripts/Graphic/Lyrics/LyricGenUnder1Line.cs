@@ -5,23 +5,23 @@
 using UnityEngine;
 using TMPro;
 
-public class LyricGenUnder1Line : MonoBehaviour
-{
+public class LyricGenUnder1Line : MonoBehaviour {
 	public Rect area = new Rect(-10, -3, 20, 6);
 	public bool active = true;
-	class LyricGenUnder1LineControl : LyricGenBase {
+	class LyricGenControl : LyricGenBase {
 		private TextMeshPro text;
 		private int waitCount = 3;
 		private int waitClear = 0;
-		public LyricGenUnder1LineControl(Vector3 position, LyricGenUnder1Line lyricGen, int map, MidiWatcherBase midiWatcher) : base(lyricGen.sentenceList, map, midiWatcher) {
+		public LyricGenControl(Vector3 position, Transform transform, SentenceList sentenceList, int map, MidiWatcherBase midiWatcher) : base(sentenceList, map, midiWatcher) {
 			TMP_FontAsset font = FontResource.Instance.GetFont();
 			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 			float scale = 1f;
 			float rotate = 0;
 			Vector2 size = new Vector2(20, 2);
+			this.active = true;
 			GameObject simpleLyric = CreateText("", font, color, TextAlignmentOptions.Center, size, position, scale, rotate);
 			this.text = simpleLyric.GetComponent<TextMeshPro>();
-			simpleLyric.transform.SetParent(lyricGen.transform);
+			simpleLyric.transform.SetParent(transform);
 		}
 		protected override void OnTextChanged(string sentence) {
 			text.font = FontResource.Instance.GetFont();
@@ -40,20 +40,17 @@ public class LyricGenUnder1Line : MonoBehaviour
 			}
 		}
 	};
-	LyricGenUnder1LineControl control;
-	LyricGenUnder1LineControl controlSub;
+	LyricGenControl control;
+	LyricGenControl controlSub;
 	public SentenceList sentenceList;
 
-	void Start()
-	{
+	void Start() {
 		GameObject mainObj = GameObject.Find("MainGameObject");
 		sentenceList = mainObj.GetComponent<SentenceList>();
-		control = new LyricGenUnder1LineControl(new Vector3(0, -6, -4.0f), this, SentenceList.kanjiMap, MidiWatcher.Instance);
-		controlSub = new LyricGenUnder1LineControl(new Vector3(0, -4, -14.0f), this, SentenceList.orginalMap, SubMidiWatcher.Instance);
+		control = new LyricGenControl(new Vector3(0, -6.5f, 0), this.transform, sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance);
+		controlSub = new LyricGenControl(new Vector3(0, -5, 0), this.transform, sentenceList, SentenceList.orginalMap, SubMidiWatcher.Instance);
 	}
-
-	void Update()
-	{
+	void Update() {
 		controlSub.active = (PlayerPrefs.GetInt("LyricMode") == 0);
 	}
 }
