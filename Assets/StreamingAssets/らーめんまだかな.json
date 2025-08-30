@@ -5,6 +5,7 @@
             "active": true,
             "lyrics": [
                 {
+                    "measure": 0,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -23,6 +24,7 @@
                     ]
                 },
                 {
+                    "measure": 1,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -41,6 +43,7 @@
                     ]
                 },
                 {
+                    "measure": 2,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -59,6 +62,7 @@
                     ]
                 },
                 {
+                    "measure": 3,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -77,6 +81,7 @@
                     ]
                 },
                 {
+                    "measure": 4,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -95,6 +100,7 @@
                     ]
                 },
                 {
+                    "measure": 5,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -113,6 +119,7 @@
                     ]
                 },
                 {
+                    "measure": 6,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -131,6 +138,7 @@
                     ]
                 },
                 {
+                    "measure": 7,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -149,6 +157,7 @@
                     ]
                 },
                 {
+                    "measure": 8,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -167,6 +176,7 @@
                     ]
                 },
                 {
+                    "measure": 9,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -185,6 +195,7 @@
                     ]
                 },
                 {
+                    "measure": 10,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -203,6 +214,7 @@
                     ]
                 },
                 {
+                    "measure": 11,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -221,6 +233,7 @@
                     ]
                 },
                 {
+                    "measure": 12,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -239,6 +252,7 @@
                     ]
                 },
                 {
+                    "measure": 13,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -257,6 +271,7 @@
                     ]
                 },
                 {
+                    "measure": 14,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -275,6 +290,7 @@
                     ]
                 },
                 {
+                    "measure": 15,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -293,6 +309,7 @@
                     ]
                 },
                 {
+                    "measure": 16,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -311,6 +328,7 @@
                     ]
                 },
                 {
+                    "measure": 17,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -329,6 +347,7 @@
                     ]
                 },
                 {
+                    "measure": 18,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -347,6 +366,7 @@
                     ]
                 },
                 {
+                    "measure": 19,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -365,6 +385,7 @@
                     ]
                 },
                 {
+                    "measure": 20,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -383,6 +404,7 @@
                     ]
                 },
                 {
+                    "measure": 21,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -401,6 +423,7 @@
                     ]
                 },
                 {
+                    "measure": 22,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -419,6 +442,7 @@
                     ]
                 },
                 {
+                    "measure": 23,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -437,6 +461,7 @@
                     ]
                 },
                 {
+                    "measure": 24,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -455,6 +480,7 @@
                     ]
                 },
                 {
+                    "measure": 25,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -473,6 +499,7 @@
                     ]
                 },
                 {
+                    "measure": 26,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -491,6 +518,7 @@
                     ]
                 },
                 {
+                    "measure": 27,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -509,6 +537,7 @@
                     ]
                 },
                 {
+                    "measure": 28,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -527,6 +556,7 @@
                     ]
                 },
                 {
+                    "measure": 29,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -545,6 +575,7 @@
                     ]
                 },
                 {
+                    "measure": 30,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -563,6 +594,7 @@
                     ]
                 },
                 {
+                    "measure": 31,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -581,6 +613,7 @@
                     ]
                 },
                 {
+                    "measure": 32,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -599,6 +632,7 @@
                     ]
                 },
                 {
+                    "measure": 33,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -617,6 +651,7 @@
                     ]
                 },
                 {
+                    "measure": 34,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -635,6 +670,7 @@
                     ]
                 },
                 {
+                    "measure": 35,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -653,6 +689,7 @@
                     ]
                 },
                 {
+                    "measure": 36,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -671,6 +708,7 @@
                     ]
                 },
                 {
+                    "measure": 37,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -689,6 +727,7 @@
                     ]
                 },
                 {
+                    "measure": 38,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -707,6 +746,7 @@
                     ]
                 },
                 {
+                    "measure": 39,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -725,6 +765,7 @@
                     ]
                 },
                 {
+                    "measure": 40,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -743,6 +784,7 @@
                     ]
                 },
                 {
+                    "measure": 41,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -761,6 +803,7 @@
                     ]
                 },
                 {
+                    "measure": 42,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -779,6 +822,7 @@
                     ]
                 },
                 {
+                    "measure": 43,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -797,6 +841,7 @@
                     ]
                 },
                 {
+                    "measure": 44,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -815,6 +860,7 @@
                     ]
                 },
                 {
+                    "measure": 45,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -833,6 +879,7 @@
                     ]
                 },
                 {
+                    "measure": 46,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -851,6 +898,7 @@
                     ]
                 },
                 {
+                    "measure": 47,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -869,6 +917,7 @@
                     ]
                 },
                 {
+                    "measure": 48,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -887,6 +936,7 @@
                     ]
                 },
                 {
+                    "measure": 49,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -905,6 +955,7 @@
                     ]
                 },
                 {
+                    "measure": 50,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -923,6 +974,7 @@
                     ]
                 },
                 {
+                    "measure": 51,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -941,6 +993,7 @@
                     ]
                 },
                 {
+                    "measure": 52,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -959,6 +1012,7 @@
                     ]
                 },
                 {
+                    "measure": 53,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -977,6 +1031,7 @@
                     ]
                 },
                 {
+                    "measure": 54,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -995,6 +1050,7 @@
                     ]
                 },
                 {
+                    "measure": 55,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1013,6 +1069,7 @@
                     ]
                 },
                 {
+                    "measure": 56,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1031,6 +1088,7 @@
                     ]
                 },
                 {
+                    "measure": 57,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1049,6 +1107,7 @@
                     ]
                 },
                 {
+                    "measure": 58,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1067,6 +1126,7 @@
                     ]
                 },
                 {
+                    "measure": 59,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1085,6 +1145,7 @@
                     ]
                 },
                 {
+                    "measure": 60,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1103,6 +1164,7 @@
                     ]
                 },
                 {
+                    "measure": 61,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1121,6 +1183,7 @@
                     ]
                 },
                 {
+                    "measure": 62,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1139,6 +1202,7 @@
                     ]
                 },
                 {
+                    "measure": 63,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1157,6 +1221,7 @@
                     ]
                 },
                 {
+                    "measure": 64,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1175,6 +1240,7 @@
                     ]
                 },
                 {
+                    "measure": 65,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1193,6 +1259,7 @@
                     ]
                 },
                 {
+                    "measure": 66,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1211,6 +1278,7 @@
                     ]
                 },
                 {
+                    "measure": 67,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1229,6 +1297,7 @@
                     ]
                 },
                 {
+                    "measure": 68,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1247,6 +1316,7 @@
                     ]
                 },
                 {
+                    "measure": 69,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1265,6 +1335,7 @@
                     ]
                 },
                 {
+                    "measure": 70,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1283,6 +1354,7 @@
                     ]
                 },
                 {
+                    "measure": 71,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1301,6 +1373,7 @@
                     ]
                 },
                 {
+                    "measure": 72,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1325,6 +1398,7 @@
             "active": true,
             "lyrics": [
                 {
+                    "measure": 0,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1343,6 +1417,7 @@
                     ]
                 },
                 {
+                    "measure": 1,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1361,6 +1436,7 @@
                     ]
                 },
                 {
+                    "measure": 2,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1379,6 +1455,7 @@
                     ]
                 },
                 {
+                    "measure": 3,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1397,6 +1474,7 @@
                     ]
                 },
                 {
+                    "measure": 4,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1415,6 +1493,7 @@
                     ]
                 },
                 {
+                    "measure": 5,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1433,6 +1512,7 @@
                     ]
                 },
                 {
+                    "measure": 6,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1451,6 +1531,7 @@
                     ]
                 },
                 {
+                    "measure": 7,
                     "msec": 12972,
                     "sentence": "ら",
                     "beats": [
@@ -1469,6 +1550,7 @@
                     ]
                 },
                 {
+                    "measure": 8,
                     "msec": 13377,
                     "sentence": "めんたべ",
                     "beats": [
@@ -1487,6 +1569,7 @@
                     ]
                 },
                 {
+                    "measure": 9,
                     "msec": 14793,
                     "sentence": "よおみそ",
                     "beats": [
@@ -1505,6 +1588,7 @@
                     ]
                 },
                 {
+                    "measure": 10,
                     "msec": 16212,
                     "sentence": "しょゆしお",
                     "beats": [
@@ -1523,6 +1607,7 @@
                     ]
                 },
                 {
+                    "measure": 11,
                     "msec": 17831,
                     "sentence": "とんこつめ",
                     "beats": [
@@ -1541,6 +1626,7 @@
                     ]
                 },
                 {
+                    "measure": 12,
                     "msec": 19601,
                     "sentence": "んおいれ",
                     "beats": [
@@ -1559,6 +1645,7 @@
                     ]
                 },
                 {
+                    "measure": 13,
                     "msec": 21284,
                     "sentence": "るよさ",
                     "beats": [
@@ -1577,6 +1664,7 @@
                     ]
                 },
                 {
+                    "measure": 14,
                     "msec": 22844,
                     "sentence": "んぷんまつよ",
                     "beats": [
@@ -1595,6 +1683,7 @@
                     ]
                 },
                 {
+                    "measure": 15,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1613,6 +1702,7 @@
                     ]
                 },
                 {
+                    "measure": 16,
                     "msec": 27549,
                     "sentence": "ら",
                     "beats": [
@@ -1631,6 +1721,7 @@
                     ]
                 },
                 {
+                    "measure": 17,
                     "msec": 27961,
                     "sentence": "めんまだかな",
                     "beats": [
@@ -1649,6 +1740,7 @@
                     ]
                 },
                 {
+                    "measure": 18,
                     "msec": 29169,
                     "sentence": "らめんまだかな",
                     "beats": [
@@ -1667,6 +1759,7 @@
                     ]
                 },
                 {
+                    "measure": 19,
                     "msec": 30800,
                     "sentence": "まちきれないよ",
                     "beats": [
@@ -1685,6 +1778,7 @@
                     ]
                 },
                 {
+                    "measure": 20,
                     "msec": 34024,
                     "sentence": "ら",
                     "beats": [
@@ -1703,6 +1797,7 @@
                     ]
                 },
                 {
+                    "measure": 21,
                     "msec": 34436,
                     "sentence": "めんまだかなら",
                     "beats": [
@@ -1721,6 +1816,7 @@
                     ]
                 },
                 {
+                    "measure": 22,
                     "msec": 36055,
                     "sentence": "めんまだかな",
                     "beats": [
@@ -1739,6 +1835,7 @@
                     ]
                 },
                 {
+                    "measure": 23,
                     "msec": 37274,
                     "sentence": "まちきれないよ",
                     "beats": [
@@ -1757,6 +1854,7 @@
                     ]
                 },
                 {
+                    "measure": 24,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1775,6 +1873,7 @@
                     ]
                 },
                 {
+                    "measure": 25,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1793,6 +1892,7 @@
                     ]
                 },
                 {
+                    "measure": 26,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1811,6 +1911,7 @@
                     ]
                 },
                 {
+                    "measure": 27,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1829,6 +1930,7 @@
                     ]
                 },
                 {
+                    "measure": 28,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1847,6 +1949,7 @@
                     ]
                 },
                 {
+                    "measure": 29,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1865,6 +1968,7 @@
                     ]
                 },
                 {
+                    "measure": 30,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1883,6 +1987,7 @@
                     ]
                 },
                 {
+                    "measure": 31,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -1901,6 +2006,7 @@
                     ]
                 },
                 {
+                    "measure": 32,
                     "msec": 53474,
                     "sentence": "じゅ",
                     "beats": [
@@ -1919,6 +2025,7 @@
                     ]
                 },
                 {
+                    "measure": 33,
                     "msec": 53626,
                     "sentence": "んびおす",
                     "beats": [
@@ -1937,6 +2044,7 @@
                     ]
                 },
                 {
+                    "measure": 34,
                     "msec": 55296,
                     "sentence": "るよもやしほ",
                     "beats": [
@@ -1955,6 +2063,7 @@
                     ]
                 },
                 {
+                    "measure": 35,
                     "msec": 57134,
                     "sentence": "れんそのrりy",
                     "beats": [
@@ -1973,6 +2082,7 @@
                     ]
                 },
                 {
+                    "measure": 36,
                     "msec": 58331,
                     "sentence": "ゆでたまごちゃ",
                     "beats": [
@@ -1991,6 +2101,7 @@
                     ]
                 },
                 {
+                    "measure": 37,
                     "msec": 60150,
                     "sentence": "あしゅも",
                     "beats": [
@@ -2009,6 +2120,7 @@
                     ]
                 },
                 {
+                    "measure": 38,
                     "msec": 61569,
                     "sentence": "あるよさ",
                     "beats": [
@@ -2027,6 +2139,7 @@
                     ]
                 },
                 {
+                    "measure": 39,
                     "msec": 63343,
                     "sentence": "んぷんまつよ",
                     "beats": [
@@ -2045,6 +2158,7 @@
                     ]
                 },
                 {
+                    "measure": 40,
                     "msec": 66427,
                     "sentence": "ら",
                     "beats": [
@@ -2063,6 +2177,7 @@
                     ]
                 },
                 {
+                    "measure": 41,
                     "msec": 66839,
                     "sentence": "めんまだかな",
                     "beats": [
@@ -2081,6 +2196,7 @@
                     ]
                 },
                 {
+                    "measure": 42,
                     "msec": 68047,
                     "sentence": "らめんまだかな",
                     "beats": [
@@ -2099,6 +2215,7 @@
                     ]
                 },
                 {
+                    "measure": 43,
                     "msec": 69678,
                     "sentence": "まちきれないよ",
                     "beats": [
@@ -2117,6 +2234,7 @@
                     ]
                 },
                 {
+                    "measure": 44,
                     "msec": 72902,
                     "sentence": "ら",
                     "beats": [
@@ -2135,6 +2253,7 @@
                     ]
                 },
                 {
+                    "measure": 45,
                     "msec": 73314,
                     "sentence": "めんまだかなら",
                     "beats": [
@@ -2153,6 +2272,7 @@
                     ]
                 },
                 {
+                    "measure": 46,
                     "msec": 74933,
                     "sentence": "めんまだかな",
                     "beats": [
@@ -2171,6 +2291,7 @@
                     ]
                 },
                 {
+                    "measure": 47,
                     "msec": 76152,
                     "sentence": "まちきれないよ",
                     "beats": [
@@ -2189,6 +2310,7 @@
                     ]
                 },
                 {
+                    "measure": 48,
                     "msec": 79379,
                     "sentence": "ら",
                     "beats": [
@@ -2207,6 +2329,7 @@
                     ]
                 },
                 {
+                    "measure": 49,
                     "msec": 79791,
                     "sentence": "めんまだかな",
                     "beats": [
@@ -2225,6 +2348,7 @@
                     ]
                 },
                 {
+                    "measure": 50,
                     "msec": 80999,
                     "sentence": "らめんまだかな",
                     "beats": [
@@ -2243,6 +2367,7 @@
                     ]
                 },
                 {
+                    "measure": 51,
                     "msec": 82630,
                     "sentence": "まちきれないよ",
                     "beats": [
@@ -2261,6 +2386,7 @@
                     ]
                 },
                 {
+                    "measure": 52,
                     "msec": 85854,
                     "sentence": "ら",
                     "beats": [
@@ -2279,6 +2405,7 @@
                     ]
                 },
                 {
+                    "measure": 53,
                     "msec": 86266,
                     "sentence": "めんまだかなら",
                     "beats": [
@@ -2297,6 +2424,7 @@
                     ]
                 },
                 {
+                    "measure": 54,
                     "msec": 87885,
                     "sentence": "めんまだかな",
                     "beats": [
@@ -2315,6 +2443,7 @@
                     ]
                 },
                 {
+                    "measure": 55,
                     "msec": 89104,
                     "sentence": "まちきれないよ",
                     "beats": [
@@ -2333,6 +2462,7 @@
                     ]
                 },
                 {
+                    "measure": 56,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2351,6 +2481,7 @@
                     ]
                 },
                 {
+                    "measure": 57,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2369,6 +2500,7 @@
                     ]
                 },
                 {
+                    "measure": 58,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2387,6 +2519,7 @@
                     ]
                 },
                 {
+                    "measure": 59,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2405,6 +2538,7 @@
                     ]
                 },
                 {
+                    "measure": 60,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2423,6 +2557,7 @@
                     ]
                 },
                 {
+                    "measure": 61,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2441,6 +2576,7 @@
                     ]
                 },
                 {
+                    "measure": 62,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2459,6 +2595,7 @@
                     ]
                 },
                 {
+                    "measure": 63,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2477,6 +2614,7 @@
                     ]
                 },
                 {
+                    "measure": 64,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2495,6 +2633,7 @@
                     ]
                 },
                 {
+                    "measure": 65,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2513,6 +2652,7 @@
                     ]
                 },
                 {
+                    "measure": 66,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2531,6 +2671,7 @@
                     ]
                 },
                 {
+                    "measure": 67,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2549,6 +2690,7 @@
                     ]
                 },
                 {
+                    "measure": 68,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2567,6 +2709,7 @@
                     ]
                 },
                 {
+                    "measure": 69,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2585,6 +2728,7 @@
                     ]
                 },
                 {
+                    "measure": 70,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2603,6 +2747,7 @@
                     ]
                 },
                 {
+                    "measure": 71,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2621,6 +2766,7 @@
                     ]
                 },
                 {
+                    "measure": 72,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2645,6 +2791,7 @@
             "active": true,
             "lyrics": [
                 {
+                    "measure": 0,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2663,6 +2810,7 @@
                     ]
                 },
                 {
+                    "measure": 1,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2681,6 +2829,7 @@
                     ]
                 },
                 {
+                    "measure": 2,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2699,6 +2848,7 @@
                     ]
                 },
                 {
+                    "measure": 3,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2717,6 +2867,7 @@
                     ]
                 },
                 {
+                    "measure": 4,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2735,6 +2886,7 @@
                     ]
                 },
                 {
+                    "measure": 5,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2753,6 +2905,7 @@
                     ]
                 },
                 {
+                    "measure": 6,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2771,6 +2924,7 @@
                     ]
                 },
                 {
+                    "measure": 7,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2789,6 +2943,7 @@
                     ]
                 },
                 {
+                    "measure": 8,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2807,6 +2962,7 @@
                     ]
                 },
                 {
+                    "measure": 9,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2825,6 +2981,7 @@
                     ]
                 },
                 {
+                    "measure": 10,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2843,6 +3000,7 @@
                     ]
                 },
                 {
+                    "measure": 11,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2861,6 +3019,7 @@
                     ]
                 },
                 {
+                    "measure": 12,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2879,6 +3038,7 @@
                     ]
                 },
                 {
+                    "measure": 13,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2897,6 +3057,7 @@
                     ]
                 },
                 {
+                    "measure": 14,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2915,6 +3076,7 @@
                     ]
                 },
                 {
+                    "measure": 15,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2933,6 +3095,7 @@
                     ]
                 },
                 {
+                    "measure": 16,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2951,6 +3114,7 @@
                     ]
                 },
                 {
+                    "measure": 17,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2969,6 +3133,7 @@
                     ]
                 },
                 {
+                    "measure": 18,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -2987,6 +3152,7 @@
                     ]
                 },
                 {
+                    "measure": 19,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3005,6 +3171,7 @@
                     ]
                 },
                 {
+                    "measure": 20,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3023,6 +3190,7 @@
                     ]
                 },
                 {
+                    "measure": 21,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3041,6 +3209,7 @@
                     ]
                 },
                 {
+                    "measure": 22,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3059,6 +3228,7 @@
                     ]
                 },
                 {
+                    "measure": 23,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3077,6 +3247,7 @@
                     ]
                 },
                 {
+                    "measure": 24,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3095,6 +3266,7 @@
                     ]
                 },
                 {
+                    "measure": 25,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3113,6 +3285,7 @@
                     ]
                 },
                 {
+                    "measure": 26,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3131,6 +3304,7 @@
                     ]
                 },
                 {
+                    "measure": 27,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3149,6 +3323,7 @@
                     ]
                 },
                 {
+                    "measure": 28,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3167,6 +3342,7 @@
                     ]
                 },
                 {
+                    "measure": 29,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3185,6 +3361,7 @@
                     ]
                 },
                 {
+                    "measure": 30,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3203,6 +3380,7 @@
                     ]
                 },
                 {
+                    "measure": 31,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3221,6 +3399,7 @@
                     ]
                 },
                 {
+                    "measure": 32,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3239,6 +3418,7 @@
                     ]
                 },
                 {
+                    "measure": 33,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3257,6 +3437,7 @@
                     ]
                 },
                 {
+                    "measure": 34,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3275,6 +3456,7 @@
                     ]
                 },
                 {
+                    "measure": 35,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3293,6 +3475,7 @@
                     ]
                 },
                 {
+                    "measure": 36,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3311,6 +3494,7 @@
                     ]
                 },
                 {
+                    "measure": 37,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3329,6 +3513,7 @@
                     ]
                 },
                 {
+                    "measure": 38,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3347,6 +3532,7 @@
                     ]
                 },
                 {
+                    "measure": 39,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3365,6 +3551,7 @@
                     ]
                 },
                 {
+                    "measure": 40,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3383,6 +3570,7 @@
                     ]
                 },
                 {
+                    "measure": 41,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3401,6 +3589,7 @@
                     ]
                 },
                 {
+                    "measure": 42,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3419,6 +3608,7 @@
                     ]
                 },
                 {
+                    "measure": 43,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3437,6 +3627,7 @@
                     ]
                 },
                 {
+                    "measure": 44,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3455,6 +3646,7 @@
                     ]
                 },
                 {
+                    "measure": 45,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3473,6 +3665,7 @@
                     ]
                 },
                 {
+                    "measure": 46,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3491,6 +3684,7 @@
                     ]
                 },
                 {
+                    "measure": 47,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3509,6 +3703,7 @@
                     ]
                 },
                 {
+                    "measure": 48,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3527,6 +3722,7 @@
                     ]
                 },
                 {
+                    "measure": 49,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3545,6 +3741,7 @@
                     ]
                 },
                 {
+                    "measure": 50,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3563,6 +3760,7 @@
                     ]
                 },
                 {
+                    "measure": 51,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3581,6 +3779,7 @@
                     ]
                 },
                 {
+                    "measure": 52,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3599,6 +3798,7 @@
                     ]
                 },
                 {
+                    "measure": 53,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3617,6 +3817,7 @@
                     ]
                 },
                 {
+                    "measure": 54,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3635,6 +3836,7 @@
                     ]
                 },
                 {
+                    "measure": 55,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3653,6 +3855,7 @@
                     ]
                 },
                 {
+                    "measure": 56,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3671,6 +3874,7 @@
                     ]
                 },
                 {
+                    "measure": 57,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3689,6 +3893,7 @@
                     ]
                 },
                 {
+                    "measure": 58,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3707,6 +3912,7 @@
                     ]
                 },
                 {
+                    "measure": 59,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3725,6 +3931,7 @@
                     ]
                 },
                 {
+                    "measure": 60,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3743,6 +3950,7 @@
                     ]
                 },
                 {
+                    "measure": 61,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3761,6 +3969,7 @@
                     ]
                 },
                 {
+                    "measure": 62,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3779,6 +3988,7 @@
                     ]
                 },
                 {
+                    "measure": 63,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3797,6 +4007,7 @@
                     ]
                 },
                 {
+                    "measure": 64,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3815,6 +4026,7 @@
                     ]
                 },
                 {
+                    "measure": 65,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3833,6 +4045,7 @@
                     ]
                 },
                 {
+                    "measure": 66,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3851,6 +4064,7 @@
                     ]
                 },
                 {
+                    "measure": 67,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3869,6 +4083,7 @@
                     ]
                 },
                 {
+                    "measure": 68,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3887,6 +4102,7 @@
                     ]
                 },
                 {
+                    "measure": 69,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3905,6 +4121,7 @@
                     ]
                 },
                 {
+                    "measure": 70,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3923,6 +4140,7 @@
                     ]
                 },
                 {
+                    "measure": 71,
                     "msec": 0,
                     "sentence": "",
                     "beats": [
@@ -3941,6 +4159,7 @@
                     ]
                 },
                 {
+                    "measure": 72,
                     "msec": 0,
                     "sentence": "",
                     "beats": [

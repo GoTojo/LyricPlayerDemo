@@ -37,7 +37,7 @@ public class SentenceList : MonoBehaviour {
 	}
 	public LyricData GetSentence(int track, int measure, int map = -1) {
 		if (map < 0) map = eventMap.currentMap;
-		LyricData emptyData = new LyricData(0, "", 1);
+		LyricData emptyData = new LyricData(measure, 0, "", 1);
 		if (map > tracks.Length) return emptyData;
 		List<Track> trackList = tracks[map];
 		if (track > trackList.Count) return emptyData;

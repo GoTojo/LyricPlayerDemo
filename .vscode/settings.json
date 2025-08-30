@@ -1,9 +1,9 @@
 {
-	"omnisharp.enableEditorConfigSupport": true,
-	"[csharp]": {
-		"editor.defaultFormatter": "ms-dotnettools.csharp",
-		"editor.formatOnSave": false
-	},
+    "omnisharp.enableEditorConfigSupport": true,
+    "[csharp]": {
+        "editor.defaultFormatter": "ms-dotnettools.csharp",
+        "editor.formatOnSave": false
+    },
     "files.exclude": {
         "**/.DS_Store": true,
         "**/.git": true,
@@ -59,5 +59,5 @@
         "editor.formatOnPaste": false,
         "files.trimTrailingWhitespace": false
     },
-    "dotnet.defaultSolution": "LyricPlayer.sln"
+    "dotnet.defaultSolution": "LyricPlayerDemo.sln"
 }
