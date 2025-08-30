@@ -5,13 +5,22 @@
 using UnityEngine;
 using System;
 
-public class MidiEventMapAccessor : MonoBehaviour {
+public class MidiEventMapAccessor {
+	private static MidiEventMapAccessor _instance;  // singleton
+	public static MidiEventMapAccessor Instance {
+		get {
+			if (_instance == null) {
+				_instance = new MidiEventMapAccessor();
+			}
+			return _instance;
+		}
+	}
 	public const int originalMap = 0;
 	public const int kanjiMap = 1;
 	public const int numOfEventMap = 2;
 	private MIDIEventMap[] eventMap = new MIDIEventMap[numOfEventMap];
 	public int currentMap = 0;
-	public MidiEventMapAccessor()
+	private MidiEventMapAccessor()
 	{
 		for (var i = 0; i < numOfEventMap; i++)
 		{

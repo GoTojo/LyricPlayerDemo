@@ -25,8 +25,8 @@ public class SentenceList {
 	// LyricList, MidiEventMapが初期化した後に呼ぶ
 	public void Init() {
 		GameObject mainObj = GameObject.Find("MainGameObject");
-		LyricList[] maps = mainObj.GetComponents<LyricList>();
-		eventMap = mainObj.GetComponent<MidiEventMapAccessor>();
+		List<LyricList> maps = LyricLists.Instance.lists;
+		eventMap = MidiEventMapAccessor.Instance;
 		const int numOfMap = MidiEventMapAccessor.numOfEventMap;
 		tracks = new List<Track>[numOfMap];
 		for (var i = 0; i < numOfMap; i++) {

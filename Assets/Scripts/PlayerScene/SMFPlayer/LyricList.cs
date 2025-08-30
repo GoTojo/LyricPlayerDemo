@@ -6,6 +6,7 @@ using System;
 using System.Text;
 using System.IO;
 using Unity.VisualScripting;
+using UnityEngine.Rendering;
 
 [Serializable]
 public class ControlList {
@@ -48,9 +49,30 @@ public class TrackListWrapper {
 	public List<Track> tracks = new List<Track>();
 }
 
-public class LyricList : MonoBehaviour {
+public class LyricLists {
+	public List<LyricList> lists = new List<LyricList>();
+	private static LyricLists _instance;  // singleton
+	public static LyricLists Instance {
+		get {
+			if (_instance == null) {
+				_instance = new LyricLists();
+			}
+			return _instance;
+		}
+	}
+	private LyricLists() {
+		lists.Add(new LyricList(0));
+		lists.Add(new LyricList(1));
+	}
+}
+
+public class LyricList {
 	public List<Track> tracks = new List<Track>();
-	public int map = 0;
+	private int map = 0;
+
+	public LyricList(int map) {
+		this.map = map;
+	}
 
 	public void Init() {
 		string path = SongInfo.GetInfoPath(PlayerPrefs.GetInt("Song"), map != 0);
@@ -102,9 +124,8 @@ public class LyricList : MonoBehaviour {
 		}
 		return true;
 	}
-	private void GenerateTracks()
-	{
-		MidiEventMapAccessor eventMap = GetComponent<MidiEventMapAccessor>();
+	private void GenerateTracks() {
+		MidiEventMapAccessor eventMap = MidiEventMapAccessor.Instance;
 		int numOfMeasure = eventMap.GetNumOfMeasure(map);
 		int numOfTrack = eventMap.GetNumOfTrack(map);
 

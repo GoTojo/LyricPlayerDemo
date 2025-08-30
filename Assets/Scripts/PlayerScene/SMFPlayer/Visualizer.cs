@@ -118,7 +118,7 @@ public class Visualizer : MonoBehaviour {
 	public void SetSMFPlayer(SMFPlayer player, SMFPlayer _kanjiPlayer) {
 		smfPlayer = player;
 		kanjiPlayer = _kanjiPlayer;
-		eventMap = GetComponent<MidiEventMapAccessor>();
+		eventMap = MidiEventMapAccessor.Instance;
 		eventMap.Init(smfPlayer, kanjiPlayer);
 		eventMap.SetCurrentMap(1);
 		kanjiPlayer.mute = false;

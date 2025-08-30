@@ -36,8 +36,7 @@ public class LyricPlayer : MonoBehaviour {
 		Visualizer visualizer = GetComponent<Visualizer>();
 		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer);
 		visualizer.SetTitle(SongInfo.GetTitle(songnum));
-		LyricList[] lyricLists = GetComponents<LyricList>();
-		foreach (LyricList lyricList in lyricLists) {
+		foreach (LyricList lyricList in LyricLists.Instance.lists) {
 			lyricList.Init();
 		}
 		FontResource fontResource = FontResource.Instance;
