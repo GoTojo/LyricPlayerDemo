@@ -5,26 +5,24 @@
 using UnityEngine;
 using TMPro;
 
-public class LyricGenUnder1Line : MonoBehaviour {
-	public Rect area = new Rect(-10, -3, 20, 6);
-	public bool active = true;
+public class LyricGenUnder1Line : LyricBase {
+	public Vector3 position = new Vector3(0, -6.5f, 0);
 	class LyricGenControl : LyricGenBase {
-		private TextMeshPro text;
+		public TextMeshPro text;
 		private int waitCount = 3;
 		private int waitClear = 0;
-		public LyricGenControl(Vector3 position, Transform transform, SentenceList sentenceList, int map, MidiWatcherBase midiWatcher) : base(sentenceList, map, midiWatcher) {
-			TMP_FontAsset font = FontResource.Instance.GetFont();
+		public LyricGenControl(Vector3 position, TMP_FontAsset font, Transform transform) {
+			this.font = font;
 			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
 			float scale = 1f;
 			float rotate = 0;
 			Vector2 size = new Vector2(20, 2);
 			this.active = true;
-			GameObject simpleLyric = CreateText("", font, color, TextAlignmentOptions.Center, size, position, scale, rotate);
+			GameObject simpleLyric = CreateText("", color, TextAlignmentOptions.Center, size, position, scale, rotate);
 			this.text = simpleLyric.GetComponent<TextMeshPro>();
 			simpleLyric.transform.SetParent(transform);
 		}
 		protected override void OnTextChanged(string sentence) {
-			text.font = FontResource.Instance.GetFont();
 			text.text = sentence;
 			waitClear = waitCount;
 		}
@@ -39,18 +37,51 @@ public class LyricGenUnder1Line : MonoBehaviour {
 				}
 			}
 		}
+		public override void Clear() {
+			text.text = "";
+		}
+		public void SetText(string text) {
+			this.text.text = text;
+		}
+		public void Show() {
+			text.enabled = true;
+		}
+		public void Hide() {
+			text.enabled = false;
+		}
 	};
 	LyricGenControl control;
-	LyricGenControl controlSub;
-	public SentenceList sentenceList;
 
 	void Start() {
-		GameObject mainObj = GameObject.Find("MainGameObject");
-		sentenceList = mainObj.GetComponent<SentenceList>();
-		control = new LyricGenControl(new Vector3(0, -6.5f, 0), this.transform, sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance);
-		controlSub = new LyricGenControl(new Vector3(0, -5, 0), this.transform, sentenceList, SentenceList.orginalMap, SubMidiWatcher.Instance);
+		control = new LyricGenControl(position, font, this.transform);
 	}
-	void Update() {
-		controlSub.active = (PlayerPrefs.GetInt("LyricMode") == 0);
+	public override void OnParamChanged() {
+		control.active = active;
+		if (active) control.Show();
+		else control.Hide();
+		control.text.transform.position = position;
+		control.font = font;
+	}
+	public override void Clear() {
+		control.Clear();
+	}
+	public override void ShowSampleText(string[] text) {
+		control.SetText(text[0]);
+	}
+	public override void SetPosX(float x) {
+		Vector3 pos = control.text.transform.position;
+		pos.x = x;
+		control.text.transform.position = pos;
+	}
+	public override void SetPosY(float y) {
+		Vector3 pos = control.text.transform.position;
+		pos.y = y;
+		control.text.transform.position = pos;
+	}
+	public override float GetPosX() {
+		return control.text.transform.position.x;
+	}
+	public override float GetPosY() {
+		return control.text.transform.position.y;
 	}
 }

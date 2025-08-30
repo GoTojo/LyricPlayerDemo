@@ -1403,7 +1403,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-							"controls": ["SimpleLyricOn", "WaveFormOn", "Effect_Film"]
+							"controls": ["Words_On", "WaveFormOn", "Effect_Film"]
                         },
                         {
                             "controls": ["WaveFormOff"]
@@ -1441,7 +1441,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Effect_RGBShift", "WallRect", "UCBlack", "SimpleLyricOff", "UnityChanShiftOn"]
+							"controls": ["Effect_RGBShift", "WallRect", "UCBlack", "Words_Off", "UnityChanShiftOn"]
                         },
                         {
                             "controls": []
@@ -1574,7 +1574,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Ramen", "WaveFormOn", "MultiLine_L_On"]
+							"controls": ["Ramen", "WaveFormOn", "MultiL_On"]
                         },
                         {
                             "controls": ["WaveFormOff","Effect_DotScreen_QuaterBeat"]
@@ -1631,7 +1631,7 @@
                     "sentence": "とても",
                     "beats": [
                         {
-							"controls": ["MultiLine_L_Clear"]
+							"controls": ["MultiL_Clear"]
                         },
                         {
                             "controls": []
@@ -1659,7 +1659,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiLine_R_On"]
+                            "controls": ["MultiR_On"]
                         }
                     ]
                 },
@@ -1669,7 +1669,7 @@
                     "sentence": "おなか",
                     "beats": [
                         {
-							"controls": ["MultiLine_L_Off"]
+							"controls": ["MultiL_Off"]
                         },
                         {
                             "controls": []
@@ -1697,7 +1697,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["SimpleLyricOn", "Bulb"]
+                            "controls": ["Words_On", "Bulb"]
                         }
                     ]
                 },
@@ -1707,7 +1707,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-                            "controls": ["MultiLine_R_Off", "Donburi"]
+                            "controls": ["MultiR_Off", "Donburi"]
                         },
                         {
                             "controls": []
@@ -1726,7 +1726,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Sun_Off", "UnityChanRunOff", "RamenDiskOff", "RamenCupAuto","SimpleLyricOff","WallCircle","WallOn", "Effect_RGBShift"]
+							"controls": ["Sun_Off", "UnityChanRunOff", "RamenDiskOff", "RamenCupAuto","Words_Off","WallCircle","WallOn", "Effect_RGBShift"]
                         },
                         {
                             "controls": []
@@ -1878,7 +1878,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["MultiLine_L_On"]
+							"controls": ["MultiL_On"]
                         },
                         {
                             "controls": []
@@ -1935,7 +1935,7 @@
                     "sentence": "おなか",
                     "beats": [
                         {
-							"controls": ["MultiLine_L_Clear"]
+							"controls": ["MultiL_Clear"]
                         },
                         {
                             "controls": []
@@ -1973,7 +1973,7 @@
                     "sentence": "体重気に",
                     "beats": [
                         {
-							"controls": ["MultiLine_L_Off", "MultiLine_R_On", "Co met"]
+							"controls": ["MultiL_Off", "MultiR_On", "Co met"]
                         },
                         {
                             "controls": []
@@ -2001,7 +2001,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["SimpleLyricOn", "MultiLine_R_Off"]
+                            "controls": ["Words_On", "MultiR_Off"]
                         }
                     ]
                 },
@@ -2039,7 +2039,7 @@
                             "controls": []
                         },
                         {
-							"controls": ["SimpleLyricOff"]
+							"controls": ["Words_Off"]
                         }
                     ]
                 },
@@ -2191,7 +2191,7 @@
                             "controls": []
                         },
                         {
-							"controls": ["MultiLineWord_L_On"]
+							"controls": ["MultiWordL_On"]
                         }
                     ]
                 },
@@ -2277,7 +2277,7 @@
                     "sentence": "やっぱり",
                     "beats": [
                         {
-                            "controls": ["MultiLineWord_L_Off", "MultiLineWord_R_On"]
+                            "controls": ["MultiWordL_Off", "MultiWordR_On"]
                         },
                         {
                             "controls": []
@@ -2315,7 +2315,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
 						{
-							"controls": ["SimpleLyricOn","MultiLineWord_R_Off","Donburi", "Confetti"]
+							"controls": ["Words_On","MultiWordR_Off","Donburi", "Confetti"]
 						},
                         {
                             "controls": []
@@ -2353,7 +2353,7 @@
                     "sentence": "らーめん",
                     "beats": [
                         {
-                            "controls": ["Sun_Off","SimpleLyricOn"]
+                            "controls": ["Sun_Off","Words_On"]
                         },
                         {
                             "controls": []
@@ -2486,7 +2486,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["WaveFormOff", "SimpleLyricOff"]
+                            "controls": ["WaveFormOff", "Words_Off"]
                         },
                         {
                             "controls": []

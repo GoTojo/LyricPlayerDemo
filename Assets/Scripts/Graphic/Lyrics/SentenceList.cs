@@ -7,7 +7,16 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 
-public class SentenceList : MonoBehaviour {
+public class SentenceList {
+	private static SentenceList _instance;  // singleton
+	public static SentenceList Instance {
+		get {
+			if (_instance == null) {
+				_instance = new SentenceList();
+			}
+			return _instance;
+		}
+	}
 	public const int orginalMap = MidiEventMapAccessor.originalMap;
 	public const int kanjiMap = MidiEventMapAccessor.kanjiMap;
 	private MidiEventMapAccessor eventMap;

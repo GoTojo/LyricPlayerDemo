@@ -15,7 +15,7 @@ public class Visualizer : MonoBehaviour {
 	public UIPanelControl uiPanelControl;
 	public GameObject infoPanel;
 	// private LyricMode lyricMode;
-	MidiEventMapAccessor eventMap;
+	public MidiEventMapAccessor eventMap;
 	public EffectSwitcher effectSwitcher;
 
 	public GameObject unityChanBlack;
@@ -39,6 +39,8 @@ public class Visualizer : MonoBehaviour {
 	public LyricGenMultiLineByWord multiLineLW;
 	public LyricGenMultiLineByWord multiLineRW;
 	public TextMeshPro titleCenter;
+	public LyricControl lyricControl;
+
 	public RamenController ramenController;
 
 	public Parameter.ParticleType particleType;
@@ -96,7 +98,7 @@ public class Visualizer : MonoBehaviour {
 	}
 	void Start() {
 		GameObject mainObj = GameObject.Find("MainGameObject");
-		sentenceList = mainObj.GetComponent<SentenceList>();
+		sentenceList = SentenceList.Instance;
 	}
 	// Update is called once per frame
 	void Update() {
@@ -243,75 +245,18 @@ public class Visualizer : MonoBehaviour {
 	private void ApplyControlNow(string command) {
 		string[] args = command.Split("_");
 		switch (args[0]) {
-		case "SimpleLyricOn":
-			simpleLyricGen.SetActive(true);
-			break;
-		case "SimpleLyricOff":
-			simpleLyricGen.SetActive(false);
-			break;
-		case "SimpleLyricUpOn":
-			simpleLyricGenUp.SetActive(true);
-			break;
-		case "SimpleLyricUpOff":
-			simpleLyricGenUp.SetActive(false);
-			break;
-		case "MultiLine":
-		case "MultiRow":
-			if (args.Length < 2) break;
-			LyricGenMultiLine multiLine;
-			if (args[1] == "L") {
-				multiLine = multiLineL;
-			} else if (args[1] == "R") {
-				multiLine = multiLineR;
-			} else if (args[1] == "L1") {
-				multiLine = multiLineL1;
-			} else if (args[1] == "R1") {
-				multiLine = multiLineR1;
-			} else {
-				multiLineL.SetActive(false);
-				multiLineR.SetActive(false);
-				multiLineL1.SetActive(false);
-				multiLineR1.SetActive(false);
-				break;
-			}
-			if (args[0] == "MultiRow") {
-				multiLine.vertical = true;
-			} else if (args[0] == "MultiLine") {
-				multiLine.vertical = false;
-			}
-			if (args[2] == "On") {
-				multiLine.SetActive(true);
-			} else if (args[2] == "Off") {
-				multiLine.SetActive(false);
-			} else if (args[2] == "Clear") {
-				multiLine.Clear();
-			}
-			break;
-		case "MultiLineWord":
-		case "MultiRowWord":
-			if (args.Length < 2) break;
-			LyricGenMultiLineByWord multiLineWord;
-			if (args[1] == "L") {
-				multiLineWord = multiLineLW;
-			} else if (args[1] == "R") {
-				multiLineWord = multiLineRW;
-			} else {
-				multiLineLW.SetActive(false);
-				multiLineRW.SetActive(false);
-				break;
-			}
-			if (args[0] == "MultiRowWord") {
-				multiLineWord.vertical = true;
-			} else if (args[0] == "MultiLineWord") {
-				multiLineWord.vertical = false;
-			}
-			if (args[2] == "On") {
-				multiLineWord.SetActive(true);
-			} else if (args[2] == "Off") {
-				multiLineWord.SetActive(false);
-			} else if (args[2] == "Clear") {
-				multiLineWord.Clear();
-			}
+		case "Title":
+		case "Line":
+		case "Words":
+		case "MultiL":
+		case "MultiR":
+		case "MultiVL":
+		case "MultiVR":
+		case "MultiWordL":
+		case "MultiWordR":
+		case "MultiWordVL":
+		case "MultiWordVR":
+			lyricControl.ApplyControl(args);
 			break;
 		case "RamenDiskOn":
 			ramenDisk.SetActive(true);
@@ -417,6 +362,9 @@ public class Visualizer : MonoBehaviour {
 		case "UFO":
 			ufo.Create(measureInterval * 2);
 			break;
+		default:
+			// Debug.Log($"Unknown command: {command}");
+			break;
 		}
 	}
 	private void ApplyControlDelayed(string command) {
@@ -470,6 +418,7 @@ public class Visualizer : MonoBehaviour {
 			}
 			break;
 		default:
+			// Debug.Log($"Unknown command: {command}");
 			break;
 		}
 	}

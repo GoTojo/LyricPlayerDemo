@@ -4,6 +4,7 @@
 /// Copyright (c) 2025 gotojo
 using UnityEngine;
 using TMPro;
+using System;
 
 class FontResource {
 	public enum Type {
@@ -31,15 +32,24 @@ class FontResource {
 	private TMP_FontAsset fontRocknRollOne;
 	private Type curFontType = Type.JKMaruGothic;
 
+	private string[] resourceName = new string[] {
+		"JK-Maru-Gothic-M SDF",
+		"DelaGothicOne-Regular SDF",
+		"HachiMaruPop-Regular SDF",
+		"KaiseiTokumin-Regular SDF",
+		"LightNovelPOPv2 SDF",
+		"RocknRollOne-Regular SDF",
+	};
+
 	FontResource() {
 	}
 	public void LoadFont() {
-		fontJKMaruGothic = Resources.Load<TMP_FontAsset>("Fonts/JK-Maru-Gothic-M SDF");
-		fontDelaGothicOne = Resources.Load<TMP_FontAsset>("Fonts/DelaGothicOne-Regular SDF");
-		fontHachiMaruPop = Resources.Load<TMP_FontAsset>("Fonts/HachiMaruPop-Regular SDF");
-		fontKaiseiTokumin = Resources.Load<TMP_FontAsset>("Fonts/KaiseiTokumin-Regular SDF");
-		fontLightNovelPOP = Resources.Load<TMP_FontAsset>("Fonts/LightNovelPOPv2 SDF");
-		fontRocknRollOne = Resources.Load<TMP_FontAsset>("Fonts/RocknRollOne-Regular SDF");
+		fontJKMaruGothic = Resources.Load<TMP_FontAsset>($"Fonts/{resourceName[(int)Type.JKMaruGothic]}");
+		fontDelaGothicOne = Resources.Load<TMP_FontAsset>($"Fonts/{resourceName[(int)Type.DelaGothicOne]}");
+		fontHachiMaruPop = Resources.Load<TMP_FontAsset>($"Fonts/{resourceName[(int)Type.HachiMaruPop]}");
+		fontKaiseiTokumin = Resources.Load<TMP_FontAsset>($"Fonts/{resourceName[(int)Type.KaiseiTokumin]}");
+		fontLightNovelPOP = Resources.Load<TMP_FontAsset>($"Fonts/{resourceName[(int)Type.LightNovelPOP]}");
+		fontRocknRollOne = Resources.Load<TMP_FontAsset>($"Fonts/{resourceName[(int)Type.RocknRollOne]}");
 	}
 	public void SetCurFont(Type type) {
 		curFontType = type;
@@ -52,9 +62,17 @@ class FontResource {
 		if (curFontType == Type.JKMaruGothic) return;
 		curFontType = (Type)((int)curFontType - 1);
 	}
-	public TMP_FontAsset GetFont() {
+	public Type GetFontType(string fontname) {
+		int index = Array.IndexOf(resourceName, fontname);
+		if (index < 0) index = 0;
+		return (Type)index;
+	}
+	public TMP_FontAsset GetCurFont() {
+		return GetFont(curFontType);
+	}
+	public TMP_FontAsset GetFont(Type fontType) {
 		TMP_FontAsset font;
-		switch (curFontType) {
+		switch (fontType) {
 		default:
 		case Type.JKMaruGothic:
 			font = fontJKMaruGothic;

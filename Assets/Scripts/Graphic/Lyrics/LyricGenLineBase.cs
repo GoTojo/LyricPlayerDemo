@@ -5,18 +5,17 @@ using TMPro;
 using System.Collections.Generic;
 
 class LyricGenLineBase : LyricGenBase {
-	private Rect area;
-	protected float textHeight = 2f;
-	protected float textWidth = 2f;
+	public Rect area;
+	protected float textHeight = 1f;
+	protected float textWidth = 1f;
 	protected List<GameObject> lyrics = new List<GameObject>();
-	protected TMP_FontAsset font;
 	protected Transform transform;
 	protected int line = 0;
 	public int maxLine = 5;
 	public float scale = 1;
-
+	protected int numOfWord = 0;
 	public bool vertical = false;
-	public LyricGenLineBase(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform, SentenceList sentenceList) : base(sentenceList, SentenceList.kanjiMap, MidiWatcher.Instance) {
+	public LyricGenLineBase(Rect area, float textHeight, float textWidth, TMP_FontAsset font, Transform transform) {
 		this.area = area;
 		this.textHeight = textHeight;
 		this.textWidth = textWidth;
@@ -73,14 +72,19 @@ class LyricGenLineBase : LyricGenBase {
 		} else {
 			alignment = TextAlignmentOptions.TopLeft;
 		}
-		GameObject lyric = CreateText(text, font, color, alignment, size, position, scale, rotate);
+		GameObject lyric = CreateText(text, color, alignment, size, position, scale, rotate);
 		lyric.transform.SetParent(transform);
 		lyrics.Add(lyric);
 		return lyric;
 	}
 	protected virtual void GetPosition(ref float x, ref float y) {
+		if (vertical) {
+			y -= textHeight * numOfWord;
+		} else {
+			x += textWidth * numOfWord;
+		}
 	}
-	public void Clear() {
+	public override void Clear() {
 		foreach (var lyric in lyrics) {
 			Object.Destroy(lyric);
 		}

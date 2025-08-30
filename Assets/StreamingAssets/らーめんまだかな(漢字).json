@@ -1403,7 +1403,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["TitleCenterOn", "Effect_Film", "Night_On"]
+                            "controls": ["Title_On", "Effect_Film", "Night_On"]
                         },
                         {
                             "controls": []
@@ -1441,7 +1441,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["TitleCenterOff", "RamenFloorOn", "Rocket"]
+                            "controls": ["Title_Off", "RamenFloorOn", "Rocket"]
                         },
                         {
                             "controls": []
@@ -1536,7 +1536,7 @@
                     "sentence": "らーめん",
                     "beats": [
                         {
-                            "controls": ["MultiRow_L1_On"]
+                            "controls": ["MultiVL_On"]
                         },
                         {
                             "controls": []
@@ -1580,7 +1580,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiRow_L1_Clear"]
+                            "controls": ["MultiVL_Clear"]
                         },
                         {
                             "controls": []
@@ -1602,7 +1602,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiRow_L1_Off"]
+                            "controls": ["MultiVL_Off"]
                         }
                     ]
                 },
@@ -1612,7 +1612,7 @@
                     "sentence": "とんこつ",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricUpOn"]
+                            "controls": ["Words_On"]
                         },
                         {
                             "controls": []
@@ -1621,7 +1621,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiRow_R1_On","SimpleLyricUpOff"]
+                            "controls": ["MultiVR_On","Words_Off"]
                         }
                     ]
                 },
@@ -1707,7 +1707,7 @@
                     "sentence": "らーめんまだかな",
                     "beats": [
                         {
-                            "controls": ["MultiRow_R1_Off","SimpleLyricUpOn"]
+                            "controls": ["MultiVR_Off","Words_On"]
                         },
                         {
                             "controls": []
@@ -1859,7 +1859,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["SimpleLyricUpOff", "Naruto"]
+                            "controls": ["Words_Off", "Naruto"]
                         },
                         {
                             "controls": []
@@ -2011,7 +2011,7 @@
                     "sentence": "準備を",
                     "beats": [
                         {
-                            "controls": ["MultiRowWord_R_On"]
+                            "controls": ["MultiWordVR_On"]
                         },
                         {
                             "controls": []
@@ -2087,7 +2087,7 @@
                     "sentence": "ゆでたまご",
                     "beats": [
                         {
-                            "controls": ["MultiRowWord_R_Off", "SimpleLyricUpOn"]
+                            "controls": ["MultiWordVR_Off", "Words_On"]
                         },
                         {
                             "controls": []
@@ -2096,7 +2096,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiRowWord_L_On", "SimpleLyricUpOff"]
+                            "controls": ["MultiWordVL_On", "Words_Off"]
                         }
                     ]
                 },
@@ -2172,7 +2172,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["MultiRowWord_L_Off", "SimpleLyricUpOn"]
+                            "controls": ["MultiWordVL_Off", "Words_On"]
                         }
                     ]
                 },
