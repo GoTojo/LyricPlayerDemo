@@ -52,10 +52,10 @@ public class MidiEventMapAccessor : MonoBehaviour {
 		if (map < 0) map = currentMap;
 		return eventMap[map].GetPosition(measure, track, num);
 	}
-	public UInt32 GetMsec(int measure, int track, int num, int map = -1)
+	public UInt32 GetMsec(int measure, int map = -1)
 	{
 		if (map < 0) map = currentMap;
-		return eventMap[map].GetMsec(measure, track, num);
+		return eventMap[map].GetMsec(measure);
 	}
 	public int GetNumOfMeasure(int map = -1)
 	{

@@ -25,7 +25,7 @@
                 },
                 {
                     "measure": 1,
-                    "msec": 0,
+                    "msec": 1620,
                     "sentence": "",
                     "beats": [
                         {
@@ -44,7 +44,7 @@
                 },
                 {
                     "measure": 2,
-                    "msec": 0,
+                    "msec": 3240,
                     "sentence": "",
                     "beats": [
                         {
@@ -63,7 +63,7 @@
                 },
                 {
                     "measure": 3,
-                    "msec": 0,
+                    "msec": 4860,
                     "sentence": "",
                     "beats": [
                         {
@@ -82,7 +82,7 @@
                 },
                 {
                     "measure": 4,
-                    "msec": 0,
+                    "msec": 6480,
                     "sentence": "",
                     "beats": [
                         {
@@ -101,7 +101,7 @@
                 },
                 {
                     "measure": 5,
-                    "msec": 0,
+                    "msec": 8100,
                     "sentence": "",
                     "beats": [
                         {
@@ -120,7 +120,7 @@
                 },
                 {
                     "measure": 6,
-                    "msec": 0,
+                    "msec": 9720,
                     "sentence": "",
                     "beats": [
                         {
@@ -139,7 +139,7 @@
                 },
                 {
                     "measure": 7,
-                    "msec": 0,
+                    "msec": 11340,
                     "sentence": "",
                     "beats": [
                         {
@@ -158,7 +158,7 @@
                 },
                 {
                     "measure": 8,
-                    "msec": 0,
+                    "msec": 12960,
                     "sentence": "",
                     "beats": [
                         {
@@ -177,7 +177,7 @@
                 },
                 {
                     "measure": 9,
-                    "msec": 0,
+                    "msec": 14580,
                     "sentence": "",
                     "beats": [
                         {
@@ -196,7 +196,7 @@
                 },
                 {
                     "measure": 10,
-                    "msec": 0,
+                    "msec": 16200,
                     "sentence": "",
                     "beats": [
                         {
@@ -215,7 +215,7 @@
                 },
                 {
                     "measure": 11,
-                    "msec": 0,
+                    "msec": 17820,
                     "sentence": "",
                     "beats": [
                         {
@@ -234,7 +234,7 @@
                 },
                 {
                     "measure": 12,
-                    "msec": 0,
+                    "msec": 19440,
                     "sentence": "",
                     "beats": [
                         {
@@ -253,7 +253,7 @@
                 },
                 {
                     "measure": 13,
-                    "msec": 0,
+                    "msec": 21060,
                     "sentence": "",
                     "beats": [
                         {
@@ -272,7 +272,7 @@
                 },
                 {
                     "measure": 14,
-                    "msec": 0,
+                    "msec": 22680,
                     "sentence": "",
                     "beats": [
                         {
@@ -291,7 +291,7 @@
                 },
                 {
                     "measure": 15,
-                    "msec": 0,
+                    "msec": 24300,
                     "sentence": "",
                     "beats": [
                         {
@@ -310,7 +310,7 @@
                 },
                 {
                     "measure": 16,
-                    "msec": 0,
+                    "msec": 25920,
                     "sentence": "",
                     "beats": [
                         {
@@ -329,7 +329,7 @@
                 },
                 {
                     "measure": 17,
-                    "msec": 0,
+                    "msec": 27540,
                     "sentence": "",
                     "beats": [
                         {
@@ -348,7 +348,7 @@
                 },
                 {
                     "measure": 18,
-                    "msec": 0,
+                    "msec": 29160,
                     "sentence": "",
                     "beats": [
                         {
@@ -367,7 +367,7 @@
                 },
                 {
                     "measure": 19,
-                    "msec": 0,
+                    "msec": 30780,
                     "sentence": "",
                     "beats": [
                         {
@@ -386,7 +386,7 @@
                 },
                 {
                     "measure": 20,
-                    "msec": 0,
+                    "msec": 32400,
                     "sentence": "",
                     "beats": [
                         {
@@ -405,7 +405,7 @@
                 },
                 {
                     "measure": 21,
-                    "msec": 0,
+                    "msec": 34020,
                     "sentence": "",
                     "beats": [
                         {
@@ -424,7 +424,7 @@
                 },
                 {
                     "measure": 22,
-                    "msec": 0,
+                    "msec": 35640,
                     "sentence": "",
                     "beats": [
                         {
@@ -443,7 +443,7 @@
                 },
                 {
                     "measure": 23,
-                    "msec": 0,
+                    "msec": 37260,
                     "sentence": "",
                     "beats": [
                         {
@@ -462,7 +462,7 @@
                 },
                 {
                     "measure": 24,
-                    "msec": 0,
+                    "msec": 38880,
                     "sentence": "",
                     "beats": [
                         {
@@ -481,7 +481,7 @@
                 },
                 {
                     "measure": 25,
-                    "msec": 0,
+                    "msec": 40500,
                     "sentence": "",
                     "beats": [
                         {
@@ -500,7 +500,7 @@
                 },
                 {
                     "measure": 26,
-                    "msec": 0,
+                    "msec": 42120,
                     "sentence": "",
                     "beats": [
                         {
@@ -519,7 +519,7 @@
                 },
                 {
                     "measure": 27,
-                    "msec": 0,
+                    "msec": 43740,
                     "sentence": "",
                     "beats": [
                         {
@@ -538,7 +538,7 @@
                 },
                 {
                     "measure": 28,
-                    "msec": 0,
+                    "msec": 45360,
                     "sentence": "",
                     "beats": [
                         {
@@ -557,7 +557,7 @@
                 },
                 {
                     "measure": 29,
-                    "msec": 0,
+                    "msec": 46980,
                     "sentence": "",
                     "beats": [
                         {
@@ -576,7 +576,7 @@
                 },
                 {
                     "measure": 30,
-                    "msec": 0,
+                    "msec": 48600,
                     "sentence": "",
                     "beats": [
                         {
@@ -595,7 +595,7 @@
                 },
                 {
                     "measure": 31,
-                    "msec": 0,
+                    "msec": 50220,
                     "sentence": "",
                     "beats": [
                         {
@@ -614,7 +614,7 @@
                 },
                 {
                     "measure": 32,
-                    "msec": 0,
+                    "msec": 51840,
                     "sentence": "",
                     "beats": [
                         {
@@ -633,7 +633,7 @@
                 },
                 {
                     "measure": 33,
-                    "msec": 0,
+                    "msec": 53460,
                     "sentence": "",
                     "beats": [
                         {
@@ -652,7 +652,7 @@
                 },
                 {
                     "measure": 34,
-                    "msec": 0,
+                    "msec": 55080,
                     "sentence": "",
                     "beats": [
                         {
@@ -671,7 +671,7 @@
                 },
                 {
                     "measure": 35,
-                    "msec": 0,
+                    "msec": 56700,
                     "sentence": "",
                     "beats": [
                         {
@@ -690,7 +690,7 @@
                 },
                 {
                     "measure": 36,
-                    "msec": 0,
+                    "msec": 58320,
                     "sentence": "",
                     "beats": [
                         {
@@ -709,7 +709,7 @@
                 },
                 {
                     "measure": 37,
-                    "msec": 0,
+                    "msec": 59940,
                     "sentence": "",
                     "beats": [
                         {
@@ -728,7 +728,7 @@
                 },
                 {
                     "measure": 38,
-                    "msec": 0,
+                    "msec": 61560,
                     "sentence": "",
                     "beats": [
                         {
@@ -747,7 +747,7 @@
                 },
                 {
                     "measure": 39,
-                    "msec": 0,
+                    "msec": 63180,
                     "sentence": "",
                     "beats": [
                         {
@@ -766,7 +766,7 @@
                 },
                 {
                     "measure": 40,
-                    "msec": 0,
+                    "msec": 64800,
                     "sentence": "",
                     "beats": [
                         {
@@ -785,7 +785,7 @@
                 },
                 {
                     "measure": 41,
-                    "msec": 0,
+                    "msec": 66420,
                     "sentence": "",
                     "beats": [
                         {
@@ -804,7 +804,7 @@
                 },
                 {
                     "measure": 42,
-                    "msec": 0,
+                    "msec": 68040,
                     "sentence": "",
                     "beats": [
                         {
@@ -823,7 +823,7 @@
                 },
                 {
                     "measure": 43,
-                    "msec": 0,
+                    "msec": 69660,
                     "sentence": "",
                     "beats": [
                         {
@@ -842,7 +842,7 @@
                 },
                 {
                     "measure": 44,
-                    "msec": 0,
+                    "msec": 71280,
                     "sentence": "",
                     "beats": [
                         {
@@ -861,7 +861,7 @@
                 },
                 {
                     "measure": 45,
-                    "msec": 0,
+                    "msec": 72900,
                     "sentence": "",
                     "beats": [
                         {
@@ -880,7 +880,7 @@
                 },
                 {
                     "measure": 46,
-                    "msec": 0,
+                    "msec": 74520,
                     "sentence": "",
                     "beats": [
                         {
@@ -899,7 +899,7 @@
                 },
                 {
                     "measure": 47,
-                    "msec": 0,
+                    "msec": 76140,
                     "sentence": "",
                     "beats": [
                         {
@@ -918,7 +918,7 @@
                 },
                 {
                     "measure": 48,
-                    "msec": 0,
+                    "msec": 77760,
                     "sentence": "",
                     "beats": [
                         {
@@ -937,7 +937,7 @@
                 },
                 {
                     "measure": 49,
-                    "msec": 0,
+                    "msec": 79380,
                     "sentence": "",
                     "beats": [
                         {
@@ -956,7 +956,7 @@
                 },
                 {
                     "measure": 50,
-                    "msec": 0,
+                    "msec": 81000,
                     "sentence": "",
                     "beats": [
                         {
@@ -975,7 +975,7 @@
                 },
                 {
                     "measure": 51,
-                    "msec": 0,
+                    "msec": 82620,
                     "sentence": "",
                     "beats": [
                         {
@@ -994,7 +994,7 @@
                 },
                 {
                     "measure": 52,
-                    "msec": 0,
+                    "msec": 84240,
                     "sentence": "",
                     "beats": [
                         {
@@ -1013,7 +1013,7 @@
                 },
                 {
                     "measure": 53,
-                    "msec": 0,
+                    "msec": 85860,
                     "sentence": "",
                     "beats": [
                         {
@@ -1032,7 +1032,7 @@
                 },
                 {
                     "measure": 54,
-                    "msec": 0,
+                    "msec": 87480,
                     "sentence": "",
                     "beats": [
                         {
@@ -1051,7 +1051,7 @@
                 },
                 {
                     "measure": 55,
-                    "msec": 0,
+                    "msec": 89100,
                     "sentence": "",
                     "beats": [
                         {
@@ -1070,7 +1070,7 @@
                 },
                 {
                     "measure": 56,
-                    "msec": 0,
+                    "msec": 90720,
                     "sentence": "",
                     "beats": [
                         {
@@ -1089,7 +1089,7 @@
                 },
                 {
                     "measure": 57,
-                    "msec": 0,
+                    "msec": 92745,
                     "sentence": "",
                     "beats": [
                         {
@@ -1108,7 +1108,7 @@
                 },
                 {
                     "measure": 58,
-                    "msec": 0,
+                    "msec": 94365,
                     "sentence": "",
                     "beats": [
                         {
@@ -1127,7 +1127,7 @@
                 },
                 {
                     "measure": 59,
-                    "msec": 0,
+                    "msec": 95985,
                     "sentence": "",
                     "beats": [
                         {
@@ -1146,7 +1146,7 @@
                 },
                 {
                     "measure": 60,
-                    "msec": 0,
+                    "msec": 97605,
                     "sentence": "",
                     "beats": [
                         {
@@ -1165,7 +1165,7 @@
                 },
                 {
                     "measure": 61,
-                    "msec": 0,
+                    "msec": 99225,
                     "sentence": "",
                     "beats": [
                         {
@@ -1184,7 +1184,7 @@
                 },
                 {
                     "measure": 62,
-                    "msec": 0,
+                    "msec": 100845,
                     "sentence": "",
                     "beats": [
                         {
@@ -1203,7 +1203,7 @@
                 },
                 {
                     "measure": 63,
-                    "msec": 0,
+                    "msec": 102465,
                     "sentence": "",
                     "beats": [
                         {
@@ -1222,7 +1222,7 @@
                 },
                 {
                     "measure": 64,
-                    "msec": 0,
+                    "msec": 104085,
                     "sentence": "",
                     "beats": [
                         {
@@ -1241,7 +1241,7 @@
                 },
                 {
                     "measure": 65,
-                    "msec": 0,
+                    "msec": 105705,
                     "sentence": "",
                     "beats": [
                         {
@@ -1260,7 +1260,7 @@
                 },
                 {
                     "measure": 66,
-                    "msec": 0,
+                    "msec": 107325,
                     "sentence": "",
                     "beats": [
                         {
@@ -1279,7 +1279,7 @@
                 },
                 {
                     "measure": 67,
-                    "msec": 0,
+                    "msec": 108945,
                     "sentence": "",
                     "beats": [
                         {
@@ -1298,7 +1298,7 @@
                 },
                 {
                     "measure": 68,
-                    "msec": 0,
+                    "msec": 110565,
                     "sentence": "",
                     "beats": [
                         {
@@ -1317,7 +1317,7 @@
                 },
                 {
                     "measure": 69,
-                    "msec": 0,
+                    "msec": 112185,
                     "sentence": "",
                     "beats": [
                         {
@@ -1336,7 +1336,7 @@
                 },
                 {
                     "measure": 70,
-                    "msec": 0,
+                    "msec": 113805,
                     "sentence": "",
                     "beats": [
                         {
@@ -1355,7 +1355,7 @@
                 },
                 {
                     "measure": 71,
-                    "msec": 0,
+                    "msec": 115425,
                     "sentence": "",
                     "beats": [
                         {
@@ -1374,7 +1374,7 @@
                 },
                 {
                     "measure": 72,
-                    "msec": 0,
+                    "msec": 117045,
                     "sentence": "",
                     "beats": [
                         {
@@ -1418,11 +1418,11 @@
                 },
                 {
                     "measure": 1,
-                    "msec": 0,
+                    "msec": 1620,
                     "sentence": "",
                     "beats": [
                         {
-							"controls": []
+                            "controls": []
                         },
                         {
                             "controls": ["WaveFormOn"]
@@ -1437,7 +1437,7 @@
                 },
                 {
                     "measure": 2,
-                    "msec": 0,
+                    "msec": 3240,
                     "sentence": "",
                     "beats": [
                         {
@@ -1456,7 +1456,7 @@
                 },
                 {
                     "measure": 3,
-                    "msec": 0,
+                    "msec": 4860,
                     "sentence": "",
                     "beats": [
                         {
@@ -1475,7 +1475,7 @@
                 },
                 {
                     "measure": 4,
-                    "msec": 0,
+                    "msec": 6480,
                     "sentence": "",
                     "beats": [
                         {
@@ -1494,7 +1494,7 @@
                 },
                 {
                     "measure": 5,
-                    "msec": 0,
+                    "msec": 8100,
                     "sentence": "",
                     "beats": [
                         {
@@ -1513,7 +1513,7 @@
                 },
                 {
                     "measure": 6,
-                    "msec": 0,
+                    "msec": 9720,
                     "sentence": "",
                     "beats": [
                         {
@@ -1532,7 +1532,7 @@
                 },
                 {
                     "measure": 7,
-                    "msec": 0,
+                    "msec": 11340,
                     "sentence": "",
                     "beats": [
                         {
@@ -1551,7 +1551,7 @@
                 },
                 {
                     "measure": 8,
-                    "msec": 0,
+                    "msec": 12960,
                     "sentence": "",
                     "beats": [
                         {
@@ -1570,7 +1570,7 @@
                 },
                 {
                     "measure": 9,
-                    "msec": 0,
+                    "msec": 14580,
                     "sentence": "",
                     "beats": [
                         {
@@ -1589,7 +1589,7 @@
                 },
                 {
                     "measure": 10,
-                    "msec": 16211,
+                    "msec": 16200,
                     "sentence": "朝",
                     "beats": [
                         {
@@ -1608,7 +1608,7 @@
                 },
                 {
                     "measure": 11,
-                    "msec": 17831,
+                    "msec": 17820,
                     "sentence": "起きたら",
                     "beats": [
                         {
@@ -1627,7 +1627,7 @@
                 },
                 {
                     "measure": 12,
-                    "msec": 19450,
+                    "msec": 19440,
                     "sentence": "とても",
                     "beats": [
                         {
@@ -1646,7 +1646,7 @@
                 },
                 {
                     "measure": 13,
-                    "msec": 21069,
+                    "msec": 21060,
                     "sentence": "いいてんき",
                     "beats": [
                         {
@@ -1665,7 +1665,7 @@
                 },
                 {
                     "measure": 14,
-                    "msec": 22687,
+                    "msec": 22680,
                     "sentence": "おなか",
                     "beats": [
                         {
@@ -1684,7 +1684,7 @@
                 },
                 {
                     "measure": 15,
-                    "msec": 24306,
+                    "msec": 24300,
                     "sentence": "すいたな",
                     "beats": [
                         {
@@ -1703,7 +1703,7 @@
                 },
                 {
                     "measure": 16,
-                    "msec": 25925,
+                    "msec": 25920,
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
@@ -1716,13 +1716,13 @@
                             "controls": []
                         },
                         {
-							"controls":  []
+                            "controls": []
                         }
                     ]
                 },
                 {
                     "measure": 17,
-                    "msec": 0,
+                    "msec": 27540,
                     "sentence": "",
                     "beats": [
                         {
@@ -1741,7 +1741,7 @@
                 },
                 {
                     "measure": 18,
-                    "msec": 0,
+                    "msec": 29160,
                     "sentence": "",
                     "beats": [
                         {
@@ -1760,7 +1760,7 @@
                 },
                 {
                     "measure": 19,
-                    "msec": 0,
+                    "msec": 30780,
                     "sentence": "",
                     "beats": [
                         {
@@ -1779,7 +1779,7 @@
                 },
                 {
                     "measure": 20,
-                    "msec": 0,
+                    "msec": 32400,
                     "sentence": "",
                     "beats": [
                         {
@@ -1798,7 +1798,7 @@
                 },
                 {
                     "measure": 21,
-                    "msec": 0,
+                    "msec": 34020,
                     "sentence": "",
                     "beats": [
                         {
@@ -1817,7 +1817,7 @@
                 },
                 {
                     "measure": 22,
-                    "msec": 0,
+                    "msec": 35640,
                     "sentence": "",
                     "beats": [
                         {
@@ -1836,7 +1836,7 @@
                 },
                 {
                     "measure": 23,
-                    "msec": 0,
+                    "msec": 37260,
                     "sentence": "",
                     "beats": [
                         {
@@ -1855,7 +1855,7 @@
                 },
                 {
                     "measure": 24,
-                    "msec": 0,
+                    "msec": 38880,
                     "sentence": "",
                     "beats": [
                         {
@@ -1874,7 +1874,7 @@
                 },
                 {
                     "measure": 25,
-                    "msec": 0,
+                    "msec": 40500,
                     "sentence": "",
                     "beats": [
                         {
@@ -1893,7 +1893,7 @@
                 },
                 {
                     "measure": 26,
-                    "msec": 42135,
+                    "msec": 42120,
                     "sentence": "夜",
                     "beats": [
                         {
@@ -1912,7 +1912,7 @@
                 },
                 {
                     "measure": 27,
-                    "msec": 43756,
+                    "msec": 43740,
                     "sentence": "更けたら",
                     "beats": [
                         {
@@ -1931,7 +1931,7 @@
                 },
                 {
                     "measure": 28,
-                    "msec": 45375,
+                    "msec": 45360,
                     "sentence": "おなか",
                     "beats": [
                         {
@@ -1950,7 +1950,7 @@
                 },
                 {
                     "measure": 29,
-                    "msec": 46994,
+                    "msec": 46980,
                     "sentence": "すいたな",
                     "beats": [
                         {
@@ -1969,7 +1969,7 @@
                 },
                 {
                     "measure": 30,
-                    "msec": 48613,
+                    "msec": 48600,
                     "sentence": "体重気に",
                     "beats": [
                         {
@@ -1988,7 +1988,7 @@
                 },
                 {
                     "measure": 31,
-                    "msec": 50232,
+                    "msec": 50220,
                     "sentence": "なるけど",
                     "beats": [
                         {
@@ -2007,7 +2007,7 @@
                 },
                 {
                     "measure": 32,
-                    "msec": 51851,
+                    "msec": 51840,
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
@@ -2026,7 +2026,7 @@
                 },
                 {
                     "measure": 33,
-                    "msec": 0,
+                    "msec": 53460,
                     "sentence": "",
                     "beats": [
                         {
@@ -2045,7 +2045,7 @@
                 },
                 {
                     "measure": 34,
-                    "msec": 0,
+                    "msec": 55080,
                     "sentence": "",
                     "beats": [
                         {
@@ -2064,7 +2064,7 @@
                 },
                 {
                     "measure": 35,
-                    "msec": 0,
+                    "msec": 56700,
                     "sentence": "",
                     "beats": [
                         {
@@ -2083,7 +2083,7 @@
                 },
                 {
                     "measure": 36,
-                    "msec": 0,
+                    "msec": 58320,
                     "sentence": "",
                     "beats": [
                         {
@@ -2102,7 +2102,7 @@
                 },
                 {
                     "measure": 37,
-                    "msec": 0,
+                    "msec": 59940,
                     "sentence": "",
                     "beats": [
                         {
@@ -2121,7 +2121,7 @@
                 },
                 {
                     "measure": 38,
-                    "msec": 0,
+                    "msec": 61560,
                     "sentence": "",
                     "beats": [
                         {
@@ -2140,7 +2140,7 @@
                 },
                 {
                     "measure": 39,
-                    "msec": 0,
+                    "msec": 63180,
                     "sentence": "",
                     "beats": [
                         {
@@ -2159,7 +2159,7 @@
                 },
                 {
                     "measure": 40,
-                    "msec": 0,
+                    "msec": 64800,
                     "sentence": "",
                     "beats": [
                         {
@@ -2178,7 +2178,7 @@
                 },
                 {
                     "measure": 41,
-                    "msec": 0,
+                    "msec": 66420,
                     "sentence": "",
                     "beats": [
                         {
@@ -2197,7 +2197,7 @@
                 },
                 {
                     "measure": 42,
-                    "msec": 68061,
+                    "msec": 68040,
                     "sentence": "３時だ",
                     "beats": [
                         {
@@ -2216,7 +2216,7 @@
                 },
                 {
                     "measure": 43,
-                    "msec": 69681,
+                    "msec": 69660,
                     "sentence": "おやつだ",
                     "beats": [
                         {
@@ -2235,7 +2235,7 @@
                 },
                 {
                     "measure": 44,
-                    "msec": 71300,
+                    "msec": 71280,
                     "sentence": "何",
                     "beats": [
                         {
@@ -2254,7 +2254,7 @@
                 },
                 {
                     "measure": 45,
-                    "msec": 72921,
+                    "msec": 72900,
                     "sentence": "食べよう",
                     "beats": [
                         {
@@ -2273,7 +2273,7 @@
                 },
                 {
                     "measure": 46,
-                    "msec": 74540,
+                    "msec": 74520,
                     "sentence": "やっぱり",
                     "beats": [
                         {
@@ -2292,7 +2292,7 @@
                 },
                 {
                     "measure": 47,
-                    "msec": 76159,
+                    "msec": 76140,
                     "sentence": "ここは",
                     "beats": [
                         {
@@ -2311,7 +2311,7 @@
                 },
                 {
                     "measure": 48,
-                    "msec": 77778,
+                    "msec": 77760,
                     "sentence": "らーめん食べよう",
                     "beats": [
 						{
@@ -2330,7 +2330,7 @@
                 },
                 {
                     "measure": 49,
-                    "msec": 0,
+                    "msec": 79380,
                     "sentence": "",
                     "beats": [
                         {
@@ -2349,7 +2349,7 @@
                 },
                 {
                     "measure": 50,
-                    "msec": 81015,
+                    "msec": 81000,
                     "sentence": "らーめん",
                     "beats": [
                         {
@@ -2368,7 +2368,7 @@
                 },
                 {
                     "measure": 51,
-                    "msec": 82633,
+                    "msec": 82620,
                     "sentence": "らーめん",
                     "beats": [
                         {
@@ -2387,7 +2387,7 @@
                 },
                 {
                     "measure": 52,
-                    "msec": 84251,
+                    "msec": 84240,
                     "sentence": "らーめん",
                     "beats": [
                         {
@@ -2406,7 +2406,7 @@
                 },
                 {
                     "measure": 53,
-                    "msec": 85869,
+                    "msec": 85860,
                     "sentence": "大好き",
                     "beats": [
                         {
@@ -2425,7 +2425,7 @@
                 },
                 {
                     "measure": 54,
-                    "msec": 87489,
+                    "msec": 87480,
                     "sentence": "らーめん",
                     "beats": [
                         {
@@ -2444,7 +2444,7 @@
                 },
                 {
                     "measure": 55,
-                    "msec": 89107,
+                    "msec": 89100,
                     "sentence": "らーめん",
                     "beats": [
                         {
@@ -2463,7 +2463,7 @@
                 },
                 {
                     "measure": 56,
-                    "msec": 90725,
+                    "msec": 90720,
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
@@ -2482,7 +2482,7 @@
                 },
                 {
                     "measure": 57,
-                    "msec": 0,
+                    "msec": 92745,
                     "sentence": "",
                     "beats": [
                         {
@@ -2501,7 +2501,7 @@
                 },
                 {
                     "measure": 58,
-                    "msec": 0,
+                    "msec": 94365,
                     "sentence": "",
                     "beats": [
                         {
@@ -2520,7 +2520,7 @@
                 },
                 {
                     "measure": 59,
-                    "msec": 0,
+                    "msec": 95985,
                     "sentence": "",
                     "beats": [
                         {
@@ -2539,7 +2539,7 @@
                 },
                 {
                     "measure": 60,
-                    "msec": 0,
+                    "msec": 97605,
                     "sentence": "",
                     "beats": [
                         {
@@ -2558,7 +2558,7 @@
                 },
                 {
                     "measure": 61,
-                    "msec": 0,
+                    "msec": 99225,
                     "sentence": "",
                     "beats": [
                         {
@@ -2577,7 +2577,7 @@
                 },
                 {
                     "measure": 62,
-                    "msec": 0,
+                    "msec": 100845,
                     "sentence": "",
                     "beats": [
                         {
@@ -2596,7 +2596,7 @@
                 },
                 {
                     "measure": 63,
-                    "msec": 0,
+                    "msec": 102465,
                     "sentence": "",
                     "beats": [
                         {
@@ -2615,7 +2615,7 @@
                 },
                 {
                     "measure": 64,
-                    "msec": 0,
+                    "msec": 104085,
                     "sentence": "",
                     "beats": [
                         {
@@ -2634,7 +2634,7 @@
                 },
                 {
                     "measure": 65,
-                    "msec": 0,
+                    "msec": 105705,
                     "sentence": "",
                     "beats": [
                         {
@@ -2653,12 +2653,12 @@
                 },
                 {
                     "measure": 66,
-                    "msec": 0,
+                    "msec": 107325,
                     "sentence": "",
                     "beats": [
                         {
                             "controls": []
-						},
+                        },
                         {
                             "controls": []
                         },
@@ -2672,7 +2672,7 @@
                 },
                 {
                     "measure": 67,
-                    "msec": 0,
+                    "msec": 108945,
                     "sentence": "",
                     "beats": [
                         {
@@ -2691,7 +2691,7 @@
                 },
                 {
                     "measure": 68,
-                    "msec": 0,
+                    "msec": 110565,
                     "sentence": "",
                     "beats": [
                         {
@@ -2710,7 +2710,7 @@
                 },
                 {
                     "measure": 69,
-                    "msec": 0,
+                    "msec": 112185,
                     "sentence": "",
                     "beats": [
                         {
@@ -2729,7 +2729,7 @@
                 },
                 {
                     "measure": 70,
-                    "msec": 0,
+                    "msec": 113805,
                     "sentence": "",
                     "beats": [
                         {
@@ -2748,7 +2748,7 @@
                 },
                 {
                     "measure": 71,
-                    "msec": 0,
+                    "msec": 115425,
                     "sentence": "",
                     "beats": [
                         {
@@ -2767,7 +2767,7 @@
                 },
                 {
                     "measure": 72,
-                    "msec": 0,
+                    "msec": 117045,
                     "sentence": "",
                     "beats": [
                         {
@@ -2811,7 +2811,7 @@
                 },
                 {
                     "measure": 1,
-                    "msec": 0,
+                    "msec": 1620,
                     "sentence": "",
                     "beats": [
                         {
@@ -2830,7 +2830,7 @@
                 },
                 {
                     "measure": 2,
-                    "msec": 0,
+                    "msec": 3240,
                     "sentence": "",
                     "beats": [
                         {
@@ -2849,7 +2849,7 @@
                 },
                 {
                     "measure": 3,
-                    "msec": 0,
+                    "msec": 4860,
                     "sentence": "",
                     "beats": [
                         {
@@ -2868,7 +2868,7 @@
                 },
                 {
                     "measure": 4,
-                    "msec": 0,
+                    "msec": 6480,
                     "sentence": "",
                     "beats": [
                         {
@@ -2887,7 +2887,7 @@
                 },
                 {
                     "measure": 5,
-                    "msec": 0,
+                    "msec": 8100,
                     "sentence": "",
                     "beats": [
                         {
@@ -2906,7 +2906,7 @@
                 },
                 {
                     "measure": 6,
-                    "msec": 0,
+                    "msec": 9720,
                     "sentence": "",
                     "beats": [
                         {
@@ -2925,7 +2925,7 @@
                 },
                 {
                     "measure": 7,
-                    "msec": 0,
+                    "msec": 11340,
                     "sentence": "",
                     "beats": [
                         {
@@ -2944,7 +2944,7 @@
                 },
                 {
                     "measure": 8,
-                    "msec": 0,
+                    "msec": 12960,
                     "sentence": "",
                     "beats": [
                         {
@@ -2963,7 +2963,7 @@
                 },
                 {
                     "measure": 9,
-                    "msec": 0,
+                    "msec": 14580,
                     "sentence": "",
                     "beats": [
                         {
@@ -2982,7 +2982,7 @@
                 },
                 {
                     "measure": 10,
-                    "msec": 0,
+                    "msec": 16200,
                     "sentence": "",
                     "beats": [
                         {
@@ -3001,7 +3001,7 @@
                 },
                 {
                     "measure": 11,
-                    "msec": 0,
+                    "msec": 17820,
                     "sentence": "",
                     "beats": [
                         {
@@ -3020,7 +3020,7 @@
                 },
                 {
                     "measure": 12,
-                    "msec": 0,
+                    "msec": 19440,
                     "sentence": "",
                     "beats": [
                         {
@@ -3039,7 +3039,7 @@
                 },
                 {
                     "measure": 13,
-                    "msec": 0,
+                    "msec": 21060,
                     "sentence": "",
                     "beats": [
                         {
@@ -3058,7 +3058,7 @@
                 },
                 {
                     "measure": 14,
-                    "msec": 0,
+                    "msec": 22680,
                     "sentence": "",
                     "beats": [
                         {
@@ -3077,7 +3077,7 @@
                 },
                 {
                     "measure": 15,
-                    "msec": 0,
+                    "msec": 24300,
                     "sentence": "",
                     "beats": [
                         {
@@ -3096,7 +3096,7 @@
                 },
                 {
                     "measure": 16,
-                    "msec": 0,
+                    "msec": 25920,
                     "sentence": "",
                     "beats": [
                         {
@@ -3115,7 +3115,7 @@
                 },
                 {
                     "measure": 17,
-                    "msec": 0,
+                    "msec": 27540,
                     "sentence": "",
                     "beats": [
                         {
@@ -3134,7 +3134,7 @@
                 },
                 {
                     "measure": 18,
-                    "msec": 0,
+                    "msec": 29160,
                     "sentence": "",
                     "beats": [
                         {
@@ -3153,7 +3153,7 @@
                 },
                 {
                     "measure": 19,
-                    "msec": 0,
+                    "msec": 30780,
                     "sentence": "",
                     "beats": [
                         {
@@ -3172,7 +3172,7 @@
                 },
                 {
                     "measure": 20,
-                    "msec": 0,
+                    "msec": 32400,
                     "sentence": "",
                     "beats": [
                         {
@@ -3191,7 +3191,7 @@
                 },
                 {
                     "measure": 21,
-                    "msec": 0,
+                    "msec": 34020,
                     "sentence": "",
                     "beats": [
                         {
@@ -3210,7 +3210,7 @@
                 },
                 {
                     "measure": 22,
-                    "msec": 0,
+                    "msec": 35640,
                     "sentence": "",
                     "beats": [
                         {
@@ -3229,7 +3229,7 @@
                 },
                 {
                     "measure": 23,
-                    "msec": 0,
+                    "msec": 37260,
                     "sentence": "",
                     "beats": [
                         {
@@ -3248,7 +3248,7 @@
                 },
                 {
                     "measure": 24,
-                    "msec": 0,
+                    "msec": 38880,
                     "sentence": "",
                     "beats": [
                         {
@@ -3267,7 +3267,7 @@
                 },
                 {
                     "measure": 25,
-                    "msec": 0,
+                    "msec": 40500,
                     "sentence": "",
                     "beats": [
                         {
@@ -3286,7 +3286,7 @@
                 },
                 {
                     "measure": 26,
-                    "msec": 0,
+                    "msec": 42120,
                     "sentence": "",
                     "beats": [
                         {
@@ -3305,7 +3305,7 @@
                 },
                 {
                     "measure": 27,
-                    "msec": 0,
+                    "msec": 43740,
                     "sentence": "",
                     "beats": [
                         {
@@ -3324,7 +3324,7 @@
                 },
                 {
                     "measure": 28,
-                    "msec": 0,
+                    "msec": 45360,
                     "sentence": "",
                     "beats": [
                         {
@@ -3343,7 +3343,7 @@
                 },
                 {
                     "measure": 29,
-                    "msec": 0,
+                    "msec": 46980,
                     "sentence": "",
                     "beats": [
                         {
@@ -3362,7 +3362,7 @@
                 },
                 {
                     "measure": 30,
-                    "msec": 0,
+                    "msec": 48600,
                     "sentence": "",
                     "beats": [
                         {
@@ -3381,7 +3381,7 @@
                 },
                 {
                     "measure": 31,
-                    "msec": 0,
+                    "msec": 50220,
                     "sentence": "",
                     "beats": [
                         {
@@ -3400,7 +3400,7 @@
                 },
                 {
                     "measure": 32,
-                    "msec": 0,
+                    "msec": 51840,
                     "sentence": "",
                     "beats": [
                         {
@@ -3419,7 +3419,7 @@
                 },
                 {
                     "measure": 33,
-                    "msec": 0,
+                    "msec": 53460,
                     "sentence": "",
                     "beats": [
                         {
@@ -3438,7 +3438,7 @@
                 },
                 {
                     "measure": 34,
-                    "msec": 0,
+                    "msec": 55080,
                     "sentence": "",
                     "beats": [
                         {
@@ -3457,7 +3457,7 @@
                 },
                 {
                     "measure": 35,
-                    "msec": 0,
+                    "msec": 56700,
                     "sentence": "",
                     "beats": [
                         {
@@ -3476,7 +3476,7 @@
                 },
                 {
                     "measure": 36,
-                    "msec": 0,
+                    "msec": 58320,
                     "sentence": "",
                     "beats": [
                         {
@@ -3495,7 +3495,7 @@
                 },
                 {
                     "measure": 37,
-                    "msec": 0,
+                    "msec": 59940,
                     "sentence": "",
                     "beats": [
                         {
@@ -3514,7 +3514,7 @@
                 },
                 {
                     "measure": 38,
-                    "msec": 0,
+                    "msec": 61560,
                     "sentence": "",
                     "beats": [
                         {
@@ -3533,7 +3533,7 @@
                 },
                 {
                     "measure": 39,
-                    "msec": 0,
+                    "msec": 63180,
                     "sentence": "",
                     "beats": [
                         {
@@ -3552,7 +3552,7 @@
                 },
                 {
                     "measure": 40,
-                    "msec": 0,
+                    "msec": 64800,
                     "sentence": "",
                     "beats": [
                         {
@@ -3571,7 +3571,7 @@
                 },
                 {
                     "measure": 41,
-                    "msec": 0,
+                    "msec": 66420,
                     "sentence": "",
                     "beats": [
                         {
@@ -3590,7 +3590,7 @@
                 },
                 {
                     "measure": 42,
-                    "msec": 0,
+                    "msec": 68040,
                     "sentence": "",
                     "beats": [
                         {
@@ -3609,7 +3609,7 @@
                 },
                 {
                     "measure": 43,
-                    "msec": 0,
+                    "msec": 69660,
                     "sentence": "",
                     "beats": [
                         {
@@ -3628,7 +3628,7 @@
                 },
                 {
                     "measure": 44,
-                    "msec": 0,
+                    "msec": 71280,
                     "sentence": "",
                     "beats": [
                         {
@@ -3647,7 +3647,7 @@
                 },
                 {
                     "measure": 45,
-                    "msec": 0,
+                    "msec": 72900,
                     "sentence": "",
                     "beats": [
                         {
@@ -3666,7 +3666,7 @@
                 },
                 {
                     "measure": 46,
-                    "msec": 0,
+                    "msec": 74520,
                     "sentence": "",
                     "beats": [
                         {
@@ -3685,7 +3685,7 @@
                 },
                 {
                     "measure": 47,
-                    "msec": 0,
+                    "msec": 76140,
                     "sentence": "",
                     "beats": [
                         {
@@ -3704,7 +3704,7 @@
                 },
                 {
                     "measure": 48,
-                    "msec": 0,
+                    "msec": 77760,
                     "sentence": "",
                     "beats": [
                         {
@@ -3723,7 +3723,7 @@
                 },
                 {
                     "measure": 49,
-                    "msec": 0,
+                    "msec": 79380,
                     "sentence": "",
                     "beats": [
                         {
@@ -3742,7 +3742,7 @@
                 },
                 {
                     "measure": 50,
-                    "msec": 0,
+                    "msec": 81000,
                     "sentence": "",
                     "beats": [
                         {
@@ -3761,7 +3761,7 @@
                 },
                 {
                     "measure": 51,
-                    "msec": 0,
+                    "msec": 82620,
                     "sentence": "",
                     "beats": [
                         {
@@ -3780,7 +3780,7 @@
                 },
                 {
                     "measure": 52,
-                    "msec": 0,
+                    "msec": 84240,
                     "sentence": "",
                     "beats": [
                         {
@@ -3799,7 +3799,7 @@
                 },
                 {
                     "measure": 53,
-                    "msec": 0,
+                    "msec": 85860,
                     "sentence": "",
                     "beats": [
                         {
@@ -3818,7 +3818,7 @@
                 },
                 {
                     "measure": 54,
-                    "msec": 0,
+                    "msec": 87480,
                     "sentence": "",
                     "beats": [
                         {
@@ -3837,7 +3837,7 @@
                 },
                 {
                     "measure": 55,
-                    "msec": 0,
+                    "msec": 89100,
                     "sentence": "",
                     "beats": [
                         {
@@ -3856,7 +3856,7 @@
                 },
                 {
                     "measure": 56,
-                    "msec": 0,
+                    "msec": 90720,
                     "sentence": "",
                     "beats": [
                         {
@@ -3875,7 +3875,7 @@
                 },
                 {
                     "measure": 57,
-                    "msec": 0,
+                    "msec": 92745,
                     "sentence": "",
                     "beats": [
                         {
@@ -3894,7 +3894,7 @@
                 },
                 {
                     "measure": 58,
-                    "msec": 0,
+                    "msec": 94365,
                     "sentence": "",
                     "beats": [
                         {
@@ -3913,7 +3913,7 @@
                 },
                 {
                     "measure": 59,
-                    "msec": 0,
+                    "msec": 95985,
                     "sentence": "",
                     "beats": [
                         {
@@ -3932,7 +3932,7 @@
                 },
                 {
                     "measure": 60,
-                    "msec": 0,
+                    "msec": 97605,
                     "sentence": "",
                     "beats": [
                         {
@@ -3951,7 +3951,7 @@
                 },
                 {
                     "measure": 61,
-                    "msec": 0,
+                    "msec": 99225,
                     "sentence": "",
                     "beats": [
                         {
@@ -3970,7 +3970,7 @@
                 },
                 {
                     "measure": 62,
-                    "msec": 0,
+                    "msec": 100845,
                     "sentence": "",
                     "beats": [
                         {
@@ -3989,7 +3989,7 @@
                 },
                 {
                     "measure": 63,
-                    "msec": 0,
+                    "msec": 102465,
                     "sentence": "",
                     "beats": [
                         {
@@ -4008,7 +4008,7 @@
                 },
                 {
                     "measure": 64,
-                    "msec": 0,
+                    "msec": 104085,
                     "sentence": "",
                     "beats": [
                         {
@@ -4027,7 +4027,7 @@
                 },
                 {
                     "measure": 65,
-                    "msec": 0,
+                    "msec": 105705,
                     "sentence": "",
                     "beats": [
                         {
@@ -4046,7 +4046,7 @@
                 },
                 {
                     "measure": 66,
-                    "msec": 0,
+                    "msec": 107325,
                     "sentence": "",
                     "beats": [
                         {
@@ -4065,7 +4065,7 @@
                 },
                 {
                     "measure": 67,
-                    "msec": 0,
+                    "msec": 108945,
                     "sentence": "",
                     "beats": [
                         {
@@ -4084,7 +4084,7 @@
                 },
                 {
                     "measure": 68,
-                    "msec": 0,
+                    "msec": 110565,
                     "sentence": "",
                     "beats": [
                         {
@@ -4103,7 +4103,7 @@
                 },
                 {
                     "measure": 69,
-                    "msec": 0,
+                    "msec": 112185,
                     "sentence": "",
                     "beats": [
                         {
@@ -4122,7 +4122,7 @@
                 },
                 {
                     "measure": 70,
-                    "msec": 0,
+                    "msec": 113805,
                     "sentence": "",
                     "beats": [
                         {
@@ -4141,7 +4141,7 @@
                 },
                 {
                     "measure": 71,
-                    "msec": 0,
+                    "msec": 115425,
                     "sentence": "",
                     "beats": [
                         {
@@ -4160,7 +4160,7 @@
                 },
                 {
                     "measure": 72,
-                    "msec": 0,
+                    "msec": 117045,
                     "sentence": "",
                     "beats": [
                         {

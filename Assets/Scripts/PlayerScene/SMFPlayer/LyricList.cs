@@ -113,7 +113,7 @@ public class LyricList : MonoBehaviour {
 		for (var track = 0; track < numOfTrack; track++) {
 			var trackData = new Track(track);
 			for (var meas = 0; meas < numOfMeasure; meas++) {
-				uint msec = (uint)eventMap.GetMsec(meas, track, 0, map);
+				uint msec = (uint)eventMap.GetMsec(meas, map);
 				string sentence = eventMap.GetSentence(meas, track, map);
 				SMFPlayer.Beat beat = eventMap.GetBeat(meas);
 				trackData.lyrics.Add(new LyricData(meas, msec, sentence, beat.unit));

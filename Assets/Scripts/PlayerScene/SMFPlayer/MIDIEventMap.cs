@@ -23,6 +23,7 @@ public class MIDIEventMap : MIDIHandler {
 	}
 	public List<List<TrackData>> lyrics = new List<List<TrackData>>();
 	public List<SMFPlayer.Beat> beats = new List<SMFPlayer.Beat>();
+	public List<uint> mSecList = new List<uint>();
 	public int numOfMeasure = 0;
 	public int numOfTrack = 0;
 	private int currentMeasure = 0;
@@ -44,6 +45,7 @@ public class MIDIEventMap : MIDIHandler {
 			lyrics.Add(tracks);
 			SMFPlayer.Beat beat = new SMFPlayer.Beat();
 			beats.Add(beat);
+			mSecList.Add(0);
 		}
 		MIDIHandler backupHandler = player.midiHandler;
 		player.midiHandler = this;
@@ -55,6 +57,7 @@ public class MIDIEventMap : MIDIHandler {
 		while (player.Update(time)) {
 			time += 10;
 		}
+		player.Stop();
 		player.Reset();
 		player.mute = fLastMute;
 		player.midiHandler = backupHandler;
@@ -93,6 +96,7 @@ public class MIDIEventMap : MIDIHandler {
 		beat.count = player.beat.count;
 		beat.unit = player.beat.unit;
 		beats[currentMeasure] = beat;
+		mSecList[currentMeasure] = currentMsec;
 	}
 
 	public int GetNumOfLyrics(int measure, int track) {
@@ -111,6 +115,7 @@ public class MIDIEventMap : MIDIHandler {
 	public LyricData GetLyricData(int measure, int track, int num) {
 		if (!DataExist(measure, track, num)) {
 			LyricData data = new LyricData();
+			data.msec = GetMsec(measure);
 			return data;
 		}
 		return lyrics[measure][track].data[num];
@@ -126,11 +131,14 @@ public class MIDIEventMap : MIDIHandler {
 		LyricData lyricData = GetLyricData(measure, track, num);
 		return lyricData.position;
 	}
-	public uint GetMsec(int measure, int track, int num) {
-		LyricData lyricData = GetLyricData(measure, track, num);
-		return lyricData.msec;
+	public uint GetMsec(int measure) {
+		if (measure < 0) return 0;
+		if (measure >= mSecList.Count) return 0;
+		return mSecList[measure];
 	}
 	public SMFPlayer.Beat GetBeat(int measure) {
+		if (measure < 0) return player.beat;
+		if (measure >= beats.Count) return player.beat;
 		return beats[measure];
 	}
 }
