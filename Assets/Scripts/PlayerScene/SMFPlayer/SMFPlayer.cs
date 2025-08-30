@@ -36,9 +36,10 @@ public class SMFPlayer
 	private UInt32 nextEventTime = 0;
 	private UInt32 startTime = 0;
 	private UInt32 lastMeasTime = 0;
+	public UInt32 currentMsec = 0;
+	public int currentMeasure = 0;
 
-	public static UInt32 BEReader(BinaryReader reader, int len)
-	{
+	public static UInt32 BEReader(BinaryReader reader, int len) {
 		UInt32 value = 0;
 		for (int i = 0; i < len; i++) {
 			byte data = reader.ReadByte();
@@ -80,17 +81,17 @@ public class SMFPlayer
 		numOfTrack = tracks.Count;
 		// UnityEngine.Debug.Log("complete parsing SMF");
 	}
-	public void Reset()
-	{
+	public void Reset() {
 		beat.count = 4;
 		beat.unit = 4; // default is 4 / 4
 		nextEventTime = 0;
 		startTime = 0;
 		lastMeasTime = 0;
 		isEnd = false;
-		foreach (TrackPlayer player in players){
+		foreach (TrackPlayer player in players) {
 			player.Reset();
 		}
+		currentMsec = 0;
 		midiHandler.EventIn(MIDIHandler.Event.Reset);
 	}
 	public bool isPlaying()
@@ -113,37 +114,32 @@ public class SMFPlayer
 		return nexttime;
 	}
 
-	public bool Start(int _startTime = -1)
-	{
+	public bool Start(UInt32 _startTime = 0) {
 		// UnityEngine.Debug.Log("Play Start");
 		if (!isValid) {
 			return false;
 		}
-		playing = true;
 		midiHandler.EventIn(MIDIHandler.Event.Start);
 		Reset();
+		if (_startTime > 0) {
+			mute = true;
+			Update(_startTime - 1);
+			mute = false;
+		}
+		Update(_startTime);
+		startTime = _startTime;
 		stopWatch.Start();
-		if (_startTime < 0) {
-			startTime = (UInt32)stopWatch.ElapsedMilliseconds;
-		} else {
-			startTime = (UInt32)_startTime;
-		}
-		UInt32 nexttime = tickup();
-		if (nexttime == UInt32.MaxValue) {
-			playing = false;
-		}
-		UInt32 nextEventTime = nexttime + startTime;
-		// UnityEngine.Debug.Log($"nextEventTime: {nextEventTime}");
+		playing = true;
 		return playing;
 	}
 
 	public bool Update(UInt32 currentTime = 0)
 	{
-		if (playing == false) {
+		if (currentTime == 0 && playing == false) {
 			return false;
 		}
 		if (currentTime == 0) {
-			currentTime = (UInt32)stopWatch.ElapsedMilliseconds;
+			currentTime = (UInt32)stopWatch.ElapsedMilliseconds + startTime;
 		}
 		// UnityEngine.Debug.Log($"currentTime: {currentTime}");
 		while (currentTime >= nextEventTime) {
@@ -152,9 +148,11 @@ public class SMFPlayer
 				Stop();
 				break;
 			}
-			nextEventTime = nexttime + startTime;
-			// UnityEngine.Debug.Log($"currentTime: {currentTime}, nextEventTime: {nextEventTime}");
+			nextEventTime = nexttime;
+			// UnityEngine.Debug.Log($"currentTime: {currentTime} , nextEventTime: {nextEventTime}");
 		}
+		// UnityEngine.Debug.Log($"currentTime: {currentTime} , nextEventTime: {nextEventTime}");
+		this.currentMsec = currentTime;
 		return playing;
 	}
 
@@ -163,7 +161,7 @@ public class SMFPlayer
 		if (!isValid) {
 			return false;
 		}
-		stopWatch.Stop();
+		stopWatch.Reset();
 		playing = false;
 		midiHandler.EventIn(isEnd ? MIDIHandler.Event.End : MIDIHandler.Event.Stop);
 		return true;
@@ -672,9 +670,11 @@ public class SMFPlayer
 				}
 				break;
 			case typeMeasure:
+				player.currentMeasure = currentMeasure;
 				player.lastMeasTime = GetMsec();
 				if (!player.mute) {
 					player.midiHandler?.MeasureIn(data[1], (int)player.GetMsecForMeasure(), GetMsec());
+					// UnityEngine.Debug.Log($"Meas: {data[1]}");
 				}
 				currentMeasure++;
 				break;
