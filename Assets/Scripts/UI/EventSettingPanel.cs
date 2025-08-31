@@ -20,7 +20,7 @@ public class EventSettingPanel : MonoBehaviour {
 	private int beat;
 	private int num;
 	void Awake() {
-		selectorPrefab = (GameObject)Resources.Load("UI/ParamSelector");
+		selectorPrefab = (GameObject)Resources.Load("Prefab/UI/ParamSelector");
 		commands = Enum.GetNames(typeof(Parameter.Command));
 		string [] options = new string [commands.Length + 1];
 		options[0] = "-----";

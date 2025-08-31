@@ -24,8 +24,8 @@ public class EditPanel : MonoBehaviour {
 		}
 		trackInput.value = 0;
 		trackInput.captionText.text = "1";
-		textTrackNumber = (GameObject)Resources.Load("UI/TrackNumber");
-		eventButton = (GameObject)Resources.Load("UI/EventButton");
+		textTrackNumber = (GameObject)Resources.Load("Prefab/UI/TrackNumber");
+		eventButton = (GameObject)Resources.Load("Prefab/UI/EventButton");
 	}
 	public void OnTrackValueChanged(int value) {
 		measure = -1;
