@@ -1403,10 +1403,10 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-							"controls": ["Words_On", "WaveFormOn", "Effect_Film"]
+							"controls": ["Words_On", "WaveForm_On", "Effect_Film"]
                         },
                         {
-                            "controls": ["WaveFormOff"]
+                            "controls": ["WaveForm_Off"]
                         },
                         {
                             "controls": ["Effect_Twist_QuaterBeat"]
@@ -1425,10 +1425,10 @@
                             "controls": []
                         },
                         {
-                            "controls": ["WaveFormOn"]
+                            "controls": ["WaveForm_On"]
                         },
                         {
-                            "controls": ["WaveFormOff","Effect_Twist_QuaterBeat"]
+                            "controls": ["WaveForm_Off","Effect_Twist_QuaterBeat"]
                         },
                         {
                             "controls": []
@@ -1441,7 +1441,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Effect_RGBShift", "WallRect", "UCBlack", "Words_Off", "UnityChanShiftOn"]
+							"controls": ["Effect_RGBShift", "Wall_Rect", "UnityChan_Black", "Words_Off", "UnityChanShift_On"]
                         },
                         {
                             "controls": []
@@ -1517,7 +1517,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["UCColor"]
+							"controls": ["UnityChan_Color"]
                         },
                         {
                             "controls": []
@@ -1555,7 +1555,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["UnityChanShiftOn"]
+							"controls": ["UnityChanShift_On"]
                         },
                         {
                             "controls": []
@@ -1574,10 +1574,10 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Ramen", "WaveFormOn", "MultiL_On"]
+							"controls": ["Ramen", "WaveForm_On", "MultiL_On"]
                         },
                         {
-                            "controls": ["WaveFormOff","Effect_DotScreen_QuaterBeat"]
+                            "controls": ["WaveForm_Off","Effect_DotScreen_QuaterBeat"]
                         },
                         {
                             "controls": ["Effect_Twist_QuaterBeat"]
@@ -1593,7 +1593,7 @@
                     "sentence": "朝",
                     "beats": [
                         {
-							"controls": ["UCOff", "UnityChanShiftOff", "WallOff","Sun_8", "UnityChanRunOn","WaveFormOff", "RamenDiskOn", "Effect_Film"]
+							"controls": ["UnityChan_Off", "UnityChanShift_Off", "Wall_Off", "Sun_8", "UnityChanRun_On","WaveForm_Off", "RamenDisk_On", "Effect_Film"]
                         },
                         {
                             "controls": []
@@ -1726,7 +1726,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Sun_Off", "UnityChanRunOff", "RamenDiskOff", "RamenCupAuto","Words_Off","WallCircle","WallOn", "Effect_RGBShift"]
+							"controls": ["Sun_Off", "UnityChanRun_Off", "RamenDisk_Off", "RamenCupAuto","Words_Off","Wall_Circle","Wall_On", "Effect_RGBShift"]
                         },
                         {
                             "controls": []
@@ -1764,7 +1764,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["UCBlack", "UnityChanShiftOn",  "Effect_RGBShift"]
+							"controls": ["UnityChan_Black", "UnityChanShift_On",  "Effect_RGBShift"]
                         },
                         {
                             "controls": []
@@ -1802,7 +1802,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["UCColor"]
+							"controls": ["UnityChan_Color"]
                         },
                         {
                             "controls": []
@@ -1897,7 +1897,7 @@
                     "sentence": "夜",
                     "beats": [
                         {
-							"controls": ["Night_On","WallOff","UCOff","UnityChanRunOn","RamenDiskOn","UnityChanShiftOff", "ShootingStar", "Effect_Off"]
+							"controls": ["Night_On", "Wall_Off", "UnityChan_Off", "UnityChanRun_On", "RamenDisk_On", "UnityChanShift_Off", "ShootingStar", "Effect_Off"]
                         },
                         {
                             "controls": []
@@ -1973,7 +1973,7 @@
                     "sentence": "体重気に",
                     "beats": [
                         {
-							"controls": ["MultiL_Off", "MultiR_On", "Co met"]
+							"controls": ["MultiL_Off", "MultiR_On", "Comet"]
                         },
                         {
                             "controls": []
@@ -2011,7 +2011,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-							"controls": ["UnityChanRunOff", "RamenDiskOff"]
+							"controls": ["UnityChanRun_Off", "RamenDisk_Off"]
                         },
                         {
                             "controls": []
@@ -2049,7 +2049,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Night_Off", "UCColor", "UnityChanShiftOn", "Effect_RGBShift", "WallRect"]
+							"controls": ["Night_Off", "UnityChan_Color", "UnityChanShift_On", "Effect_RGBShift", "Wall_Rect"]
                         },
                         {
                             "controls": []
@@ -2201,7 +2201,7 @@
                     "sentence": "３時だ",
                     "beats": [
                         {
-							"controls": ["WallOff", "UCOff", "UnityChanShiftOff", "Effect_Film", "Sun_15","UnityChanRunOn","RamenDiskOn"]
+							"controls": ["Wall_Off", "UnityChan_Off", "UnityChanShift_Off", "Effect_Film", "Sun_15", "UnityChanRun_On", "RamenDisk_On"]
                         },
                         {
                             "controls": []
@@ -2315,7 +2315,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
 						{
-							"controls": ["Words_On","MultiWordR_Off","Donburi", "Confetti"]
+							"controls": ["Words_On", "MultiWordR_Off", "Donburi", "Confetti"]
 						},
                         {
                             "controls": []
@@ -2353,7 +2353,7 @@
                     "sentence": "らーめん",
                     "beats": [
                         {
-                            "controls": ["Sun_Off","Words_On"]
+                            "controls": ["Sun_Off", "Words_On"]
                         },
                         {
                             "controls": []
@@ -2470,13 +2470,13 @@
                             "controls": ["NarutoStar_6"]
                         },
                         {
-                            "controls": ["Effect_Twist_QuaterBeat","WaveFormOn"]
+                            "controls": ["Effect_Twist_QuaterBeat", "WaveForm_On"]
                         },
                         {
-                            "controls": ["WaveFormOff"]
+                            "controls": ["WaveForm_Off"]
                         },
                         {
-                            "controls": ["Effect_Twist_QuaterBeat","WaveFormOn"]
+                            "controls": ["Effect_Twist_QuaterBeat", "WaveForm_On"]
                         }
                     ]
                 },
@@ -2486,7 +2486,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["WaveFormOff", "Words_Off"]
+                            "controls": ["WaveForm_Off", "Words_Off"]
                         },
                         {
                             "controls": []
@@ -2647,7 +2647,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["UnityChanRunOff","RamenDiskOff", "Night_Off", "WallRect", "UCColor", "UnityChanShiftOn", "Effect_RGBShift"]
+                            "controls": ["UnityChanRun_Off", "RamenDisk_Off", "Night_Off", "Wall_Rect", "UnityChan_Color", "UnityChanShift_On", "Effect_RGBShift"]
                         }
                     ]
                 },
@@ -2739,7 +2739,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["WallOff", "UCOff", "UnityChanShiftOff", "BlackOut_On"]
+                            "controls": ["Wall_Off", "UnityChan_Off", "UnityChanShift_Off", "BlackOut_On"]
                         },
                         {
                             "controls": []

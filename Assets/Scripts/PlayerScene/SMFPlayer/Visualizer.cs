@@ -258,41 +258,50 @@ public class Visualizer : MonoBehaviour {
 		case "MultiWordVR":
 			lyricControl.ApplyControl(args);
 			break;
-		case "RamenDiskOn":
-			ramenDisk.SetActive(true);
+		case "RamenDisk":
+			if (args.Length < 2) break;
+			if (args[1] == "On") {
+				ramenDisk.SetActive(true);
+			} else if (args[1] == "Off") {
+				ramenDisk.SetActive(false);
+			}
 			break;
-		case "RamenDiskOff":
-			ramenDisk.SetActive(false);
-			break;
-		case "RamenFloorOn":
+		case "RamenFloor":
+			if (args.Length < 2) break;
+			if (args[1] == "On") {
+				ramenFloor.SetActive(true);
+			} else if (args[1] == "Off") {
+				ramenFloor.SetActive(false);
+			}
 			ramenFloor.SetActive(true);
 			break;
-		case "RamenFloorOff":
-			ramenFloor.SetActive(false);
+		case "Wall":
+			if (args.Length < 2) break;
+			if (args[1] == "Rect") {
+				backGroundController.SetWallType(Parameter.WallType.Rectangle);
+			} else if (args[1] == "Circle") {
+				backGroundController.SetWallType(Parameter.WallType.Circle);
+			} else if (args[1] == "Off") {
+				backGroundController.SetWallType(Parameter.WallType.Off);
+			}
 			break;
-		case "WallRect":
-			backGroundController.SetWallType(Parameter.WallType.Rectangle);
+		case "UnityChan":
+			if (args.Length < 2) break;
+			if (args[1] == "Black") {
+				SetUnityChan(Parameter.UnityChanType.Black);
+			} else if (args[1] == "Color") {
+				SetUnityChan(Parameter.UnityChanType.Color);
+			} else if (args[1] == "Off") {
+				SetUnityChan(Parameter.UnityChanType.Off);
+			}
 			break;
-		case "WallCircle":
-			backGroundController.SetWallType(Parameter.WallType.Circle);
-			break;
-		case "WallOff":
-			backGroundController.SetWallType(Parameter.WallType.Off);
-			break;
-		case "UCBlack":
-			SetUnityChan(Parameter.UnityChanType.Black);
-			break;
-		case "UCColor":
-			SetUnityChan(Parameter.UnityChanType.Color);
-			break;
-		case "UCOff":
-			SetUnityChan(Parameter.UnityChanType.Off);
-			break;
-		case "WaveFormOn":
-			wave.SetActive(true);
-			break;
-		case "WaveFormOff":
-			wave.SetActive(false);
+		case "WaveForm":
+			if (args.Length < 2) break;
+			if (args[1] == "On") {
+				wave.SetActive(true);
+			} else if (args[1] == "Off") {
+				wave.SetActive(false);
+			}
 			break;
 		case "Effect":
 			effectSwitcher.ChangeEffect(args, beatInterval);
@@ -370,11 +379,13 @@ public class Visualizer : MonoBehaviour {
 	private void ApplyControlDelayed(string command) {
 		string[] args = command.Split("_");
 		switch (args[0]) {
-		case "TitleCenterOn":
-			titleCenter.enabled = true;
-			break;
-		case "TitleCenterOff":
-			titleCenter.enabled = false;
+		case "TitleCenter":
+			if (args.Length < 2) break;
+			if (args[1] == "On") {
+				titleCenter.enabled = true;
+			} else if (args[1] == "Off") {
+				titleCenter.enabled = false;
+			}
 			break;
 		case "RamenCupAuto":
 			ramenController.CreateRamen();
@@ -397,17 +408,21 @@ public class Visualizer : MonoBehaviour {
 		case "Sun":
 			if (args.Length >= 2) sun.SetCommand(args[1]);
 			break;
-		case "UnityChanRunOn":
-			unityChanRunning.SetActive(true);
+		case "UnityChanRun":
+			if (args.Length < 2) break;
+			if (args[1] == "On") {
+				unityChanRunning.SetActive(true);
+			} else if (args[1] == "Off") {
+				unityChanRunning.SetActive(false);
+			}
 			break;
-		case "UnityChanRunOff":
-			unityChanRunning.SetActive(false);
-			break;
-		case "UnityChanShiftOn":
-			unityChanShift.SetActive(true);
-			break;
-		case "UnityChanShiftOff":
-			unityChanShift.SetActive(false);
+		case "UnityChanShift":
+			if (args.Length < 2) break;
+			if (args[1] == "On") {
+				unityChanShift.SetActive(true);
+			} else if (args[1] == "Off") {
+				unityChanShift.SetActive(false);
+			}
 			break;
 		case "Night":
 			if (args.Length < 2) break;
