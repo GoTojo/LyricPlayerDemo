@@ -15,14 +15,16 @@ public class EditPanel : MonoBehaviour {
 	private GameObject textTrackNumber;
 	private GameObject eventButton;
 	private List<GameObject> textTrackNumbers = new List<GameObject>();
+	public LyricPlayer player;
+
 	// Start is called before the first frame update
 	void Start() {
 		trackInput.options?.Clear();
-		for (var i = 0; i < LyricLists.Instance.lists[0].tracks.Count; i++) {
+		for (var i = 0; i < LyricLists.Instance.lists[1].tracks.Count; i++) {
 			TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData((i + 1).ToString());
 			trackInput.options.Add(optionData);
 		}
-		trackInput.value = 0;
+		trackInput.value = 1;
 		trackInput.captionText.text = "1";
 		textTrackNumber = (GameObject)Resources.Load("Prefab/UI/TrackNumber");
 		eventButton = (GameObject)Resources.Load("Prefab/UI/EventButton");
@@ -31,16 +33,16 @@ public class EditPanel : MonoBehaviour {
 		measure = -1;
 	}
 	public void UpdateLyric(string text) {
-		LyricLists.Instance.lists[0].SetSentence(trackInput.value, measure, text);
+		LyricLists.Instance.lists[1].SetSentence(trackInput.value, measure, text);
 	}
 	// Update is called once per frame
 	void Update() {
-		// if (player.measure != measure) {
-		// 	measure = player.measure;
-		// 	LyricData data = LyricLists.Instance.lists[0].GetSentence(trackInput.value + 1, measure);
-		// 	lyric.text = data.sentence;
-		// 	if (!eventSettingPanel.IsActive()) CreateOption();
-		// }
+		if (player.measure != measure) {
+			measure = player.measure;
+			LyricData data = LyricLists.Instance.lists[1].GetSentence(trackInput.value + 1, measure);
+			lyric.text = data.sentence;
+			if (!eventSettingPanel.IsActive()) CreateOption();
+		}
 	}
 	public void OnButtonClick(int beat, int num) {
 		eventSettingPanel.Show(trackInput.value, measure, beat, num);
@@ -52,7 +54,7 @@ public class EditPanel : MonoBehaviour {
 		CreateOption();
 	}
 	private void CreateOption() {
-		LyricData data = LyricLists.Instance.lists[0].GetSentence(trackInput.value, measure);
+		LyricData data = LyricLists.Instance.lists[1].GetSentence(trackInput.value + 1, measure);
 		float y = 230;
 		for (var beat = 0; beat < textTrackNumbers.Count; beat++) {
 			Destroy(textTrackNumbers[beat]);

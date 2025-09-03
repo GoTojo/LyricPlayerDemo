@@ -19,7 +19,7 @@ public class MidiEventMapAccessor {
 	public const int kanjiMap = 1;
 	public const int numOfEventMap = 2;
 	private MIDIEventMap[] eventMap = new MIDIEventMap[numOfEventMap];
-	public int currentMap = 0;
+	public int currentMap = 1;
 	private MidiEventMapAccessor()
 	{
 		for (var i = 0; i < numOfEventMap; i++)

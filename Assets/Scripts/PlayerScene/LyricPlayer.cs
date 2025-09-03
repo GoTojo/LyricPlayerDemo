@@ -41,7 +41,7 @@ public class LyricPlayer : MonoBehaviour {
 			audioSource.clip = clip;
 		} else {
 			Debug.LogWarning($"AudioClip または AudioSource {SongInfo.GetBaseName(songnum)}.mp3 が見つかりません。");
-			End();
+			//End();
 			return;
 		}
 		smfPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, false), SongInfo.numOfMeasure[songnum]);
@@ -57,6 +57,27 @@ public class LyricPlayer : MonoBehaviour {
 		FontResource fontResource = FontResource.Instance;
 		fontResource.LoadFont();
 		SentenceList.Instance.Init();
+
+		textPos = curPos.handleRect.GetComponentInChildren<TextMeshProUGUI>();
+		textPos.text = curPos.value.ToString();
+		textA = pointA.handleRect.GetComponentInChildren<TextMeshProUGUI>();
+		textA.text = pointA.value.ToString();
+		textB = pointB.handleRect.GetComponentInChildren<TextMeshProUGUI>();
+		textB.text = pointB.value.ToString();
+		int numOfMeas = SongInfo.numOfMeasure[songnum];
+		// if (numOfMeas < 0) {
+		// 	numOfMeas = LyricLists.Instance.tracks[0].lyrics.Count;
+		// }
+		curPos.minValue = 0;
+		curPos.maxValue = numOfMeas;
+		pointA.minValue = 0;
+		pointA.maxValue = numOfMeas - 1;
+		pointA.value = 0;
+		pointB.minValue = 1;
+		pointB.maxValue = numOfMeas;
+		pointB.value = numOfMeas;
+		playButtonImage = playButton.GetComponent<Image>();
+		repeatButtonImage = repeatButton.GetComponent<Image>();
 	}
 	void OnDestroy() {
 		MidiMaster.noteOnDelegate -= NoteOn;
@@ -64,7 +85,7 @@ public class LyricPlayer : MonoBehaviour {
 	}
 	private void NoteOn(MidiChannel channel, int note, float velocity) {
 		if (note == Parameter.NoteStartStop) {
-			End();
+			//End();
 		}
 	}
 	void Start() {
@@ -83,29 +104,60 @@ public class LyricPlayer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-		if (startWait > 0) {
-			startWait -= Time.deltaTime;
-			if (startWait <= 0) {
-				StartPlayer();
+		// if (startWait > 0) {
+		// 	startWait -= Time.deltaTime;
+		// 	if (startWait <= 0) {
+		// 		StartPlayer();
+		// 	}
+		// 	return;
+		// }
+		// if (Input.GetKey(KeyCode.Space)) {
+		// 	End();
+		// } else if (fIsPlaying) {
+		// 	fIsPlaying = smfPlayer.Update();
+		// 	kanjiPlayer.Update();
+		// 	if (!fIsPlaying) {
+		// 		// SongEnd
+		// 	}
+		// } else {
+		// 	// End();
+		// }
+		smfPlayer.Update();
+		kanjiPlayer.Update();
+		if (smfPlayer.isPlaying()) {
+			if (!audioSource.isPlaying) {
+				endTimer -= Time.deltaTime;
+				if (endTimer <= 0) {
+					PlayStop();
+				}
 			}
-			return;
-		}
-		if (Input.GetKey(KeyCode.Space)) {
-			End();
-		} else if (fIsPlaying) {
-			fIsPlaying = smfPlayer.Update();
-			kanjiPlayer.Update();
-			if (!fIsPlaying) {
-				// SongEnd
+			measure = smfPlayer.currentMeasure;
+			if (fRepeat && measure >= pointB.value) {
+				PlayStop();
+				LyricGenList.Clear();
+				measure = (int)pointA.value;
+				PlayStart();
+			} else {
+				curPos.value = measure;
+				textPos.text = curPos.value.ToString();
 			}
-		} else {
-			// End();
 		}
-		if (!audioSource.isPlaying) {
-			blackOut.SetActive(true);
-			endTimer -= Time.deltaTime;
-			if (endTimer <= 0) {
-				End();
+		if (Input.GetKeyDown(KeyCode.L)) {
+			settingPanel.SetActive(!settingPanel.activeSelf);
+		}
+		if (!settingPanel.activeSelf) {
+			if (Input.GetKeyDown(KeyCode.Space)) {
+				if (Input.GetKey(KeyCode.LeftShift)) {
+					measure = 0;
+					LyricGenList.Clear();
+				}
+				OnPlayClicked();
+			}
+			if (Input.GetKeyDown(KeyCode.T)) {
+				transportPanel.SetActive(!transportPanel.activeSelf);
+			}
+			if (Input.GetKeyDown(KeyCode.E)) {
+				editPanel.SetActive(!editPanel.activeSelf);
 			}
 		}
 	}
@@ -129,12 +181,14 @@ public class LyricPlayer : MonoBehaviour {
 		this.currentMsec = smfPlayer.currentMsec;
 		this.measure = smfPlayer.currentMeasure;
 		smfPlayer.Stop();
+		kanjiPlayer.Stop();
 	}
 	private void PlayStart() {
 		LyricData data = SentenceList.Instance.GetSentence(0, measure);
 		LyricGenList.Start(measure);
 		currentMsec = data.msec;
 		smfPlayer.Start(currentMsec);
+		kanjiPlayer.Start(currentMsec);
 		audioSource.time = currentMsec / 1000f;
 		audioSource.Play();
 	}
