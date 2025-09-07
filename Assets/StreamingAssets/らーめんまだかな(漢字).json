@@ -1441,7 +1441,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["Title_Off", "RamenFloorOn", "Rocket"]
+                            "controls": ["Title_Off", "RamenFloor_On", "Rocket"]
                         },
                         {
                             "controls": []
@@ -1517,7 +1517,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["ShootingStar", "Snow"]
+                            "controls": ["ShootingStar", "Particle_Snow"]
                         },
                         {
                             "controls": []

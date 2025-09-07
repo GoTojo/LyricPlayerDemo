@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using TMPro;
 using System;
 using System.Net.Http.Headers;
+using System.Collections.Generic;
 
 public class LyricGenBase {
 	public bool active = false;
@@ -19,13 +20,6 @@ public class LyricGenBase {
 	public void Start(int meas) {
 		lastSentenceMeas = -1;
 		curMeas = meas;
-		for (int m = 0; m < meas; m++) {
-			// SentenceList.Instance.GetSentence(sentenceTrack, m);
-			// LyricData lyricData = SentenceList.Instance.GetSentence(sentenceTrack, m);
-			// if (lyricData.sentence.Length > 0) {
-			// 	Debug.Log($"{m}: {lyricData.sentence}");
-			// }
-		}
 		sentence = "";
 		OnTextChanged(sentence);
 		// Debug.Log($"sentence: {sentence}");

@@ -47,11 +47,12 @@ public class SentenceList {
 	public LyricData GetSentence(int track, int measure, int map = -1) {
 		if (map < 0) map = eventMap.currentMap;
 		LyricData emptyData = new LyricData(measure, 0, "", 1);
-		if (map > tracks.Length) return emptyData;
+		if (map >= tracks.Length) return emptyData;
 		List<Track> trackList = tracks[map];
-		if (track > trackList.Count) return emptyData;
+		if (track >= trackList.Count) return emptyData;
 		Track trackData = trackList[track];
-		if (measure > trackData.lyrics.Count) return emptyData;
+		if (measure >= trackData.lyrics.Count) return emptyData;
+		if (measure < 0) return emptyData;
 		return trackData.lyrics[measure];
 	}
 	public bool IsExist(int measure, int map = -1) {

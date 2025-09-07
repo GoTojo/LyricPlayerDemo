@@ -30,6 +30,10 @@ public class EffectSwitcher : MonoBehaviour {
 	private float manualLifeTime = 0;
 	private float pulseEffectTime = 0;
 	public bool manual = false;
+	public enum BeatOption {
+		HalfBeat,
+		QuaterBeat
+	} 
 	public void ChangeEffect(string[] args, float beatInterval) {
 		if (manual) return;
 		float time = 0;

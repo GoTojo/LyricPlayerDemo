@@ -30,6 +30,7 @@ public class LyricPlayer : MonoBehaviour {
 	private bool fRepeat = false;
 	private Image playButtonImage;
 	private Image repeatButtonImage;
+	private bool wasPlaying = false;
 	void Awake() {
 		MidiMaster.noteOnDelegate += NoteOn;
 		int songnum = PlayerPrefs.GetInt("Song");
@@ -104,24 +105,6 @@ public class LyricPlayer : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update() {
-		// if (startWait > 0) {
-		// 	startWait -= Time.deltaTime;
-		// 	if (startWait <= 0) {
-		// 		StartPlayer();
-		// 	}
-		// 	return;
-		// }
-		// if (Input.GetKey(KeyCode.Space)) {
-		// 	End();
-		// } else if (fIsPlaying) {
-		// 	fIsPlaying = smfPlayer.Update();
-		// 	kanjiPlayer.Update();
-		// 	if (!fIsPlaying) {
-		// 		// SongEnd
-		// 	}
-		// } else {
-		// 	// End();
-		// }
 		smfPlayer.Update();
 		kanjiPlayer.Update();
 		if (smfPlayer.isPlaying()) {
@@ -187,6 +170,9 @@ public class LyricPlayer : MonoBehaviour {
 		LyricData data = SentenceList.Instance.GetSentence(0, measure);
 		LyricGenList.Start(measure);
 		currentMsec = data.msec;
+		Visualizer visualizer = GetComponent<Visualizer>();
+		visualizer.ResetControl(); 
+		visualizer.UpdateControl(measure);
 		smfPlayer.Start(currentMsec);
 		kanjiPlayer.Start(currentMsec);
 		audioSource.time = currentMsec / 1000f;

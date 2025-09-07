@@ -1412,7 +1412,7 @@
                             "controls": ["Effect_Twist_QuaterBeat"]
                         },
                         {
-                            "controls": ["Ramen"]
+                            "controls": ["Particle_Ramen"]
                         }
                     ]
                 },
@@ -1574,7 +1574,7 @@
                     "sentence": "",
                     "beats": [
                         {
-							"controls": ["Ramen", "WaveForm_On", "MultiL_On"]
+							"controls": ["Particle_Ramen", "WaveForm_On", "MultiL_On"]
                         },
                         {
                             "controls": ["WaveForm_Off","Effect_DotScreen_QuaterBeat"]
@@ -1992,7 +1992,7 @@
                     "sentence": "なるけど",
                     "beats": [
                         {
-                            "controls": ["Snow"]
+                            "controls": ["Particle_Snow"]
                         },
                         {
                             "controls": []
@@ -2315,7 +2315,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
 						{
-							"controls": ["Words_On", "MultiWordR_Off", "Donburi", "Confetti"]
+							"controls": ["Words_On", "MultiWordR_Off", "Donburi", "Particle_Confetti"]
 						},
                         {
                             "controls": []
@@ -2454,7 +2454,7 @@
                             "controls": []
                         },
                         {
-                            "controls": ["Ramen"]
+                            "controls": ["Particle_Ramen"]
                         },
                         {
                             "controls": []
@@ -2695,7 +2695,7 @@
                     "sentence": "",
                     "beats": [
                         {
-                            "controls": ["Confetti"]
+                            "controls": ["Particle_Confetti"]
                         },
                         {
                             "controls": []

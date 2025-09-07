@@ -5,7 +5,6 @@ using UnityEngine;
 using UnityEngine.Events;
 using MidiJack;
 using System;
-using System.Collections.Generic;
 
 public class Visualizer : MonoBehaviour {
 	public Parameter parameter;
@@ -57,13 +56,14 @@ public class Visualizer : MonoBehaviour {
 	public UFO ufo;
 	private int particleMeasCount = 0;
 	private SentenceList sentenceList;
-	private int newMeasure = -1;
+	private int newMeasure = 0;
 	private int curMeasure = 0;
 	private int curBeat = 0;
-	private bool beatEffectApplied = true;
+	private bool beatEffectApplied = false;
 	private float beatInterval = 0.5f;
 	private float measureInterval = 2f;
 	private bool showInfo = false;
+	public int sentenceTrack = 1;
 
 	public enum LyricMode {
 		Original,
@@ -238,11 +238,18 @@ public class Visualizer : MonoBehaviour {
 		}
 	}
 
+	private void StopAllControls() {
+	}
+
 	//
 	//	Measureイベントですぐにactiveにする
 	//	Measureイベントを受けて処理を行うタイプに使用する
 	//
 	private void ApplyControlNow(string command) {
+		ApplyControlNowOnOff(command);
+		ApplyControlNowTimeout(command);
+	}
+	private void ApplyControlNowOnOff(string command) {
 		string[] args = command.Split("_");
 		switch (args[0]) {
 		case "Title":
@@ -273,7 +280,6 @@ public class Visualizer : MonoBehaviour {
 			} else if (args[1] == "Off") {
 				ramenFloor.SetActive(false);
 			}
-			ramenFloor.SetActive(true);
 			break;
 		case "Wall":
 			if (args.Length < 2) break;
@@ -314,6 +320,14 @@ public class Visualizer : MonoBehaviour {
 				blackOut.SetActive(false);
 			}
 			break;
+		default:
+			// Debug.Log($"Unknown command: {command}");
+			break;
+		}
+	}
+	private void ApplyControlNowTimeout(string command) {
+		string[] args = command.Split("_");
+		switch (args[0]) {
 		case "Bulb":
 			bulb.Create(new Vector3(2.6f, 6, 0), beatInterval * 2);
 			break;
@@ -377,6 +391,10 @@ public class Visualizer : MonoBehaviour {
 		}
 	}
 	private void ApplyControlDelayed(string command) {
+		ApplyControlDelayedOnOff(command);
+		ApplyControlDelayedTimeout(command);
+	}
+	private void ApplyControlDelayedOnOff(string command) {
 		string[] args = command.Split("_");
 		switch (args[0]) {
 		case "TitleCenter":
@@ -386,24 +404,6 @@ public class Visualizer : MonoBehaviour {
 			} else if (args[1] == "Off") {
 				titleCenter.enabled = false;
 			}
-			break;
-		case "RamenCupAuto":
-			ramenController.CreateRamen();
-			break;
-		case "Snow":
-			ChangeParticle(Parameter.ParticleType.Snow);
-			break;
-		case "Confetti":
-			ChangeParticle(Parameter.ParticleType.Confetti);
-			break;
-		case "Sakura":
-			ChangeParticle(Parameter.ParticleType.Sakura);
-			break;
-		case "Zeknova":
-			ChangeParticle(Parameter.ParticleType.Zeknova);
-			break;
-		case "Ramen":
-			ChangeParticle(Parameter.ParticleType.Ramen);
 			break;
 		case "Sun":
 			if (args.Length >= 2) sun.SetCommand(args[1]);
@@ -431,6 +431,42 @@ public class Visualizer : MonoBehaviour {
 			} else if (args[1] == "Off") {
 				night.SetActive(false);
 			}
+			break;
+		case "Particle":
+			if (args.Length < 2) break;
+			switch (args[1]) {
+			case "Snow":
+				ChangeParticle(Parameter.ParticleType.Snow);
+				break;
+			case "Confetti":
+				ChangeParticle(Parameter.ParticleType.Confetti);
+				break;
+			case "Sakura":
+				ChangeParticle(Parameter.ParticleType.Sakura);
+				break;
+			case "Zeknova":
+				ChangeParticle(Parameter.ParticleType.Zeknova);
+				break;
+			case "Ramen":
+				ChangeParticle(Parameter.ParticleType.Ramen);
+				break;
+			case "Off":
+				ChangeParticle(Parameter.ParticleType.Off);
+				break;
+			default:
+				break;
+			}
+			break;
+		default:
+			// Debug.Log($"Unknown command: {command}");
+			break;
+		}
+	}
+	private void ApplyControlDelayedTimeout(string command) {
+		string[] args = command.Split("_");
+		switch (args[0]) {
+		case "RamenCupAuto":
+			ramenController.CreateRamen();
 			break;
 		default:
 			// Debug.Log($"Unknown command: {command}");
@@ -500,6 +536,27 @@ public class Visualizer : MonoBehaviour {
 		}
 		if (paramText.Length != 0) {
 			uiPanelControl.Show(paramText, measureInterval);
+		}
+	}
+	public void UpdateControl(int meas) {
+		// Debug.Log($"UpdateControl: meas({meas})");
+		for (int m = 0; m < meas; m++) {
+			SentenceList.Instance.GetSentence(sentenceTrack, m);
+			LyricData lyricData = SentenceList.Instance.GetSentence(sentenceTrack, m);
+			foreach (ControlList beat in lyricData.beats) {
+				foreach (string control in beat.controls) {
+					ApplyControlNowOnOff(control);
+					ApplyControlDelayedOnOff(control);
+					// Debug.Log(control);
+				}
+			}
+		}
+	}
+	public void ResetControl() {
+		var commands = Enum.GetNames(typeof(Parameter.CommandOnOff));
+		foreach (string command in commands) {
+			ApplyControlNowOnOff($"{command}_Off");
+			ApplyControlDelayedOnOff($"{command}_Off");
 		}
 	}
 }

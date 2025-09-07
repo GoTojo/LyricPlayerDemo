@@ -3,6 +3,7 @@
 /// Copyright (c) 2025 gotojo, All Rights Reserved.
 
 using UnityEngine;
+using System;
 
 // [CreateAssetMenu(menuName = "ParameterData")]
 // public class Parameter : ScriptableObject
@@ -72,8 +73,63 @@ public class Parameter {
 		MultiWordL,
 		MultiWordR,
 		MultiWordVL,
-		MultiWordVR
+		MultiWordVR,
+		RamenDisk,
+		RamenFloor,
+		Wall,
+		UnityChan,
+		WaveForm,
+		Effect,
+		BlackOut,
+		Bulb,
+		Rocket,
+		Dango,
+		Cake,
+		Donburi,
+		ShootingStar,
+		Comet,
+		NarutoStar,
+		Naruto,
+		UFO,
+		TitleCenter,
+		RamenCupAuto,
+		Snow,
+		Confetti,
+		Sakura,
+		Zeknova,
+		Ramen,
+		Sun,
+		UnityChanRun,
+		UnityChanShift,
+		Night,
+		Particle
 	};
+	public enum CommandOnOff {
+		Title,
+		Line,
+		Words,
+		MultiL,
+		MultiR,
+		MultiVL,
+		MultiVR,
+		MultiWordL,
+		MultiWordR,
+		MultiWordVL,
+		MultiWordVR,
+		RamenDisk,
+		RamenFloor,
+		Wall,
+		UnityChan,
+		WaveForm,
+		Effect,
+		BlackOut,
+		TitleCenter,
+		Sun,
+		UnityChanRun,
+		UnityChanShift,
+		Night,
+		Particle,
+	}
 	public enum Font {
 		JKMaruGothic,
 		DelaGothicOne,
@@ -84,6 +140,7 @@ public class Parameter {
 	};
 	public static string[] GetOptions(string command, int num) {
 		switch (command) {
+			// LyricControls
 		case "Title":
 		case "Line":
 		case "Words":
@@ -96,6 +153,48 @@ public class Parameter {
 		case "MultiWordVL":
 		case "MultiWordVR":
 			return LyricControl.GetOptions(command, num);
+			// no option
+		case "Bulb":
+		case "Rocket":
+		case "Dango":
+		case "Cake":
+		case "Donburi":
+		case "Naruto":
+		case "UFO":
+		case "RamenCupAuto":
+			break;
+			// On, Off
+		case "RamenDisk":
+		case "RamenFloor":
+		case "WaveForm":
+		case "BlackOut":
+		case "Night":
+		case "UnityChanShift":
+		case "UnityChanRun":
+		case "TitleCenter":
+			if (num == 0) return new string[] { "On", "Off" };
+			else break;
+		case "Wall":
+			if (num == 0) return Enum.GetNames(typeof(WallType));
+			else break;
+		case "UnityChan":
+			if (num == 0) return Enum.GetNames(typeof(UnityChanType));
+			else break;
+		case "Particle":
+			if (num == 0) return Enum.GetNames(typeof(ParticleType));
+			else break;
+		case "Effect":
+			if (num == 0) return Enum.GetNames(typeof(FullScreenEffectFeature.EffectType));
+			if (num == 1) return Enum.GetNames(typeof(EffectSwitcher.BeatOption));
+			else break;
+		case "ShootingStar":
+		case "Comet":
+		case "NarutoStar":
+			if (num == 0) return new string[] { "6", "12"};
+			else break;
+		case "Sun":
+			if (num == 0) return new string[] { "Off", "8", "15" };
+			else break;
 		default:
 			break;
 		}
