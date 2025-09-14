@@ -33,6 +33,7 @@ public class LyricGenMultiLine : LyricBase {
 			}
 		}
 		protected override void OnTextChanged(string sentence) {
+			if (!active) return;
 			if (line >= maxLine) {
 				Clear();
 			}

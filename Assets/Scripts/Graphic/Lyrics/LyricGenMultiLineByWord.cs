@@ -31,6 +31,7 @@ public class LyricGenMultiLineByWord : LyricBase {
 			this.measureInterval = measureInterval / 1000f;
 		}
 		protected override void OnTextChanged(string sentence) {
+			if (!active) return;
 			if (line >= maxLine) {
 				Clear();
 			} else if (numOfWord != 0) {
