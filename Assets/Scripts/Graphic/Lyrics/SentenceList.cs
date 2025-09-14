@@ -24,7 +24,6 @@ public class SentenceList {
 
 	// LyricList, MidiEventMapが初期化した後に呼ぶ
 	public void Init() {
-		GameObject mainObj = GameObject.Find("MainGameObject");
 		List<LyricList> maps = LyricLists.Instance.lists;
 		eventMap = MidiEventMapAccessor.Instance;
 		const int numOfMap = MidiEventMapAccessor.numOfEventMap;
@@ -54,6 +53,16 @@ public class SentenceList {
 		if (measure >= trackData.lyrics.Count) return emptyData;
 		if (measure < 0) return emptyData;
 		return trackData.lyrics[measure];
+	}
+	public void SetSentence(String text, int track, int measure, int map = -1) {
+		if (map < 0) map = eventMap.currentMap;
+		if (map >= tracks.Length) return;
+		List<Track> trackList = tracks[map];
+		if (track >= trackList.Count) return;
+		Track trackData = trackList[track];
+		if (measure >= trackData.lyrics.Count) return;
+		if (measure < 0) return;
+		trackData.lyrics[measure].sentence = text;
 	}
 	public bool IsExist(int measure, int map = -1) {
 		if (map < 0) map = eventMap.currentMap;

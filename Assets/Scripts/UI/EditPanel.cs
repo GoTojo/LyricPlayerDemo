@@ -16,6 +16,7 @@ public class EditPanel : MonoBehaviour {
 	private GameObject eventButton;
 	private List<GameObject> textTrackNumbers = new List<GameObject>();
 	public LyricPlayer player;
+	public bool isLyricEditing = false; 
 
 	// Start is called before the first frame update
 	void Start() {
@@ -32,8 +33,12 @@ public class EditPanel : MonoBehaviour {
 	public void OnTrackValueChanged(int value) {
 		measure = -1;
 	}
-	public void UpdateLyric(string text) {
-		LyricLists.Instance.lists[1].SetSentence(trackInput.value, measure, text);
+	public void UpdateLyric() {
+		LyricLists.Instance.lists[1].SetSentence(trackInput.value + 1, measure, text.text);
+		SentenceList.Instance.SetSentence(text.text, trackInput.value, measure, 1);
+	}
+	public void OnLyricEditSelected(bool f) {
+		isLyricEditing = f;
 	}
 	// Update is called once per frame
 	void Update() {

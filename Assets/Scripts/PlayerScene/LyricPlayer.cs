@@ -19,6 +19,7 @@ public class LyricPlayer : MonoBehaviour {
 	public GameObject editPanel;
 	public GameObject transportPanel;
 	public GameObject settingPanel;
+	public EditPanel editPanelControl;
 	public Button playButton;
 	public Button repeatButton;
 	public Slider curPos;
@@ -125,22 +126,28 @@ public class LyricPlayer : MonoBehaviour {
 				textPos.text = curPos.value.ToString();
 			}
 		}
-		if (Input.GetKeyDown(KeyCode.L)) {
-			settingPanel.SetActive(!settingPanel.activeSelf);
-		}
-		if (!settingPanel.activeSelf) {
-			if (Input.GetKeyDown(KeyCode.Space)) {
-				if (Input.GetKey(KeyCode.LeftShift)) {
-					measure = 0;
-					LyricGenList.Clear();
+		// get key
+		if (!editPanelControl.isLyricEditing) {
+			if (Input.GetKeyDown(KeyCode.Q)) {
+				End();
+			}
+			if (Input.GetKeyDown(KeyCode.L)) {
+				settingPanel.SetActive(!settingPanel.activeSelf);
+			}
+			if (!settingPanel.activeSelf) {
+				if (Input.GetKeyDown(KeyCode.Space)) {
+					if (Input.GetKey(KeyCode.LeftShift)) {
+						measure = 0;
+						LyricGenList.Clear();
+					}
+					OnPlayClicked();
 				}
-				OnPlayClicked();
-			}
-			if (Input.GetKeyDown(KeyCode.T)) {
-				transportPanel.SetActive(!transportPanel.activeSelf);
-			}
-			if (Input.GetKeyDown(KeyCode.E)) {
-				editPanel.SetActive(!editPanel.activeSelf);
+				if (Input.GetKeyDown(KeyCode.T)) {
+					transportPanel.SetActive(!transportPanel.activeSelf);
+				}
+				if (Input.GetKeyDown(KeyCode.E)) {
+					editPanel.SetActive(!editPanel.activeSelf);
+				}
 			}
 		}
 	}
@@ -150,7 +157,7 @@ public class LyricPlayer : MonoBehaviour {
 		kanjiPlayer?.Stop();
 		Visualizer visualizer = GetComponent<Visualizer>();
 		visualizer.BackupParams();
-		// SceneManager.LoadScene("TitleScene");
+		SceneManager.LoadScene("TitleScene");
 	}
 
 	public void Stop() {
@@ -171,7 +178,7 @@ public class LyricPlayer : MonoBehaviour {
 		LyricGenList.Start(measure);
 		currentMsec = data.msec;
 		Visualizer visualizer = GetComponent<Visualizer>();
-		visualizer.ResetControl(); 
+		visualizer.ResetControl();
 		visualizer.UpdateControl(measure);
 		smfPlayer.Start(currentMsec);
 		kanjiPlayer.Start(currentMsec);
@@ -209,5 +216,21 @@ public class LyricPlayer : MonoBehaviour {
 	}
 	public void UpdatePlayButtonImage() {
 		playButtonImage.color = smfPlayer.isPlaying() ? Color.green : Color.gray;
+	}
+	public void OnLyricResetClicked() {
+		const int track = 1;
+		const int map = 1;
+		LyricList lyricList = LyricLists.Instance.lists[map];
+		Track trackData = lyricList.tracks[track];
+		MidiEventMapAccessor eventMap = MidiEventMapAccessor.Instance;
+		for (var meas = 0; meas < trackData.lyrics.Count; meas++) {
+			string sentence = eventMap.GetSentence(meas, track, map);
+			// Debug.Log($"meas: {meas}, sentence: {sentence}");
+			lyricList.SetSentence(track + 1, meas, sentence);
+		}
+	}
+	public void OnLyricReloadClicked() {
+		LyricLists.Instance.lists[1].Init();
+		SentenceList.Instance.Init();
 	}
 }
