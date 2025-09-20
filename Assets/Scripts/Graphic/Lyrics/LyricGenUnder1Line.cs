@@ -52,7 +52,7 @@ public class LyricGenUnder1Line : LyricBase {
 	};
 	LyricGenControl control;
 
-	void Start() {
+	void Awake() {
 		control = new LyricGenControl(position, font, this.transform);
 	}
 	public override void OnParamChanged() {

@@ -34,11 +34,12 @@ public class LyricControl : MonoBehaviour {
 		On,
 		Off,
 		Stop,
-		Clear
+		Clear,
+		// POSX,
+		// POSY,
+		// POSW,
+		// POSH
 	};
-	public void SetPosition(Vector3 position) {
-		
-	}
 	public LyricBase GetLyricObj(Type type) {
 		LyricBase lyric = null;
 		switch (type) {
@@ -80,6 +81,44 @@ public class LyricControl : MonoBehaviour {
 		}
 		return lyric;
 	}
+	public void SetPosition(LyricBase lyric, string param, float value) {
+		switch (param) {
+		case "POSX":
+			lyric.SetPosX(value);
+			break;
+		case "POSY":
+			lyric.SetPosY(value);
+			break;
+		case "POSW":
+			lyric.SetPosW(value);
+			break;
+		case "POSH":
+			lyric.SetPosH(value);
+			break;
+		default:
+			break;
+		}
+	}
+	public float GetPosition(LyricBase lyric, string param) {
+		float position = 0;
+		switch (param) {
+		case "POSX":
+			position = lyric.GetPosX();
+			break;
+		case "POSY":
+			position = lyric.GetPosY();
+			break;
+		case "POSW":
+			position = lyric.GetPosW();
+			break;
+		case "POSH":
+			position = lyric.GetPosH();
+			break;
+		default:
+			break;
+		}
+		return position;
+	}
 	public void ApplyControl(string[] args) {
 		if (args.Length == 0) return;
 		Type type = (Type)Enum.Parse(typeof(Type), args[0]);
@@ -100,14 +139,34 @@ public class LyricControl : MonoBehaviour {
 		case "Clear":
 			lyric.Clear();
 			break;
+		case "POSX":
+		case "POSY":
+		case "POSW":
+		case "POSH":
+			if (args.Length < 3) return;
+			SetPosition(lyric, args[1], float.Parse(args[2]));
+			break;
 		default:
 			break;
 		}
 	}
 	public static string [] GetOptions(string command, int num) {
-		string [] options = null;
+		string[] args = command.Split("_");
+		string[] options = null;
 		if (num == 0) {
 			options = Enum.GetNames(typeof(Command));
+		} else if (num == 1) {
+			if (args.Length < 2) return options;
+			switch (args[1]) {
+			case "POSX":
+			case "POSY":
+			case "POSW":
+			case "POSH":
+				options = new string[] {"VARIABLE"};
+				break;
+			default:
+				break;
+			}
 		}
 		return options;
 	}

@@ -10,7 +10,7 @@ public class EventSettingPanel : MonoBehaviour {
 	public GameObject eventSettingPanel;
 	private TMP_Dropdown commandSelector;
 	private Vector3 position = new Vector3(-700, 50, 0);
-	private float width = 160;
+	private float width = 300;
 	private GameObject selectorPrefab;
 	private string [] commands;
 	private List<TMP_Dropdown> optionSelectors = new List<TMP_Dropdown>();
@@ -44,21 +44,31 @@ public class EventSettingPanel : MonoBehaviour {
 		}
 		return dropdown;
 	}
-	private TMP_Dropdown CreateOption(int num, string [] options) {
+	private TMP_Dropdown CreateOption(int num, string [] options, int selected) {
 		float x = position.x + (width + 10) * (num + 1);
 		TMP_Dropdown option = CreateSelector(new Vector3(x, position.y, position.z), options);
 		optionSelectors.Add(option);
 		return option;
 	}
 	private void CreateOptions() {
+		List<int> optionValues = new List<int>();
+		for (var i = 0; i < optionSelectors.Count; i++) {
+			optionValues.Add(optionSelectors[i].value);
+		}
 		ClearOptions();
 		var value = commandSelector.value;
 		if (value == 0) return;
 		string command = commands[value - 1];
 		for (var i = 0; true; i++) {
-			string [] options = Parameter.GetOptions(command, i);
+			string[] options = Parameter.GetOptions(command, i);
 			if (options == null) break;
-			CreateOption(i, options);
+			int selected = (i < optionValues.Count) ? optionValues[i] : 0;
+			CreateOption(i, options, selected);
+			optionSelectors[i].value = selected;
+			optionSelectors[i].onValueChanged.AddListener((value) => OnParamChanged());
+			if (options[selected] == "VARIABLE") {
+			}
+			command = $"{command}_{options[selected]}";
 		}
 	}
 	private void Setup(int track, int measure, int beat, int num) {
@@ -78,10 +88,11 @@ public class EventSettingPanel : MonoBehaviour {
 				commandSelector.value = commandIndex + 1;
 				string command = commands[commandIndex];
 				for (var i = 0; true; i++) {
+					int selected = 0;
 					string [] options = Parameter.GetOptions(command, i);
 					if (options == null) break;
 					if (i + 1 < args.Length) {
-						int selected = Array.IndexOf(options, args[i + 1]);
+						selected = Array.IndexOf(options, args[i + 1]);
 						if (selected >= 0) {
 							if (optionSelectors.Count > i) optionSelectors[i].value = selected;
 						}
@@ -118,6 +129,9 @@ public class EventSettingPanel : MonoBehaviour {
 		LyricLists.Instance.lists[1].SetControl(track + 1, measure, beat, num, commandtext);
 	}
 	public void OnValueChanged() {
+		CreateOptions();
+	}
+	public void OnParamChanged() {
 		CreateOptions();
 	}
 	public void OnEventSettingCancel() {

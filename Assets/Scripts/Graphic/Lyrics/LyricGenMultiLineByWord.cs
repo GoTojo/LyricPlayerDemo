@@ -53,7 +53,7 @@ public class LyricGenMultiLineByWord : LyricBase {
 	};
 	LyricGenMultiLineControl control;
 
-	void Start() {
+	void Awake() {
 		control = new LyricGenMultiLineControl(area, textHeight, textWidth, font, this.transform);
 	}
 

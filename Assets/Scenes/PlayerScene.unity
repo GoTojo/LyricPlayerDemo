@@ -782,7 +782,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1396201522}
         m_TargetAssemblyTypeName: SettingPanelController, Assembly-CSharp
         m_MethodName: OnShowTextButtonClicked
         m_Mode: 1
@@ -793,7 +793,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &76692693
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7453,7 +7453,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1396201522}
         m_TargetAssemblyTypeName: SettingPanelController, Assembly-CSharp
         m_MethodName: OnExitButtonClicked
         m_Mode: 1
@@ -7464,7 +7464,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &281787775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14137,7 +14137,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1396201522}
         m_TargetAssemblyTypeName: SettingPanelController, Assembly-CSharp
         m_MethodName: OnInputEndH
         m_Mode: 1
@@ -14148,7 +14148,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -26333,7 +26333,7 @@ MonoBehaviour:
   scale: 0.7
   textHeight: 1
   textWidth: 1
-  vertical: 1
+  vertical: 0
   maxLine: 5
   autoclear: 1
 --- !u!1 &785098587
@@ -38697,7 +38697,6 @@ MonoBehaviour:
   editPanel: {fileID: 253577809}
   transportPanel: {fileID: 1652781259}
   settingPanel: {fileID: 2090084314}
-  canvas: {fileID: 1396201515}
   editPanelControl: {fileID: 1396201523}
   playButton: {fileID: 1063888233}
   repeatButton: {fileID: 240202345}
@@ -40043,7 +40042,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1396201522}
         m_TargetAssemblyTypeName: SettingPanelController, Assembly-CSharp
         m_MethodName: OnInputEndW
         m_Mode: 1
@@ -40054,7 +40053,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -40306,7 +40305,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1396201522}
         m_TargetAssemblyTypeName: SettingPanelController, Assembly-CSharp
         m_MethodName: OnInputEndSampleText
         m_Mode: 5
@@ -41663,6 +41662,7 @@ MonoBehaviour:
   multiWordR: {fileID: 773155252}
   multiWordVL: {fileID: 1441243624}
   multiWordVR: {fileID: 1721281559}
+  lyricControl: {fileID: 1095297747}
 --- !u!114 &1396201523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42534,7 +42534,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1396201522}
         m_TargetAssemblyTypeName: SettingPanelController, Assembly-CSharp
         m_MethodName: OnInputEndY
         m_Mode: 1
@@ -42545,7 +42545,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -50282,7 +50282,7 @@ MonoBehaviour:
   scale: 0.7
   textHeight: 1
   textWidth: 1
-  vertical: 1
+  vertical: 0
   maxLine: 5
   autoclear: 1
 --- !u!1 &1768558730
@@ -55327,7 +55327,7 @@ MonoBehaviour:
   m_OnEndEdit:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1396201522}
         m_TargetAssemblyTypeName: SettingPanelController, Assembly-CSharp
         m_MethodName: OnInputEndX
         m_Mode: 1
@@ -55338,7 +55338,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
   m_OnSubmit:
     m_PersistentCalls:
       m_Calls: []
@@ -57288,6 +57288,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1680875952}
     m_Modifications:
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1396201522}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnFontSelectChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingPanelController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6842568482247974744, guid: 1f39714339076477dac2f19798b2a958, type: 3}
       propertyPath: m_Name
       value: ParamSelector
@@ -57401,6 +57429,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2090084315}
     m_Modifications:
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1396201522}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnEditItemChanged
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SettingPanelController, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5363743894238303143, guid: 1f39714339076477dac2f19798b2a958, type: 3}
+      propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6842568482247974744, guid: 1f39714339076477dac2f19798b2a958, type: 3}
       propertyPath: m_Name
       value: LyricType

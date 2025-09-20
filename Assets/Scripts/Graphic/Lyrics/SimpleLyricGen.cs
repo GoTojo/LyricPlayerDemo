@@ -100,7 +100,7 @@ public class SimpleLyricGen : LyricBase {
 		}
 	};
 	LyricGenControl control;
-	void Start() {
+	void Awake() {
 		control = new LyricGenControl(area, sizeMin, sizeMax, rotateAngle, this.transform);
 	}
 	public override void OnParamChanged() {
@@ -145,10 +145,10 @@ public class SimpleLyricGen : LyricBase {
 	public override float GetPosY() {
 		return area.y;
 	}
-	public override float GetAreaW() {
+	public override float GetPosW() {
 		return area.width;
 	}
-	public override float GetAreaH() {
+	public override float GetPosH() {
 		return area.height;
 	}
 }

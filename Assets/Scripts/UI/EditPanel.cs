@@ -73,7 +73,7 @@ public class EditPanel : MonoBehaviour {
 			TextMeshProUGUI tmpro = trackNum.GetComponent<TextMeshProUGUI>();
 			tmpro.text = (beat + 1).ToString();
 			trackNum.transform.localPosition = position;
-			float buttonX = 30;
+			float buttonX = 50;
 			for (var i = 0; i < list.controls.Count + 1; i++) {
 				int buttonID = i;
 				GameObject buttonObj = Instantiate(eventButton, trackNum.transform);

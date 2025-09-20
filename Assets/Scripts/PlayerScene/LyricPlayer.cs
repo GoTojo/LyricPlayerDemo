@@ -14,6 +14,7 @@ public class LyricPlayer : MonoBehaviour {
 	private float startWait = startWaitTime;
 	public GameObject blackOut;
 	public int measure = 0;
+	private int numOfMeas = 100;
 	private uint currentMsec = 0;
 	private float endTimer = 0;
 	public GameObject editPanel;
@@ -66,7 +67,7 @@ public class LyricPlayer : MonoBehaviour {
 		textA.text = pointA.value.ToString();
 		textB = pointB.handleRect.GetComponentInChildren<TextMeshProUGUI>();
 		textB.text = pointB.value.ToString();
-		int numOfMeas = SongInfo.numOfMeasure[songnum];
+		numOfMeas = SongInfo.numOfMeasure[songnum];
 		// if (numOfMeas < 0) {
 		// 	numOfMeas = LyricLists.Instance.tracks[0].lyrics.Count;
 		// }
@@ -174,6 +175,10 @@ public class LyricPlayer : MonoBehaviour {
 		kanjiPlayer.Stop();
 	}
 	private void PlayStart() {
+		if (measure >= numOfMeas - 1) {
+			measure = 0;
+			blackOut.SetActive(false);
+		}
 		LyricData data = SentenceList.Instance.GetSentence(0, measure);
 		LyricGenList.Start(measure);
 		currentMsec = data.msec;

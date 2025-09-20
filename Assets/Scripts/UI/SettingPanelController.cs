@@ -26,11 +26,13 @@ public class SettingPanelController : MonoBehaviour
 	public LyricGenMultiLineByWord multiWordR;
 	public LyricGenMultiLineByWord multiWordVL;
 	public LyricGenMultiLineByWord multiWordVR;
-	private string [] controlTypes;
+	public LyricControl lyricControl;
+	private string[] controlTypes;
 	private string [] fontTypes;
 	private LyricBase targetLyric;
+	private int curLyric;
 	private bool activated = false;
-	void Awake() {
+	void Start() {
 		controlTypes = Enum.GetNames(typeof(LyricControl.Type));
 		for (var i = 0; i < controlTypes.Length; i++) {
 			TMP_Dropdown.OptionData optionData = new TMP_Dropdown.OptionData(controlTypes[i]);
@@ -42,6 +44,7 @@ public class SettingPanelController : MonoBehaviour
 			fontSelector.options.Add(optionData);
 		}
 		sampleText.text = "さんぷるてきすと";
+		RestoreParams();
 		GetParams();
 	}
 	void Update() {
@@ -99,7 +102,8 @@ public class SettingPanelController : MonoBehaviour
 		settingPanel.SetActive(false);
 	}
 	private void GetParams() {
-		LyricBase lyric = GetLyricObj((LyricControl.Type)edititem.value);
+		curLyric = edititem.value; 
+		LyricBase lyric = GetLyricObj((LyricControl.Type)curLyric);
 		if (lyric == null) return;
 		targetLyric = lyric;
 		fontSelector.value = (int)FontResource.Instance.GetFontType(targetLyric.font.name);
@@ -107,8 +111,8 @@ public class SettingPanelController : MonoBehaviour
 		yinput.text = targetLyric.GetPosY().ToString();
 		winput.transform.parent.gameObject.SetActive(targetLyric.HasArea());
 		hinput.transform.parent.gameObject.SetActive(targetLyric.HasArea());
-		winput.text = targetLyric.GetAreaW().ToString();
-		hinput.text = targetLyric.GetAreaH().ToString();
+		winput.text = targetLyric.GetPosW().ToString();
+		hinput.text = targetLyric.GetPosH().ToString();
 	}
 	public void OnEditItemChanged(int num) {
 		targetLyric.Hide();
@@ -116,27 +120,53 @@ public class SettingPanelController : MonoBehaviour
 		targetLyric.Show();
 	}
 	public void OnFontSelectChanged() {
-		targetLyric.SetFont(FontResource.Instance.GetFont((FontResource.Type)fontSelector.value));
+		int font = fontSelector.value;
+		SetFont(targetLyric, (FontResource.Type)font);
+		StoreParam("FONT", font);
+	}
+	private void SetFont(LyricBase lyric, FontResource.Type type) {
+		lyric.SetFont(FontResource.Instance.GetFont(type));
 	}
 	public void OnInputEndX() {
 		string text = xinput.text;
 		float x = float.Parse(text);
-		targetLyric.SetPosX(x);
+		lyricControl.SetPosition(targetLyric, "POSX", x);
+		StoreParam("POSX", x);
 	}
 	public void OnInputEndY() {
 		string text = yinput.text;
 		float y = float.Parse(text);	
-		targetLyric.SetPosY(y);
+		lyricControl.SetPosition(targetLyric, "POSY", y);
+		StoreParam("POSY", y);
 	}
 	public void OnInputEndW() {
 		string text = winput.text;
 		float w = float.Parse(text);
-		targetLyric.SetPosW(w);
+		lyricControl.SetPosition(targetLyric, "POSW", w);
+		StoreParam("POSW", w);
 	}
 	public void OnInputEndH() {
 		string text = hinput.text;
-		float h = float.Parse(text);	
-		targetLyric.SetPosH(h);
+		float h = float.Parse(text);
+		lyricControl.SetPosition(targetLyric, "POSH", h);
+		StoreParam("POSH", h);
+	}
+	private void StoreParam(string param, float value) {
+		PlayerPrefs.SetFloat($"{controlTypes[curLyric]}_{param}", value);
+	}
+	private void StoreParam(string param, int value) {
+		PlayerPrefs.SetInt($"{controlTypes[curLyric]}_{param}", value);
+	}
+	private void RestoreParams() {
+		for (var type = 0;  type < controlTypes.Length; type++) {
+			LyricBase lyricObj = GetLyricObj((LyricControl.Type)type);
+			string lyricType = controlTypes[type];
+			lyricControl.SetPosition(lyricObj, "POSX", PlayerPrefs.GetFloat($"{lyricType}_POSX"));
+			lyricControl.SetPosition(lyricObj, "POSY", PlayerPrefs.GetFloat($"{lyricType}_POSY"));
+			lyricControl.SetPosition(lyricObj, "POSW", PlayerPrefs.GetFloat($"{lyricType}_POSW"));
+			lyricControl.SetPosition(lyricObj, "POSH", PlayerPrefs.GetFloat($"{lyricType}_POSH"));
+			SetFont(lyricObj, (FontResource.Type)PlayerPrefs.GetInt($"{lyricType}_FONT"));
+		}
 	}
 	public void OnInputEndSampleText(string text) {
 

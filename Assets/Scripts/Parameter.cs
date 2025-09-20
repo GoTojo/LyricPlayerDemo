@@ -139,8 +139,9 @@ public class Parameter {
 		RocknRollOne
 	};
 	public static string[] GetOptions(string command, int num) {
-		switch (command) {
-			// LyricControls
+		string[] args = command.Split("_");
+		switch (args[0]) {
+		// LyricControls
 		case "Title":
 		case "Line":
 		case "Words":
@@ -153,7 +154,7 @@ public class Parameter {
 		case "MultiWordVL":
 		case "MultiWordVR":
 			return LyricControl.GetOptions(command, num);
-			// no option
+		// no option
 		case "Bulb":
 		case "Rocket":
 		case "Dango":
@@ -163,7 +164,7 @@ public class Parameter {
 		case "UFO":
 		case "RamenCupAuto":
 			break;
-			// On, Off
+		// On, Off
 		case "RamenDisk":
 		case "RamenFloor":
 		case "WaveForm":
@@ -190,7 +191,7 @@ public class Parameter {
 		case "ShootingStar":
 		case "Comet":
 		case "NarutoStar":
-			if (num == 0) return new string[] { "6", "12"};
+			if (num == 0) return new string[] { "6", "12" };
 			else break;
 		case "Sun":
 			if (num == 0) return new string[] { "Off", "8", "15" };

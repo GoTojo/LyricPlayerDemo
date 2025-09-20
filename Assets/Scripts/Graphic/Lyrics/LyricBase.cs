@@ -41,10 +41,10 @@ public abstract class LyricBase : MonoBehaviour
 	public virtual float GetPosY() {
 		return this.transform.position.y;
 	}
-	public virtual float GetAreaW() {
+	public virtual float GetPosW() {
 		return 0;
 	}
-	public virtual float GetAreaH() {
+	public virtual float GetPosH() {
 		return 0;
 	}
 	public void SetFont(TMP_FontAsset font) {
