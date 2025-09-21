@@ -31,7 +31,7 @@ public class RotateContentsZ : MonoBehaviour {
 			this.transform.Rotate(0f, 0f, -deltaAngle);
 		} else if (type == Type.HalfAndStop) {
 			float deltaAngle = 360 * Time.deltaTime / (rotationTime / 2);
-			if (phase < 2) {
+			if (phase < 2 && curAngle < 360) {
 				this.transform.Rotate(0f, 0f, -deltaAngle);
 				curAngle += deltaAngle;
 			} else {
