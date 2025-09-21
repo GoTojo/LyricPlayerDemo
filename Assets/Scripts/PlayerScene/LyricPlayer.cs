@@ -85,6 +85,7 @@ public class LyricPlayer : MonoBehaviour {
 	void OnDestroy() {
 		MidiMaster.noteOnDelegate -= NoteOn;
 		MidiWatcher.Instance.Clear();
+		Lyrics.lyrics.Clear();
 	}
 	private void NoteOn(MidiChannel channel, int note, float velocity) {
 		if (note == Parameter.NoteStartStop) {

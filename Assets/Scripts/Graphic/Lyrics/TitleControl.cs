@@ -10,11 +10,13 @@ public class TitleControl : LyricBase
 	void Start() {
 		int songnum = PlayerPrefs.GetInt("Song");
 		titleText = SongInfo.GetTitle(songnum);
+		title.transform.parent = this.transform;
 	}
 	public override void OnParamChanged() {
 		if (active) title.text = titleText;
 		title.font = font;
 		title.enabled = active;
+
 	}
 	public override void Clear() {
 		title.text = "";

@@ -37,7 +37,7 @@ public class Visualizer : MonoBehaviour {
 	public LyricGenMultiLine multiLineR1;
 	public LyricGenMultiLineByWord multiLineLW;
 	public LyricGenMultiLineByWord multiLineRW;
-	public TextMeshPro titleCenter;
+	public TextMeshPro title;
 	public LyricControl lyricControl;
 
 	public RamenController ramenController;
@@ -124,8 +124,8 @@ public class Visualizer : MonoBehaviour {
 		kanjiPlayer.mute = false;
 		ChangeParticle(particleType);
 	}
-	public void SetTitle(String title) {
-		titleCenter.text = title;
+	public void SetTitle(String text) {
+		title.text = text;
 	}
 
 	public void MIDIIn(int track, byte[] midiEvent, float position, uint currentMsec) {
@@ -397,14 +397,6 @@ public class Visualizer : MonoBehaviour {
 	private void ApplyControlDelayedOnOff(string command) {
 		string[] args = command.Split("_");
 		switch (args[0]) {
-		case "TitleCenter":
-			if (args.Length < 2) break;
-			if (args[1] == "On") {
-				titleCenter.enabled = true;
-			} else if (args[1] == "Off") {
-				titleCenter.enabled = false;
-			}
-			break;
 		case "Sun":
 			if (args.Length >= 2) sun.SetCommand(args[1]);
 			break;

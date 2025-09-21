@@ -95,14 +95,18 @@ public class EventSettingPanel : MonoBehaviour {
 				commandSelector.value = commandIndex + 1;
 				string command = commands[commandIndex];
 				for (var i = 0; true; i++) {
-					string [] options = Parameter.GetOptions(command, i);
+					string[] options = Parameter.GetOptions(command, i);
 					if (options == null) break;
-					if (i + 1 < args.Length) {
+					if (options[0] == "VARIABLE") {
+						TMP_InputField input = optionSelectors[i].transform.parent.GetComponentInChildren<TMP_InputField>();
+						if (input) input.text = args[i + 1];
+					} else if (i + 1 < args.Length) {
 						int selected = Array.IndexOf(options, args[i + 1]);
 						if (selected >= 0) {
 							if (optionSelectors.Count > i) optionSelectors[i].value = selected;
 						}
 					}
+					command += $"_{args[i + 1]}";
 				}
 			}
 		}
@@ -125,7 +129,7 @@ public class EventSettingPanel : MonoBehaviour {
 			commandtext = command;
 			for (var i = 0; i < optionSelectors.Count; i++) {
 				TMP_Dropdown obj = optionSelectors[i];
-				string [] options = Parameter.GetOptions(commandtext, i);
+				string[] options = Parameter.GetOptions(commandtext, i);
 				if (options != null) {
 					if (options[obj.value] == "VARIABLE") {
 						TMP_InputField input = obj.transform.parent.GetComponentInChildren<TMP_InputField>();

@@ -91,7 +91,6 @@ public class Parameter {
 		NarutoStar,
 		Naruto,
 		UFO,
-		TitleCenter,
 		RamenCupAuto,
 		Snow,
 		Confetti,
@@ -123,7 +122,6 @@ public class Parameter {
 		WaveForm,
 		Effect,
 		BlackOut,
-		TitleCenter,
 		Sun,
 		UnityChanRun,
 		UnityChanShift,
@@ -172,7 +170,6 @@ public class Parameter {
 		case "Night":
 		case "UnityChanShift":
 		case "UnityChanRun":
-		case "TitleCenter":
 			if (num == 0) return new string[] { "On", "Off" };
 			else break;
 		case "Wall":

@@ -152,20 +152,33 @@ public class SettingPanelController : MonoBehaviour
 		StoreParam("POSH", h);
 	}
 	private void StoreParam(string param, float value) {
-		PlayerPrefs.SetFloat($"{controlTypes[curLyric]}_{param}", value);
+		int songnum = PlayerPrefs.GetInt("Song");
+		PlayerPrefs.SetFloat($"SONG{songnum}_{controlTypes[curLyric]}_{param}", value);
 	}
 	private void StoreParam(string param, int value) {
-		PlayerPrefs.SetInt($"{controlTypes[curLyric]}_{param}", value);
+		int songnum = PlayerPrefs.GetInt("Song");
+		PlayerPrefs.SetInt($"SONG{songnum}_{controlTypes[curLyric]}_{param}", value);
+	}
+	private void SetPosition(LyricBase lyricObj, string type, string param) {
+		int songnum = PlayerPrefs.GetInt("Song");
+		string key = $"SONG{songnum}_{type}_{param}";
+		if (PlayerPrefs.HasKey(key)) {
+			lyricControl.SetPosition(lyricObj, param, PlayerPrefs.GetFloat(key));
+		}
 	}
 	private void RestoreParams() {
-		for (var type = 0;  type < controlTypes.Length; type++) {
+		int songnum = PlayerPrefs.GetInt("Song");
+		for (var type = 0; type < controlTypes.Length; type++) {
 			LyricBase lyricObj = GetLyricObj((LyricControl.Type)type);
 			string lyricType = controlTypes[type];
-			lyricControl.SetPosition(lyricObj, "POSX", PlayerPrefs.GetFloat($"{lyricType}_POSX"));
-			lyricControl.SetPosition(lyricObj, "POSY", PlayerPrefs.GetFloat($"{lyricType}_POSY"));
-			lyricControl.SetPosition(lyricObj, "POSW", PlayerPrefs.GetFloat($"{lyricType}_POSW"));
-			lyricControl.SetPosition(lyricObj, "POSH", PlayerPrefs.GetFloat($"{lyricType}_POSH"));
-			SetFont(lyricObj, (FontResource.Type)PlayerPrefs.GetInt($"{lyricType}_FONT"));
+			SetPosition(lyricObj, lyricType, "POSX");
+			SetPosition(lyricObj, lyricType, "POSY");
+			SetPosition(lyricObj, lyricType, "POSW");
+			SetPosition(lyricObj, lyricType, "POSH");
+			string key = $"SONG{songnum}_{lyricType}_FONT";
+			if (PlayerPrefs.HasKey(key)) {
+				SetFont(lyricObj, (FontResource.Type)PlayerPrefs.GetInt(key));
+			}
 		}
 	}
 	public void OnInputEndSampleText(string text) {
