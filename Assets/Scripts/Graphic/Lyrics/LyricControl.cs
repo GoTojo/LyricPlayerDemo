@@ -35,10 +35,10 @@ public class LyricControl : MonoBehaviour {
 		Off,
 		Stop,
 		Clear,
-		// POSX,
-		// POSY,
-		// POSW,
-		// POSH
+		POSX,
+		POSY,
+		POSW,
+		POSH
 	};
 	public LyricBase GetLyricObj(Type type) {
 		LyricBase lyric = null;

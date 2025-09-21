@@ -12,6 +12,7 @@ public class EventSettingPanel : MonoBehaviour {
 	private Vector3 position = new Vector3(-700, 50, 0);
 	private float width = 300;
 	private GameObject selectorPrefab;
+	private GameObject inputPrefab;
 	private string [] commands;
 	private List<TMP_Dropdown> optionSelectors = new List<TMP_Dropdown>();
 	private TextMeshProUGUI infotext;
@@ -21,6 +22,7 @@ public class EventSettingPanel : MonoBehaviour {
 	private int num;
 	void Awake() {
 		selectorPrefab = (GameObject)Resources.Load("Prefab/UI/ParamSelector");
+		inputPrefab = (GameObject)Resources.Load("Prefab/UI/ValueInput");
 		commands = Enum.GetNames(typeof(Parameter.Command));
 		string [] options = new string [commands.Length + 1];
 		options[0] = "-----";
@@ -44,7 +46,7 @@ public class EventSettingPanel : MonoBehaviour {
 		}
 		return dropdown;
 	}
-	private TMP_Dropdown CreateOption(int num, string [] options, int selected) {
+	private TMP_Dropdown CreateOption(int num, string [] options) {
 		float x = position.x + (width + 10) * (num + 1);
 		TMP_Dropdown option = CreateSelector(new Vector3(x, position.y, position.z), options);
 		optionSelectors.Add(option);
@@ -63,10 +65,15 @@ public class EventSettingPanel : MonoBehaviour {
 			string[] options = Parameter.GetOptions(command, i);
 			if (options == null) break;
 			int selected = (i < optionValues.Count) ? optionValues[i] : 0;
-			CreateOption(i, options, selected);
-			optionSelectors[i].value = selected;
-			optionSelectors[i].onValueChanged.AddListener((value) => OnParamChanged());
+			CreateOption(i, options);
 			if (options[selected] == "VARIABLE") {
+				GameObject instantiate = Instantiate(inputPrefab, optionSelectors[i].transform);
+				TMP_InputField inputField = instantiate.GetComponentInChildren<TMP_InputField>();
+				float val = 0;
+				inputField.text = $"{val}";
+			} else {
+				optionSelectors[i].value = selected;
+				optionSelectors[i].onValueChanged.AddListener((value) => OnParamChanged());
 			}
 			command = $"{command}_{options[selected]}";
 		}
@@ -88,11 +95,10 @@ public class EventSettingPanel : MonoBehaviour {
 				commandSelector.value = commandIndex + 1;
 				string command = commands[commandIndex];
 				for (var i = 0; true; i++) {
-					int selected = 0;
 					string [] options = Parameter.GetOptions(command, i);
 					if (options == null) break;
 					if (i + 1 < args.Length) {
-						selected = Array.IndexOf(options, args[i + 1]);
+						int selected = Array.IndexOf(options, args[i + 1]);
 						if (selected >= 0) {
 							if (optionSelectors.Count > i) optionSelectors[i].value = selected;
 						}
@@ -119,9 +125,14 @@ public class EventSettingPanel : MonoBehaviour {
 			commandtext = command;
 			for (var i = 0; i < optionSelectors.Count; i++) {
 				TMP_Dropdown obj = optionSelectors[i];
-				string [] options = Parameter.GetOptions(command, i);
+				string [] options = Parameter.GetOptions(commandtext, i);
 				if (options != null) {
-					commandtext += $"_{options[obj.value]}";
+					if (options[obj.value] == "VARIABLE") {
+						TMP_InputField input = obj.transform.parent.GetComponentInChildren<TMP_InputField>();
+						commandtext += $"_{input.text}";
+					} else {
+						commandtext += $"_{options[obj.value]}";
+					}
 				}
 			}
 		}
