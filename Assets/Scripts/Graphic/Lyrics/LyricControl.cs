@@ -38,7 +38,8 @@ public class LyricControl : MonoBehaviour {
 		POSX,
 		POSY,
 		POSW,
-		POSH
+		POSH,
+		FONT
 	};
 	public LyricBase GetLyricObj(Type type) {
 		LyricBase lyric = null;
@@ -95,6 +96,9 @@ public class LyricControl : MonoBehaviour {
 		case "POSH":
 			lyric.SetPosH(value);
 			break;
+		case "FONT":
+			lyric.SetPosH(value);
+			break;
 		default:
 			break;
 		}
@@ -139,6 +143,11 @@ public class LyricControl : MonoBehaviour {
 		case "Clear":
 			lyric.Clear();
 			break;
+		case "FONT":
+			if (args.Length < 3) return;
+			FontResource.Type fontType = (FontResource.Type)Enum.Parse(typeof(FontResource.Type), args[2]);
+			lyric.SetFont(FontResource.Instance.GetFont(fontType));
+			break;
 		case "POSX":
 		case "POSY":
 		case "POSW":
@@ -158,6 +167,9 @@ public class LyricControl : MonoBehaviour {
 		} else if (num == 1) {
 			if (args.Length < 2) return options;
 			switch (args[1]) {
+			case "FONT":
+				options = Enum.GetNames(typeof(FontResource.Type));
+				break;
 			case "POSX":
 			case "POSY":
 			case "POSW":
