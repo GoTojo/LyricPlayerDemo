@@ -131,7 +131,7 @@ public class LyricPlayer : MonoBehaviour {
 		}
 		// get key
 		if (!editPanelControl.isLyricEditing) {
-			if (Input.GetKeyDown(KeyCode.Q)) {
+			if (Input.GetKeyDown(KeyCode.Z)) {
 				End();
 			}
 			if (Input.GetKeyDown(KeyCode.L)) {
