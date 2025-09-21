@@ -33,6 +33,7 @@ public class LyricPlayer : MonoBehaviour {
 	private Image playButtonImage;
 	private Image repeatButtonImage;
 	private bool wasPlaying = false;
+	private Visualizer visualizer;
 	void Awake() {
 		MidiMaster.noteOnDelegate += NoteOn;
 		int songnum = PlayerPrefs.GetInt("Song");
@@ -51,7 +52,7 @@ public class LyricPlayer : MonoBehaviour {
 		kanjiPlayer = new SMFPlayer(SongInfo.GetSMFPath(songnum, true), SongInfo.numOfMeasure[songnum]);
 		smfPlayer.midiHandler = SubMidiWatcher.Instance;
 		kanjiPlayer.midiHandler = MidiWatcher.Instance;
-		Visualizer visualizer = GetComponent<Visualizer>();
+		visualizer = GetComponent<Visualizer>();
 		visualizer.SetSMFPlayer(smfPlayer, kanjiPlayer);
 		visualizer.SetTitle(SongInfo.GetTitle(songnum));
 		foreach (LyricList lyricList in LyricLists.Instance.lists) {
@@ -150,6 +151,36 @@ public class LyricPlayer : MonoBehaviour {
 				if (Input.GetKeyDown(KeyCode.E)) {
 					editPanel.SetActive(!editPanel.activeSelf);
 				}
+				if (Input.GetKeyDown(KeyCode.Alpha1)) {
+					visualizer.KeyControl("1");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha2)) {
+					visualizer.KeyControl("2");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha3)) {
+					visualizer.KeyControl("3");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha4)) {
+					visualizer.KeyControl("4");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha5)) {
+					visualizer.KeyControl("5");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha6)) {
+					visualizer.KeyControl("6");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha7)) {
+					visualizer.KeyControl("7");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha8)) {
+					visualizer.KeyControl("8");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha9)) {
+					visualizer.KeyControl("9");
+				}
+				if (Input.GetKeyDown(KeyCode.Alpha0)) {
+					visualizer.KeyControl("0");
+				}
 			}
 		}
 	}
@@ -157,7 +188,6 @@ public class LyricPlayer : MonoBehaviour {
 	public void End() {
 		smfPlayer?.Stop();
 		kanjiPlayer?.Stop();
-		Visualizer visualizer = GetComponent<Visualizer>();
 		visualizer.BackupParams();
 		SceneManager.LoadScene("TitleScene");
 	}
@@ -183,7 +213,6 @@ public class LyricPlayer : MonoBehaviour {
 		LyricData data = SentenceList.Instance.GetSentence(0, measure);
 		LyricGenList.Start(measure);
 		currentMsec = data.msec;
-		Visualizer visualizer = GetComponent<Visualizer>();
 		visualizer.ResetControl();
 		visualizer.UpdateControl(measure);
 		smfPlayer.Start(currentMsec);

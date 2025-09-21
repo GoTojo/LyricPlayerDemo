@@ -466,6 +466,29 @@ public class Visualizer : MonoBehaviour {
 		}
 	}
 
+	public void KeyControl(string key) {
+		if (key == Parameter.KeyParticleKiraKira) {
+			ChangeParticle(Parameter.ParticleType.Zeknova);
+		} else if (key == Parameter.KeyUnityChanBlack) {
+			SetUnityChan(Parameter.UnityChanType.Black);
+		} else if (key == Parameter.KeyUnityChanColor) {
+			SetUnityChan(Parameter.UnityChanType.Color);
+		} else if (key == Parameter.KeyUnityChanOff) {
+			SetUnityChan(Parameter.UnityChanType.Off);
+		} else if (key == Parameter.KeyComet) {
+			shootingStar.Trigger("Comet", 6, 0.3f, false);
+		} else if (key == Parameter.KeyShootingStar) {
+			shootingStar.Trigger("ShootingStar", 6, 0.3f, false);
+		} else if (key == Parameter.KeyUFO) {
+			ufo.Create(measureInterval * 2);
+		} else if (key == Parameter.KeyRocketLaunch) {
+			rocket.Launch();
+		} else if (key == Parameter.KeyDonburi) {
+			icons.Create("Donburi", measureInterval * 2);
+		} else if (key == Parameter.KeyNaruto) {
+			naruto.Begin(beatInterval * 2);
+		}
+	}
 	private void NoteOn(MidiChannel channel, int note, float velocity) {
 		string paramText = "";
 		if (note == Parameter.NoteParticleSnow) {
@@ -491,8 +514,8 @@ public class Visualizer : MonoBehaviour {
 		} else if (note == Parameter.NoteNaruto) {
 			naruto.Begin(beatInterval * 2);
 		} else if (note == Parameter.NoteSongDown || note == Parameter.NoteSongUp) {
-			showInfo = !showInfo;
-			infoPanel.SetActive(showInfo);
+			// showInfo = !showInfo;
+			// infoPanel.SetActive(showInfo);
 		}
 		if (paramText.Length != 0) {
 			uiPanelControl.Show(paramText, measureInterval);

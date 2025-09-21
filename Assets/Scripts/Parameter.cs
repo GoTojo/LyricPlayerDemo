@@ -8,6 +8,7 @@ using System;
 // [CreateAssetMenu(menuName = "ParameterData")]
 // public class Parameter : ScriptableObject
 public class Parameter {
+	// control assign midi note
 	public static int NoteRocketLaunch = 0x2F + 12; // B3
 	public static int NoteUFO = 0x30 + 12; // C3
 	public static int Note31 = 0x31 + 12;
@@ -35,6 +36,18 @@ public class Parameter {
 	public static int Note46 = 0x46 + 12;
 	public static int NoteSongUp = 0x47 + 12;       // B4
 	public static int NoteStartStop = 0x48 + 12;    // C5
+
+	// control assing keys
+	public static string KeyRocketLaunch = "1";
+	public static string KeyUFO = "2";
+	public static string KeyDonburi = "3";
+	public static string KeyNaruto = "4";
+	public static string KeyShootingStar = "5";
+	public static string KeyComet = "6";
+	public static string KeyParticleKiraKira = "7";
+	public static string KeyUnityChanOff = "8";
+	public static string KeyUnityChanBlack = "9";
+	public static string KeyUnityChanColor = "0";
 
 	public const int CCSetFont = 0x5b;
 	public const int CCEffectSelect = 0x4B;
