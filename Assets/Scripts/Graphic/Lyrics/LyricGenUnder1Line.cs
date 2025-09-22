@@ -11,19 +11,31 @@ public class LyricGenUnder1Line : LyricBase {
 		public TextMeshPro text;
 		private int waitCount = 3;
 		private int waitClear = 0;
+		Transform transform;
+		Vector3 position;
 		public LyricGenControl(Vector3 position, TMP_FontAsset font, Transform transform) {
 			this.font = font;
-			Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
-			float scale = 1f;
-			float rotate = 0;
-			Vector2 size = new Vector2(20, 2);
 			this.active = true;
-			GameObject simpleLyric = CreateText("", color, TextAlignmentOptions.Center, size, position, scale, rotate);
-			this.text = simpleLyric.GetComponent<TextMeshPro>();
-			simpleLyric.transform.SetParent(transform);
+			this.position = position;
+			this.transform = transform;
+			CreateText("");
+		}
+		private void CreateText(string text) {
+			if (active) {
+				Destroy(this.text);
+				Color color = new Color(0.0f, 0.0f, 0.0f, 1.0f);
+				float scale = 1f;
+				float rotate = 0;
+				Vector2 size = new Vector2(20, 2);
+				GameObject simpleLyric = CreateText(text, color, TextAlignmentOptions.Center, size, position, scale, rotate);
+				this.text = simpleLyric.GetComponent<TextMeshPro>();
+				simpleLyric.transform.SetParent(transform);
+			} else {
+				this.text.text = text;
+			}
 		}
 		protected override void OnTextChanged(string sentence) {
-			text.text = sentence;
+			CreateText(sentence);
 			waitClear = waitCount;
 		}
 		protected override void OnEventIn(MIDIHandler.Event playerEvent) { }
@@ -41,7 +53,7 @@ public class LyricGenUnder1Line : LyricBase {
 			text.text = "";
 		}
 		public void SetText(string text) {
-			this.text.text = text;
+			CreateText(text);
 		}
 		public void Show() {
 			text.enabled = true;
