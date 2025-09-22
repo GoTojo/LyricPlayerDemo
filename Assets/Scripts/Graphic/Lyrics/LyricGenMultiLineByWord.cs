@@ -42,7 +42,7 @@ public class LyricGenMultiLineByWord : LyricBase {
 		public void SetText(string[] text) {
 			Clear();
 			for (var i = 0; i < maxLine; i++) {
-				if (text.Length < i) break;
+				if (text.Length <= i) break;
 				string sentence = text[i];
 				for (numOfWord = 0; numOfWord < sentence.Length; numOfWord++) {
 					CreateText(sentence.Substring(numOfWord, 1));
