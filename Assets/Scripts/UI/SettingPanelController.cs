@@ -117,12 +117,14 @@ public class SettingPanelController : MonoBehaviour
 	public void OnEditItemChanged(int num) {
 		targetLyric.Hide();
 		GetParams();
+		OnShowTextButtonClicked();
 		targetLyric.Show();
 	}
 	public void OnFontSelectChanged() {
 		int font = fontSelector.value;
 		SetFont(targetLyric, (FontResource.Type)font);
 		StoreParam("FONT", font);
+		OnShowTextButtonClicked();
 	}
 	private void SetFont(LyricBase lyric, FontResource.Type type) {
 		lyric.SetFont(FontResource.Instance.GetFont(type));
@@ -185,6 +187,7 @@ public class SettingPanelController : MonoBehaviour
 
 	}
 	public void OnShowTextButtonClicked() {
+		LyricGenList.Clear();
 		string text = sampleText.text;
 		string [] lines = text.Split('\n');
 		targetLyric.ShowSampleText(lines);
