@@ -385,6 +385,31 @@ public class Visualizer : MonoBehaviour {
 		case "UFO":
 			ufo.Create(measureInterval * 2);
 			break;
+		case "Particle":
+			if (args.Length < 2) break;
+			switch (args[1]) {
+			case "Snow":
+				ChangeParticle(Parameter.ParticleType.Snow);
+				break;
+			case "Confetti":
+				ChangeParticle(Parameter.ParticleType.Confetti);
+				break;
+			case "Sakura":
+				ChangeParticle(Parameter.ParticleType.Sakura);
+				break;
+			case "Zeknova":
+				ChangeParticle(Parameter.ParticleType.Zeknova);
+				break;
+			case "Ramen":
+				ChangeParticle(Parameter.ParticleType.Ramen);
+				break;
+			case "Off":
+				ChangeParticle(Parameter.ParticleType.Off);
+				break;
+			default:
+				break;
+			}
+			break;
 		default:
 			// Debug.Log($"Unknown command: {command}");
 			break;
@@ -422,31 +447,6 @@ public class Visualizer : MonoBehaviour {
 				night.SetActive(true);
 			} else if (args[1] == "Off") {
 				night.SetActive(false);
-			}
-			break;
-		case "Particle":
-			if (args.Length < 2) break;
-			switch (args[1]) {
-			case "Snow":
-				ChangeParticle(Parameter.ParticleType.Snow);
-				break;
-			case "Confetti":
-				ChangeParticle(Parameter.ParticleType.Confetti);
-				break;
-			case "Sakura":
-				ChangeParticle(Parameter.ParticleType.Sakura);
-				break;
-			case "Zeknova":
-				ChangeParticle(Parameter.ParticleType.Zeknova);
-				break;
-			case "Ramen":
-				ChangeParticle(Parameter.ParticleType.Ramen);
-				break;
-			case "Off":
-				ChangeParticle(Parameter.ParticleType.Off);
-				break;
-			default:
-				break;
 			}
 			break;
 		default:
