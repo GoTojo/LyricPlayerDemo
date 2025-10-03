@@ -142,6 +142,7 @@ public class EventSettingPanel : MonoBehaviour {
 		}
 		ResetItems();
 		LyricLists.Instance.lists[1].SetControl(track + 1, measure, beat, num, commandtext);
+		SentenceList.Instance.Init();
 	}
 	public void OnValueChanged() {
 		CreateOptions();
