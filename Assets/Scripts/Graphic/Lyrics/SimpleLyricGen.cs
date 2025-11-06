@@ -40,7 +40,7 @@ public class SimpleLyricGen : LyricBase {
 			float width = (sentenceLength != 0) ? area.width / sentenceLength : area.width;
 			float x = width * lyricNum + area.x + width / 2;
 			float y = UnityEngine.Random.Range(area.yMin, area.yMax);
-			Vector3 pos = new Vector3(x, y, -1);
+			Vector3 pos = new Vector3(x, y, -5);
 			float scale = UnityEngine.Random.Range(sizeMin, sizeMax);
 			float rotate = UnityEngine.Random.Range(-rotateAngle, rotateAngle);
 			GameObject lyric = CreateText(curWord, color, TextAlignmentOptions.Top, sizeDelta, pos, scale, rotate);
