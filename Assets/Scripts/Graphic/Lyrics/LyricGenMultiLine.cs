@@ -67,6 +67,7 @@ public class LyricGenMultiLine : LyricBase {
 		control.vertical = vertical;
 		control.active = active;
 		control.font = font;
+		control.fontSize = fontSize;
 	}
 
 	public override void Clear() {

@@ -32,7 +32,6 @@ public class SimpleLyricGen : LyricBase {
 			this.sizeMax = sizeMax;
 			this.rotateAngle = rotateAngle;
 			this.transform = transform;
-			fontSize = 16;
 			autoSizeTextContainer = true;
 		}
 		private void CreateLyric() {
@@ -110,6 +109,7 @@ public class SimpleLyricGen : LyricBase {
 		control.sizeMax = sizeMax;
 		control.rotateAngle = rotateAngle;
 		control.font = font;
+		control.fontSize = fontSize;
 	}
 	public override void Clear() {
 		control.Clear();

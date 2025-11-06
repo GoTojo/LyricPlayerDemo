@@ -73,6 +73,7 @@ public class LyricGenUnder1Line : LyricBase {
 		else control.Hide();
 		control.text.transform.position = position;
 		control.font = font;
+		control.fontSize = fontSize;
 	}
 	public override void Clear() {
 		control.Clear();

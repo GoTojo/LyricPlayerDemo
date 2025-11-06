@@ -15,7 +15,7 @@ public class LyricGenBase {
 	public TMP_FontAsset font;
 	private string sentence = "";
 	protected bool autoSizeTextContainer = false;
-	protected float fontSize = 12;
+	public float fontSize = 12;
 	public int sentenceTrack = 1;
 	public void Start(int meas) {
 		lastSentenceMeas = -1;

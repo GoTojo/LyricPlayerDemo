@@ -1403,7 +1403,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-							"controls": ["Words_On", "WaveForm_On", "Effect_Film"]
+							"controls": ["Words_FONT_LightNovelPOP", "Words_FONTSIZE_26", "Words_On", "WaveForm_On", "Effect_Film"]
                         },
                         {
                             "controls": ["WaveForm_Off"]
@@ -2353,7 +2353,7 @@
                     "sentence": "らーめん",
                     "beats": [
                         {
-                            "controls": ["Sun_Off", "Words_On"]
+                            "controls": ["Words_FONTSIZE_40","Sun_Off", "Words_On"]
                         },
                         {
                             "controls": []
@@ -2467,7 +2467,7 @@
                     "sentence": "らーめん食べよう",
                     "beats": [
                         {
-                            "controls": ["NarutoStar_6"]
+                            "controls": ["Words_FONTSIZE_26","NarutoStar_6"]
                         },
                         {
                             "controls": ["Effect_Twist_QuaterBeat", "WaveForm_On"]

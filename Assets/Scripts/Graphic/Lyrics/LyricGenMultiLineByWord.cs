@@ -65,6 +65,7 @@ public class LyricGenMultiLineByWord : LyricBase {
 		control.autoclear = autoclear;
 		control.active = active;
 		control.font = font;
+		control.fontSize = fontSize;
 	}
 	public override void Clear() {
 		control.Clear();

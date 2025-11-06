@@ -10,6 +10,7 @@ using TMPro;
 public abstract class LyricBase : MonoBehaviour
 {
 	public TMP_FontAsset font;
+	public float fontSize = 16;
 	public bool active = false;
 	void Awake() {
 		Lyrics.lyrics.Add(this);
@@ -49,6 +50,10 @@ public abstract class LyricBase : MonoBehaviour
 	}
 	public void SetFont(TMP_FontAsset font) {
 		this.font = font;
+		OnParamChanged();
+	}
+	public void SetFontSize(float size) {
+		this.fontSize = size;
 		OnParamChanged();
 	}
 	public TMP_FontAsset GetFont() {

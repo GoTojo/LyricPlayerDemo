@@ -16,6 +16,7 @@ public class TitleControl : LyricBase
 		if (active) title.text = titleText;
 		title.font = font;
 		title.enabled = active;
+		title.fontSize = fontSize;
 
 	}
 	public override void Clear() {

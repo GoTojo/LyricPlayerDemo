@@ -39,7 +39,8 @@ public class LyricControl : MonoBehaviour {
 		POSY,
 		POSW,
 		POSH,
-		FONT
+		FONT,
+		FONTSIZE
 	};
 	public LyricBase GetLyricObj(Type type) {
 		LyricBase lyric = null;
@@ -94,9 +95,6 @@ public class LyricControl : MonoBehaviour {
 			lyric.SetPosW(value);
 			break;
 		case "POSH":
-			lyric.SetPosH(value);
-			break;
-		case "FONT":
 			lyric.SetPosH(value);
 			break;
 		default:
@@ -155,6 +153,10 @@ public class LyricControl : MonoBehaviour {
 			if (args.Length < 3) return;
 			SetPosition(lyric, args[1], float.Parse(args[2]));
 			break;
+		case "FONTSIZE":
+			if (args.Length < 3) return;
+			lyric.SetFontSize(float.Parse(args[2]));
+			break;
 		default:
 			break;
 		}
@@ -174,6 +176,7 @@ public class LyricControl : MonoBehaviour {
 			case "POSY":
 			case "POSW":
 			case "POSH":
+			case "FONTSIZE":
 				options = new string[] {"VARIABLE"};
 				break;
 			default:
